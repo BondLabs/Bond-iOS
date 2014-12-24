@@ -32,6 +32,8 @@
 	<false/>
 	<key>UIStatusBarHidden</key>
 	<false/>
+	<key>CFBundleIconFile</key>
+	<string>Icon@2x.png</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
