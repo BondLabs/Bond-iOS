@@ -18,8 +18,6 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        // Set status bar color to white
-        
         // Hide navigation bar
         self.navigationController?.navigationBarHidden = true
         

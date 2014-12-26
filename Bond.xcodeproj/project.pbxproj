@@ -33,6 +33,8 @@
 		E93C44411A4ADB7D00E95265 /* Bonds.png in Resources */ = {isa = PBXBuildFile; fileRef = E93C443E1A4ADB7D00E95265 /* Bonds.png */; };
 		E93C44421A4ADB7D00E95265 /* Chooser.png in Resources */ = {isa = PBXBuildFile; fileRef = E93C443F1A4ADB7D00E95265 /* Chooser.png */; };
 		E93C44431A4ADB7D00E95265 /* DetailProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = E93C44401A4ADB7D00E95265 /* DetailProfile.png */; };
+		E93C44451A4D038F00E95265 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C44441A4D038F00E95265 /* SetupViewController.swift */; };
+		E93C44471A4D102100E95265 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C44461A4D102100E95265 /* ActivityView.swift */; };
 		E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,8 @@
 		E93C443E1A4ADB7D00E95265 /* Bonds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bonds.png; sourceTree = "<group>"; };
 		E93C443F1A4ADB7D00E95265 /* Chooser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Chooser.png; sourceTree = "<group>"; };
 		E93C44401A4ADB7D00E95265 /* DetailProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DetailProfile.png; sourceTree = "<group>"; };
+		E93C44441A4D038F00E95265 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		E93C44461A4D102100E95265 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +131,8 @@
 				E934FD8C1A48270800E43B45 /* StartViewController.swift */,
 				E934FDA01A4847C000E43B45 /* SignUpViewController.swift */,
 				E934FDA21A4847CF00E43B45 /* LoginViewController.swift */,
+				E93C44441A4D038F00E95265 /* SetupViewController.swift */,
+				E93C44461A4D102100E95265 /* ActivityView.swift */,
 				E934FD731A4826A400E43B45 /* Images.xcassets */,
 				E934FD751A4826A400E43B45 /* LaunchScreen.xib */,
 				E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */,
@@ -294,10 +300,12 @@
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
 				E934FD6F1A4826A400E43B45 /* ViewController.swift in Sources */,
 				E934FD8D1A48270800E43B45 /* StartViewController.swift in Sources */,
+				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
+				E93C44451A4D038F00E95265 /* SetupViewController.swift in Sources */,
 				E934FDA51A484A2100E43B45 /* CustomNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

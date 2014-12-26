@@ -36,7 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
         
-        // Set up colors
+        // Set up navigation controller properties
         self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.barTintColor = self.UIColorFromRGB(0x2D2D2D)
