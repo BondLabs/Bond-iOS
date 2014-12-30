@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var phoneNumber: CustomTextField!
     @IBOutlet var password: CustomTextField!
     @IBOutlet var nextButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet var doneButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

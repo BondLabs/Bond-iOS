@@ -40,7 +40,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UxE-dx-lU8" kind="push" id="Qmo-qX-xvY"/>
+                                    <segue destination="UxE-dx-lU8" kind="push" id="dLw-JN-GVL"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uMi-Ff-UYU">
@@ -105,7 +105,7 @@
                     <navigationItem key="navigationItem" title="Log In" id="1OY-V9-GEj"/>
                     <connections>
                         <outlet property="descLabel" destination="MOY-7h-5G5" id="SY0-Fi-KkS"/>
-                        <outlet property="nextButton" destination="nra-qY-02X" id="kEJ-rW-5lH"/>
+                        <outlet property="loginButton" destination="nra-qY-02X" id="tNX-2b-9LZ"/>
                         <outlet property="password" destination="2eC-zp-jXa" id="ZBQ-dN-lcb"/>
                         <outlet property="phoneNumber" destination="sGI-gm-MDF" id="JOZ-Lc-8e0"/>
                     </connections>
@@ -130,11 +130,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a0c-HG-x4x">
-                                <rect key="frame" x="0.0" y="426" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="426" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="sTa-GV-XXK" kind="push" id="PHo-uF-TPt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,6 +187,7 @@
         <scene sceneID="SUf-Ad-0C7">
             <objects>
                 <tabBarController id="sTa-GV-XXK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oC3-bW-xob"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="d3E-9v-pvK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -233,7 +237,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us a bit about yourself" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KdI-Wo-n3v" userLabel="Description">
                                 <rect key="frame" x="60" y="39" width="200" height="21"/>
@@ -366,8 +370,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Qmo-qX-xvY"/>
+        <segue reference="dLw-JN-GVL"/>
+        <segue reference="8BU-7d-1hK"/>
         <segue reference="dVJ-Yv-gsK"/>
-        <segue reference="W0g-ig-6ij"/>
     </inferredMetricsTieBreakers>
 </document>
