@@ -330,10 +330,10 @@
             </objects>
             <point key="canvasLocation" x="2056" y="-93"/>
         </scene>
-        <!--Custom Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="ouw-6w-Fjj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oEQ-41-bR5" customClass="CustomNavigationController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oEQ-41-bR5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="zJS-Qd-kDv"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ffE-FP-yBI">
@@ -386,10 +386,10 @@
             </objects>
             <point key="canvasLocation" x="729" y="318"/>
         </scene>
-        <!--Custom Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="qh1-rQ-3dw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i3p-jQ-NIU" customClass="CustomNavigationController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i3p-jQ-NIU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Bb9-D3-WrM"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TaB-N4-iCb">
@@ -415,8 +415,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dLw-JN-GVL"/>
-        <segue reference="8BU-7d-1hK"/>
-        <segue reference="dVJ-Yv-gsK"/>
+        <segue reference="HdW-CU-ery"/>
+        <segue reference="W0g-ig-6ij"/>
+        <segue reference="Dt3-wl-Kcu"/>
     </inferredMetricsTieBreakers>
 </document>
