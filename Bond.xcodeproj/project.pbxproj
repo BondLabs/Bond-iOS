@@ -10,7 +10,6 @@
 		E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD691A4826A400E43B45 /* AppDelegate.swift */; };
 		E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */; };
 		E934FD741A4826A400E43B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E934FD731A4826A400E43B45 /* Images.xcassets */; };
-		E934FD771A4826A400E43B45 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E934FD751A4826A400E43B45 /* LaunchScreen.xib */; };
 		E934FD831A4826A400E43B45 /* BondTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD821A4826A400E43B45 /* BondTests.swift */; };
 		E934FD8D1A48270800E43B45 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD8C1A48270800E43B45 /* StartViewController.swift */; };
 		E934FD971A48282100E43B45 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E934FD8E1A48282100E43B45 /* bg.png */; };
@@ -60,7 +59,6 @@
 		E934FD691A4826A400E43B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E934FD6C1A4826A400E43B45 /* Bond.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bond.xcdatamodel; sourceTree = "<group>"; };
 		E934FD731A4826A400E43B45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E934FD761A4826A400E43B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E934FD7C1A4826A400E43B45 /* BondTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BondTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E934FD811A4826A400E43B45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E934FD821A4826A400E43B45 /* BondTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BondTests.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 				E9F482E11A52BAF8006DB53C /* Signup/Login */,
 				E9F482E01A52BADC006DB53C /* Traits Selection */,
 				E934FD731A4826A400E43B45 /* Images.xcassets */,
-				E934FD751A4826A400E43B45 /* LaunchScreen.xib */,
 				E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */,
 				E934FD671A4826A400E43B45 /* Images */,
 			);
@@ -320,7 +317,6 @@
 				E934FDA71A484AB800E43B45 /* Main.storyboard in Resources */,
 				E9857EE11A512AA40095EA76 /* Camera Page.png in Resources */,
 				E9857EDF1A512AA40095EA76 /* Bonds(a).png in Resources */,
-				E934FD771A4826A400E43B45 /* LaunchScreen.xib in Resources */,
 				E934FD9D1A48282100E43B45 /* Logo@3x.png in Resources */,
 				E93C443D1A4ADB1100E95265 /* Icon@3x.png in Resources */,
 				E934FD9B1A48282100E43B45 /* Logo.png in Resources */,
@@ -383,17 +379,6 @@
 			targetProxy = E934FD7D1A4826A400E43B45 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E934FD751A4826A400E43B45 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E934FD761A4826A400E43B45 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E934FD841A4826A400E43B45 /* Debug */ = {
