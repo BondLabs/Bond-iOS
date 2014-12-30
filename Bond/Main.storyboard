@@ -97,6 +97,9 @@
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="sTa-GV-XXK" kind="push" id="6e8-YG-tdg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -198,40 +201,40 @@
             </objects>
             <point key="canvasLocation" x="2893" y="-93"/>
         </scene>
-        <!--Item 2-->
+        <!--You-->
         <scene sceneID="DUR-dJ-mq8">
             <objects>
-                <viewController id="VNJ-9J-zxG" sceneMemberID="viewController">
+                <viewController id="VNJ-9J-zxG" customClass="BondsDetailViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b30-85-f1B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="gq8-1J-Smh"/>
+                    <tabBarItem key="tabBarItem" title="You" id="gq8-1J-Smh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7V-Bn-pk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3076" y="1193"/>
         </scene>
-        <!--Item 1-->
+        <!--Bonds-->
         <scene sceneID="c7R-dH-cqU">
             <objects>
-                <viewController id="cTO-EX-jb6" sceneMemberID="viewController">
+                <viewController id="cTO-EX-jb6" customClass="BondsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="60C-GV-qfG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="KCB-QS-h5x"/>
+                    <tabBarItem key="tabBarItem" title="Bonds" id="KCB-QS-h5x"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Yc-SK-dar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3075" y="563"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Bonds Bar Controller-->
         <scene sceneID="SUf-Ad-0C7">
             <objects>
-                <tabBarController id="sTa-GV-XXK" sceneMemberID="viewController">
+                <tabBarController id="sTa-GV-XXK" customClass="BondsBarController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="oC3-bW-xob"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="d3E-9v-pvK">
@@ -415,8 +418,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HdW-CU-ery"/>
-        <segue reference="W0g-ig-6ij"/>
+        <segue reference="PHo-uF-TPt"/>
         <segue reference="Dt3-wl-Kcu"/>
+        <segue reference="W0g-ig-6ij"/>
+        <segue reference="HdW-CU-ery"/>
     </inferredMetricsTieBreakers>
 </document>

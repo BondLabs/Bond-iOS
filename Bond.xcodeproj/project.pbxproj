@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9227F511A52BEAA004DDE48 /* BondsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F501A52BEAA004DDE48 /* BondsViewController.swift */; };
+		E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F531A52C0F9004DDE48 /* BondsBarController.swift */; };
+		E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */; };
 		E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD691A4826A400E43B45 /* AppDelegate.swift */; };
 		E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */; };
 		E934FD741A4826A400E43B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E934FD731A4826A400E43B45 /* Images.xcassets */; };
@@ -54,6 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9227F501A52BEAA004DDE48 /* BondsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsViewController.swift; sourceTree = "<group>"; };
+		E9227F531A52C0F9004DDE48 /* BondsBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsBarController.swift; sourceTree = "<group>"; };
+		E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsDetailViewController.swift; sourceTree = "<group>"; };
 		E934FD641A4826A400E43B45 /* Bond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bond.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E934FD681A4826A400E43B45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E934FD691A4826A400E43B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +118,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E9227F521A52BEBA004DDE48 /* Bonds */ = {
+			isa = PBXGroup;
+			children = (
+				E9227F531A52C0F9004DDE48 /* BondsBarController.swift */,
+				E9227F501A52BEAA004DDE48 /* BondsViewController.swift */,
+				E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */,
+			);
+			name = Bonds;
+			sourceTree = "<group>";
+		};
 		E934FD5B1A4826A400E43B45 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +154,7 @@
 				E934FD8C1A48270800E43B45 /* StartViewController.swift */,
 				E9F482E11A52BAF8006DB53C /* Signup/Login */,
 				E9F482E01A52BADC006DB53C /* Traits Selection */,
+				E9227F521A52BEBA004DDE48 /* Bonds */,
 				E934FD731A4826A400E43B45 /* Images.xcassets */,
 				E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */,
 				E934FD671A4826A400E43B45 /* Images */,
@@ -353,11 +370,14 @@
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
 				E934FD8D1A48270800E43B45 /* StartViewController.swift in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
+				E9227F511A52BEAA004DDE48 /* BondsViewController.swift in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
 				E9F482DF1A52B34B006DB53C /* CustomImageView.swift in Sources */,
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
+				E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */,
+				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
 				E93C44451A4D038F00E95265 /* SetupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
