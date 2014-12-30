@@ -11,9 +11,10 @@ import UIKit
 class SetupViewController: UIViewController {
     
     // View components
-    @IBOutlet weak var descLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    var activityArray:[ActivityView]?
+    @IBOutlet var descLabel: UILabel!
+    @IBOutlet var nextButton: UIButton!
+    var activityArray: Array<ActivityView>!
+    var activityNames: Array<String>! = ["Adventurer", "Artist", "Athlete", "Culturist", "Gamer", "Hustler", "Musician", "Rebel", "Scholar"]
     var viewBounds:CGSize!
     
     // Initial setup
@@ -25,9 +26,11 @@ class SetupViewController: UIViewController {
          * * */
         
         // Initialize activity views array
-        activityArray = Array<ActivityView>()
-        for (var i = 0; i < 9; i++) {
-            self.activityArray?.append(ActivityView())
+        self.activityArray = Array<ActivityView>()
+        for possView in self.view.subviews {
+            if possView is ActivityView {
+                self.activityArray.append(possView as ActivityView)
+            }
         }
         
         // Store view dimensions
@@ -71,7 +74,7 @@ class SetupViewController: UIViewController {
         
         // Horizontal edge spacing between views
         // Use this to adjust horizontal spacing of views
-        var xedge:CGFloat = 0.25
+        var xedge:CGFloat = 0.20
         
         // Horizontal spacing between views
         var xspace:CGFloat = (1 - 2 * xedge) / (numXViews - 1)
@@ -81,9 +84,7 @@ class SetupViewController: UIViewController {
         var yspace:CGFloat = 0.225
         
         // Add activity views to main view
-        for view in activityArray! {
-            self.view.addSubview(view)
-            
+        for (index, view) in enumerate(activityArray) {
             // Store row and column of view
             var xindex:CGFloat = CGFloat(count % 3)
             var yindex:CGFloat = CGFloat(Int(count / 3))
@@ -95,12 +96,13 @@ class SetupViewController: UIViewController {
             var ycoor = CGFloat(height) * ytemp
             
             // Set up view and add to main view
-            view.frame.size = CGSizeMake(50, 80)
+            view.frame.size = CGSizeMake(70, 110)
             view.center = CGPointMake(xcoor, ycoor)
-            view.layer.borderColor = UIColor.whiteColor().CGColor
-            view.layer.borderWidth = 5.0
-            view.backgroundColor = UIColor.whiteColor()
             count++
+            
+            // Set up view
+            view.setup(self.activityNames[index])
+            view.addToggle()
         }
     }
     
