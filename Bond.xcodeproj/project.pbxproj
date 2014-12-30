@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD691A4826A400E43B45 /* AppDelegate.swift */; };
 		E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */; };
-		E934FD6F1A4826A400E43B45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD6E1A4826A400E43B45 /* ViewController.swift */; };
 		E934FD741A4826A400E43B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E934FD731A4826A400E43B45 /* Images.xcassets */; };
 		E934FD771A4826A400E43B45 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E934FD751A4826A400E43B45 /* LaunchScreen.xib */; };
 		E934FD831A4826A400E43B45 /* BondTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD821A4826A400E43B45 /* BondTests.swift */; };
@@ -60,7 +59,6 @@
 		E934FD681A4826A400E43B45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E934FD691A4826A400E43B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E934FD6C1A4826A400E43B45 /* Bond.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Bond.xcdatamodel; sourceTree = "<group>"; };
-		E934FD6E1A4826A400E43B45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E934FD731A4826A400E43B45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E934FD761A4826A400E43B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E934FD7C1A4826A400E43B45 /* BondTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BondTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
-				E934FD6E1A4826A400E43B45 /* ViewController.swift */,
 				E934FDA61A484AB800E43B45 /* Main.storyboard */,
 				E934FD8C1A48270800E43B45 /* StartViewController.swift */,
 				E9F482E11A52BAF8006DB53C /* Signup/Login */,
@@ -358,7 +355,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
-				E934FD6F1A4826A400E43B45 /* ViewController.swift in Sources */,
 				E934FD8D1A48270800E43B45 /* StartViewController.swift in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
