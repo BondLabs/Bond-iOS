@@ -10,6 +10,10 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    /* * *
+     * * * View properties------------------------------------------------------
+     * * */
+    
     var viewSize:CGSize!
     var keyboardHeight:CGFloat!
     var barHeight:CGFloat!
@@ -19,8 +23,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var password: UITextField!
     @IBOutlet var loginButton: UIButton!
     
+    /* * *
+     * * * Set up the view------------------------------------------------------
+     * * */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /* * *
+         * * * Do basic setup---------------------------------------------------
+         * * */
         
         // Store size of screen
         var barHeight = self.navigationController?.navigationBar.bounds.height
@@ -66,6 +78,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
+    
+    /* * *
+     * * * Customize keyboard and button animations-----------------------------
+     * * */
     
     func hideKeyboard() {
         UIView.animateWithDuration(0.5, animations: {
@@ -125,7 +141,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
+        var count = self.navigationController?.viewControllers.count
+        var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
+        if (nextVC is SetupViewController) {
+            self.navigationController?.navigationBarHidden = true
+        }
         super.viewWillDisappear(animated)
     }
     

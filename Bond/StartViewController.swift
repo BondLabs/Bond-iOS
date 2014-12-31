@@ -10,13 +10,25 @@ import UIKit
 
 class StartViewController: UIViewController {
 
+    /* * *
+     * * * View properties------------------------------------------------------
+     * * */
+    
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var bgImage: UIImageView!
     @IBOutlet var signUpButton: UIButton!
     @IBOutlet var loginButton: UIButton!
     
+    /* * *
+     * * * Set up the view------------------------------------------------------
+     * * */
+    
     override func viewDidLoad() {
+        
+        /* * *
+         * * * Do basic setup---------------------------------------------------
+         * * */
         
         // Hide navigation bar
         self.navigationController?.navigationBarHidden = true
@@ -62,6 +74,11 @@ class StartViewController: UIViewController {
         loginButton.frame = CGRectMake(screenSize.width / 2, screenSize.height - screenSize.width * 2 / 15, screenSize.width / 2, screenSize.width * 2 / 15)
         
         super.viewDidLoad()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.navigationController?.navigationBarHidden = false
+        super.prepareForSegue(segue, sender: sender)
     }
     
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {

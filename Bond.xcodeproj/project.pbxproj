@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E9227F511A52BEAA004DDE48 /* BondsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F501A52BEAA004DDE48 /* BondsViewController.swift */; };
 		E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F531A52C0F9004DDE48 /* BondsBarController.swift */; };
 		E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */; };
 		E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD691A4826A400E43B45 /* AppDelegate.swift */; };
@@ -42,8 +41,10 @@
 		E9857EDF1A512AA40095EA76 /* Bonds(a).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED71A512AA40095EA76 /* Bonds(a).png */; };
 		E9857EE01A512AA40095EA76 /* Profile Page.png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED81A512AA40095EA76 /* Profile Page.png */; };
 		E9857EE11A512AA40095EA76 /* Camera Page.png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED91A512AA40095EA76 /* Camera Page.png */; };
+		E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99983981A53A14F00EDB8F3 /* BondTableCell.swift */; };
+		E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999839A1A53A20000EDB8F3 /* BondsViewController.swift */; };
 		E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */; };
-		E9F482DF1A52B34B006DB53C /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F482DE1A52B34B006DB53C /* CustomImageView.swift */; };
+		E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F482DE1A52B34B006DB53C /* CircleImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E9227F501A52BEAA004DDE48 /* BondsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsViewController.swift; sourceTree = "<group>"; };
 		E9227F531A52C0F9004DDE48 /* BondsBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsBarController.swift; sourceTree = "<group>"; };
 		E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsDetailViewController.swift; sourceTree = "<group>"; };
 		E934FD641A4826A400E43B45 /* Bond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bond.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,8 +96,10 @@
 		E9857ED71A512AA40095EA76 /* Bonds(a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bonds(a).png"; sourceTree = "<group>"; };
 		E9857ED81A512AA40095EA76 /* Profile Page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile Page.png"; sourceTree = "<group>"; };
 		E9857ED91A512AA40095EA76 /* Camera Page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera Page.png"; sourceTree = "<group>"; };
+		E99983981A53A14F00EDB8F3 /* BondTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondTableCell.swift; sourceTree = "<group>"; };
+		E999839A1A53A20000EDB8F3 /* BondsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsViewController.swift; sourceTree = "<group>"; };
 		E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		E9F482DE1A52B34B006DB53C /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		E9F482DE1A52B34B006DB53C /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				E9227F531A52C0F9004DDE48 /* BondsBarController.swift */,
-				E9227F501A52BEAA004DDE48 /* BondsViewController.swift */,
+				E999839A1A53A20000EDB8F3 /* BondsViewController.swift */,
+				E99983981A53A14F00EDB8F3 /* BondTableCell.swift */,
 				E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */,
 			);
 			name = Bonds;
@@ -230,7 +233,7 @@
 			children = (
 				E93C44441A4D038F00E95265 /* SetupViewController.swift */,
 				E93C44461A4D102100E95265 /* ActivityView.swift */,
-				E9F482DE1A52B34B006DB53C /* CustomImageView.swift */,
+				E9F482DE1A52B34B006DB53C /* CircleImageView.swift */,
 			);
 			name = "Traits Selection";
 			sourceTree = "<group>";
@@ -370,11 +373,12 @@
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
 				E934FD8D1A48270800E43B45 /* StartViewController.swift in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
-				E9227F511A52BEAA004DDE48 /* BondsViewController.swift in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
+				E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
+				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
-				E9F482DF1A52B34B006DB53C /* CustomImageView.swift in Sources */,
+				E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */,
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
 				E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */,
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,

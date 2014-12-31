@@ -10,6 +10,10 @@ import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
     
+    /* * * 
+     * * * View properties------------------------------------------------------
+     * * */
+    
     var alphabetChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     var viewSize:CGSize!
     var selectedField:UITextField!
@@ -23,6 +27,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var password: CustomTextField!
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var doneButton: UIButton!
+    
+    /* * *
+     * * * Set up the view------------------------------------------------------
+     * * */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +86,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
+    
+    /* * *
+     * * * Customize keyboard and button animations-----------------------------
+     * * */
     
     func hideKeyboard() {
         UIView.animateWithDuration(0.50, animations: {
@@ -186,6 +198,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.doneButton.frame = CGRectMake(0, viewSize.height, viewSize.width, UIScreen.mainScreen().bounds.height / 12)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        var count = self.navigationController?.viewControllers.count
+        var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
+        if (nextVC is StartViewController) {
+            self.navigationController?.navigationBarHidden = true
+        }
+        super.viewWillDisappear(true)
+    }
+    
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -193,11 +214,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
-        super.viewWillDisappear(animated)
     }
     
     deinit {

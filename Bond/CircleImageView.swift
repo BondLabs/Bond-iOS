@@ -8,15 +8,28 @@
 
 import UIKit
 
-class CustomImageView: UIImageView {
+class CircleImageView: UIImageView {
+    
+    /*
+     * Initialize a circle view.
+     * Call performSetup(edge) to create a image with inset of value edge
+     * Use refreshImage() to store the relevant image
+     * Other functions are utility functions.
+     * This only returns a UIImageView; frame setup still has to be done.
+     */
     
     var selected:Bool! = false
     var inset:CGFloat!
     
-    // Store icon names
-    var untappedIcon:String! = "Profile(i).png"
-    var tappedIcon:String! = "Profile(a).png"
+    /* * *
+     * * * Functions to set up the imageview------------------------------------
+     * * */
+    
+    // Store icons
+    var untappedIcon:UIImage! = UIImage(named: "Profile(i).png")
+    var tappedIcon:UIImage! = UIImage(named: "Profile(a).png")
 
+    // Initial setup of the view
     func performSetup(edge: CGFloat) {
         // Store inset
         self.inset = edge
@@ -24,10 +37,7 @@ class CustomImageView: UIImageView {
         // Set view up
         self.contentMode = UIViewContentMode.Center
         self.backgroundColor = self.UIColorFromRGB(0x00A4FF)
-        self.layer.borderColor = self.UIColorFromRGB(0x00A4FF).CGColor
-        
-        // Border width
-        self.layer.borderWidth = 3.0
+
         // Turn the frame into a circle
         self.layer.cornerRadius = self.frame.width / 2
         
@@ -35,14 +45,14 @@ class CustomImageView: UIImageView {
         self.refreshImage()
     }
     
+    // Refresh the image
     func refreshImage() {
-        var imageNameToUse:String!
+        var icon:UIImage!
         if (selected == false) {
-            imageNameToUse = untappedIcon
+            icon = untappedIcon
         } else {
-            imageNameToUse = tappedIcon
+            icon = tappedIcon
         }
-        var icon = UIImage(named: imageNameToUse)!
         var viewSize = CGSizeMake(self.frame.width, self.frame.height)
         var smallSize = CGSizeMake(viewSize.width - inset, viewSize.height - inset)
         UIGraphicsBeginImageContextWithOptions(smallSize, false, 0.0)
@@ -50,6 +60,32 @@ class CustomImageView: UIImageView {
         self.image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }
+    
+    /* * * 
+     * * * Utility functions to customize the view------------------------------
+     * * */
+    
+    // Store default image name
+    func setDefaultImage(file: UIImage) {
+        self.untappedIcon = file
+        self.refreshImage()
+    }
+    
+    // Store tapped image name
+    func setTappedImage(file: UIImage) {
+        self.tappedIcon = file
+        self.refreshImage()
+    }
+    
+    // Add a border to the view
+    func addBorder(color: UInt) {
+        self.layer.borderWidth = 3.0
+        self.layer.borderColor = self.UIColorFromRGB(color).CGColor
+    }
+    
+    /* * *
+     * * * Utility functions for if the image needs to be toggle-able-----------
+     * * */
     
     func setUntapped() {
         self.selected = false

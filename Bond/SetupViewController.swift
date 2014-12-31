@@ -10,12 +10,20 @@ import UIKit
 
 class SetupViewController: UIViewController {
     
+    /* * *
+     * * * View properties------------------------------------------------------
+     * * */
+    
     // View components
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var nextButton: UIButton!
     var activityArray: Array<ActivityView>!
     var activityNames: Array<String>! = ["Adventurer", "Artist", "Athlete", "Culturist", "Gamer", "Hustler", "Musician", "Rebel", "Scholar"]
     var viewBounds:CGSize!
+    
+    /* * *
+     * * * Initial setup of the view--------------------------------------------
+     * * */
     
     // Initial setup
     override func viewDidLoad() {
@@ -24,6 +32,9 @@ class SetupViewController: UIViewController {
         /* * *
          * * * Do basic setup---------------------------------------------------
          * * */
+        
+        // Unhide navigation bar if hidden
+        self.navigationController?.navigationBarHidden = false
         
         // Initialize activity views array
         self.activityArray = Array<ActivityView>()
@@ -35,7 +46,7 @@ class SetupViewController: UIViewController {
         
         // Store view dimensions
         var barHeight = self.navigationController?.navigationBar.bounds.height
-        viewBounds = self.view.bounds.size
+        viewBounds = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - barHeight!)
 
         // Show navigation bar and set title
         self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
@@ -46,11 +57,11 @@ class SetupViewController: UIViewController {
         self.descLabel.text = "Pick those that best suit you"
         self.descLabel.sizeToFit()
         self.descLabel.textColor = UIColor.whiteColor()
-        self.descLabel.center = CGPointMake(viewBounds.width / 2, viewBounds.height / 10)
+        self.descLabel.center = CGPointMake(viewBounds.width / 2, viewBounds.height / 15)
         
         // Set up nextButton
         self.nextButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
-        self.nextButton.frame = CGRectMake(0, viewBounds.height - UIScreen.mainScreen().bounds.height / 12, viewBounds.width, viewBounds.height / 12)
+        self.nextButton.frame = CGRectMake(0, viewBounds.height - UIScreen.mainScreen().bounds.height / 12 - 20, viewBounds.width, UIScreen.mainScreen().bounds.height / 12)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.nextButton.setTitle("Next", forState: UIControlState.Normal)
         
@@ -65,8 +76,8 @@ class SetupViewController: UIViewController {
         var width:Int = Int(self.view.bounds.width)
         var height:Int = Int(viewBounds.height)
         
-        // Factor to move views over and down by
-        var yfactor:CGFloat = 0.25
+        // Factor to move views down by
+        var yfactor:CGFloat = 0.20
         
         // Number of views per row and column
         var numXViews:CGFloat = 3.0
@@ -104,6 +115,11 @@ class SetupViewController: UIViewController {
             view.setup(self.activityNames[index])
             view.addToggle()
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+        super.viewWillDisappear(animated)
     }
     
     // RGB to UIColor converter

@@ -10,12 +10,25 @@ import UIKit
 
 class CustomTextField: UITextField {
 
+    /* 
+     * Use to create a custom text field.
+     * Only returns a text field; still needs to be positioned.
+     */
+    
+    /* * *
+     * * * Initial setup--------------------------------------------------------
+     * * */
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         self.backgroundColor = self.UIColorFromRGB(0x404040)
         self.textColor = self.UIColorFromRGB(0x6E6E6E)
     }
+    
+    /* * *
+     * * * Use to customize text field------------------------------------------
+     * * */
     
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 10, 0)
