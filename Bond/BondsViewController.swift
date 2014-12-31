@@ -16,7 +16,18 @@ class BondsViewController: UITableViewController {
         super.viewDidLoad()
 
         // Get bonds from online
-        bonds = ["Kevin", "Daniel", "Jason"]
+        bonds = ["Kevin Zhang", "Daniel Singer", "Jason Fieldman"]
+        
+        // Customize view and navigation bar
+        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.tableView.separatorColor = UIColor.blackColor()
+        self.tableView.allowsSelection = false
+        self.navigationItem.title = "Bonds"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barTintColor = self.UIColorFromRGB(0x2D2D2D)
+        
+        // Set row height
+        self.tableView.rowHeight = 60.0
     }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -50,6 +61,16 @@ class BondsViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        // Remove seperator inset
+        cell.separatorInset = UIEdgeInsetsZero
+        
+        // Prevent the cell from inheriting the Table View's margin settings
+        cell.preservesSuperviewLayoutMargins = false
+        
+        // Explictly set your cell's layout margins
+        cell.layoutMargins = UIEdgeInsetsZero
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].

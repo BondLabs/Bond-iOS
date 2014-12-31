@@ -77,7 +77,7 @@ class SetupViewController: UIViewController {
         var height:Int = Int(viewBounds.height)
         
         // Factor to move views down by
-        var yfactor:CGFloat = 0.20
+        var yfactor:CGFloat = 0.25
         
         // Number of views per row and column
         var numXViews:CGFloat = 3.0
@@ -118,7 +118,6 @@ class SetupViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
         super.viewWillDisappear(animated)
     }
     

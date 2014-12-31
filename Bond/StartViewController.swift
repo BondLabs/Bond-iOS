@@ -37,7 +37,7 @@ class StartViewController: UIViewController {
         let screenSize:CGSize = UIScreen.mainScreen().bounds.size
         
         // Initialize background image
-        let unscaledBg = UIImage(named: "bg@3x.png")!
+        let unscaledBg = UIImage(named: "bg@2x.png")!
         UIGraphicsBeginImageContextWithOptions(screenSize, false, 0.0)
         unscaledBg.drawInRect(CGRect(origin: CGPointZero, size: screenSize))
         bgImage.image = UIGraphicsGetImageFromCurrentImageContext()

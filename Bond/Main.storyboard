@@ -98,7 +98,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sTa-GV-XXK" kind="push" id="6e8-YG-tdg"/>
+                                    <segue destination="sTa-GV-XXK" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="6e8-YG-tdg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -184,7 +184,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sTa-GV-XXK" kind="push" id="PHo-uF-TPt"/>
+                                    <segue destination="sTa-GV-XXK" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="PHo-uF-TPt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -204,13 +204,14 @@
         <!--Bonds-->
         <scene sceneID="sSs-G2-R28">
             <objects>
-                <tableViewController id="roy-Ek-R35" customClass="BondsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Bonds" id="roy-Ek-R35" customClass="BondsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8yj-2l-WrK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BondTableCell" id="wTq-xz-ibz" customClass="BondTableCell" customModule="Bond" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BondTableCell" rowHeight="60" id="wTq-xz-ibz" customClass="BondTableCell" customModule="Bond" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTq-xz-ibz" id="SUj-Gc-sX7">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -222,11 +223,11 @@
                             <outlet property="delegate" destination="roy-Ek-R35" id="Pse-n6-OVl"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Bonds" id="x4B-Vz-8P2"/>
+                    <navigationItem key="navigationItem" id="b2N-iB-Dkn"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eCl-gQ-sbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3076" y="560"/>
+            <point key="canvasLocation" x="3608" y="560"/>
         </scene>
         <!--You-->
         <scene sceneID="DUR-dJ-mq8">
@@ -255,7 +256,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="roy-Ek-R35" kind="relationship" relationship="viewControllers" id="AWS-nl-GFZ"/>
+                        <segue destination="tQC-Pe-BB6" kind="relationship" relationship="viewControllers" id="AWS-nl-GFZ"/>
                         <segue destination="VNJ-9J-zxG" kind="relationship" relationship="viewControllers" id="Pn3-Ta-hvT"/>
                     </connections>
                 </tabBarController>
@@ -425,6 +426,25 @@
             </objects>
             <point key="canvasLocation" x="2521" y="-93"/>
         </scene>
+        <!--Bonds-->
+        <scene sceneID="2HW-gx-5pc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tQC-Pe-BB6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Bonds" id="x4B-Vz-8P2"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zod-cd-vGP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="roy-Ek-R35" kind="relationship" relationship="rootViewController" id="xLH-sf-Hek"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Abe-bc-gHO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3076" y="560"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -432,9 +452,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="HdW-CU-ery"/>
         <segue reference="PHo-uF-TPt"/>
         <segue reference="Dt3-wl-Kcu"/>
         <segue reference="W0g-ig-6ij"/>
-        <segue reference="HdW-CU-ery"/>
     </inferredMetricsTieBreakers>
 </document>

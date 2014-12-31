@@ -68,13 +68,11 @@ class CircleImageView: UIImageView {
     // Store default image name
     func setDefaultImage(file: UIImage) {
         self.untappedIcon = file
-        self.refreshImage()
     }
     
     // Store tapped image name
     func setTappedImage(file: UIImage) {
         self.tappedIcon = file
-        self.refreshImage()
     }
     
     // Add a border to the view

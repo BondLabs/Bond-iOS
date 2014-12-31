@@ -13,7 +13,8 @@ class BondsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = self.UIColorFromRGB(0x2D2D2D)
+        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.navigationItem.title = "You"
     }
     
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {

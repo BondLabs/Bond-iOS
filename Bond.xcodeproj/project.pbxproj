@@ -158,8 +158,8 @@
 				E9F482E11A52BAF8006DB53C /* Signup/Login */,
 				E9F482E01A52BADC006DB53C /* Traits Selection */,
 				E9227F521A52BEBA004DDE48 /* Bonds */,
-				E934FD731A4826A400E43B45 /* Images.xcassets */,
 				E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */,
+				E934FD731A4826A400E43B45 /* Images.xcassets */,
 				E934FD671A4826A400E43B45 /* Images */,
 			);
 			path = Bond;
