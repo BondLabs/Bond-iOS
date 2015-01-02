@@ -28,6 +28,9 @@ class CircleImageView: UIImageView {
     // Store icons
     var untappedIcon:UIImage! = UIImage(named: "Profile(i).png")
     var tappedIcon:UIImage! = UIImage(named: "Profile(a).png")
+    
+    // Store background color
+    var bgColor:UIColor!
 
     // Initial setup of the view
     func performSetup(edge: CGFloat) {
@@ -36,7 +39,8 @@ class CircleImageView: UIImageView {
         
         // Set view up
         self.contentMode = UIViewContentMode.Center
-        self.backgroundColor = self.UIColorFromRGB(0x00A4FF)
+        bgColor = self.UIColorFromRGB(0x00A4FF)
+        self.backgroundColor = bgColor
 
         // Turn the frame into a circle
         self.layer.cornerRadius = self.frame.width / 2
@@ -87,7 +91,7 @@ class CircleImageView: UIImageView {
     
     func setUntapped() {
         self.selected = false
-        self.backgroundColor = self.UIColorFromRGB(0x00A4FF)
+        self.backgroundColor = self.UIColorFromRGB(0x0094E6)
         self.refreshImage()
     }
     

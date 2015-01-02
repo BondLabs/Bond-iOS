@@ -16,8 +16,6 @@ class BondsBarController: UITabBarController {
         super.viewDidLoad()
         
         views = self.viewControllers as [UIViewController]
-        self.tabBar.backgroundColor = self.UIColorFromRGB(0x2D2D2D)
-        self.tabBar.selectedImageTintColor = self.UIColorFromRGB(0x2D2D2D)
     }
 
     func UIColorFromRGB(rgbValue: UInt) -> UIColor {

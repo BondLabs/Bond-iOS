@@ -33,6 +33,7 @@
 		E93C44431A4ADB7D00E95265 /* DetailProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = E93C44401A4ADB7D00E95265 /* DetailProfile.png */; };
 		E93C44451A4D038F00E95265 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C44441A4D038F00E95265 /* SetupViewController.swift */; };
 		E93C44471A4D102100E95265 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C44461A4D102100E95265 /* ActivityView.swift */; };
+		E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96956E11A5675A3001D2308 /* ProfileViewController.swift */; };
 		E9857EDA1A512AA40095EA76 /* Star(i).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED21A512AA40095EA76 /* Star(i).png */; };
 		E9857EDB1A512AA40095EA76 /* Star(a).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED31A512AA40095EA76 /* Star(a).png */; };
 		E9857EDC1A512AA40095EA76 /* Profile(i).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED41A512AA40095EA76 /* Profile(i).png */; };
@@ -88,6 +89,7 @@
 		E93C44401A4ADB7D00E95265 /* DetailProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DetailProfile.png; sourceTree = "<group>"; };
 		E93C44441A4D038F00E95265 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		E93C44461A4D102100E95265 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		E96956E11A5675A3001D2308 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E9857ED21A512AA40095EA76 /* Star(i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star(i).png"; sourceTree = "<group>"; };
 		E9857ED31A512AA40095EA76 /* Star(a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star(a).png"; sourceTree = "<group>"; };
 		E9857ED41A512AA40095EA76 /* Profile(i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile(i).png"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				E999839A1A53A20000EDB8F3 /* BondsViewController.swift */,
 				E99983981A53A14F00EDB8F3 /* BondTableCell.swift */,
 				E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */,
+				E96956E11A5675A3001D2308 /* ProfileViewController.swift */,
 			);
 			name = Bonds;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				E934FD8D1A48270800E43B45 /* StartViewController.swift in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
+				E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */,
 				E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
 				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
