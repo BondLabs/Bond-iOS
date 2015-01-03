@@ -34,6 +34,7 @@
 		E93C44451A4D038F00E95265 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C44441A4D038F00E95265 /* SetupViewController.swift */; };
 		E93C44471A4D102100E95265 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C44461A4D102100E95265 /* ActivityView.swift */; };
 		E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96956E11A5675A3001D2308 /* ProfileViewController.swift */; };
+		E96956E41A586C7F001D2308 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96956E31A586C7F001D2308 /* AppData.swift */; };
 		E9857EDA1A512AA40095EA76 /* Star(i).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED21A512AA40095EA76 /* Star(i).png */; };
 		E9857EDB1A512AA40095EA76 /* Star(a).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED31A512AA40095EA76 /* Star(a).png */; };
 		E9857EDC1A512AA40095EA76 /* Profile(i).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED41A512AA40095EA76 /* Profile(i).png */; };
@@ -90,6 +91,7 @@
 		E93C44441A4D038F00E95265 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		E93C44461A4D102100E95265 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E96956E11A5675A3001D2308 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E96956E31A586C7F001D2308 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		E9857ED21A512AA40095EA76 /* Star(i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star(i).png"; sourceTree = "<group>"; };
 		E9857ED31A512AA40095EA76 /* Star(a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star(a).png"; sourceTree = "<group>"; };
 		E9857ED41A512AA40095EA76 /* Profile(i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile(i).png"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		E934FD661A4826A400E43B45 /* Bond */ = {
 			isa = PBXGroup;
 			children = (
+				E96956E31A586C7F001D2308 /* AppData.swift */,
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
 				E934FDA61A484AB800E43B45 /* Main.storyboard */,
 				E934FD8C1A48270800E43B45 /* StartViewController.swift */,
@@ -387,6 +390,7 @@
 				E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */,
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
 				E93C44451A4D038F00E95265 /* SetupViewController.swift in Sources */,
+				E96956E41A586C7F001D2308 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

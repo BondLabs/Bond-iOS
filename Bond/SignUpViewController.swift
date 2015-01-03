@@ -47,11 +47,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Set up buttons
         self.nextButton.alpha = 0.0
-        self.nextButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
+        self.nextButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.nextButton.setTitle("Next", forState: UIControlState.Normal)
         self.doneButton.alpha = 0.0
-        self.doneButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
+        self.doneButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.doneButton.setTitle("Done", forState: UIControlState.Normal)
         
@@ -60,9 +60,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
 
         // Set up navigation controller properties
-        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = self.UIColorFromRGB(0x2D2D2D)
+        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         // Set up instructions label
@@ -205,15 +205,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.navigationBarHidden = true
         }
         super.viewWillDisappear(true)
-    }
-    
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
     
     deinit {

@@ -58,18 +58,18 @@ class StartViewController: UIViewController {
         // Initialize description label
         descLabel.text = "Experience new human connection\n with people all around you."
         descLabel.numberOfLines = 2
-        descLabel.textColor = self.UIColorFromRGB(0xFFFFFF)
+        descLabel.textColor = AppData.util.UIColorFromRGB(0xFFFFFF)
         descLabel.textAlignment = NSTextAlignment.Center
         descLabel.frame = CGRectMake(0, 0, screenSize.width, screenSize.height / 10)
         descLabel.center = CGPointMake(screenSize.width / 2, screenSize.height * 0.65)
         
         // Initialize signup button
-        signUpButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
+        signUpButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         signUpButton.setTitle("Sign Up", forState: UIControlState.Normal)
         signUpButton.frame = CGRectMake(0, screenSize.height - screenSize.width * 2 / 15, screenSize.width / 2, screenSize.width * 2 / 15)
         
         // Initialize login button
-        loginButton.backgroundColor = self.UIColorFromRGB(0x4A4A4A)
+        loginButton.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         loginButton.setTitle("Log In", forState: UIControlState.Normal)
         loginButton.frame = CGRectMake(screenSize.width / 2, screenSize.height - screenSize.width * 2 / 15, screenSize.width / 2, screenSize.width * 2 / 15)
         
@@ -79,14 +79,5 @@ class StartViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         self.navigationController?.navigationBarHidden = false
         super.prepareForSegue(segue, sender: sender)
-    }
-    
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 }

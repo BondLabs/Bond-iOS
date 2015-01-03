@@ -20,7 +20,7 @@ class BondTableCell: UITableViewCell {
     
     func setup(id: String) {
         // Set up basic properties
-        self.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
         
         // Get profile pic
         self.name = id
@@ -49,15 +49,6 @@ class BondTableCell: UITableViewCell {
     func getProfPic() -> UIImage {
         // Use this to get the profile picture for the bond
         return UIImage(named: "Profile(i).png")!
-    }
-    
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 
 }

@@ -19,12 +19,12 @@ class BondsViewController: UITableViewController {
         bonds = ["Kevin Zhang", "Daniel Singer", "Jason Fieldman"]
         
         // Customize view and navigation bar
-        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
         self.tableView.separatorColor = UIColor.blackColor()
         self.tableView.allowsSelection = false
         self.navigationItem.title = "Bonds"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barTintColor = self.UIColorFromRGB(0x2D2D2D)
+        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         
         // Set row height
         self.tableView.rowHeight = 60.0
@@ -75,15 +75,6 @@ class BondsViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-    }
-    
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 
 }

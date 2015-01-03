@@ -22,14 +22,14 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Set up view properties
-        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
         self.navigationItem.title = "You"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barTintColor = self.UIColorFromRGB(0x2D2D2D)
+        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         
         // Darker sub background
         var subBG = UIView()
-        subBG.backgroundColor = self.UIColorFromRGB(0x535353)
+        subBG.backgroundColor = AppData.util.UIColorFromRGB(0x535353)
         subBG.layer.borderWidth = 0.5
         subBG.layer.borderColor = UIColor.blackColor().CGColor
         subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
@@ -89,16 +89,6 @@ class ProfileViewController: UIViewController {
             actView.center = CGPointMake(self.view.frame.width * CGFloat(xfac), self.view.frame.height * 3 / 5)
             self.view.addSubview(actView)
         }
-        
-    }
-    
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
     
 }

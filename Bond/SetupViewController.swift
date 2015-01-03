@@ -49,7 +49,7 @@ class SetupViewController: UIViewController {
         viewBounds = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - barHeight!)
 
         // Show navigation bar and set title
-        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
         self.navigationController?.navigationBar.hidden = false
         self.navigationController?.title = "Profile"
         
@@ -60,7 +60,7 @@ class SetupViewController: UIViewController {
         self.descLabel.center = CGPointMake(viewBounds.width / 2, viewBounds.height / 15)
         
         // Set up nextButton
-        self.nextButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
+        self.nextButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.nextButton.frame = CGRectMake(0, viewBounds.height - UIScreen.mainScreen().bounds.height / 12 - 20, viewBounds.width, UIScreen.mainScreen().bounds.height / 12)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.nextButton.setTitle("Next", forState: UIControlState.Normal)
@@ -119,16 +119,6 @@ class SetupViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-    }
-    
-    // RGB to UIColor converter
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 
 }

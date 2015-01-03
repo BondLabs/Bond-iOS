@@ -39,7 +39,7 @@ class CircleImageView: UIImageView {
         
         // Set view up
         self.contentMode = UIViewContentMode.Center
-        bgColor = self.UIColorFromRGB(0x00A4FF)
+        bgColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.backgroundColor = bgColor
 
         // Turn the frame into a circle
@@ -82,7 +82,7 @@ class CircleImageView: UIImageView {
     // Add a border to the view
     func addBorder(color: UInt) {
         self.layer.borderWidth = 3.0
-        self.layer.borderColor = self.UIColorFromRGB(color).CGColor
+        self.layer.borderColor = AppData.util.UIColorFromRGB(color).CGColor
     }
     
     /* * *
@@ -91,13 +91,13 @@ class CircleImageView: UIImageView {
     
     func setUntapped() {
         self.selected = false
-        self.backgroundColor = self.UIColorFromRGB(0x0094E6)
+        self.backgroundColor = AppData.util.UIColorFromRGB(0x0094E6)
         self.refreshImage()
     }
     
     func setTapped() {
         self.selected = true
-        self.backgroundColor = self.UIColorFromRGB(0xFFFFFF)
+        self.backgroundColor = AppData.util.UIColorFromRGB(0xFFFFFF)
         self.refreshImage()
     }
     
@@ -107,16 +107,6 @@ class CircleImageView: UIImageView {
         } else {
             self.setTapped()
         }
-    }
-    
-    // RGB to UIColor converter
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
     }
 
 }
