@@ -10,6 +10,7 @@ import UIKit
 
 class BondsBarController: UITabBarController {
     
+    // Store controller properties
     var views:[UIViewController]!
 
     override func viewDidLoad() {

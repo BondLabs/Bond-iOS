@@ -10,7 +10,7 @@ import UIKit
 
 class AppData {
     struct data {
-        var id:Int!
+        static var userID:Int!
     }
     
     struct util {

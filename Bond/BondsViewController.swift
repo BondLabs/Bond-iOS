@@ -9,8 +9,13 @@
 import UIKit
 
 class BondsViewController: UITableViewController {
-
+    
+    // Store bonds as a property of the controller
     var bonds:[String]!
+    
+    /* * *
+     * * * Do basic setup
+     * * */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,15 +26,32 @@ class BondsViewController: UITableViewController {
         // Customize view and navigation bar
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
         self.tableView.separatorColor = UIColor.blackColor()
-        self.tableView.allowsSelection = false
         self.navigationItem.title = "Bonds"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         
         // Set row height
         self.tableView.rowHeight = 60.0
+        
+        // Set tabbar image for controller
+        var barHeight = (self.tabBarController?.tabBar.frame.height)!
+        var bondIcon = UIImage(named: "Bonds(i).png")!
+        /*var finalBG:UIImage
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.view.frame.width / 2, barHeight), true, 0.0)
+        AppData.util.UIColorFromRGB(0x2D2D2D).setFill()
+        UIRectFill(CGRect(origin: CGPointZero, size: CGSizeMake(self.view.frame.width / 2, barHeight)))
+        bondIcon.drawInRect(CGRectMake(self.view.frame.width / 6 + 10, 10, self.view.frame.width / 6 - 20, self.view.frame.width / 6 - 20))
+        finalBG = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()*/
+        self.tabBarItem.image = bondIcon
+        
+        //self.tabBarItem.selectedImage =
     }
 
+    /* * *
+     * * * Function necessary for tableview
+     * * */
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -61,6 +83,17 @@ class BondsViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    // Pass bond id to the detailed controller
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "ShowBondDetail") {
+            (segue.destinationViewController as BondsDetailViewController).id = 3 // Set id of bond here
+        }
+    }
+    
+    /* * *
+     * * * Change tableview aesthetics
+     * * */
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         // Remove seperator inset
         cell.separatorInset = UIEdgeInsetsZero
@@ -70,11 +103,6 @@ class BondsViewController: UITableViewController {
         
         // Explictly set your cell's layout margins
         cell.layoutMargins = UIEdgeInsetsZero
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
     }
 
 }

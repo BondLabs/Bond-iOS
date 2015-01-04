@@ -10,13 +10,12 @@ import UIKit
 
 class BondTableCell: UITableViewCell {
     
+    // Store name of the user
     var name:String!
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
+    /* * *
+     * * * Do setup
+     * * */
     
     func setup(id: String) {
         // Set up basic properties

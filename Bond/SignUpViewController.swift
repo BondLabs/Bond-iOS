@@ -187,7 +187,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     func keyboardWillHide(sender: NSNotification) {
-        
     }
     
     func setButtonFrames() {
@@ -198,6 +197,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.doneButton.frame = CGRectMake(0, viewSize.height, viewSize.width, UIScreen.mainScreen().bounds.height / 12)
     }
     
+    /* * *
+     * * * Capture segue events
+     * * */
+    
     override func viewWillDisappear(animated: Bool) {
         var count = self.navigationController?.viewControllers.count
         var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
@@ -205,6 +208,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.navigationBarHidden = true
         }
         super.viewWillDisappear(true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "SignUpSegue") {
+            // Use to perform any checks needed, i.e. check if user already exists
+        }
     }
     
     deinit {
