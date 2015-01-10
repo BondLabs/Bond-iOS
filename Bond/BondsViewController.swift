@@ -34,18 +34,20 @@ class BondsViewController: UITableViewController {
         self.tableView.rowHeight = 60.0
         
         // Set tabbar image for controller
-        var barHeight = (self.tabBarController?.tabBar.frame.height)!
+		/*var barHeight:CGFloat! = (self.tabBarController?.tabBar.frame.height)!
+		println(barHeight)
         var bondIcon = UIImage(named: "Bonds(i).png")!
-        /*var finalBG:UIImage
+        var finalBG:UIImage
         UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.view.frame.width / 2, barHeight), true, 0.0)
         AppData.util.UIColorFromRGB(0x2D2D2D).setFill()
         UIRectFill(CGRect(origin: CGPointZero, size: CGSizeMake(self.view.frame.width / 2, barHeight)))
         bondIcon.drawInRect(CGRectMake(self.view.frame.width / 6 + 10, 10, self.view.frame.width / 6 - 20, self.view.frame.width / 6 - 20))
         finalBG = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()*/
-        self.tabBarItem.image = bondIcon
-        
-        //self.tabBarItem.selectedImage =
+        UIGraphicsEndImageContext()
+		println(finalBG.size.height)
+        self.tabBarItem = UITabBarItem(title: nil, image: finalBG, selectedImage: finalBG)
+		self.tabBarItem.setTitlePositionAdjustment(UIOffsetZero)
+		self.tabBarItem.imageInsets = UIEdgeInsetsZero*/
     }
 
     /* * *

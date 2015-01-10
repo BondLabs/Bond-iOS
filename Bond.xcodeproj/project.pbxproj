@@ -43,14 +43,7 @@
 		E9731FFA1A59461F00C97429 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF91A59461F00C97429 /* MobileCoreServices.framework */; };
 		E9731FFC1A59462700C97429 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FFB1A59462700C97429 /* QuartzCore.framework */; };
 		E9731FFE1A59462D00C97429 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FFD1A59462D00C97429 /* Security.framework */; };
-		E97320001A59463400C97429 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FFF1A59463400C97429 /* StoreKit.framework */; };
 		E97320021A59463F00C97429 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320011A59463F00C97429 /* SystemConfiguration.framework */; };
-		E97320111A5946FF00C97429 /* ParseData.m in Sources */ = {isa = PBXBuildFile; fileRef = E97320101A5946FF00C97429 /* ParseData.m */; };
-		E97320181A59491000C97429 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320131A59491000C97429 /* Bolts.framework */; };
-		E97320191A59491000C97429 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320141A59491000C97429 /* Parse.framework */; };
-		E973201A1A59491000C97429 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320151A59491000C97429 /* ParseCrashReporting.framework */; };
-		E973201B1A59491000C97429 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320161A59491000C97429 /* ParseFacebookUtils.framework */; };
-		E973201C1A59491000C97429 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320171A59491000C97429 /* ParseUI.framework */; };
 		E973201E1A5949DA00C97429 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201D1A5949DA00C97429 /* libsqlite3.dylib */; };
 		E97320201A594A0000C97429 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201F1A594A0000C97429 /* CFNetwork.framework */; };
 		E97320261A5A0F6500C97429 /* Flash On.png in Resources */ = {isa = PBXBuildFile; fileRef = E97320211A5A0F6500C97429 /* Flash On.png */; };
@@ -58,6 +51,8 @@
 		E97320281A5A0F6500C97429 /* Flash Auto.png in Resources */ = {isa = PBXBuildFile; fileRef = E97320231A5A0F6500C97429 /* Flash Auto.png */; };
 		E97320291A5A0F6500C97429 /* Cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = E97320241A5A0F6500C97429 /* Cancel.png */; };
 		E973202A1A5A0F6500C97429 /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = E97320251A5A0F6500C97429 /* Camera.png */; };
+		E97320301A5A156700C97429 /* Age&Gender View.png in Resources */ = {isa = PBXBuildFile; fileRef = E973202E1A5A156700C97429 /* Age&Gender View.png */; };
+		E97320311A5A156700C97429 /* CameraView.png in Resources */ = {isa = PBXBuildFile; fileRef = E973202F1A5A156700C97429 /* CameraView.png */; };
 		E9857EDA1A512AA40095EA76 /* Star(i).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED21A512AA40095EA76 /* Star(i).png */; };
 		E9857EDB1A512AA40095EA76 /* Star(a).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED31A512AA40095EA76 /* Star(a).png */; };
 		E9857EDC1A512AA40095EA76 /* Profile(i).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED41A512AA40095EA76 /* Profile(i).png */; };
@@ -66,8 +61,13 @@
 		E9857EDF1A512AA40095EA76 /* Bonds(a).png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED71A512AA40095EA76 /* Bonds(a).png */; };
 		E9857EE01A512AA40095EA76 /* Profile Page.png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED81A512AA40095EA76 /* Profile Page.png */; };
 		E9857EE11A512AA40095EA76 /* Camera Page.png in Resources */ = {isa = PBXBuildFile; fileRef = E9857ED91A512AA40095EA76 /* Camera Page.png */; };
+		E98BE8F21A60979C00BEC452 /* CustomSegmentedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BE8F11A60979C00BEC452 /* CustomSegmentedButton.swift */; };
+		E98BE8F51A60A19800BEC452 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BE8F41A60A19800BEC452 /* CameraViewController.swift */; };
 		E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99983981A53A14F00EDB8F3 /* BondTableCell.swift */; };
 		E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999839A1A53A20000EDB8F3 /* BondsViewController.swift */; };
+		E9CC5A6E1A5B139B00CB7912 /* BondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC5A6D1A5B139B00CB7912 /* BondUser.swift */; };
+		E9CC5A701A5B2E5D00CB7912 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC5A6F1A5B2E5D00CB7912 /* ProfileData.swift */; };
+		E9CC5A751A600AA300CB7912 /* AgeGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC5A741A600AA300CB7912 /* AgeGenderViewController.swift */; };
 		E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */; };
 		E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F482DE1A52B34B006DB53C /* CircleImageView.swift */; };
 /* End PBXBuildFile section */
@@ -123,15 +123,7 @@
 		E9731FF91A59461F00C97429 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E9731FFB1A59462700C97429 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E9731FFD1A59462D00C97429 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		E9731FFF1A59463400C97429 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E97320011A59463F00C97429 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		E973200F1A5946FE00C97429 /* Bond-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bond-Bridging-Header.h"; sourceTree = "<group>"; };
-		E97320101A5946FF00C97429 /* ParseData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseData.m; sourceTree = "<group>"; };
-		E97320131A59491000C97429 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		E97320141A59491000C97429 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		E97320151A59491000C97429 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
-		E97320161A59491000C97429 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
-		E97320171A59491000C97429 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		E973201D1A5949DA00C97429 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		E973201F1A594A0000C97429 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E97320211A5A0F6500C97429 /* Flash On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flash On.png"; sourceTree = "<group>"; };
@@ -139,6 +131,8 @@
 		E97320231A5A0F6500C97429 /* Flash Auto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flash Auto.png"; sourceTree = "<group>"; };
 		E97320241A5A0F6500C97429 /* Cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cancel.png; sourceTree = "<group>"; };
 		E97320251A5A0F6500C97429 /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		E973202E1A5A156700C97429 /* Age&Gender View.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Age&Gender View.png"; sourceTree = "<group>"; };
+		E973202F1A5A156700C97429 /* CameraView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraView.png; sourceTree = "<group>"; };
 		E9857ED21A512AA40095EA76 /* Star(i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star(i).png"; sourceTree = "<group>"; };
 		E9857ED31A512AA40095EA76 /* Star(a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Star(a).png"; sourceTree = "<group>"; };
 		E9857ED41A512AA40095EA76 /* Profile(i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile(i).png"; sourceTree = "<group>"; };
@@ -147,8 +141,13 @@
 		E9857ED71A512AA40095EA76 /* Bonds(a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bonds(a).png"; sourceTree = "<group>"; };
 		E9857ED81A512AA40095EA76 /* Profile Page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Profile Page.png"; sourceTree = "<group>"; };
 		E9857ED91A512AA40095EA76 /* Camera Page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera Page.png"; sourceTree = "<group>"; };
+		E98BE8F11A60979C00BEC452 /* CustomSegmentedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedButton.swift; sourceTree = "<group>"; };
+		E98BE8F41A60A19800BEC452 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		E99983981A53A14F00EDB8F3 /* BondTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondTableCell.swift; sourceTree = "<group>"; };
 		E999839A1A53A20000EDB8F3 /* BondsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsViewController.swift; sourceTree = "<group>"; };
+		E9CC5A6D1A5B139B00CB7912 /* BondUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondUser.swift; sourceTree = "<group>"; };
+		E9CC5A6F1A5B2E5D00CB7912 /* ProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		E9CC5A741A600AA300CB7912 /* AgeGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeGenderViewController.swift; sourceTree = "<group>"; };
 		E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E9F482DE1A52B34B006DB53C /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +159,6 @@
 			files = (
 				E97320201A594A0000C97429 /* CFNetwork.framework in Frameworks */,
 				E973201E1A5949DA00C97429 /* libsqlite3.dylib in Frameworks */,
-				E973201B1A59491000C97429 /* ParseFacebookUtils.framework in Frameworks */,
 				E9731FF01A5945FB00C97429 /* AudioToolbox.framework in Frameworks */,
 				E9731FF61A59460E00C97429 /* CoreLocation.framework in Frameworks */,
 				E9731FF41A59460800C97429 /* CoreGraphics.framework in Frameworks */,
@@ -169,12 +167,7 @@
 				E9731FFA1A59461F00C97429 /* MobileCoreServices.framework in Frameworks */,
 				E9731FFC1A59462700C97429 /* QuartzCore.framework in Frameworks */,
 				E9731FFE1A59462D00C97429 /* Security.framework in Frameworks */,
-				E97320181A59491000C97429 /* Bolts.framework in Frameworks */,
-				E97320001A59463400C97429 /* StoreKit.framework in Frameworks */,
-				E97320191A59491000C97429 /* Parse.framework in Frameworks */,
-				E973201C1A59491000C97429 /* ParseUI.framework in Frameworks */,
 				E97320021A59463F00C97429 /* SystemConfiguration.framework in Frameworks */,
-				E973201A1A59491000C97429 /* ParseCrashReporting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +199,6 @@
 				E934FD661A4826A400E43B45 /* Bond */,
 				E934FD7F1A4826A400E43B45 /* BondTests */,
 				E934FD651A4826A400E43B45 /* Products */,
-				E97320121A59491000C97429 /* Parse Library 1.6.1 */,
 				E973200E1A59469700C97429 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -224,17 +216,19 @@
 			isa = PBXGroup;
 			children = (
 				E96956E31A586C7F001D2308 /* AppData.swift */,
-				E97320101A5946FF00C97429 /* ParseData.m */,
+				E9CC5A6D1A5B139B00CB7912 /* BondUser.swift */,
+				E9CC5A6F1A5B2E5D00CB7912 /* ProfileData.swift */,
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
 				E934FDA61A484AB800E43B45 /* Main.storyboard */,
 				E934FD8C1A48270800E43B45 /* StartViewController.swift */,
 				E9F482E11A52BAF8006DB53C /* Signup/Login */,
 				E9F482E01A52BADC006DB53C /* Traits Selection */,
+				E9CC5A711A60091300CB7912 /* Age/Gender */,
+				E98BE8F31A60A17300BEC452 /* Camera */,
 				E9227F521A52BEBA004DDE48 /* Bonds */,
 				E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */,
 				E934FD731A4826A400E43B45 /* Images.xcassets */,
 				E934FD671A4826A400E43B45 /* Images */,
-				E973200F1A5946FE00C97429 /* Bond-Bridging-Header.h */,
 			);
 			path = Bond;
 			sourceTree = "<group>";
@@ -269,10 +263,17 @@
 		E973200E1A59469700C97429 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E973202B1A5A102500C97429 /* Native Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E973202B1A5A102500C97429 /* Native Frameworks */ = {
+			isa = PBXGroup;
+			children = (
 				E973201F1A594A0000C97429 /* CFNetwork.framework */,
 				E973201D1A5949DA00C97429 /* libsqlite3.dylib */,
 				E97320011A59463F00C97429 /* SystemConfiguration.framework */,
-				E9731FFF1A59463400C97429 /* StoreKit.framework */,
 				E9731FFD1A59462D00C97429 /* Security.framework */,
 				E9731FFB1A59462700C97429 /* QuartzCore.framework */,
 				E9731FF91A59461F00C97429 /* MobileCoreServices.framework */,
@@ -282,19 +283,24 @@
 				E9731FF11A59460000C97429 /* Foundation.framework */,
 				E9731FEF1A5945FB00C97429 /* AudioToolbox.framework */,
 			);
-			name = Frameworks;
+			name = "Native Frameworks";
 			sourceTree = "<group>";
 		};
-		E97320121A59491000C97429 /* Parse Library 1.6.1 */ = {
+		E98BE8F31A60A17300BEC452 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				E97320131A59491000C97429 /* Bolts.framework */,
-				E97320141A59491000C97429 /* Parse.framework */,
-				E97320151A59491000C97429 /* ParseCrashReporting.framework */,
-				E97320161A59491000C97429 /* ParseFacebookUtils.framework */,
-				E97320171A59491000C97429 /* ParseUI.framework */,
+				E98BE8F41A60A19800BEC452 /* CameraViewController.swift */,
 			);
-			path = "Parse Library 1.6.1";
+			name = Camera;
+			sourceTree = "<group>";
+		};
+		E9CC5A711A60091300CB7912 /* Age/Gender */ = {
+			isa = PBXGroup;
+			children = (
+				E9CC5A741A600AA300CB7912 /* AgeGenderViewController.swift */,
+				E98BE8F11A60979C00BEC452 /* CustomSegmentedButton.swift */,
+			);
+			name = Age/Gender;
 			sourceTree = "<group>";
 		};
 		E9F482DC1A52AF4F006DB53C /* Screens */ = {
@@ -316,6 +322,8 @@
 		E9F482DD1A52AF56006DB53C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E973202E1A5A156700C97429 /* Age&Gender View.png */,
+				E973202F1A5A156700C97429 /* CameraView.png */,
 				E97320211A5A0F6500C97429 /* Flash On.png */,
 				E97320221A5A0F6500C97429 /* Flash Off.png */,
 				E97320231A5A0F6500C97429 /* Flash Auto.png */,
@@ -408,6 +416,11 @@
 					E934FD631A4826A400E43B45 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = XF283F7SB6;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					E934FD7B1A4826A400E43B45 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -462,11 +475,13 @@
 				E93C44421A4ADB7D00E95265 /* Chooser.png in Resources */,
 				E934FD9E1A48282100E43B45 /* Sign Up.png in Resources */,
 				E934FD741A4826A400E43B45 /* Images.xcassets in Resources */,
+				E97320301A5A156700C97429 /* Age&Gender View.png in Resources */,
 				E9857EE01A512AA40095EA76 /* Profile Page.png in Resources */,
 				E973202A1A5A0F6500C97429 /* Camera.png in Resources */,
 				E934FD9C1A48282100E43B45 /* Logo@2x.png in Resources */,
 				E934FD981A48282100E43B45 /* bg@2x.png in Resources */,
 				E9857EDE1A512AA40095EA76 /* Bonds(i).png in Resources */,
+				E97320311A5A156700C97429 /* CameraView.png in Resources */,
 				E97320291A5A0F6500C97429 /* Cancel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,10 +500,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9CC5A701A5B2E5D00CB7912 /* ProfileData.swift in Sources */,
+				E98BE8F51A60A19800BEC452 /* CameraViewController.swift in Sources */,
+				E98BE8F21A60979C00BEC452 /* CustomSegmentedButton.swift in Sources */,
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
 				E934FD8D1A48270800E43B45 /* StartViewController.swift in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
+				E9CC5A751A600AA300CB7912 /* AgeGenderViewController.swift in Sources */,
 				E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */,
 				E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
@@ -496,7 +515,7 @@
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
 				E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */,
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
-				E97320111A5946FF00C97429 /* ParseData.m in Sources */,
+				E9CC5A6E1A5B139B00CB7912 /* BondUser.swift in Sources */,
 				E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */,
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
 				E93C44451A4D038F00E95265 /* SetupViewController.swift in Sources */,
@@ -606,17 +625,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/parse-library-1.6.1",
-					"$(PROJECT_DIR)/Parse",
-					Library,
-					1.6.1,
-				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Bond/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -627,17 +640,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/parse-library-1.6.1",
-					"$(PROJECT_DIR)/Parse",
-					Library,
-					1.6.1,
-				);
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Bond/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

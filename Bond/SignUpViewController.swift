@@ -213,6 +213,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "SignUpSegue") {
             // Use to perform any checks needed, i.e. check if user already exists
+
         }
     }
     

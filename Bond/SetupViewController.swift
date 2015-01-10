@@ -116,9 +116,5 @@ class SetupViewController: UIViewController {
             view.addToggle()
         }
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
 
 }

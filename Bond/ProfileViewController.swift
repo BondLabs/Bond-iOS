@@ -44,7 +44,6 @@ class ProfileViewController: UIViewController {
         selfIcon = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         self.tabBarItem.image = selfIcon
-        self.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
         
         // Set up profile view for user
         var id = 1 // Get id for the app user

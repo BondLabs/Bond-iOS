@@ -31,6 +31,7 @@ class BondTableCell: UITableViewCell {
         profImageView.center = CGPointMake(30, 30)
         profImageView.setDefaultImage(profPic)
         profImageView.performSetup(15.0)
+		profImageView.addBorder(0x00A4FF)
         self.addSubview(profImageView)
         
         // Add a name label

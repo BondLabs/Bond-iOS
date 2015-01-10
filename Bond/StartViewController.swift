@@ -13,7 +13,7 @@ class StartViewController: UIViewController {
     /* * *
      * * * View properties------------------------------------------------------
      * * */
-    
+
     @IBOutlet var logoImage: UIImageView!
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var bgImage: UIImageView!
@@ -31,8 +31,8 @@ class StartViewController: UIViewController {
          * * */
         
         // Hide navigation bar
-        self.navigationController?.navigationBarHidden = true
-        
+		self.navigationController?.navigationBarHidden = true
+
         // Store screen dimensions
         let screenSize:CGSize = UIScreen.mainScreen().bounds.size
         
@@ -44,7 +44,7 @@ class StartViewController: UIViewController {
         bgImage.sizeToFit()
         bgImage.center = CGPointMake(screenSize.width / 2, screenSize.height / 2)
         UIGraphicsEndImageContext()
-        
+
         // Initialize logo image
         let unscaledLogo = UIImage(named: "Logo.png")!
         var logoSize = CGSizeMake(screenSize.width * 0.75, screenSize.width * 0.75 * unscaledLogo.size.height / unscaledLogo.size.width)
@@ -77,7 +77,7 @@ class StartViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        self.navigationController?.navigationBarHidden = false
+		self.navigationController?.navigationBarHidden = false
         super.prepareForSegue(segue, sender: sender)
     }
 }
