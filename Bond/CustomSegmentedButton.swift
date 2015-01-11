@@ -10,18 +10,22 @@ import UIKit
 
 class CustomSegmentedButton: UIButton {
 
+	var active:Bool = false
+
 	func setup() {
 		self.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
 		self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 0)
 		self.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 16.5)
 	}
 
-	func select() {
+	func deselect() {
+		active = false
 		self.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
 		self.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 	}
 
-	func deselect() {
+	func select() {
+		active = true
 		self.backgroundColor = UIColor.whiteColor()
 		self.setTitleColor(AppData.util.UIColorFromRGB(0x00A4FF), forState: UIControlState.Normal)
 	}

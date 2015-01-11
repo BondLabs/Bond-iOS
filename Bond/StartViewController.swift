@@ -34,7 +34,7 @@ class StartViewController: UIViewController {
 		self.navigationController?.navigationBarHidden = true
 
         // Store screen dimensions
-        let screenSize:CGSize = UIScreen.mainScreen().bounds.size
+        let screenSize:CGSize = CGSizeMake(self.view.frame.width, self.view.frame.height)
         
         // Initialize background image
         let unscaledBg = UIImage(named: "bg@2x.png")!

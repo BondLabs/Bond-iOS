@@ -22,5 +22,14 @@ class AppData {
                 alpha: CGFloat(1.0)
             )
         }
+
+		static func scaleImage(image: UIImage, size: CGSize, inset: CGFloat) -> UIImage {
+			var smallSize = CGSizeMake(size.width - CGFloat(inset), size.height - CGFloat(inset))
+			UIGraphicsBeginImageContextWithOptions(smallSize, false, 0)
+			image.drawInRect(CGRect(origin: CGPointZero, size: smallSize))
+			var scaled:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+			UIGraphicsEndImageContext()
+			return scaled
+		}
     }
 }

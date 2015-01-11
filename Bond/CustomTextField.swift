@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomTextField: UITextField {
+class CustomTextField: UITextField, UITextFieldDelegate {
 
     /* 
      * Use to create a custom text field.
@@ -23,7 +23,8 @@ class CustomTextField: UITextField {
         super.init(coder: aDecoder)
         
         self.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
-        self.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
+        self.textColor = UIColor.whiteColor()
+		self.layer.borderColor = UIColor.whiteColor().CGColor
     }
     
     /* * *

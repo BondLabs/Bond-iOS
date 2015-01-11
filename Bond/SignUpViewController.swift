@@ -49,11 +49,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.nextButton.alpha = 0.0
         self.nextButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        self.nextButton.setTitle("Next", forState: UIControlState.Normal)
+        self.nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
+		self.nextButton.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
         self.doneButton.alpha = 0.0
         self.doneButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.doneButton.setTitle("Done", forState: UIControlState.Normal)
+		self.doneButton.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
         
         // Add keyboard selectors
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
@@ -67,21 +69,24 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         // Set up instructions label
         self.descLabel.textColor = UIColor.whiteColor()
-        self.descLabel.center = CGPointMake(viewSize.width / 2, viewSize.height / 12)
+		self.descLabel.font = UIFont(name: "Helvetica-Neue", size: 18.0)
+		self.descLabel.numberOfLines = 0
+		self.descLabel.sizeToFit()
+        self.descLabel.center = CGPointMake(viewSize.width / 2, 50)
         
         // Set up firstName and lastName fields
         self.firstName.setPlaceholder("First")
         self.lastName.setPlaceholder("Last")
-        self.firstName.frame = CGRectMake(10, viewSize.height * 9/60, viewSize.width / 2 - 15, viewSize.height * 5/60 - 10)
-        self.lastName.frame = CGRectMake(viewSize.width / 2 + 5, viewSize.height * 9/60, viewSize.width / 2 - 15, viewSize.height * 5/60 - 10)
+        self.firstName.frame = CGRectMake(10, 85, viewSize.width / 2 - 15, 40)
+        self.lastName.frame = CGRectMake(viewSize.width / 2 + 5, 85, viewSize.width / 2 - 15, 40)
         
         // Set up phoneNumber field
         self.phoneNumber.setPlaceholder("Phone number")
-        self.phoneNumber.frame = CGRectMake(10, viewSize.height * 14/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
+        self.phoneNumber.frame = CGRectMake(10, 135, viewSize.width - 20, 40)
         
         // Set up password field
         self.password.setPlaceholder("Password")
-        self.password.frame = CGRectMake(10, viewSize.height * 19/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
+        self.password.frame = CGRectMake(10, 185, viewSize.width - 20, 40)
         
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
@@ -109,7 +114,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         } else {
             self.showDoneButton()
         }
+		textField.layer.borderWidth = 1.5
     }
+
+	func textFieldDidEndEditing(textField: UITextField) {
+		if (textField.text == "") {
+			textField.layer.borderWidth = 0
+		}
+		selectedField = nil
+	}
     
     // Capture taps on nextButton
     @IBAction func nextButtonTapped(sender: UIButton) {

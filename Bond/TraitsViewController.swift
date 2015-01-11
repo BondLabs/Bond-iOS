@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetupViewController: UIViewController {
+class TraitsViewController: UIViewController {
     
     /* * *
      * * * View properties------------------------------------------------------
@@ -63,7 +63,8 @@ class SetupViewController: UIViewController {
         self.nextButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.nextButton.frame = CGRectMake(0, viewBounds.height - UIScreen.mainScreen().bounds.height / 12 - 20, viewBounds.width, UIScreen.mainScreen().bounds.height / 12)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        self.nextButton.setTitle("Next", forState: UIControlState.Normal)
+        self.nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
+		self.nextButton.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
         
         /* * *
          * * * Set up activity views array--------------------------------------

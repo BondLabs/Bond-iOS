@@ -91,7 +91,7 @@ class CircleImageView: UIImageView {
     
     func setUntapped() {
         self.selected = false
-        self.backgroundColor = AppData.util.UIColorFromRGB(0x0094E6)
+        self.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.refreshImage()
     }
     
