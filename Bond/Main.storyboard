@@ -380,7 +380,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="ooC-eq-tLf" userLabel="Phone Number" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
                                 <rect key="frame" x="16" y="164" width="288" height="30"/>
@@ -664,11 +664,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HdW-CU-ery"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="W0g-ig-6ij"/>
         <segue reference="cG2-ED-IvC"/>
         <segue reference="R23-YL-h3N"/>
         <segue reference="Dt3-wl-Kcu"/>
-        <segue reference="7bO-IQ-ird"/>
-        <segue reference="W0g-ig-6ij"/>
+        <segue reference="HdW-CU-ery"/>
     </inferredMetricsTieBreakers>
 </document>
