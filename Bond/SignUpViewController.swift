@@ -114,12 +114,20 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         } else {
             self.showDoneButton()
         }
+		if (textField.text == "") {
+			var placeholder = textField.attributedPlaceholder?.string
+			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
+				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+		}
 		textField.layer.borderWidth = 1.5
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
 		if (textField.text == "") {
 			textField.layer.borderWidth = 0
+			var placeholder = textField.attributedPlaceholder?.string
+			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
+				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
 		}
 		selectedField = nil
 	}
@@ -217,22 +225,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
      * * * Capture segue events
      * * */
 
-    /*override func viewDidDisappear(animated: Bool) {
-        var count = self.navigationController?.viewControllers.count
-        var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-        if (nextVC is StartViewController) {
-            self.navigationController?.navigationBarHidden = true
-        }
-        super.viewDidDisappear(true)
-    }*/
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "SignUpSegue") {
-            // Use to perform any checks needed, i.e. check if user already exists
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.destinationViewController is StartViewController {
+			self.navigationController?.navigationBarHidden = true
+		}
+	}
 
-        }
-    }
-    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }

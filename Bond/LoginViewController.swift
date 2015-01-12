@@ -93,8 +93,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         self.showButton()
+		if (textField.text == "") {
+			var placeholder = textField.attributedPlaceholder?.string
+			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
+				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+		}
+		textField.layer.borderWidth = 1.5
     }
-    
+
+	func textFieldDidEndEditing(textField: UITextField) {
+		if (textField.text == "") {
+			textField.layer.borderWidth = 0
+			var placeholder = textField.attributedPlaceholder?.string
+			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
+				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+		}
+	}
+
     func showButton() {
         // If Login button is already showing, animate reshow
         if (self.loginButton.alpha == 1.0) {
