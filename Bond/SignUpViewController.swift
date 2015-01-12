@@ -128,6 +128,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 			var placeholder = textField.attributedPlaceholder?.string
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+		} else {
+			
 		}
 		selectedField = nil
 	}

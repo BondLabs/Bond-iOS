@@ -19,7 +19,7 @@ class BondTableCell: UITableViewCell {
     
     func setup(id: String) {
         // Set up basic properties
-        self.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
+        self.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
         
         // Get profile pic
         self.name = id
@@ -37,7 +37,7 @@ class BondTableCell: UITableViewCell {
         // Add a name label
         var nameLabel = UILabel()
         nameLabel.text = name
-        nameLabel.font = UIFont(name: "Helvetica-Bold", size: 16.0)
+        nameLabel.font = UIFont(name: "Avenir-Medium", size: 16.0)
         nameLabel.sizeToFit()
         nameLabel.frame.origin = CGPointMake(60, 22)
         nameLabel.textColor = UIColor.whiteColor()

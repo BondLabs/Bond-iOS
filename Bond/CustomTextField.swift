@@ -25,6 +25,7 @@ class CustomTextField: UITextField, UITextFieldDelegate {
         self.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
         self.textColor = UIColor.whiteColor()
 		self.layer.borderColor = UIColor.whiteColor().CGColor
+		self.font = UIFont(name: "Avenir-Book", size: 16.5)
     }
     
     /* * *
@@ -41,6 +42,6 @@ class CustomTextField: UITextField, UITextFieldDelegate {
     
     func setPlaceholder(placeholderText: String) {
         self.attributedPlaceholder = NSAttributedString(string:placeholderText,
-            attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+			attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
     }
 }

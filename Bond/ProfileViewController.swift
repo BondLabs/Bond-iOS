@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController {
         nameLabel = UILabel()
         nameLabel.text = name
         nameLabel.textColor = UIColor.whiteColor()
-        nameLabel.font = UIFont(name: "Helvetica-Bold", size: 24.0)
+        nameLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         nameLabel.sizeToFit()
         nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
         self.view.addSubview(nameLabel)
@@ -73,6 +73,7 @@ class ProfileViewController: UIViewController {
         // Add a distance label if distance is not nil
         distLabel = UILabel()
         distLabel.text = "\(dist) Feet Away"
+		distLabel.font = UIFont(name: "Avenir-Medium", size: 18.0)
         distLabel.textColor = UIColor.whiteColor()
         distLabel.sizeToFit()
         distLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 70)

@@ -29,7 +29,11 @@ class StartViewController: UIViewController {
         /* * *
          * * * Do basic setup---------------------------------------------------
          * * */
-        
+
+		// Set default font for all controls in app
+		UILabel.appearance().font = UIFont(name: "Avenir-Medium", size: 16.5)
+		UINavigationBar.appearance().titleTextAttributes = NSDictionary(object: UIFont(name: "Avenir-Book", size: 16.5)!, forKey: NSFontAttributeName)
+
         // Hide navigation bar
 		self.navigationController?.navigationBarHidden = true
 

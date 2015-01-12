@@ -14,7 +14,7 @@ class CustomSegmentedButton: UIButton {
 
 	func setup() {
 		self.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-		self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 13, bottom: 0, right: 0)
+		self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
 		self.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 16.5)
 	}
 

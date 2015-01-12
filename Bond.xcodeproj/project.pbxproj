@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E911E4041A64189D0027DB0C /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E911E4031A6418090027DB0C /* Avenir.ttc */; };
 		E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F531A52C0F9004DDE48 /* BondsBarController.swift */; };
 		E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */; };
 		E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD691A4826A400E43B45 /* AppDelegate.swift */; };
@@ -28,17 +29,6 @@
 		E93C44471A4D102100E95265 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93C44461A4D102100E95265 /* ActivityView.swift */; };
 		E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96956E11A5675A3001D2308 /* ProfileViewController.swift */; };
 		E96956E41A586C7F001D2308 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96956E31A586C7F001D2308 /* AppData.swift */; };
-		E9731FF01A5945FB00C97429 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FEF1A5945FB00C97429 /* AudioToolbox.framework */; };
-		E9731FF21A59460000C97429 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF11A59460000C97429 /* Foundation.framework */; };
-		E9731FF41A59460800C97429 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF31A59460800C97429 /* CoreGraphics.framework */; };
-		E9731FF61A59460E00C97429 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF51A59460E00C97429 /* CoreLocation.framework */; };
-		E9731FF81A59461600C97429 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF71A59461600C97429 /* libz.dylib */; };
-		E9731FFA1A59461F00C97429 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF91A59461F00C97429 /* MobileCoreServices.framework */; };
-		E9731FFC1A59462700C97429 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FFB1A59462700C97429 /* QuartzCore.framework */; };
-		E9731FFE1A59462D00C97429 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FFD1A59462D00C97429 /* Security.framework */; };
-		E97320021A59463F00C97429 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320011A59463F00C97429 /* SystemConfiguration.framework */; };
-		E973201E1A5949DA00C97429 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201D1A5949DA00C97429 /* libsqlite3.dylib */; };
-		E97320201A594A0000C97429 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201F1A594A0000C97429 /* CFNetwork.framework */; };
 		E97320261A5A0F6500C97429 /* Flash On.png in Resources */ = {isa = PBXBuildFile; fileRef = E97320211A5A0F6500C97429 /* Flash On.png */; };
 		E97320271A5A0F6500C97429 /* Flash Off.png in Resources */ = {isa = PBXBuildFile; fileRef = E97320221A5A0F6500C97429 /* Flash Off.png */; };
 		E97320281A5A0F6500C97429 /* Flash Auto.png in Resources */ = {isa = PBXBuildFile; fileRef = E97320231A5A0F6500C97429 /* Flash Auto.png */; };
@@ -75,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E911E4031A6418090027DB0C /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		E9227F531A52C0F9004DDE48 /* BondsBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsBarController.swift; sourceTree = "<group>"; };
 		E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsDetailViewController.swift; sourceTree = "<group>"; };
 		E934FD641A4826A400E43B45 /* Bond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bond.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,17 +132,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E97320201A594A0000C97429 /* CFNetwork.framework in Frameworks */,
-				E973201E1A5949DA00C97429 /* libsqlite3.dylib in Frameworks */,
-				E9731FF01A5945FB00C97429 /* AudioToolbox.framework in Frameworks */,
-				E9731FF61A59460E00C97429 /* CoreLocation.framework in Frameworks */,
-				E9731FF41A59460800C97429 /* CoreGraphics.framework in Frameworks */,
-				E9731FF21A59460000C97429 /* Foundation.framework in Frameworks */,
-				E9731FF81A59461600C97429 /* libz.dylib in Frameworks */,
-				E9731FFA1A59461F00C97429 /* MobileCoreServices.framework in Frameworks */,
-				E9731FFC1A59462700C97429 /* QuartzCore.framework in Frameworks */,
-				E9731FFE1A59462D00C97429 /* Security.framework in Frameworks */,
-				E97320021A59463F00C97429 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,18 +192,19 @@
 				E9227F521A52BEBA004DDE48 /* Bonds */,
 				E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */,
 				E934FD731A4826A400E43B45 /* Images.xcassets */,
-				E934FD671A4826A400E43B45 /* Images */,
+				E934FD671A4826A400E43B45 /* Resources */,
 			);
 			path = Bond;
 			sourceTree = "<group>";
 		};
-		E934FD671A4826A400E43B45 /* Images */ = {
+		E934FD671A4826A400E43B45 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				E9F482DD1A52AF56006DB53C /* Assets */,
+				E911E4031A6418090027DB0C /* Avenir.ttc */,
 				E934FD681A4826A400E43B45 /* Info.plist */,
 			);
-			name = Images;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E934FD7F1A4826A400E43B45 /* BondTests */ = {
@@ -420,6 +401,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E911E4041A64189D0027DB0C /* Avenir.ttc in Resources */,
 				E97320261A5A0F6500C97429 /* Flash On.png in Resources */,
 				E9857EDC1A512AA40095EA76 /* Profile(i).png in Resources */,
 				E934FDA71A484AB800E43B45 /* Main.storyboard in Resources */,

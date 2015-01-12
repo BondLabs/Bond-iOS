@@ -29,25 +29,10 @@ class BondsViewController: UITableViewController {
         self.navigationItem.title = "Bonds"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
-        
+		self.tableView.tableFooterView = UIView()
+
         // Set row height
         self.tableView.rowHeight = 60.0
-        
-        // Set tabbar image for controller
-		/*var barHeight:CGFloat! = (self.tabBarController?.tabBar.frame.height)!
-		println(barHeight)
-        var bondIcon = UIImage(named: "Bonds(i).png")!
-        var finalBG:UIImage
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.view.frame.width / 2, barHeight), true, 0.0)
-        AppData.util.UIColorFromRGB(0x2D2D2D).setFill()
-        UIRectFill(CGRect(origin: CGPointZero, size: CGSizeMake(self.view.frame.width / 2, barHeight)))
-        bondIcon.drawInRect(CGRectMake(self.view.frame.width / 6 + 10, 10, self.view.frame.width / 6 - 20, self.view.frame.width / 6 - 20))
-        finalBG = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-		println(finalBG.size.height)
-        self.tabBarItem = UITabBarItem(title: nil, image: finalBG, selectedImage: finalBG)
-		self.tabBarItem.setTitlePositionAdjustment(UIOffsetZero)
-		self.tabBarItem.imageInsets = UIEdgeInsetsZero*/
     }
 
     /* * *
