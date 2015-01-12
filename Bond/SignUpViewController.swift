@@ -138,6 +138,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+	@IBAction func doneButtonTapped(sender: UIButton) {
+	}
+
     func showNextButton() {
         // If next button is already showing, animate reshow
         if (nextButton.alpha == 1.0) {
@@ -213,15 +216,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     /* * *
      * * * Capture segue events
      * * */
-    
-    override func viewWillDisappear(animated: Bool) {
+
+    /*override func viewDidDisappear(animated: Bool) {
         var count = self.navigationController?.viewControllers.count
         var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
         if (nextVC is StartViewController) {
             self.navigationController?.navigationBarHidden = true
         }
-        super.viewWillDisappear(true)
-    }
+        super.viewDidDisappear(true)
+    }*/
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "SignUpSegue") {

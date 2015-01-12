@@ -89,7 +89,7 @@
                                 <rect key="frame" x="16" y="162" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nra-qY-02X">
                                 <rect key="frame" x="145" y="237" width="30" height="30"/>
@@ -421,6 +421,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="doneButtonTapped:" destination="xbs-4z-EWi" eventType="touchUpInside" id="35j-jr-lU7"/>
                                     <segue destination="5NR-vc-Jp2" kind="push" id="2Zi-Zh-utD"/>
                                 </connections>
                             </button>
@@ -664,11 +665,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2Zi-Zh-utD"/>
-        <segue reference="W0g-ig-6ij"/>
-        <segue reference="cG2-ED-IvC"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="Dt3-wl-Kcu"/>
+        <segue reference="6e8-YG-tdg"/>
         <segue reference="HdW-CU-ery"/>
+        <segue reference="W0g-ig-6ij"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="Dt3-wl-Kcu"/>
+        <segue reference="R23-YL-h3N"/>
     </inferredMetricsTieBreakers>
 </document>
