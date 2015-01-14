@@ -153,7 +153,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     func showNextButton() {
         // If next button is already showing, animate reshow
-        if (nextButton.alpha == 1.0) {
+		if (nextButton.alpha == 1.0) {
             UIView.animateWithDuration(0.15, animations: {
                 self.nextButton.alpha = 0.5
             }, completion: { finished in

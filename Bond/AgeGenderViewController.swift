@@ -17,6 +17,7 @@ class AgeGenderViewController: UIViewController {
 	@IBOutlet var next: UIButton!
 	var divider1:UIView!
 	var divider2:UIView!
+	@IBOutlet var agePicker: UIDatePicker!
 
 	override func viewDidLoad() {
 		// Set up basic view properties
@@ -66,6 +67,9 @@ class AgeGenderViewController: UIViewController {
 		divider2.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 6 + 70)
 		divider2.layer.cornerRadius = 0.25
 		self.view.addSubview(divider2)
+
+		// Set up date picker for age
+
 
 		// Set up next button
 		next.frame.size = CGSizeMake(self.view.frame.width, 50)

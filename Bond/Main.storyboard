@@ -30,6 +30,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="signUpReleased:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yjV-eh-Cfs"/>
+                                    <action selector="signUpTouched:" destination="vXZ-lx-hvc" eventType="touchDown" id="9px-UF-vSv"/>
                                     <segue destination="xbs-4z-EWi" kind="push" id="8BU-7d-1hK"/>
                                 </connections>
                             </button>
@@ -40,6 +42,8 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="loginReleased:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0uf-PL-wyp"/>
+                                    <action selector="loginTouched:" destination="vXZ-lx-hvc" eventType="touchDown" id="CXn-Jj-UlQ"/>
                                     <segue destination="UxE-dx-lU8" kind="push" id="dLw-JN-GVL"/>
                                 </connections>
                             </button>
@@ -266,12 +270,20 @@
                                     <action selector="takenTapped:" destination="5NR-vc-Jp2" eventType="touchUpInside" id="fFs-Hh-317"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="ZJA-7j-axZ">
+                                <rect key="frame" x="0.0" y="192" width="320" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="442830422.30471998">
+                                    <!--2015-01-13 08:27:02 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Sign Up" id="pYV-ZO-ZQk"/>
                     <connections>
+                        <outlet property="agePicker" destination="ZJA-7j-axZ" id="DGo-Xt-C6t"/>
                         <outlet property="descLabel" destination="naK-u0-VcY" id="Mlq-jo-HcQ"/>
                         <outlet property="female" destination="khx-OO-ebZ" id="t0z-DY-rCM"/>
                         <outlet property="male" destination="XC1-9z-njI" id="Ha4-mV-kz1"/>
@@ -294,7 +306,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BondTableCell" rowHeight="60" id="wTq-xz-ibz" customClass="BondTableCell" customModule="Bond" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BondTableCell" rowHeight="60" id="wTq-xz-ibz" customClass="BondTableCell" customModule="Bond" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTq-xz-ibz" id="SUj-Gc-sX7">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -390,7 +402,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16.5"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="7az-Da-6dW" userLabel="Password" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" id="7az-Da-6dW" userLabel="Password" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
                                 <rect key="frame" x="16" y="225" width="288" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -437,7 +449,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Sign Up" id="FvK-pk-xv4"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="FvK-pk-xv4">
+                        <barButtonItem key="backBarButtonItem" title="TEst" id="xhH-Af-qxV"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="descLabel" destination="KdI-Wo-n3v" id="7Nc-R3-4hv"/>
                         <outlet property="doneButton" destination="uBH-1t-dsI" id="jnh-HQ-YOl"/>
@@ -666,11 +680,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="dLw-JN-GVL"/>
+        <segue reference="8BU-7d-1hK"/>
         <segue reference="6e8-YG-tdg"/>
-        <segue reference="HdW-CU-ery"/>
-        <segue reference="Dt3-wl-Kcu"/>
-        <segue reference="IBU-xK-cv0"/>
-        <segue reference="W0g-ig-6ij"/>
         <segue reference="2Zi-Zh-utD"/>
+        <segue reference="NDT-7o-hAf"/>
+        <segue reference="IBU-xK-cv0"/>
     </inferredMetricsTieBreakers>
 </document>

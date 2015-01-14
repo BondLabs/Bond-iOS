@@ -84,4 +84,20 @@ class StartViewController: UIViewController {
 		self.navigationController?.navigationBarHidden = false
         super.prepareForSegue(segue, sender: sender)
     }
+
+	@IBAction func signUpTouched(sender: UIButton) {
+		sender.backgroundColor = AppData.util.UIColorFromRGB(0x0094E6)
+	}
+
+	@IBAction func signUpReleased(sender: UIButton) {
+		sender.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+	}
+
+	@IBAction func loginTouched(sender: UIButton) {
+		sender.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
+	}
+
+	@IBAction func loginReleased(sender: UIButton) {
+		sender.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+	}
 }

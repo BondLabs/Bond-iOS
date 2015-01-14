@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E911E4041A64189D0027DB0C /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E911E4031A6418090027DB0C /* Avenir.ttc */; };
+		E912FF381A650C0E004E79A9 /* Flip.png in Resources */ = {isa = PBXBuildFile; fileRef = E912FF371A650C0E004E79A9 /* Flip.png */; };
 		E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F531A52C0F9004DDE48 /* BondsBarController.swift */; };
 		E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */; };
 		E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD691A4826A400E43B45 /* AppDelegate.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		E911E4031A6418090027DB0C /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
+		E912FF371A650C0E004E79A9 /* Flip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flip.png; sourceTree = "<group>"; };
 		E9227F531A52C0F9004DDE48 /* BondsBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsBarController.swift; sourceTree = "<group>"; };
 		E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsDetailViewController.swift; sourceTree = "<group>"; };
 		E934FD641A4826A400E43B45 /* Bond.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bond.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +278,7 @@
 				E97320231A5A0F6500C97429 /* Flash Auto.png */,
 				E97320241A5A0F6500C97429 /* Cancel.png */,
 				E97320251A5A0F6500C97429 /* Camera.png */,
+				E912FF371A650C0E004E79A9 /* Flip.png */,
 				E934FD921A48282100E43B45 /* Logo.png */,
 				E934FD931A48282100E43B45 /* Logo@2x.png */,
 				E934FD941A48282100E43B45 /* Logo@3x.png */,
@@ -407,6 +410,7 @@
 				E934FDA71A484AB800E43B45 /* Main.storyboard in Resources */,
 				E9857EDF1A512AA40095EA76 /* Bonds(a).png in Resources */,
 				E934FD9D1A48282100E43B45 /* Logo@3x.png in Resources */,
+				E912FF381A650C0E004E79A9 /* Flip.png in Resources */,
 				E93C443D1A4ADB1100E95265 /* Icon@3x.png in Resources */,
 				E97320271A5A0F6500C97429 /* Flash Off.png in Resources */,
 				E9C909091A6207CC00B8291D /* Bonds.png in Resources */,

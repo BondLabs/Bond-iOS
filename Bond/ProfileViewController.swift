@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
         self.navigationItem.title = "You"
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		self.tabBarItem.selectedImage = UIImage(named: "Profile.png")!
         
         // Darker sub background
         var subBG = UIView()
