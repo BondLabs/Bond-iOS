@@ -53,7 +53,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillShowNotification, object: nil)
         
         // Set up navigation controller properties
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
+        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -102,8 +102,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
+		textField.layer.borderWidth = 0
 		if (textField.text == "") {
-			textField.layer.borderWidth = 0
 			var placeholder = textField.attributedPlaceholder?.string
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])

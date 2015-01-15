@@ -11,6 +11,12 @@ import UIKit
 class AppData {
     struct data {
         static var userID:Int!
+		static var statusBarHeight:CGFloat! = UIApplication.sharedApplication().statusBarFrame.height
+		static var navBarHeight:CGFloat! = UINavigationController().navigationBar.frame.height
+		static var tabBarHeight:CGFloat! = UITabBarController().tabBar.frame.height
+		static var normViewHeight:CGFloat! = UIScreen.mainScreen().bounds.height - statusBarHeight
+		static var navViewHeight:CGFloat! = normViewHeight - navBarHeight
+		static var tabBarViewHeight:CGFloat! = navViewHeight - tabBarHeight
     }
     
     struct util {

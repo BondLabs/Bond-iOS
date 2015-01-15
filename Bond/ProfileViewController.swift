@@ -31,20 +31,12 @@ class ProfileViewController: UIViewController {
         
         // Darker sub background
         var subBG = UIView()
-        subBG.backgroundColor = AppData.util.UIColorFromRGB(0x535353)
+        subBG.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         subBG.layer.borderWidth = 0.5
         subBG.layer.borderColor = UIColor.blackColor().CGColor
         subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
         subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
         self.view.addSubview(subBG)
-        
-        // Set tabbar image for controller
-        var selfIcon = UIImage(named: "Profile(i).png")!
-        UIGraphicsBeginImageContextWithOptions(CGSizeMake(40, 40), true, 0.0)
-        selfIcon.drawInRect(CGRect(origin: CGPointZero, size: CGSizeMake(40, 40)))
-        selfIcon = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.tabBarItem.image = selfIcon
         
         // Set up profile view for user
         var id = 1 // Get id for the app user

@@ -49,7 +49,7 @@ class TraitsViewController: UIViewController {
         viewBounds = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - barHeight!)
 
         // Show navigation bar and set title
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
+        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         self.navigationController?.navigationBar.hidden = false
         self.navigationController?.title = "Profile"
         

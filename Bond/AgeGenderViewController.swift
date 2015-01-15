@@ -21,7 +21,7 @@ class AgeGenderViewController: UIViewController {
 
 	override func viewDidLoad() {
 		// Set up basic view properties
-		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
+		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
 
 		// Set up view description label
 		descLabel.text = "Let's get some basics"
