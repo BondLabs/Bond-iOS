@@ -47,6 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.loginButton.setTitle("Log In", forState: UIControlState.Normal)
+		self.loginButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
         
         // Add keyboard selectors
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
@@ -56,7 +57,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         self.navigationController?.navigationBarHidden = false
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         // Set up instructions label
         self.descLabel.textColor = UIColor.whiteColor()

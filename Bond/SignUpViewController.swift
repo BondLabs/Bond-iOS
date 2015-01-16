@@ -30,7 +30,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
      * * * Set up the view------------------------------------------------------
      * * */
     
-    override func viewDidLoad() {
+	override func viewDidLoad() {
         super.viewDidLoad()
 
 		// Store frame data
@@ -47,13 +47,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         self.nextButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
-		self.nextButton.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
+		self.nextButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
+		// self.nextButton.buttonType = UIButtonType.DetailDisclosure
 		self.view.bringSubviewToFront(nextButton)
         self.doneButton.alpha = 0.0
         self.doneButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        self.doneButton.setTitle("Done", forState: UIControlState.Normal)
-		self.doneButton.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
+        self.doneButton.setTitle("Done 〉", forState: UIControlState.Normal)
+		self.doneButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
 		self.view.bringSubviewToFront(doneButton)
         
         // Add keyboard selectors
@@ -62,9 +63,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
         // Set up navigation controller properties
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-        self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         // Set up instructions label
         self.descLabel.textColor = UIColor.whiteColor()
@@ -225,14 +223,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
      * * * Capture segue events
      * * */
 
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.destinationViewController is StartViewController {
-			self.navigationController?.navigationBarHidden = true
-		}
-	}
-
-    deinit {
+	deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+
+	override func viewWillAppear(animated: Bool) {
+		self.navigationController?.navigationBarHidden = false
+		super.viewWillAppear(animated)
+	}
+
+	override func viewWillDisappear(animated: Bool) {
+		var count = self.navigationController?.viewControllers.count
+		var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
+		if (nextVC is StartViewController) {
+			self.navigationController?.navigationBarHidden = true
+		}
+		super.viewWillDisappear(animated)
+	}
 
 }

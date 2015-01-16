@@ -201,7 +201,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Profile" id="0j6-2t-8Yb"/>
+                    <navigationItem key="navigationItem" title="Profile" id="0j6-2t-8Yb">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="F1a-2C-quT"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="descLabel" destination="Hfs-EC-nkC" id="wQh-7e-aL9"/>
                         <outlet property="nextButton" destination="a0c-HG-x4x" id="S1Q-ty-91o"/>
@@ -287,7 +289,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Sign Up" id="pYV-ZO-ZQk"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="pYV-ZO-ZQk">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="cQp-1R-lVw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="agePicker" destination="ZJA-7j-axZ" id="DGo-Xt-C6t"/>
                         <outlet property="descLabel" destination="naK-u0-VcY" id="Mlq-jo-HcQ"/>
@@ -456,7 +460,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Sign Up" id="FvK-pk-xv4">
-                        <barButtonItem key="backBarButtonItem" title="TEst" id="xhH-Af-qxV"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="NEF-bN-ZeN"/>
                     </navigationItem>
                     <connections>
                         <outlet property="descLabel" destination="KdI-Wo-n3v" id="7Nc-R3-4hv"/>
@@ -591,7 +595,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Smile" id="qag-kX-SrC"/>
+                    <navigationItem key="navigationItem" title="Smile" id="qag-kX-SrC">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="nCX-xa-eWR"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="cancel" destination="Hjw-o6-8jg" id="gwj-z6-DLF"/>
                         <outlet property="capture" destination="Leb-oH-00L" id="pKS-cy-dPv"/>
@@ -688,9 +694,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="dLw-JN-GVL"/>
         <segue reference="8BU-7d-1hK"/>
-        <segue reference="6e8-YG-tdg"/>
         <segue reference="2Zi-Zh-utD"/>
         <segue reference="NDT-7o-hAf"/>
-        <segue reference="IBU-xK-cv0"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="cG2-ED-IvC"/>
     </inferredMetricsTieBreakers>
 </document>

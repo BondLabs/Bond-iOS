@@ -27,7 +27,6 @@ class BondsViewController: UITableViewController {
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         self.tableView.separatorColor = UIColor.blackColor()
         self.navigationItem.title = "Bonds"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
 		self.tableView.tableFooterView = UIView()
 		

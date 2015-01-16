@@ -62,7 +62,7 @@ class CameraViewController: UIViewController {
 		next.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
 		next.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 		next.setTitle("Next 〉", forState: UIControlState.Normal)
-		next.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
+		next.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
 
 		// Set up capture session
 		captureSession.sessionPreset = AVCaptureSessionPresetPhoto
@@ -74,18 +74,18 @@ class CameraViewController: UIViewController {
 			}
 		}
 
-		//		if captureDevice != nil {
+		if captureDevice != nil {
 			beginSession()
-		//}
+		}
     }
 
 	func beginSession() {
 		// Start the capture session
-		/*var err : NSError? = nil
+		var err : NSError? = nil
 		captureSession.addInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
 		if err != nil {
 			println("error: \(err?.localizedDescription)")
-		}*/
+		}
 
 		// Add the preview image to the view
 		var previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)

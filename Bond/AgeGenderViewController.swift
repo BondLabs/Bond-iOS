@@ -9,6 +9,7 @@
 import UIKit
 
 class AgeGenderViewController: UIViewController {
+
 	@IBOutlet var descLabel: UILabel!
 	@IBOutlet var male: CustomSegmentedButton!
 	@IBOutlet var female: CustomSegmentedButton!
@@ -77,7 +78,7 @@ class AgeGenderViewController: UIViewController {
 		next.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
 		next.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 		next.setTitle("Next 〉", forState: UIControlState.Normal)
-		next.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
+		next.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
 	}
 
 	@IBAction func maleTapped(sender: AnyObject) {

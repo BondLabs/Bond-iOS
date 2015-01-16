@@ -26,7 +26,6 @@ class BondsDetailViewController: UIViewController {
         
         // Set up view properties
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         var name = "Test" // Get name of user using id
         self.navigationItem.title = name

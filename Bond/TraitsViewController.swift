@@ -18,7 +18,7 @@ class TraitsViewController: UIViewController {
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var nextButton: UIButton!
     var activityArray: Array<ActivityView>!
-    var activityNames: Array<String>! = ["Adventurer", "Artist", "Athlete", "Culturist", "Gamer", "Hustler", "Musician", "Rebel", "Scholar"]
+    var activityNames: Array<String>! = ["Active", "Artist", "Badass", "Brainy", "Caring", "Chill", "Creative", "Cultured", "Curious"]
     var viewBounds:CGSize!
     
     /* * *
@@ -64,7 +64,7 @@ class TraitsViewController: UIViewController {
         self.nextButton.frame = CGRectMake(0, viewBounds.height - UIScreen.mainScreen().bounds.height / 12 - 20, viewBounds.width, UIScreen.mainScreen().bounds.height / 12)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
-		self.nextButton.titleLabel?.font = UIFont(name: "Helvetica-Neue", size: 18.0)
+		self.nextButton.titleLabel?.font = UIFont(name: "Åvenir-Medium", size: 18.0)
         
         /* * *
          * * * Set up activity views array--------------------------------------

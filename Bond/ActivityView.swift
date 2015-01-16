@@ -49,7 +49,9 @@ class ActivityView: UIView {
         iconView.frame.size = CGSizeMake(viewSize.width, viewSize.width)
         // Set image frame to 1 down from center to prevent the top of the view from being cut off
         iconView.center = CGPointMake(viewSize.width / 2, viewSize.width / 2 + 1)
-        iconView.performSetup(40.0)
+		iconView.setDefaultImage(UIImage(named: "\(name) (i).png")!)
+		iconView.setTappedImage(UIImage(named: "\(name) (a).png")!)
+		iconView.performSetup(40.0)
         self.addSubview(iconView)
     }
     
