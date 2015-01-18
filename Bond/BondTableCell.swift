@@ -30,7 +30,7 @@ class BondTableCell: UITableViewCell {
         profImageView.frame.size = CGSizeMake(45, 45)
         profImageView.center = CGPointMake(30, 30)
         profImageView.setDefaultImage(profPic)
-        profImageView.performSetup(0.67)
+        profImageView.performSetup(0.5)
 		profImageView.addBorder(0x00A4FF)
         self.addSubview(profImageView)
         

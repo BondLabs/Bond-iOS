@@ -16,8 +16,11 @@ class CameraViewController: UIViewController {
 	@IBOutlet var capture: UIView!
 	@IBOutlet var cancel: UIImageView!
 	@IBOutlet var next: UIButton!
-	let captureSession = AVCaptureSession()
+	let captureSession:AVCaptureSession! = AVCaptureSession()
 	var captureDevice:AVCaptureDevice?
+	var cameraInput:AVCaptureDeviceInput!
+	var photoOutput:AVCaptureStillImageOutput!
+	var capturedPhoto:UIImage!
 	var image:UIImage!
 	var viewHeight:CGFloat!
 
@@ -50,6 +53,7 @@ class CameraViewController: UIViewController {
 		capture.addSubview(captureImage)
 		capture.backgroundColor = UIColor(white: 1.0, alpha: 0.5)
 		capture.layer.cornerRadius = capture.frame.width / 2
+		capture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "takePhoto:"))
 
 		// Set up cancel button
 		cancel.image = AppData.util.scaleImage(UIImage(named: "Cancel.png")!, size: CGSizeMake(25, 25), inset: 0.0)
@@ -67,13 +71,12 @@ class CameraViewController: UIViewController {
 		// Set up capture session
 		captureSession.sessionPreset = AVCaptureSessionPresetPhoto
 
-		let devices = AVCaptureDevice.devices()
+		var devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo) as [AVCaptureDevice]!
 		for device in devices {
-			if device.hasMediaType(AVMediaTypeVideo) && device.position == AVCaptureDevicePosition.Front {
-				captureDevice = device as? AVCaptureDevice
+			if device.position == AVCaptureDevicePosition.Front {
+				self.captureDevice = device
 			}
 		}
-
 		if captureDevice != nil {
 			beginSession()
 		}
@@ -82,7 +85,8 @@ class CameraViewController: UIViewController {
 	func beginSession() {
 		// Start the capture session
 		var err : NSError? = nil
-		captureSession.addInput(AVCaptureDeviceInput(device: captureDevice, error: &err))
+		self.cameraInput = AVCaptureDeviceInput(device: captureDevice, error: &err)
+		captureSession.addInput(cameraInput)
 		if err != nil {
 			println("error: \(err?.localizedDescription)")
 		}
@@ -91,9 +95,14 @@ class CameraViewController: UIViewController {
 		var previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
 		self.view.layer.insertSublayer(previewLayer, atIndex: 0)
 		previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-		previewLayer.frame.size = CGSizeMake(self.view.frame.width, viewHeight - self.next.frame.height)
+		previewLayer.frame.size = CGSizeMake(self.view.frame.width, viewHeight)
 		previewLayer.frame.origin = CGPointZero
 		captureSession.startRunning()
+
+		// Add camera output to session
+		self.photoOutput = AVCaptureStillImageOutput()
+		self.photoOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+		self.captureSession.addOutput(self.photoOutput)
 
 		// Set up mask
 		var mask:MaskView = MaskView()
@@ -101,6 +110,29 @@ class CameraViewController: UIViewController {
 		mask.frame = previewLayer.frame
 		mask.cropCircle(CGRectMake(0, 30, self.view.frame.width, self.view.frame.width))
 		self.view.insertSubview(mask, atIndex: 1)
+	}
+
+	func takePhoto(sender: UIButton) {
+		var videoConnection:AVCaptureConnection!
+		for connection in self.photoOutput.connections as [AVCaptureConnection] {
+			var inputPorts = connection.inputPorts as [AVCaptureInputPort]
+			for port in inputPorts {
+				if port.mediaType == AVMediaTypeVideo {
+					videoConnection = connection
+					break
+				}
+			}
+			if let check = videoConnection {
+				break
+			}
+		}
+
+		self.photoOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: {(imageSampleBuffer:CMSampleBuffer!, error: NSError!) in
+			var imageData:NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
+			self.image = UIImage(data: imageData)
+
+			UIImageWriteToSavedPhotosAlbum(self.image, nil, nil, nil)
+		})
 	}
 
 	override func viewWillDisappear(animated: Bool) {
