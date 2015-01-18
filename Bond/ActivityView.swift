@@ -51,7 +51,7 @@ class ActivityView: UIView {
         iconView.center = CGPointMake(viewSize.width / 2, viewSize.width / 2 + 1)
 		iconView.setDefaultImage(UIImage(named: "\(name) (i).png")!)
 		iconView.setTappedImage(UIImage(named: "\(name) (a).png")!)
-		iconView.performSetup(40.0)
+		iconView.performSetup(0.5)
         self.addSubview(iconView)
     }
     

@@ -19,7 +19,7 @@ class CircleImageView: UIImageView {
      */
     
     var selected:Bool! = false
-    var inset:CGFloat!
+    var scaleFactor:CGFloat!
     
     /* * *
      * * * Functions to set up the imageview------------------------------------
@@ -33,9 +33,9 @@ class CircleImageView: UIImageView {
     var bgColor:UIColor!
 
     // Initial setup of the view
-    func performSetup(edge: CGFloat) {
+    func performSetup(scale: CGFloat) {
         // Store inset
-        self.inset = edge
+        self.scaleFactor = scale
         
         // Set view up
         self.contentMode = UIViewContentMode.Center
@@ -57,8 +57,8 @@ class CircleImageView: UIImageView {
         } else {
             icon = tappedIcon
         }
-        var viewSize = CGSizeMake(self.frame.width, self.frame.height)
-        var smallSize = CGSizeMake(viewSize.width - inset, viewSize.height - inset)
+        var viewSize = CGSizeMake(icon.size.width, icon.size.height)
+        var smallSize = CGSizeMake(viewSize.width * scaleFactor, viewSize.height * scaleFactor)
         UIGraphicsBeginImageContextWithOptions(smallSize, false, 0.0)
         icon.drawInRect(CGRect(origin: CGPointZero, size: smallSize))
         self.image = UIGraphicsGetImageFromCurrentImageContext()
