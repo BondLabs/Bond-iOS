@@ -70,8 +70,8 @@
 		E93EC8271A6934A800C03170 /* Funky (i).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7CD1A6934A800C03170 /* Funky (i).png */; };
 		E93EC8281A6934A800C03170 /* Hipster (a).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7CE1A6934A800C03170 /* Hipster (a).png */; };
 		E93EC8291A6934A800C03170 /* Hipster (i).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7CF1A6934A800C03170 /* Hipster (i).png */; };
-		E93EC82A1A6934A800C03170 /* Intoverted (a).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7D01A6934A800C03170 /* Intoverted (a).png */; };
-		E93EC82B1A6934A800C03170 /* Intoverted (i).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7D11A6934A800C03170 /* Intoverted (i).png */; };
+		E93EC82A1A6934A800C03170 /* Introverted (a).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7D01A6934A800C03170 /* Introverted (a).png */; };
+		E93EC82B1A6934A800C03170 /* Introverted (i).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7D11A6934A800C03170 /* Introverted (i).png */; };
 		E93EC82C1A6934A800C03170 /* LOL (a).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7D21A6934A800C03170 /* LOL (a).png */; };
 		E93EC82D1A6934A800C03170 /* LOL (i).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7D31A6934A800C03170 /* LOL (i).png */; };
 		E93EC82E1A6934A800C03170 /* Loud (a).png in Resources */ = {isa = PBXBuildFile; fileRef = E93EC7D41A6934A800C03170 /* Loud (a).png */; };
@@ -139,6 +139,7 @@
 		E9C909091A6207CC00B8291D /* Bonds.png in Resources */ = {isa = PBXBuildFile; fileRef = E9C909071A6207CC00B8291D /* Bonds.png */; };
 		E9CC5A751A600AA300CB7912 /* AgeGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC5A741A600AA300CB7912 /* AgeGenderViewController.swift */; };
 		E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */; };
+		E9E5C5491A6B463A00BE9B2B /* TraitArrayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5C5481A6B463A00BE9B2B /* TraitArrayViewController.swift */; };
 		E9EDF96A1A62A71D004A9446 /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EDF9691A62A71D004A9446 /* MaskView.swift */; };
 		E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F482DE1A52B34B006DB53C /* CircleImageView.swift */; };
 /* End PBXBuildFile section */
@@ -221,8 +222,8 @@
 		E93EC7CD1A6934A800C03170 /* Funky (i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Funky (i).png"; sourceTree = "<group>"; };
 		E93EC7CE1A6934A800C03170 /* Hipster (a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hipster (a).png"; sourceTree = "<group>"; };
 		E93EC7CF1A6934A800C03170 /* Hipster (i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hipster (i).png"; sourceTree = "<group>"; };
-		E93EC7D01A6934A800C03170 /* Intoverted (a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intoverted (a).png"; sourceTree = "<group>"; };
-		E93EC7D11A6934A800C03170 /* Intoverted (i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intoverted (i).png"; sourceTree = "<group>"; };
+		E93EC7D01A6934A800C03170 /* Introverted (a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Introverted (a).png"; sourceTree = "<group>"; };
+		E93EC7D11A6934A800C03170 /* Introverted (i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Introverted (i).png"; sourceTree = "<group>"; };
 		E93EC7D21A6934A800C03170 /* LOL (a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LOL (a).png"; sourceTree = "<group>"; };
 		E93EC7D31A6934A800C03170 /* LOL (i).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LOL (i).png"; sourceTree = "<group>"; };
 		E93EC7D41A6934A800C03170 /* Loud (a).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loud (a).png"; sourceTree = "<group>"; };
@@ -301,6 +302,7 @@
 		E9C909071A6207CC00B8291D /* Bonds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bonds.png; sourceTree = "<group>"; };
 		E9CC5A741A600AA300CB7912 /* AgeGenderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeGenderViewController.swift; sourceTree = "<group>"; };
 		E9D4DEEC1A4A79F3004E03C9 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E9E5C5481A6B463A00BE9B2B /* TraitArrayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitArrayViewController.swift; sourceTree = "<group>"; };
 		E9EDF9691A62A71D004A9446 /* MaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		E9F482DE1A52B34B006DB53C /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -446,8 +448,8 @@
 				E93EC7CD1A6934A800C03170 /* Funky (i).png */,
 				E93EC7CE1A6934A800C03170 /* Hipster (a).png */,
 				E93EC7CF1A6934A800C03170 /* Hipster (i).png */,
-				E93EC7D01A6934A800C03170 /* Intoverted (a).png */,
-				E93EC7D11A6934A800C03170 /* Intoverted (i).png */,
+				E93EC7D01A6934A800C03170 /* Introverted (a).png */,
+				E93EC7D11A6934A800C03170 /* Introverted (i).png */,
 				E93EC7D21A6934A800C03170 /* LOL (a).png */,
 				E93EC7D31A6934A800C03170 /* LOL (i).png */,
 				E93EC7D41A6934A800C03170 /* Loud (a).png */,
@@ -574,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				E93C44441A4D038F00E95265 /* TraitsViewController.swift */,
+				E9E5C5481A6B463A00BE9B2B /* TraitArrayViewController.swift */,
 				E93C44461A4D102100E95265 /* ActivityView.swift */,
 				E9F482DE1A52B34B006DB53C /* CircleImageView.swift */,
 			);
@@ -689,7 +692,7 @@
 				E93EC8281A6934A800C03170 /* Hipster (a).png in Resources */,
 				E934FDA71A484AB800E43B45 /* Main.storyboard in Resources */,
 				E93EC84F1A6934A800C03170 /* Thrilling (i).png in Resources */,
-				E93EC82A1A6934A800C03170 /* Intoverted (a).png in Resources */,
+				E93EC82A1A6934A800C03170 /* Introverted (a).png in Resources */,
 				E93EC84A1A6934A800C03170 /* Sporty (a).png in Resources */,
 				E93EC81A1A6934A800C03170 /* Extroverted (a).png in Resources */,
 				E93EC8041A6934A800C03170 /* Badass (a).png in Resources */,
@@ -700,7 +703,7 @@
 				E93C443D1A4ADB1100E95265 /* Icon@3x.png in Resources */,
 				E93EC8001A6934A800C03170 /* Active (a).png in Resources */,
 				E93EC8261A6934A800C03170 /* Funky (a).png in Resources */,
-				E93EC82B1A6934A800C03170 /* Intoverted (i).png in Resources */,
+				E93EC82B1A6934A800C03170 /* Introverted (i).png in Resources */,
 				E93EC81B1A6934A800C03170 /* Extroverted (i).png in Resources */,
 				E93EC8181A6934A800C03170 /* Experienced (a).png in Resources */,
 				E93EC84E1A6934A800C03170 /* Thrilling (a).png in Resources */,
@@ -826,6 +829,7 @@
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
 				E93C44451A4D038F00E95265 /* TraitsViewController.swift in Sources */,
 				E96956E41A586C7F001D2308 /* AppData.swift in Sources */,
+				E9E5C5491A6B463A00BE9B2B /* TraitArrayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,7 +58,7 @@ class CameraViewController: UIViewController {
 
 		// Set up next button
 		next.frame.size = CGSizeMake(self.view.frame.width, 50)
-		next.frame.origin = CGPointMake(0, AppData.data.navViewHeight - next.frame.size.height)
+		next.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - next.frame.size.height)
 		next.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
 		next.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 		next.setTitle("Next 〉", forState: UIControlState.Normal)

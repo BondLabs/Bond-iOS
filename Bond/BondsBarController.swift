@@ -28,7 +28,7 @@ class BondsBarController: UITabBarController, UITabBarControllerDelegate {
 		// Set up view properties
 		self.tabBar.tintColor = AppData.util.UIColorFromRGB(0x575757)
 		self.tabBar.translucent = false
-		self.setItemSelected(1)
+		self.setItemSelected(0)
 
 		// Create tabBarItem
 		var bondsImage = AppData.util.scaleImage(UIImage(named: "Bonds.png")!, size: CGSizeMake(25, 16), inset: 0)

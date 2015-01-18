@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController {
         var name = "Kevin Zhang"
         var dist:Int! = 8
         var profPic:UIImage!
-        var activities:[String]! = ["A", "B", "C"]
+        var activities:[String]! = ["Brainy", "Curious"]
         
         // Add a name label
         nameLabel = UILabel()

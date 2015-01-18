@@ -11,12 +11,17 @@ import UIKit
 class AppData {
     struct data {
         static var userID:Int!
-		static var statusBarHeight:CGFloat! = UIApplication.sharedApplication().statusBarFrame.height
-		static var navBarHeight:CGFloat! = UINavigationController().navigationBar.frame.height
-		static var tabBarHeight:CGFloat! = UITabBarController().tabBar.frame.height
-		static var normViewHeight:CGFloat! = UIScreen.mainScreen().bounds.height - statusBarHeight
-		static var navViewHeight:CGFloat! = normViewHeight - navBarHeight
-		static var tabBarViewHeight:CGFloat! = navViewHeight - tabBarHeight
+		static var viewWidth = UIScreen.mainScreen().bounds.width
+		struct heights {
+			static var navBarHeight:CGFloat! =  UINavigationController().navigationBar.frame.height
+			static var navViewHeight:CGFloat! = normViewHeight - navBarHeight
+			static var normViewHeight:CGFloat! = UIScreen.mainScreen().bounds.height - statusBarHeight
+			static var pageControlHeight:CGFloat! = 36.0
+			static var statusBarHeight:CGFloat! = UIApplication.sharedApplication().statusBarFrame.height
+			static var tabBarHeight:CGFloat! = UITabBarController().tabBar.frame.height
+			static var tabBarViewHeight:CGFloat! = navViewHeight - tabBarHeight
+		}
+		static var activityNames:[String] = ["Active", "Artist", "Badass", "Brainy", "Caring", "Chill", "Creative", "Cultured", "Curious", "Driven", "Easygoing", "Empathetic", "Experienced", "Extroverted", "Fashionable", "Fit", "Free Spirited", "Friendly", "Fun", "Funky", "Hipster", "Introverted", "LOL", "Loud", "Modern", "Motivated", "Observant", "Ol'Skool", "Open Minded", "Outgoing", "Posh", "Rebellious", "Relaxed", "Romantic", "Rustic", "Sarcastic", "Serious", "Sporty", "Studious", "Thrilling", "Tough", "Traditional", "Trustworthy", "Visual", "Weird"]
     }
     
     struct util {

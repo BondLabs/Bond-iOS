@@ -142,51 +142,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" id="h3c-kB-Hlj" userLabel="Activity 1" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="51" y="49" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="8Cs-el-QV0" userLabel="Activity 2" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="145" y="49" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="H10-Ny-2CY" userLabel="Activity 3" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="239" y="49" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="mSM-q3-JJE" userLabel="Activity 4" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="51" y="237" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="Bv3-fP-thA" userLabel="Activity 5" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="145" y="237" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="j5J-2g-m0f" userLabel="Activity 6" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="239" y="237" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="IBK-eA-Cm1" userLabel="Activity 7" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="51" y="388" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="FRM-cH-Iwr" userLabel="Activity 8" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="145" y="388" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" id="GxG-3c-Vj2" userLabel="Activity 9" customClass="ActivityView" customModule="Bond" customModuleProvider="target">
-                                <rect key="frame" x="239" y="388" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a0c-HG-x4x">
                                 <rect key="frame" x="0.0" y="426" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -200,7 +155,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Profile" id="0j6-2t-8Yb">
                         <barButtonItem key="backBarButtonItem" title="Back" id="F1a-2C-quT"/>
                     </navigationItem>

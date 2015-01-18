@@ -72,7 +72,8 @@ class BondsViewController: UITableViewController {
     // Pass bond id to the detailed controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowBondDetail") {
-            (segue.destinationViewController as BondsDetailViewController).id = 3 // Set id of bond here
+			(segue.destinationViewController as BondsDetailViewController).id = 1
+            (segue.destinationViewController as BondsDetailViewController).name = (sender as BondTableCell).name // Set id of bond here
         }
     }
     

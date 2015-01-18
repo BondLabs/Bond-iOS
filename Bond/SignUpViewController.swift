@@ -34,7 +34,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
 		// Store frame data
-		viewHeight = self.view.frame.height - AppData.data.navBarHeight - AppData.data.statusBarHeight
+		viewHeight = self.view.frame.height - AppData.data.heights.navBarHeight - AppData.data.heights.statusBarHeight
 
         // Set delegates
         firstName.delegate = self
@@ -202,8 +202,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 		keyboardHeight = (sender.userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().height
 
         UIView.animateWithDuration(0.5, animations: {
-            self.nextButton.frame.origin = CGPointMake(0, AppData.data.navViewHeight - self.keyboardHeight - 50)
-            self.doneButton.frame.origin = CGPointMake(0, AppData.data.navViewHeight - self.keyboardHeight - 50)
+            self.nextButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight - 50)
+            self.doneButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight - 50)
         })
     }
 

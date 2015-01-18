@@ -12,6 +12,7 @@ class BondsDetailViewController: UIViewController {
     
     // Store id of relevant user
     var id:Int!
+	var name:String!
     // Store view elements
     var nameLabel: UILabel!
     var distLabel: UILabel!
@@ -27,8 +28,8 @@ class BondsDetailViewController: UIViewController {
         // Set up view properties
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
-        var name = "Test" // Get name of user using id
-        self.navigationItem.title = name
+		// var name = "Test" // Get name of user using id
+        self.navigationItem.title = self.name
         
         // Darker sub background
         var subBG = UIView()
@@ -52,7 +53,7 @@ class BondsDetailViewController: UIViewController {
         var name = "Kevin Zhang"
         var dist:Int! = 8
         var profPic:UIImage!
-        var activities:[String]! = ["A", "B", "C"]
+        var activities:[String]! = ["Brainy", "Curious"]
         
         // Add a name label
         nameLabel = UILabel()
