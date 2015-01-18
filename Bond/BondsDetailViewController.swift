@@ -77,7 +77,7 @@ class BondsDetailViewController: UIViewController {
         profImage.frame.size = CGSizeMake(160, 160)
         profImage.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 5)
         profImage.setDefaultImage(UIImage(named: "Profile(i).png")!)
-        profImage.performSetup(80)
+        profImage.performSetup(1)
         profImage.layer.borderColor = UIColor.blackColor().CGColor
         profImage.layer.borderWidth = 1.0
         self.view.addSubview(profImage)
