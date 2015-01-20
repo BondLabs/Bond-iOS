@@ -19,7 +19,6 @@ class CameraViewController: UIViewController {
 
 	let captureSession:AVCaptureSession! = AVCaptureSession()
 	var captureDevice:AVCaptureDevice!
-	var currentPosition:AVCaptureDevicePosition!
 	var cameraInput:AVCaptureDeviceInput!
 	var cameraOutput:AVCaptureStillImageOutput!
 	var videoConnection:AVCaptureConnection!
@@ -115,8 +114,8 @@ class CameraViewController: UIViewController {
 		next.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
 
 		// Set up capture session
-		self.startSession(AVCaptureDevicePosition.Front)
 		self.startOutput()
+		self.startSession(AVCaptureDevicePosition.Back)
 		self.startPreview()
 		self.setupMask(CGRectMake(0, 30, self.view.frame.width, self.view.frame.width))
     }
@@ -133,9 +132,6 @@ class CameraViewController: UIViewController {
 
 	// Reset and start new capture session
 	func startSession(position: AVCaptureDevicePosition) {
-		// Start atomic configuration
-		captureSession.beginConfiguration()
-
 		// Set session preset
 		captureSession.sessionPreset = AVCaptureSessionPresetPhoto
 
@@ -154,9 +150,6 @@ class CameraViewController: UIViewController {
 		// Set up video connection for taking photos
 		self.findVideo()
 
-		// Commit changes
-		captureSession.commitConfiguration()
-
 		// Start session
 		captureSession.startRunning()
 	}
@@ -167,6 +160,7 @@ class CameraViewController: UIViewController {
 			if device.position == position {
 				captureDevice = device
 				captureDevice.lockForConfiguration(nil)
+				return
 			}
 		}
 		println("Unable to find capture device for position \(position.rawValue)")
@@ -191,14 +185,14 @@ class CameraViewController: UIViewController {
 			return
 		}
 		for connection in self.cameraOutput.connections as [AVCaptureConnection] {
-			if videoConnection != nil {
-				break
-			}
 			for port in connection.inputPorts as [AVCaptureInputPort] {
 				if port.mediaType == AVMediaTypeVideo {
 					videoConnection = connection
 					break
 				}
+			}
+			if videoConnection != nil {
+				break
 			}
 		}
 	}
@@ -249,57 +243,84 @@ class CameraViewController: UIViewController {
 	// Flip the camera
 	func flipCamera() {
 		var nextPosition = AVCaptureDevicePosition.Front
-		if (currentPosition == AVCaptureDevicePosition.Front) {
+		if (captureDevice.position == AVCaptureDevicePosition.Front) {
 			nextPosition = AVCaptureDevicePosition.Back
 		}
 		self.startSession(nextPosition)
 	}
 
+	// Self explanatory...
 	func takePhoto() {
+		// If currently taking a photo, stop
+		// Otherwise, mark: currently taking a photo
 		if (takingPhoto == true) {
 			return
 		} else {
 			takingPhoto = true
 		}
 
-		self.cameraOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: {(imageSampleBuffer:CMSampleBuffer!, error: NSError!) in
-			self.flashScreen()
-			var imageData:NSData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer)
-			self.captureSession.stopRunning()
-			var unscaledImage = UIImage(data: imageData)!
-			var scaledImageSize:CGSize
-			if (self.previewLayer.frame.height / self.previewLayer.frame.width > 4/3) {
-				scaledImageSize = CGSizeMake(3/4 * self.previewLayer.frame.height, self.previewLayer.frame.height)
-			} else {
-				scaledImageSize = CGSizeMake(self.previewLayer.frame.width, 4/3 * self.previewLayer.frame.width)
-			}
-			self.image = AppData.util.scaleImage(unscaledImage, size: scaledImageSize, scale:1.0)
-			self.imagePreview = UIImageView()
-			self.imagePreview.image = self.image
-			self.imagePreview.sizeToFit()
-			self.imagePreview.center = CGPointMake(self.previewLayer.frame.width / 2, self.previewLayer.frame.height / 2)
-			self.view.insertSubview(self.imagePreview, belowSubview: self.mask)
+		if videoConnection == nil {
+			println("Unable to find a video connection")
+			return
+		}
 
-			if self.image != nil {
-				// self.mask.crop(UIColor.blackColor().CGColor)
-				self.capture.toggleColors()
-				self.flash.hidden = true
-				self.flip.hidden = true
-				self.cancel.hidden = false
-			}
-		})
+		// Capture photo
+		cameraOutput.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: {
+			(imageSampleBuffer:CMSampleBuffer!, error: NSError!) in
+				self.previewLayer.connection.enabled = false
+				self.flashScreen()
+				self.image = UIImage(data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer))!
+
+				self.scaleImage()
+				self.setupImagePreview()
+				self.stopCapture()
+			})
 	}
 
+	// Scale stored image to fill previewLayer
+	func scaleImage() {
+		// Make new image size
+		var scaled:CGSize
+		var layerWidth = self.previewLayer.frame.width
+		var layerHeight = self.previewLayer.frame.height
+		if (layerHeight / layerWidth >= 4/3) {
+			scaled = CGSizeMake(3/4 * layerHeight, layerHeight)
+		} else {
+			scaled = CGSizeMake(layerWidth, 4/3 * layerWidth)
+		}
+		image = AppData.util.scaleImage(image, size: scaled, scale: 1.0)
+	}
+
+	// Set up image preview
+	func setupImagePreview() {
+		imagePreview = UIImageView()
+		imagePreview.image = self.image
+		imagePreview.sizeToFit()
+		imagePreview.center = CGPointMake(self.previewLayer.frame.width / 2, self.previewLayer.frame.height / 2)
+		self.view.insertSubview(self.imagePreview, belowSubview: self.mask)
+	}
+
+	// Self explanatory
+	func stopCapture() {
+		captureSession.stopRunning()
+		capture.toggleColors()
+		flash.hidden = true
+		flip.hidden = true
+		cancel.hidden = false
+	}
+
+	// Pretty self explanatory...
 	func cancelCapture() {
 		// Reset view
-		self.image = nil
-		self.imagePreview.removeFromSuperview()
-		self.captureSession.startRunning()
-		self.capture.toggleColors()
-		self.flash.hidden = false
-		self.flip.hidden = false
-		self.cancel.hidden = true
-		self.takingPhoto = false
+		image = nil
+		imagePreview.removeFromSuperview()
+		captureSession.startRunning()
+		previewLayer.connection.enabled = true
+		capture.toggleColors()
+		flash.hidden = false
+		flip.hidden = false
+		cancel.hidden = true
+		takingPhoto = false
 	}
 
 	func flashScreen() {
@@ -309,7 +330,6 @@ class CameraViewController: UIViewController {
 			whiteScreen.layer.backgroundColor = UIColor.whiteColor().CGColor
 			self.view.addSubview(whiteScreen)
 		}
-
 		var opacityAnimation = CAKeyframeAnimation(keyPath: "opacity")
 		var animationValues = [0.8, 0.0]
 		var animationTimes = [0.3, 1.0]
@@ -321,7 +341,6 @@ class CameraViewController: UIViewController {
 		opacityAnimation.fillMode = kCAFillModeForwards
 		opacityAnimation.removedOnCompletion = true
 		opacityAnimation.duration = 0.4
-
 		whiteScreen.layer.addAnimation(opacityAnimation, forKey: "animation")
 	}
 
