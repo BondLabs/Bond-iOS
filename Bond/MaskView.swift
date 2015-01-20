@@ -10,16 +10,22 @@ import UIKit
 
 class MaskView: UIView {
 
-	func cropCircle(circleBounds:CGRect) {
+	var circleBounds:CGRect!
+
+	func setCircleBounds(circleBounds:CGRect) {
+		self.circleBounds = circleBounds
+	}
+
+	func crop(color:CGColor) {
 		// Create a rectangle of appropriate size and fill with correct color
 		var viewRect = CGRect(origin: CGPointZero, size: self.frame.size)
 		UIGraphicsBeginImageContext(self.frame.size)
-		var context:CGContextRef = UIGraphicsGetCurrentContext();
-		CGContextSetFillColorWithColor(context, UIColor(red: 0/255.0, green: 164/255.0, blue: 255/255.0, alpha: 0.5).CGColor)
+		var context = UIGraphicsGetCurrentContext();
+		CGContextSetFillColorWithColor(context, color)
 		CGContextFillRect(context, viewRect)
 
 		// Get intersecting region
-		var intersect = CGRectIntersection(self.frame, circleBounds)
+		var intersect = CGRectIntersection(self.frame, self.circleBounds)
 		// Add a circle in the intersection
 		CGContextAddEllipseInRect(context, intersect)
 		CGContextClip(context)

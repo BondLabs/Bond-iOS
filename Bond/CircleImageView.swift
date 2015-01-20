@@ -20,27 +20,25 @@ class CircleImageView: UIImageView {
     
     var selected:Bool! = false
     var scaleFactor:CGFloat!
-    
-    /* * *
+	var untappedBackground:UIColor! = AppData.util.UIColorFromRGB(0x00A4FF)
+	var tappedBackground:UIColor! = AppData.util.UIColorFromRGB(0xFFFFFF)
+
+	/* * *
      * * * Functions to set up the imageview------------------------------------
      * * */
     
     // Store icons
     var untappedIcon:UIImage! = UIImage(named: "Profile(i).png")
     var tappedIcon:UIImage! = UIImage(named: "Profile(a).png")
-    
-    // Store background color
-    var bgColor:UIColor!
 
     // Initial setup of the view
     func performSetup(scale: CGFloat) {
-        // Store inset
+        // Store scale
         self.scaleFactor = scale
         
         // Set view up
         self.contentMode = UIViewContentMode.Center
-        bgColor = AppData.util.UIColorFromRGB(0x00A4FF)
-        self.backgroundColor = bgColor
+        self.backgroundColor = self.untappedBackground
 
         // Turn the frame into a circle
         self.layer.cornerRadius = self.frame.width / 2
@@ -91,13 +89,13 @@ class CircleImageView: UIImageView {
     
     func setUntapped() {
         self.selected = false
-        self.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+        self.backgroundColor = self.untappedBackground
         self.refreshImage()
     }
     
     func setTapped() {
         self.selected = true
-        self.backgroundColor = AppData.util.UIColorFromRGB(0xFFFFFF)
+        self.backgroundColor = self.tappedBackground
         self.refreshImage()
     }
     

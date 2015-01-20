@@ -31,8 +31,8 @@ class BondsBarController: UITabBarController, UITabBarControllerDelegate {
 		self.setItemSelected(0)
 
 		// Create tabBarItem
-		var bondsImage = AppData.util.scaleImage(UIImage(named: "Bonds.png")!, size: CGSizeMake(25, 16), inset: 0)
-		var profImage = AppData.util.scaleImage(UIImage(named: "Profile.png")!, size: CGSizeMake(25, 25), inset: 0)
+		var bondsImage = AppData.util.scaleImage(UIImage(named: "Bonds.png")!, size: CGSizeMake(25, 16), scale:1.0)
+		var profImage = AppData.util.scaleImage(UIImage(named: "Profile.png")!, size: CGSizeMake(25, 25), scale:1.0)
 
 		views[0].tabBarItem = UITabBarItem(title: nil, image: bondsImage, selectedImage: bondsImage)
 		views[1].tabBarItem = UITabBarItem(title: nil, image: profImage, selectedImage: profImage)

@@ -34,13 +34,22 @@ class AppData {
             )
         }
 
-		static func scaleImage(image: UIImage, size: CGSize, inset: CGFloat) -> UIImage {
-			var smallSize = CGSizeMake(size.width - CGFloat(inset), size.height - CGFloat(inset))
+		static func scaleImage(image: UIImage, size: CGSize, scale: CGFloat) -> UIImage {
+			var smallSize = CGSizeMake(size.width * scale, size.height * scale)
 			UIGraphicsBeginImageContextWithOptions(smallSize, false, 0)
 			image.drawInRect(CGRect(origin: CGPointZero, size: smallSize))
 			var scaled:UIImage = UIGraphicsGetImageFromCurrentImageContext()
 			UIGraphicsEndImageContext()
 			return scaled
+		}
+
+		static func cropImage(image:UIImage, fromSize:CGSize, toSize:CGSize) -> UIImage {
+			var cropCenter:CGPoint = CGPointMake(fromSize.width / 2, fromSize.height / 2)
+			var cropStart:CGPoint = CGPointMake(cropCenter.x - toSize.width/2, cropCenter.y - toSize.height / 2)
+			var cropRect:CGRect = CGRectMake(cropStart.x, cropStart.y, toSize.width, toSize.height)
+			var cropRef:CGImageRef = CGImageCreateWithImageInRect(image.CGImage, cropRect)
+			var cropImage:UIImage = UIImage(CGImage: cropRef)!
+			return cropImage
 		}
     }
 }
