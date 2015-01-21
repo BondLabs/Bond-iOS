@@ -545,6 +545,10 @@
                                 <rect key="frame" x="135" y="422" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Mo1-bR-rrM">
+                                <rect key="frame" x="16" y="422" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -554,6 +558,7 @@
                     <connections>
                         <outlet property="cancel" destination="Hjw-o6-8jg" id="gwj-z6-DLF"/>
                         <outlet property="capture" destination="nez-dK-eAO" id="fP9-Hs-YP6"/>
+                        <outlet property="chooser" destination="Mo1-bR-rrM" id="qkJ-Df-YNL"/>
                         <outlet property="flash" destination="acN-Ni-6Dw" id="3gw-sj-MaU"/>
                         <outlet property="flip" destination="LSk-S8-3hT" id="Wwn-SX-ZyD"/>
                         <outlet property="next" destination="70u-UK-QKV" id="sO7-H5-1xG"/>

@@ -82,7 +82,7 @@ class StartViewController: UIViewController {
     }
 
 	@IBAction func signUpTouched(sender: UIButton) {
-		sender.backgroundColor = AppData.util.UIColorFromRGB(0x0094E6)
+			sender.backgroundColor = AppData.util.UIColorFromRGB(0x0094E6)
 	}
 
 	@IBAction func signUpReleased(sender: UIButton) {

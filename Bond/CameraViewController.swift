@@ -8,27 +8,30 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
 	@IBOutlet var flash: UIImageView!
 	@IBOutlet var flip: UIImageView!
 	@IBOutlet var capture: CircleImageView!
 	@IBOutlet var cancel: UIImageView!
 	@IBOutlet var next: UIButton!
+	@IBOutlet var chooser: UIImageView!
 
 	let captureSession:AVCaptureSession! = AVCaptureSession()
 	var captureDevice:AVCaptureDevice!
 	var cameraInput:AVCaptureDeviceInput!
 	var cameraOutput:AVCaptureStillImageOutput!
 	var videoConnection:AVCaptureConnection!
-	var capturedPhoto:UIImage!
 	var image:UIImage!
 	var imagePreview:UIImageView!
 	var previewLayer:AVCaptureVideoPreviewLayer!
 	var mask:MaskView!
 	var takingPhoto:Bool! = false
+	var canceling:Bool! = false
 	var whiteScreen:UIView!
+	var picker:UIImagePickerController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,17 +96,28 @@ class CameraViewController: UIViewController {
 		cancel.center = CGPointMake(self.view.frame.width - 30, AppData.data.heights.navViewHeight - 100)
 		cancel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "cancelCapture"))
 
+		// Set up chooser button
+		chooser.userInteractionEnabled = true
+		chooser.frame.size = CGSizeMake(50, 50)
+		chooser.center = CGPointMake(45, AppData.data.heights.navViewHeight - 100)
+		chooser.layer.cornerRadius = 5
+		chooser.clipsToBounds = true
+		chooser.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showPicker"))
+		updatePicker()
+
 		// Finish setting up buttons
 		flash.hidden = false
 		flip.hidden = false
 		capture.hidden = false
 		cancel.hidden = true
+		chooser.hidden = false
 
 		// Bring buttons to front
 		self.view.bringSubviewToFront(flash)
 		self.view.bringSubviewToFront(flip)
 		self.view.bringSubviewToFront(capture)
 		self.view.bringSubviewToFront(cancel)
+		self.view.bringSubviewToFront(chooser)
 
 		// Set up next button
 		next.frame.size = CGSizeMake(self.view.frame.width, 50)
@@ -114,10 +128,10 @@ class CameraViewController: UIViewController {
 		next.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
 
 		// Set up capture session
-		self.startOutput()
-		self.startSession(AVCaptureDevicePosition.Back)
-		self.startPreview()
-		self.setupMask(CGRectMake(0, 30, self.view.frame.width, self.view.frame.width))
+		startOutput()
+		startSession(AVCaptureDevicePosition.Front)
+		startPreview()
+		setupMask(CGRectMake(0, 30, self.view.frame.width, self.view.frame.width))
     }
 
 	// Set up camera mask
@@ -226,14 +240,11 @@ class CameraViewController: UIViewController {
 		if captureDevice?.flashAvailable == true {
 			var currMode = captureDevice?.flashMode as AVCaptureFlashMode?
 			if (currMode == .Auto) {
-				println("Flash On")
 				captureDevice?.flashMode = .On
 			} else if currMode == .On {
 				captureDevice?.flashMode = .Off
-				println("Flash Off")
 			} else {
 				captureDevice?.flashMode = .Auto
-				println("Flash Auto")
 			}
 		} else {
 			println("Capture device's flash is unavailable")
@@ -256,7 +267,7 @@ class CameraViewController: UIViewController {
 		if (takingPhoto == true) {
 			return
 		} else {
-			takingPhoto = true
+			capture.toggleColors()
 		}
 
 		if videoConnection == nil {
@@ -270,6 +281,9 @@ class CameraViewController: UIViewController {
 				self.previewLayer.connection.enabled = false
 				self.flashScreen()
 				self.image = UIImage(data: AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageSampleBuffer))!
+				if self.captureDevice.position == AVCaptureDevicePosition.Front {
+					self.image = UIImage(CGImage: self.image.CGImage, scale: 1.0, orientation: UIImageOrientation.LeftMirrored)
+				}
 
 				self.scaleImage()
 				self.setupImagePreview()
@@ -283,16 +297,21 @@ class CameraViewController: UIViewController {
 		var scaled:CGSize
 		var layerWidth = self.previewLayer.frame.width
 		var layerHeight = self.previewLayer.frame.height
-		if (layerHeight / layerWidth >= 4/3) {
-			scaled = CGSizeMake(3/4 * layerHeight, layerHeight)
+		var imageRatio = self.image.size.height / self.image.size.width
+		if (layerHeight / layerWidth >= imageRatio) {
+			scaled = CGSizeMake(layerHeight / imageRatio, layerHeight)
 		} else {
-			scaled = CGSizeMake(layerWidth, 4/3 * layerWidth)
+			scaled = CGSizeMake(layerWidth, layerWidth * imageRatio)
 		}
 		image = AppData.util.scaleImage(image, size: scaled, scale: 1.0)
 	}
 
 	// Set up image preview
 	func setupImagePreview() {
+		if imagePreview != nil {
+			imagePreview.removeFromSuperview()
+			imagePreview = nil
+		}
 		imagePreview = UIImageView()
 		imagePreview.image = self.image
 		imagePreview.sizeToFit()
@@ -303,7 +322,6 @@ class CameraViewController: UIViewController {
 	// Self explanatory
 	func stopCapture() {
 		captureSession.stopRunning()
-		capture.toggleColors()
 		flash.hidden = true
 		flip.hidden = true
 		cancel.hidden = false
@@ -311,9 +329,13 @@ class CameraViewController: UIViewController {
 
 	// Pretty self explanatory...
 	func cancelCapture() {
+		if canceling == true {
+			return
+		}
 		// Reset view
 		image = nil
 		imagePreview.removeFromSuperview()
+		imagePreview = nil
 		captureSession.startRunning()
 		previewLayer.connection.enabled = true
 		capture.toggleColors()
@@ -321,8 +343,11 @@ class CameraViewController: UIViewController {
 		flip.hidden = false
 		cancel.hidden = true
 		takingPhoto = false
+		canceling = false
+		takingPhoto = false
 	}
 
+	// Camera flash screen animation
 	func flashScreen() {
 		if (whiteScreen == nil) {
 			whiteScreen = UIView(frame: UIScreen.mainScreen().bounds)
@@ -344,6 +369,47 @@ class CameraViewController: UIViewController {
 		whiteScreen.layer.addAnimation(opacityAnimation, forKey: "animation")
 	}
 
+	// Set up image picker preview
+	func updatePicker() {
+		var fetchOptions = PHFetchOptions()
+		fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+		var fetchResult = PHAsset.fetchAssetsWithMediaType(PHAssetMediaType.Image, options: fetchOptions)
+		if (fetchResult.lastObject != nil) {
+			var lastAsset = fetchResult.lastObject as PHAsset
+			PHImageManager.defaultManager().requestImageForAsset(lastAsset, targetSize: CGSizeMake(50, 50), contentMode: PHImageContentMode.AspectFill, options: PHImageRequestOptions(), resultHandler: { (result, info) -> Void in
+				self.chooser.image = result
+			})
+		}
+	}
+
+	// Show image picker screen
+	func showPicker() {
+		image = nil
+		takingPhoto = true
+		picker = UIImagePickerController()
+		picker.delegate = self
+		picker.modalPresentationStyle = UIModalPresentationStyle.Popover
+		picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+		self.presentViewController(picker, animated: true, completion: nil)
+	}
+
+	// Canceled image selection
+	func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+		// Handle cancel
+		picker.dismissViewControllerAnimated(true, completion: nil)
+	}
+
+	// Selected an image
+	func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+		// Handle new image
+		self.image = image
+		self.scaleImage()
+		self.setupImagePreview()
+		self.stopCapture()
+		picker.dismissViewControllerAnimated(true, completion: nil)
+	}
+
+	// Check for segue and override navigation stack
 	override func viewWillDisappear(animated: Bool) {
 		var count = self.navigationController?.viewControllers.count
 		if (self.navigationController?.viewControllers[count! - 1] is BondsBarController) {
