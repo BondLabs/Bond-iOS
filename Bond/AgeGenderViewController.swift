@@ -87,14 +87,21 @@ class AgeGenderViewController: UIViewController {
 				self.male.select()
 				self.female.deselect()
 				self.divider1.alpha = 0.0
+				UserAccountController.sharedInstance.newGender = "male"
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {
 				self.male.deselect()
 				self.divider1.alpha = 1.0
+				UserAccountController.sharedInstance.newGender = "other"
 			})
 		}
 	}
+	
+	@IBAction func tappedDone(sender: AnyObject) {
+		UserAccountController.sharedInstance.register()
+	}
+	
 
 	@IBAction func femaleTapped(sender: AnyObject) {
 		if (female.active == false) {
@@ -102,9 +109,11 @@ class AgeGenderViewController: UIViewController {
 				self.female.select()
 				self.male.deselect()
 				self.divider1.alpha = 0.0
+				UserAccountController.sharedInstance.newGender = "female"
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {
+				UserAccountController.sharedInstance.newGender = "other"
 				self.female.deselect()
 				self.divider1.alpha = 1.0
 			})
@@ -117,11 +126,13 @@ class AgeGenderViewController: UIViewController {
 				self.single.select()
 				self.taken.deselect()
 				self.divider2.alpha = 0.0
+				UserAccountController.sharedInstance.newRelationshipStatus = "single"
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {
 				self.single.deselect()
 				self.divider2.alpha = 1.0
+				UserAccountController.sharedInstance.newGender = "complicated"
 			})
 		}
 	}
@@ -132,11 +143,13 @@ class AgeGenderViewController: UIViewController {
 				self.taken.select()
 				self.single.deselect()
 				self.divider2.alpha = 0.0
+				UserAccountController.sharedInstance.newGender = "taken"
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {
 				self.taken.deselect()
 				self.divider2.alpha = 1.0
+				UserAccountController.sharedInstance.newGender = "complicated"
 			})
 		}
 	}

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnectionDelegate {
     
     /* * * 
      * * * View properties------------------------------------------------------
@@ -131,7 +131,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // Capture taps on nextButton
     @IBAction func nextButtonTapped(sender: UIButton) {
-        if (selectedField == self.firstName) {
+		if (selectedField == self.firstName) {
             self.showNextButton()
             lastName.becomeFirstResponder()
         } else if (selectedField == self.lastName) {
@@ -144,7 +144,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
 	@IBAction func doneButtonTapped(sender: UIButton) {
+		
+		let uc = UserAccountController.sharedInstance
+		
+		uc.newFirstName = firstName.text
+		uc.newLastName = firstName.text
+		uc.newPhoneNumber = phoneNumber.text
+		uc.newPassword = password.text
+		
+		
+		
+		
 	}
+	
+		
+	
 
     func showNextButton() {
         // If next button is already showing, animate reshow
