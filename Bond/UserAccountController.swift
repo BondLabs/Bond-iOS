@@ -52,8 +52,9 @@ class UserAccountController: NSObject {
 		
 		//Create a string with all the needed data
 		
-		let post = NSString(format: "id=%d&name=%@&email=%@&phone=%@&password=%@&age=%d&gender=%@", id, name, email, phone, password, age, gender)
+		//let post = NSString(format: "id=%d&name=%@&email=%@&phone=%@&password=%@&age=%d&gender=%@", id, name, email, phone, password, age, gender)
 		
+		let post = NSString(format: "name=%@&email=%@&phone=%@&password=%@&age=%d&gender=%@", name, email, phone, password, age, gender)
 		//convert the string to an NSData object
 		
 		let postData = post.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)

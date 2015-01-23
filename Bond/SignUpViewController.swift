@@ -148,7 +148,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		let uc = UserAccountController.sharedInstance
 		
 		uc.newFirstName = firstName.text
-		uc.newLastName = firstName.text
+		uc.newLastName = lastName.text
 		uc.newPhoneNumber = phoneNumber.text
 		uc.newPassword = password.text
 		
