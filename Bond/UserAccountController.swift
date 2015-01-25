@@ -8,7 +8,17 @@
 
 import UIKit
 
-class UserAccountController: NSObject {
+
+
+
+class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
+	
+	
+	
+	
+	
+	
+	var currentUser: BondUser!
 	
 	var newFirstName: NSString = "First"
 	var newLastName: NSString = "Last"
@@ -18,8 +28,11 @@ class UserAccountController: NSObject {
 	var newAge: Int = 1
 	var newGender: NSString = "other"
 	var newRelationshipStatus = "complicated"
+	var newProfileImage = UIImage()
 	var id: Int = 1
-	var authKey: NSString = "authy"
+	let authKey = "37D74DBC-C160-455D-B4AE-A6396FEE7954"
+	
+	
 	
 	class var sharedInstance: UserAccountController {
 		struct Static {
@@ -34,67 +47,93 @@ class UserAccountController: NSObject {
 		return Static.instance!
 	}
 	
-	
+	//@availability(deprecated)
 	func register() {
 		let name = NSString(format: "%@ %@", newFirstName, newLastName)
 		println("registerring for bond")
-		registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: nil)
+		//registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: nil)
+		
+		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, newPhoneNumber, newPassword, newAge, newGender), api_key: authKey, type: requestType.register)
 	}
 	
+	func registerWithInfo(name: NSString, phone: NSString, password: NSString, age: Int, gender: NSString) {
+		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, newPhoneNumber, newPassword, newAge, newGender), api_key: authKey, type: requestType.register)
+	}
+	
+	
+	@availability(*, deprecated=8.0, message="You relly shouldn't use this, try loginWithInfo() instead")
 	func login() {
+		
+		
 		println("loggin into bond")
-		let name = NSString(format: "%@ %@", newFirstName, newLastName)
-		registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: authKey)
+		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", newPhoneNumber, newPassword), api_key: "", type: requestType.login)
 	}
 	
 	
-	func registerOrLoginWithURL(URL: NSString, id: Int, name: NSString, email: NSString, phone: NSString, password: NSString, age: Int, gender: NSString, auth_key: NSString?) {
+	func loginWithInfo(phone: NSString, password: NSString) {
+		println("loggin into bond")
 		
-		//Create a string with all the needed data
+		NSLog("value is %@", authKey)
+		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", phone, password), api_key: authKey, type: requestType.login)
+	}
+	
+	func getLoginWithInfo(phone: NSString, password: NSString) -> NSDictionary? {
+		var writeError: NSError?
+		let URLResponseData = RemoteAPIController.sharedInstance.returnSendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", phone, password), api_key: authKey, type: requestType.login)
+		var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
 		
-		//let post = NSString(format: "id=%d&name=%@&email=%@&phone=%@&password=%@&age=%d&gender=%@", id, name, email, phone, password, age, gender)
 		
-		let post = NSString(format: "name=%@&email=%@&phone=%@&password=%@&age=%d&gender=%@", name, email, phone, password, age, gender)
-		//convert the string to an NSData object
+		//NSLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
 		
-		let postData = post.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
-		
-		//Calculate length for HTTP
-		
-		let postLength = NSString(format: "%d", postData!.length)
-		
-		//Create URL Request
-		
-		let request = NSMutableURLRequest()
-		
-		//Set the URL
-		request.URL = NSURL(string: URL)
-		
-		//We obviously want to POST
-		
-		request.HTTPMethod = "POST"
-		
-		//Put the relevant info into the header (length, auth, format, etc.)
-		
-		request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-		
-		if (auth_key != nil) {
-			request.setValue(auth_key, forHTTPHeaderField: "auth_key")
+		if (dataDictionary?.objectForKey("error") != nil) {
+			
+			
+			
+			
+			//let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
+			
+			
+			return NSDictionary(object: "getLoginWithInfo dictionary doesn't exist", forKey: "error")
 		}
 		else {
-			request.setValue("", forHTTPHeaderField: "auth_key")
+			
+			return dataDictionary!
 		}
-		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-		
-		//Add the data to the request
-		
-		request.HTTPBody = postData
-		
-		//Let her rip
-		
-		let connection = NSURLConnection(request: request, delegate: self)
-		
+
 		
 	}
+	
+	func getUserInfo(id: Int, authKey: NSString) -> NSDictionary? {
+		var writeError: NSError?
+		NSLog("ID is \(id) and authKey is \(authKey)")
+		let URLResponseData = RemoteAPIController.sharedInstance.returnGetAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.user)
+		var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+		
+		
+		//NSLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
+		
+		//if (dataDictionary?.objectForKey("error") != nil) {
+			
+			
+			
+			
+			//let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
+			
+		//return NSDictionary(object: "getUserInfo dictionary doesn't exist", forKey: "error")
+			
+		//}
+		//else {
+			return dataDictionary!
+		//}
+	}
+	
+	func getAndSaveUserInfo(id: Int, authKey: NSString) {
+		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.user)
+	}
+	
+	
+	
+	
+	
 
 }

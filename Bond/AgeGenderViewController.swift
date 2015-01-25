@@ -18,6 +18,7 @@ class AgeGenderViewController: UIViewController {
 	@IBOutlet var next: UIButton!
 	var divider1:UIView!
 	var divider2:UIView!
+	//@IBOutlet var agePicker: UIDatePicker!
 	@IBOutlet var agePicker: UIDatePicker!
 
 	override func viewDidLoad() {
@@ -70,7 +71,24 @@ class AgeGenderViewController: UIViewController {
 		self.view.addSubview(divider2)
 
 		// Set up date picker for age
+		/*
+		let blurEffect = UIBlurEffect(style: .Dark)
+		let visualEffectView = UIVisualEffectView(effect: blurEffect) as UIVisualEffectView
+		visualEffectView.tintColor = AppData.util.UIColorFromRGB(0x00A4FF)
+		visualEffectView.layer.cornerRadius = 5
+		visualEffectView.bounds = agePicker.bounds
+		
+		agePicker.addSubview(visualEffectView)
 
+		*/
+		
+		
+		
+		//agePicker.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+		//agePicker.backgroundColor = AppData.util.UIColorFromRGB(0x707070)
+		//agePicker.layer.cornerRadius = 20
+		//agePicker.layer.masksToBounds = true
+		
 
 		// Set up next button
 		next.frame.size = CGSizeMake(self.view.frame.width, 50)
@@ -153,4 +171,5 @@ class AgeGenderViewController: UIViewController {
 			})
 		}
 	}
-}
+	
+	}

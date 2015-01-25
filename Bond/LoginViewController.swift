@@ -146,6 +146,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.loginButton.frame = CGRectMake(0, viewSize.height, viewSize.width, UIScreen.mainScreen().bounds.height / 12)
     }
     
+	@IBAction func didTouchButton(sender: UIButton) {
+		let uc = UserAccountController.sharedInstance
+		
+		uc.loginWithInfo(phoneNumber.text, password: password.text)
+		//uc.newPhoneNumber = phoneNumber.text
+		//uc.newPassword = password.text
+		//uc.login()
+		
+	}
     /* * *
      * * * Capture segue events
      * * */

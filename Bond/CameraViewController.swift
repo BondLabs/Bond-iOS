@@ -399,6 +399,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		picker.dismissViewControllerAnimated(true, completion: nil)
 	}
 
+	@IBAction func hitNextButton(sender: UIButton) {
+	}
 	// Selected an image
 	func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
 		// Handle new image
