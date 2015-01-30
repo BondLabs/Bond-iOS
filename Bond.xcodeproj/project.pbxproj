@@ -15,6 +15,8 @@
 		0277FA7F1A74C3EE000FC661 /* BondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277FA7E1A74C3EE000FC661 /* BondUser.swift */; };
 		02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */; };
 		02BA37E41A7B59CA004F948B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BA37E31A7B59CA004F948B /* NSData+Base64.m */; };
+		02DA42121A7B6B220098012F /* NSURLConnection+AsyncBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */; };
+		02DA42151A7B712E0098012F /* NSURLConnection+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */; };
 		E911E4041A64189D0027DB0C /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E911E4031A6418090027DB0C /* Avenir.ttc */; };
 		E912FF381A650C0E004E79A9 /* Flip.png in Resources */ = {isa = PBXBuildFile; fileRef = E912FF371A650C0E004E79A9 /* Flip.png */; };
 		E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F531A52C0F9004DDE48 /* BondsBarController.swift */; };
@@ -169,6 +171,10 @@
 		02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPIController.swift; sourceTree = "<group>"; };
 		02BA37E21A7B59CA004F948B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		02BA37E31A7B59CA004F948B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		02DA42101A7B6B220098012F /* NSURLConnection+AsyncBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+AsyncBlocks.h"; sourceTree = "<group>"; };
+		02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+AsyncBlocks.m"; sourceTree = "<group>"; };
+		02DA42131A7B712E0098012F /* NSURLConnection+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+Blocks.h"; sourceTree = "<group>"; };
+		02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+Blocks.m"; sourceTree = "<group>"; };
 		02E2C6521A7015D3001817D4 /* BlurredButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurredButton.swift; sourceTree = "<group>"; };
 		E911E4031A6418090027DB0C /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		E912FF371A650C0E004E79A9 /* Flip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flip.png; sourceTree = "<group>"; };
@@ -343,6 +349,10 @@
 		020012861A72201200322BC7 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				02DA42101A7B6B220098012F /* NSURLConnection+AsyncBlocks.h */,
+				02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */,
+				02DA42131A7B712E0098012F /* NSURLConnection+Blocks.h */,
+				02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */,
 				02BA37E21A7B59CA004F948B /* NSData+Base64.h */,
 				02BA37E31A7B59CA004F948B /* NSData+Base64.m */,
 				020012831A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.h */,
@@ -866,6 +876,7 @@
 				E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */,
 				E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
+				02DA42151A7B712E0098012F /* NSURLConnection+Blocks.m in Sources */,
 				02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */,
 				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
@@ -873,6 +884,7 @@
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
 				E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */,
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
+				02DA42121A7B6B220098012F /* NSURLConnection+AsyncBlocks.m in Sources */,
 				E93C44451A4D038F00E95265 /* TraitsViewController.swift in Sources */,
 				E96956E41A586C7F001D2308 /* AppData.swift in Sources */,
 				E9E5C5491A6B463A00BE9B2B /* TraitArrayViewController.swift in Sources */,
