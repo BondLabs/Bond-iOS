@@ -48,11 +48,12 @@ class ProfileViewController: UIViewController {
     
     func setup(id: Int) {
         // Get user details from id
-        var name = "Kevin Zhang"
+		let user = UserAccountController.sharedInstance.currentUser
+		var name: NSString = user.name as NSString
         var dist:Int! = 8
         var profPic:UIImage!
         var activities:[String]! = ["Brainy", "Curious"]
-        
+		
         // Add a name label
         nameLabel = UILabel()
         nameLabel.text = name
@@ -75,7 +76,9 @@ class ProfileViewController: UIViewController {
         profImage = CircleImageView()
         profImage.frame.size = CGSizeMake(160, 160)
         profImage.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 5)
-        profImage.setDefaultImage(UIImage(named: "Profile(i).png")!)
+		//profImage.setDefaultImage(UIImage(named: "Profile(i).png")!)
+		//profImage.setDefaultImage(UserAccountController.sharedInstance.currentUser.image)
+		profImage.image = UserAccountController.sharedInstance.currentUser.image
         profImage.performSetup(1)
         profImage.layer.borderColor = UIColor.blackColor().CGColor
         profImage.layer.borderWidth = 1.0

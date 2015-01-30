@@ -31,6 +31,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	var newProfileImage = UIImage()
 	var id: Int = 1
 	let authKey = "37D74DBC-C160-455D-B4AE-A6396FEE7954"
+	var isUserLoggedIn = false
 	
 	
 	
@@ -57,7 +58,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	}
 	
 	func registerWithInfo(name: NSString, phone: NSString, password: NSString, age: Int, gender: NSString) {
-		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, newPhoneNumber, newPassword, newAge, newGender), api_key: authKey, type: requestType.register)
+		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, phone, password, age, gender), api_key: authKey, type: requestType.register)
 	}
 	
 	
@@ -70,14 +71,16 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	}
 	
 	
-	func loginWithInfo(phone: NSString, password: NSString) {
+	func loginWithInfo(phone: NSString, password: NSString)
+	{
 		println("loggin into bond")
 		
 		NSLog("value is %@", authKey)
 		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", phone, password), api_key: authKey, type: requestType.login)
 	}
 	
-	func getLoginWithInfo(phone: NSString, password: NSString) -> NSDictionary? {
+	func getLoginWithInfo(phone: NSString, password: NSString) -> NSDictionary?
+	{
 		var writeError: NSError?
 		let URLResponseData = RemoteAPIController.sharedInstance.returnSendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", phone, password), api_key: authKey, type: requestType.login)
 		var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
@@ -85,7 +88,8 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		
 		//NSLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
 		
-		if (dataDictionary?.objectForKey("error") != nil) {
+		if (dataDictionary?.objectForKey("error") != nil)
+		{
 			
 			
 			
@@ -103,34 +107,31 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		
 	}
 	
-	func getUserInfo(id: Int, authKey: NSString) -> NSDictionary? {
-		var writeError: NSError?
-		NSLog("ID is \(id) and authKey is \(authKey)")
-		let URLResponseData = RemoteAPIController.sharedInstance.returnGetAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.user)
-		var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
-		
-		
-		//NSLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-		
-		//if (dataDictionary?.objectForKey("error") != nil) {
-			
-			
-			
-			
-			//let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
-			
-		//return NSDictionary(object: "getUserInfo dictionary doesn't exist", forKey: "error")
-			
-		//}
-		//else {
-			return dataDictionary!
-		//}
+	func getUserInfo(id: Int, authKey: NSString, delegate: NSURLConnectionDataDelegate)
+	{
+		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.custom, delegate:delegate)
 	}
 	
-	func getAndSaveUserInfo(id: Int, authKey: NSString) {
-		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.user)
+	func getAndSaveUserInfo(id: Int, authKey: NSString)
+	{
+		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.user, delegate:nil)
 	}
 	
+	func setUserPhoto(id: Int, authKey: NSString, image: UIImage) {
+		var imageData = UIImagePNGRepresentation(image)
+		let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
+		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/images", data: "id=\(id)&image_data=\(base64String)", api_key: authKey, type: requestType.image)
+	}
+	
+	func getAndSaveBonds(id: Int, authKey: NSString)
+	{
+		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/bonds/\(id)", api_key: authKey, type: requestType.allbonds, delegate:nil)
+	}
+	
+	func sendCustomRequest(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, delegate: NSURLConnectionDataDelegate)
+	{
+		RemoteAPIController.sharedInstance.customAPIRequest(URL, data: data, header: header, HTTPMethod: HTTProtocol, delegate: delegate)
+	}
 	
 	
 	

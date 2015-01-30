@@ -400,11 +400,13 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 	}
 
 	@IBAction func hitNextButton(sender: UIButton) {
+		UserAccountController.sharedInstance.currentUser.setUserPicture(self.image)
 	}
 	// Selected an image
 	func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
 		// Handle new image
 		self.image = image
+		
 		self.scaleImage()
 		self.setupImagePreview()
 		self.stopCapture()

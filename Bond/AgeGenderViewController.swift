@@ -106,6 +106,7 @@ class AgeGenderViewController: UIViewController {
 				self.female.deselect()
 				self.divider1.alpha = 0.0
 				UserAccountController.sharedInstance.newGender = "male"
+				NSLog("I'm a male")
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {
@@ -118,6 +119,7 @@ class AgeGenderViewController: UIViewController {
 	
 	@IBAction func tappedDone(sender: AnyObject) {
 		UserAccountController.sharedInstance.register()
+		
 	}
 	
 
@@ -128,6 +130,7 @@ class AgeGenderViewController: UIViewController {
 				self.male.deselect()
 				self.divider1.alpha = 0.0
 				UserAccountController.sharedInstance.newGender = "female"
+				NSLog("I'm a female")
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {
