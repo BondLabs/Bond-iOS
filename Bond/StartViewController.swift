@@ -67,13 +67,13 @@ class StartViewController: UIViewController {
         descLabel.frame = CGRectMake(0, 0, screenSize.width, screenSize.height / 10)
         descLabel.center = CGPointMake(screenSize.width / 2, screenSize.height * 0.65)
 		
-		var blurEffect = UIBlurEffect(style: .Dark)
-		var visualEffectView = UIVisualEffectView(effect: blurEffect) as UIVisualEffectView
+		//var blurEffect = UIBlurEffect(style: .Dark)
+		//var visualEffectView = UIVisualEffectView(effect: blurEffect) as UIVisualEffectView
 		
 		
-		signUpButton.blurView = visualEffectView
+		//signUpButton.blurView = visualEffectView
         // Initialize signup button
-		signUpButton.backgroundColor = AppData.util.UIColorFromRGBA(0x00A4FF, alphaValue: 0.5)
+		signUpButton.backgroundColor = AppData.util.UIColorFromRGBA(0x00A4FF, alphaValue: 1.0)
 		
 		
         signUpButton.frame = CGRectMake(0, screenSize.height - screenSize.width * 2 / 15, screenSize.width / 2, screenSize.width * 2 / 15)

@@ -83,6 +83,14 @@ class ProfileViewController: UIViewController {
         profImage.layer.borderColor = UIColor.blackColor().CGColor
         profImage.layer.borderWidth = 1.0
         self.view.addSubview(profImage)
+		
+		let chatButton = UIButton()
+		chatButton.frame.size = CGSize(width: 160.0, height: 40.0)
+		chatButton.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 2)
+		chatButton.backgroundColor = UIColor.blueColor()
+		chatButton.layer.cornerRadius = 20.0
+		chatButton.layer.masksToBounds = true
+		self.view.addSubview(chatButton)
         
         // Add activity views
         var activityCount = min(activities.count, 4)
