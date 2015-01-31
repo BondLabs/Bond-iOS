@@ -23,7 +23,7 @@ class ViewManager: NSObject {
 		return Static.instance!
 	}
 
-	
+	var currentViewController: UIViewController?
 	var LogInViewController: UIViewController?
 	var SignUpViewController: UIViewController?
 	var AgeGenderViewController: UIViewController?

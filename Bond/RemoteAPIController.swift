@@ -175,13 +175,14 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					//newUser.populateUser(userID.integerValue, authKey: authKey)
 					
 					
-					if (ViewManager.sharedInstance.LogInViewController != nil) {
+					if (ViewManager.sharedInstance.currentViewController != nil) {
 						
 						
 						dispatch_async(dispatch_get_main_queue(), {() -> Void in
-							let LIVC: UIViewController = ViewManager.sharedInstance.LogInViewController!
-							LIVC.performSegueWithIdentifier("NewLoginSegue", sender:LIVC)
+							let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
+							LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
 							ViewManager.sharedInstance.ProgressHUD?.hide(true)
+							NSLog("pushing the view")
 							})
 					}
 					
@@ -207,7 +208,18 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		else if (type == requestType.image) {
 			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
 			let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
-			NSLog("We got a registration response! It's %@", dataString!)
+			NSLog("We got an image response! It's %@", dataString!)
+				
+				if (ViewManager.sharedInstance.currentViewController != nil) {
+					
+					
+					dispatch_async(dispatch_get_main_queue(), {() -> Void in
+						let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
+						LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
+						ViewManager.sharedInstance.ProgressHUD?.hide(true)
+						NSLog("pushing the view")
+					})
+				}
 			
 			var writeError: NSError?
 			var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
@@ -269,13 +281,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		var connectionDelegate: AnyObject = self
 		
 		//Let her rip
-		if (type == requestType.user) {
-			connectionDelegate = userDelegate.sharedInstance
-			
-		}
-		else {
-			connectionDelegate = self
-		}
+		
 		
 		
 		
@@ -502,180 +508,6 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 
 //MARK: - Delegates
 
-//MARK: Login
-class loginDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
-	
-	
-	let URLResponseData = NSMutableData()
-	
-	class var sharedInstance: loginDelegate {
-		struct Static {
-			static var instance: loginDelegate?
-			static var token: dispatch_once_t = 0
-		}
-		
-		dispatch_once(&Static.token) {
-			Static.instance = loginDelegate()
-		}
-		
-		return Static.instance!
-	}
-	
-	func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-		NSLog("connection %@ failed with error: %@", connection, error.description)
-		RemoteAPIController.sharedInstance.isNetworkBusy = false
-	}
-	
-	func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-		URLResponseData.appendData(data)
-	}
-	
-	func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-		URLResponseData.length = 0
-	}
-	
-	func connectionDidFinishLoading(connection: NSURLConnection) {
-		RemoteAPIController.sharedInstance.isNetworkBusy = false
-		let dataString = NSString(data: URLResponseData, encoding: NSUTF8StringEncoding)
-		NSLog("We got a login response! It's %@", dataString!)
-		
-		
-		var writeError: NSError?
-		var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
-		
-		NSLog("\(dataDictionary)")
-		//NSLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-		
-		if (dataDictionary?.objectForKey("error") == nil) {
-			
-		
-		
-		
-		let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
-		let authKey: NSString = dataDictionary?.objectForKey("auth_key") as NSString
-			
-		let newUser = BondUser.fetchUserWithID(userID.integerValue, authKey: authKey)
-		UserAccountController.sharedInstance.currentUser.getUserPicture()
-			//newUser.populateUser(userID.integerValue, authKey: authKey)
-		
-		NSLog("User created: %@ with ID: %@", newUser.description, userID)
-		}
-	}
-	
-}
-//MARK: Register
-class registerDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
-	
-	
-	let URLResponseData = NSMutableData()
-	
-	
-	class var sharedInstance: registerDelegate {
-		struct Static {
-			static var instance: registerDelegate?
-			static var token: dispatch_once_t = 0
-		}
-		
-		dispatch_once(&Static.token) {
-			Static.instance = registerDelegate()
-		}
-		
-		return Static.instance!
-	}
-	
-	func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-		NSLog("connection %@ failed with error: %@", connection, error.description)
-		RemoteAPIController.sharedInstance.isNetworkBusy = false
-	}
-	
-	func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-		URLResponseData.appendData(data)
-	}
-	
-	func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-		URLResponseData.length = 0
-	}
-	
-	func connectionDidFinishLoading(connection: NSURLConnection) {
-		RemoteAPIController.sharedInstance.isNetworkBusy = false
-		let dataString = NSString(data: URLResponseData, encoding: NSUTF8StringEncoding)
-		NSLog("We got a registration response! It's %@", dataString!)
-		UserAccountController.sharedInstance.login()
-		
-	}
-	
-}
-//MARK: Info
-class userDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
-	
-	
-	let URLResponseData = NSMutableData()
-	
-	
-	class var sharedInstance: userDelegate {
-		struct Static {
-			static var instance: userDelegate?
-			static var token: dispatch_once_t = 0
-		}
-		
-		dispatch_once(&Static.token) {
-			Static.instance = userDelegate()
-		}
-		
-		return Static.instance!
-	}
-	
-	func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-		RemoteAPIController.sharedInstance.isNetworkBusy = false
-		NSLog("connection %@ failed with error: %@", connection, error.description)
-	}
-	
-	func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-		URLResponseData.appendData(data)
-	}
-	
-	func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-		URLResponseData.length = 0
-	}
-	
-	func connectionDidFinishLoading(connection: NSURLConnection) {
-		RemoteAPIController.sharedInstance.isNetworkBusy = false
-		let dataString = NSString(data: URLResponseData, encoding: NSUTF8StringEncoding)
-		NSLog("We got a user response! It's %@", dataString!)
-		
-		
-		var writeError: NSError?
-		var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
-		
-		NSLog("\(dataDictionary)")
-		//NSLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-		
-		if (dataDictionary?.objectForKey("error") == nil) {
-			
-			
-			let user = UserAccountController.sharedInstance.currentUser
-			
-			//let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
-			NSLog ("fetched userData!")
-		let userName: NSString = dataDictionary?.objectForKey("name") as NSString
-			NSLog("name is \(userName)")
-			user.name = "\(userName)"
-		let userPhone: AnyObject? = dataDictionary?.objectForKey("phone")
-			NSLog("phone is \(userPhone)")
-			user.phoneNumber = NSString(format:"\(userPhone)")
-		let userAge: Int! = dataDictionary?.objectForKey("age") as Int
-			NSLog("age is \(userAge)")
-			user.age = userAge
-		let userGender: AnyObject? = dataDictionary?.objectForKey("gender")
-			NSLog("gender is \(userGender)")
-			user.gender = NSString(format:"\(userGender)")
-		
-			NSLog("User is now set! (hopefully) \n Name is \(user.name) \n Phone is \(user.phoneNumber) \n age is \(user.age) \n gender is \(user.gender)")
-		
-	}
-	}
-	
-}
 //MARK: Bond Fetching
 class allBondsDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
 	

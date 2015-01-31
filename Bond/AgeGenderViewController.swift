@@ -25,6 +25,9 @@ class AgeGenderViewController: UIViewController {
 		// Set up basic view properties
 		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
 
+		ViewManager.sharedInstance.AgeGenderViewController = self
+		ViewManager.sharedInstance.currentViewController = self
+		
 		// Set up view description label
 		descLabel.text = "Let's get some basics"
 		descLabel.numberOfLines = 1
@@ -119,7 +122,10 @@ class AgeGenderViewController: UIViewController {
 	
 	@IBAction func tappedDone(sender: AnyObject) {
 		UserAccountController.sharedInstance.register()
-		
+		ViewManager.sharedInstance.ProgressHUD = nil
+		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
+		ViewManager.sharedInstance.ProgressHUD!.labelText = "Joining Bond"
 	}
 	
 

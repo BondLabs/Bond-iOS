@@ -121,7 +121,7 @@
                         <outlet property="loginButton" destination="nra-qY-02X" id="tNX-2b-9LZ"/>
                         <outlet property="password" destination="2eC-zp-jXa" id="ZBQ-dN-lcb"/>
                         <outlet property="phoneNumber" destination="sGI-gm-MDF" id="JOZ-Lc-8e0"/>
-                        <segue destination="sTa-GV-XXK" kind="modal" identifier="NewLoginSegue" id="SCU-zk-ooq"/>
+                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" id="SCU-zk-ooq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZO-Xm-ynX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,7 +202,6 @@
                                 </state>
                                 <connections>
                                     <action selector="tappedDone:" destination="5NR-vc-Jp2" eventType="touchUpInside" id="Jj3-Oj-CTW"/>
-                                    <segue destination="WOG-iO-aje" kind="push" id="NDT-7o-hAf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XC1-9z-njI" customClass="CustomSegmentedButton" customModule="Bond" customModuleProvider="target">
@@ -257,6 +256,7 @@
                         <outlet property="next" destination="bnZ-Y6-5aT" id="ZDL-KK-GOY"/>
                         <outlet property="single" destination="cJf-Z8-rTL" id="haG-ih-eaP"/>
                         <outlet property="taken" destination="Uqa-qx-ujW" id="EwB-Qa-LcB"/>
+                        <segue destination="WOG-iO-aje" kind="push" identifier="nextView" id="Gfx-JN-Ff2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Xg-EZ-B0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -511,7 +511,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kt1-Eq-VW5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2551" y="-339"/>
+            <point key="canvasLocation" x="2509" y="-747"/>
         </scene>
         <!--Smile-->
         <scene sceneID="tYe-Bq-V99">
@@ -529,7 +529,6 @@
                                 </state>
                                 <connections>
                                     <action selector="hitNextButton:" destination="XbX-z5-2es" eventType="touchUpInside" id="Ioj-D4-xCf"/>
-                                    <segue destination="sTa-GV-XXK" kind="modal" id="cG2-ED-IvC"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="acN-Ni-6Dw">
@@ -565,6 +564,7 @@
                         <outlet property="flash" destination="acN-Ni-6Dw" id="3gw-sj-MaU"/>
                         <outlet property="flip" destination="LSk-S8-3hT" id="Wwn-SX-ZyD"/>
                         <outlet property="next" destination="70u-UK-QKV" id="sO7-H5-1xG"/>
+                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" id="QIG-zC-egB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAs-tZ-KZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -588,7 +588,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abe-bc-gHO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2953" y="976"/>
+            <point key="canvasLocation" x="3035" y="1084"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aLz-Bf-mte">
@@ -653,11 +653,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SCU-zk-ooq"/>
-        <segue reference="dLw-JN-GVL"/>
-        <segue reference="8BU-7d-1hK"/>
-        <segue reference="2Zi-Zh-utD"/>
-        <segue reference="NDT-7o-hAf"/>
+        <segue reference="QIG-zC-egB"/>
         <segue reference="IBU-xK-cv0"/>
+        <segue reference="8BU-7d-1hK"/>
+        <segue reference="dLw-JN-GVL"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="Gfx-JN-Ff2"/>
     </inferredMetricsTieBreakers>
 </document>

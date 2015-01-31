@@ -37,6 +37,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
 		self.edgesForExtendedLayout = UIRectEdge.None
 
+		ViewManager.sharedInstance.currentViewController = self
+		
 		// Set up view controller properties
 		self.navigationController?.title = "Smile!"
 		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
@@ -401,6 +403,11 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 
 	@IBAction func hitNextButton(sender: UIButton) {
 		UserAccountController.sharedInstance.currentUser.setUserPicture(self.image)
+		
+		ViewManager.sharedInstance.ProgressHUD = nil
+		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
+		ViewManager.sharedInstance.ProgressHUD!.labelText = "Uploading Image"
 	}
 	// Selected an image
 	func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
