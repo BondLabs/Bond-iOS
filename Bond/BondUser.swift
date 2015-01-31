@@ -26,9 +26,12 @@ class BondUser: NSObject {
 		//user.populateUser(id, authKey: authKey)
 		NSLog("Fetching user with ID: \(id) AuthKey: \(authKey)")
 		
-		UserAccountController.sharedInstance.getAndSaveUserInfo(id, authKey: authKey)
-		UserAccountController.sharedInstance.currentUser = user
-		UserAccountController.sharedInstance.isUserLoggedIn = true
+		let UAC = UserAccountController.sharedInstance
+		let currentUser = UAC.currentUser
+		UAC.getAndSaveUserInfo(id, authKey: authKey)
+		UAC.currentUser = user
+		UAC.isUserLoggedIn = true
+		//NSLog("Fetched user with name:\(currentUser.name), phone:\(currentUser.phoneNumber), age:\(currentUser.age), userID:\(currentUser.userID), gender:\(currentUser.gender)")
 		return user
 		
 	}

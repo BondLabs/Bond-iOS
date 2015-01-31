@@ -103,7 +103,6 @@
                                 </state>
                                 <connections>
                                     <action selector="didTouchButton:" destination="UxE-dx-lU8" eventType="touchUpInside" id="z0f-gk-L8Q"/>
-                                    <segue destination="sTa-GV-XXK" kind="modal" identifier="LoginSegue" id="6e8-YG-tdg"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" id="2eC-zp-jXa" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
@@ -122,6 +121,7 @@
                         <outlet property="loginButton" destination="nra-qY-02X" id="tNX-2b-9LZ"/>
                         <outlet property="password" destination="2eC-zp-jXa" id="ZBQ-dN-lcb"/>
                         <outlet property="phoneNumber" destination="sGI-gm-MDF" id="JOZ-Lc-8e0"/>
+                        <segue destination="sTa-GV-XXK" kind="modal" identifier="NewLoginSegue" id="SCU-zk-ooq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZO-Xm-ynX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -653,11 +653,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8BU-7d-1hK"/>
+        <segue reference="SCU-zk-ooq"/>
         <segue reference="dLw-JN-GVL"/>
+        <segue reference="8BU-7d-1hK"/>
         <segue reference="2Zi-Zh-utD"/>
         <segue reference="NDT-7o-hAf"/>
-        <segue reference="cG2-ED-IvC"/>
         <segue reference="IBU-xK-cv0"/>
     </inferredMetricsTieBreakers>
 </document>

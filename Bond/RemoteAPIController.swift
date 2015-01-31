@@ -174,7 +174,21 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					UserAccountController.sharedInstance.currentUser.getUserPicture()
 					//newUser.populateUser(userID.integerValue, authKey: authKey)
 					
+					
+					if (ViewManager.sharedInstance.LogInViewController != nil) {
+						
+						
+						dispatch_async(dispatch_get_main_queue(), {() -> Void in
+							let LIVC: UIViewController = ViewManager.sharedInstance.LogInViewController!
+							LIVC.performSegueWithIdentifier("NewLoginSegue", sender:LIVC)
+							ViewManager.sharedInstance.ProgressHUD?.hide(true)
+							})
+					}
+					
 					NSLog("User created: %@ with ID: %@", newUser.description, userID)
+					
+					
+					
 				}
 
 			}

@@ -107,9 +107,9 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		
 	}
 	
-	func getUserInfo(id: Int, authKey: NSString, delegate: NSURLConnectionDataDelegate)
+	func getUserInfo(id: Int, authKey: NSString, delegate: NSURLConnectionDataDelegate) -> NSData
 	{
-		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.custom, delegate:delegate)
+		return RemoteAPIController.sharedInstance.returnGetAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.custom)
 	}
 	
 	func getAndSaveUserInfo(id: Int, authKey: NSString)
@@ -126,6 +126,21 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	func getAndSaveBonds(id: Int, authKey: NSString)
 	{
 		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/bonds/\(id)", api_key: authKey, type: requestType.allbonds, delegate:nil)
+	}
+	
+	func getBonds(id: Int, authKey: NSString) -> NSDictionary
+	{
+		
+		let dictData = RemoteAPIController.sharedInstance.returnGetAPIRequestFromURL("http://api.bond.sh/api/bonds/\(id)", api_key: authKey, type: requestType.allbonds)
+		
+		var writeError: NSError?
+		let dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(dictData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+		
+		var returningDictionary = NSDictionary(object: "empty", forKey: "error")
+		if (dataDictionary?.objectForKey("error") == nil) {
+			returningDictionary = NSDictionary(dictionary: dataDictionary!)
+		}
+		return returningDictionary
 	}
 	
 	func sendCustomRequest(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, delegate: NSURLConnectionDataDelegate)

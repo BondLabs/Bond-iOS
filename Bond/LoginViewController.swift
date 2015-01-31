@@ -29,7 +29,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		
+		ViewManager.sharedInstance.LogInViewController = self
         /* * *
          * * * Do basic setup---------------------------------------------------
          * * */
@@ -150,6 +152,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		let uc = UserAccountController.sharedInstance
 		
 		uc.loginWithInfo(phoneNumber.text, password: password.text)
+		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
+		ViewManager.sharedInstance.ProgressHUD!.labelText = "Logging Into Bond"
 		//uc.newPhoneNumber = phoneNumber.text
 		//uc.newPassword = password.text
 		//uc.login()
@@ -169,7 +174,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "LoginSegue") {
+        if (segue.identifier == "LoginSegue" || segue.identifier == "newLoginSegue") {
             // Use to authenticate login and cancel segue if illegal login credentials
             AppData.data.userID = 1 // Store user id if successful authentication
         } else if segue.destinationViewController is StartViewController {

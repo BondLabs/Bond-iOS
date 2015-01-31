@@ -17,6 +17,8 @@
 		02BA37E41A7B59CA004F948B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BA37E31A7B59CA004F948B /* NSData+Base64.m */; };
 		02DA42121A7B6B220098012F /* NSURLConnection+AsyncBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */; };
 		02DA42151A7B712E0098012F /* NSURLConnection+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */; };
+		02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA21A7D86DF00B59C39 /* ViewManager.swift */; };
+		02F92FA61A7D8E3500B59C39 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA51A7D8E3500B59C39 /* MBProgressHUD.m */; };
 		E911E4041A64189D0027DB0C /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E911E4031A6418090027DB0C /* Avenir.ttc */; };
 		E912FF381A650C0E004E79A9 /* Flip.png in Resources */ = {isa = PBXBuildFile; fileRef = E912FF371A650C0E004E79A9 /* Flip.png */; };
 		E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9227F531A52C0F9004DDE48 /* BondsBarController.swift */; };
@@ -176,6 +178,9 @@
 		02DA42131A7B712E0098012F /* NSURLConnection+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+Blocks.h"; sourceTree = "<group>"; };
 		02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+Blocks.m"; sourceTree = "<group>"; };
 		02E2C6521A7015D3001817D4 /* BlurredButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurredButton.swift; sourceTree = "<group>"; };
+		02F92FA21A7D86DF00B59C39 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		02F92FA41A7D8E3500B59C39 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		02F92FA51A7D8E3500B59C39 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E911E4031A6418090027DB0C /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		E912FF371A650C0E004E79A9 /* Flip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flip.png; sourceTree = "<group>"; };
 		E9227F531A52C0F9004DDE48 /* BondsBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondsBarController.swift; sourceTree = "<group>"; };
@@ -349,6 +354,8 @@
 		020012861A72201200322BC7 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				02F92FA41A7D8E3500B59C39 /* MBProgressHUD.h */,
+				02F92FA51A7D8E3500B59C39 /* MBProgressHUD.m */,
 				02DA42101A7B6B220098012F /* NSURLConnection+AsyncBlocks.h */,
 				02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */,
 				02DA42131A7B712E0098012F /* NSURLConnection+Blocks.h */,
@@ -407,6 +414,7 @@
 			children = (
 				E96956E31A586C7F001D2308 /* AppData.swift */,
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
+				02F92FA21A7D86DF00B59C39 /* ViewManager.swift */,
 				E934FDA61A484AB800E43B45 /* Main.storyboard */,
 				E934FD8C1A48270800E43B45 /* StartViewController.swift */,
 				02E2C6521A7015D3001817D4 /* BlurredButton.swift */,
@@ -867,7 +875,9 @@
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
 				020322AE1A70D881000C85F4 /* BlurredButton.swift in Sources */,
 				E9EDF96A1A62A71D004A9446 /* MaskView.swift in Sources */,
+				02F92FA61A7D8E3500B59C39 /* MBProgressHUD.m in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
+				02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
 				E9CC5A751A600AA300CB7912 /* AgeGenderViewController.swift in Sources */,
 				020322AD1A70D87D000C85F4 /* StartViewController.swift in Sources */,

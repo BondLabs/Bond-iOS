@@ -19,8 +19,13 @@ class BondsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		ViewManager.sharedInstance.BondsViewController = self
 
         // Get bonds from online
+		
+		//let bondData = UserAccountController.sharedInstance.getBonds(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+		//NSLog("\(bondData)")
         bonds = ["Kevin Zhang", "Daniel Singer", "Jason Fieldman"]
         
         // Customize view and navigation bar
