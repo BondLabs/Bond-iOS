@@ -79,6 +79,8 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		println("loggin into bond")
 		
 		NSLog("value is %@", authKey)
+		
+		NSLog("Loggin in user with phone number: \(phone), password: \(password)")
 		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", phone, password), api_key: authKey, type: requestType.login)
 	}
 	
