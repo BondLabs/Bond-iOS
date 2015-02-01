@@ -411,24 +411,6 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				
 				NSLog("Dict is \(dataArray)")
 				
-				/*
-				//NSLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-				
-				//if (dataArray?.objectForKey("error") == nil) {
-					let data: NSArray = dataArray as NSArray
-					for dictionary in data {
-						
-						
-						let objects: NSArray = dictionary.allValues
-						bondArray.insertObject(objects[0], atIndex: bondArray.count)
-						
-					}
-					let user = UserAccountController.sharedInstance.currentUser
-					//let dict = NSDictionary(dictionary: dataDictionary!)
-					user.bonds = bondArray
-					NSLog("User bonds are: \(user.bonds)")
-				//}
-*/
 				UserAccountController.sharedInstance.currentUser.bonds = dataArray!
 				
 				if (ViewManager.sharedInstance.currentViewController != nil) {

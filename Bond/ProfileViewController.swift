@@ -11,6 +11,9 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     // Save controller elements
+	let YES = true
+	let NO = false
+	
     var nameLabel: UILabel!
     var distLabel: UILabel!
     var profImage: CircleImageView!
@@ -109,6 +112,7 @@ class ProfileViewController: UIViewController {
     }
 	func tappedButton(sender: UITapGestureRecognizer) {
 		self.performSegueWithIdentifier("chatSegue", sender: self)
+		self.navigationController?.navigationBarHidden = YES
 	}
     
 }

@@ -17,9 +17,9 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 	var dataSource: NSMutableArray!
 
 	override func viewDidLoad() {
-		self.inputView.textInitialHeight = 45
-		self.inputView.textView.font = UIFont.systemFontOfSize(17)
-		self.inputView.adjustInputView()
+		//self.inputView.textInitialHeight = 45
+		//self.inputView.textView.font = UIFont.systemFontOfSize(17)
+		//self.inputView.adjustInputView()
 		self.loadMessages()
 	}
 	
