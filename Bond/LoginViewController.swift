@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 		
 		
-		ViewManager.sharedInstance.LogInViewController = self
+		
 		ViewManager.sharedInstance.currentViewController = self
         /* * *
          * * * Do basic setup---------------------------------------------------

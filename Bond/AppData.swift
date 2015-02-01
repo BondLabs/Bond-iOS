@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+
+
+
+
 class AppData {
     struct data {
         static var userID:Int!
@@ -23,7 +28,9 @@ class AppData {
 		}
 		static var activityNames:[String] = ["Active", "Artist", "Badass", "Brainy", "Caring", "Chill", "Creative", "Cultured", "Curious", "Driven", "Easygoing", "Empathetic", "Experienced", "Extroverted", "Fashionable", "Fit", "Free Spirited", "Friendly", "Fun", "Funky", "Hipster", "Introverted", "LOL", "Loud", "Modern", "Motivated", "Observant", "Ol'Skool", "Open Minded", "Outgoing", "Posh", "Rebellious", "Relaxed", "Romantic", "Rustic", "Sarcastic", "Serious", "Sporty", "Studious", "Thrilling", "Tough", "Traditional", "Trustworthy", "Visual", "Weird"]
     }
-    
+	
+
+	
     struct util {
         static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
             return UIColor(

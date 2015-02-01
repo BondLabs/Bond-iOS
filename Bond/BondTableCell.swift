@@ -37,26 +37,14 @@ class BondTableCell: UITableViewCell {
         // Add a name label
         var nameLabel = UILabel()
         nameLabel.text = name
-        nameLabel.font = UIFont(name: "Avenir-Medium", size: 18.0)
+        nameLabel.font = UIFont(name: "Avenir-Medium", size: 20.0)
         nameLabel.sizeToFit()
         nameLabel.frame.origin = CGPointMake(60, 8)
         nameLabel.textColor = UIColor.whiteColor()
         self.addSubview(nameLabel)
         
         // TODO: Get distance
-		var dist:Int! = nil // Get distance here somehow
-		var distLabel = UILabel()
-		if var check = dist {
-			distLabel.text = "\(dist) Feet Away"
-		} else {
-			distLabel.text = "Not Here"
-		}
-		distLabel.sizeToFit()
-		distLabel.textColor = UIColor.whiteColor()
-		distLabel.font = UIFont(name: "Avenir-Medium", size: 13.0)
-		distLabel.frame.origin = CGPointMake(60, 32)
-		self.addSubview(distLabel)
-
+		
 		// TODO: Get time
 		srand48(0)
 		var time:Int! = Int(drand48() * 100000)

@@ -109,7 +109,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 			
 			return dataDictionary!
 		}
-
+		
 		
 	}
 	
@@ -159,5 +159,5 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	}
 	
 	
-
+	
 }

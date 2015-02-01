@@ -32,7 +32,12 @@ class StartViewController: UIViewController {
          * * */
 		//var bgImage = UIImageView(frame: self.view.frame)
 		
+		
+		
         // Hide navigation bar
+		
+		
+		
 		self.navigationController?.navigationBarHidden = true
 
         // Store screen dimensions

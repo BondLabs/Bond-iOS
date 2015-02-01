@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
     
 	override func viewDidLoad() {
         super.viewDidLoad()
-		ViewManager.sharedInstance.SignUpViewController = self
+
 		ViewManager.sharedInstance.currentViewController = self
 		// Store frame data
 		viewHeight = self.view.frame.height - AppData.data.heights.navBarHeight - AppData.data.heights.statusBarHeight

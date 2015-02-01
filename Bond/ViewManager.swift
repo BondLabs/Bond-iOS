@@ -24,12 +24,7 @@ class ViewManager: NSObject {
 	}
 
 	var currentViewController: UIViewController?
-	var LogInViewController: UIViewController?
-	var SignUpViewController: UIViewController?
-	var AgeGenderViewController: UIViewController?
-	var BondsViewController: UIViewController?
-	var ProfileViewController: UIViewController?
-	var CameraViewController: UIViewController?
+
 	
 	
 	
