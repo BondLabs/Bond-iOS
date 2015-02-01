@@ -153,7 +153,6 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
                 if (i < tourVCs.count - 1) {
                     tourPageVC.setViewControllers([tourVCs[i+1]], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
                     pageControl.currentPage = i+1
-                    println("setting page \(i+1)")
                     if (i != tourVCs.count - 2) {
                         self.hideStartButtons()
                     } else {
@@ -167,28 +166,18 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         var index:Int! = find(tourVCs, viewController as UIViewController)
-        println("Going forwards \(index)")
         if (index == tourVCs.count - 1) {
             return nil
         } else {
-            pageControl.currentPage = index + 1
-            if index + 1 == tourVCs.count - 1 {
-                self.showStartButtons()
-            }
             return tourVCs[index + 1]
         }
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var index:Int! = find(tourVCs, viewController as UIViewController)
-        println("Going backwards \(index)")
         if (index == 0) {
             return nil
         } else {
-            pageControl.currentPage = index - 1
-            if index != tourVCs.count - 1 {
-                self.hideStartButtons()
-            }
             return tourVCs[index - 1]
         }
     }
@@ -196,6 +185,11 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
         if (completed) {
             self.currentIndex = self.nextIndex
+            if self.currentIndex != tourVCs.count - 1 {
+                self.hideStartButtons()
+            } else {
+                self.showStartButtons()
+            }
         }
         self.nextIndex = self.currentIndex
         pageControl.currentPage = self.currentIndex
