@@ -169,7 +169,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(animated: Bool) {
         var count = self.navigationController?.viewControllers.count
         var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-        if (nextVC is StartViewController) {
+        if (nextVC is Tour_StartViewController) {
             self.navigationController?.navigationBarHidden = true
         }
         super.viewWillDisappear(animated)
@@ -179,7 +179,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if (segue.identifier == "LoginSegue" || segue.identifier == "nextView") {
             // Use to authenticate login and cancel segue if illegal login credentials
             AppData.data.userID = 1 // Store user id if successful authentication
-        } else if segue.destinationViewController is StartViewController {
+        } else if segue.destinationViewController is Tour_StartViewController {
             self.navigationController?.navigationBarHidden = true
         }
     }

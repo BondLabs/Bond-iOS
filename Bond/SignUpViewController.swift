@@ -250,7 +250,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 	override func viewWillDisappear(animated: Bool) {
 		var count = self.navigationController?.viewControllers.count
 		var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-		if (nextVC is StartViewController) {
+		if (nextVC is Tour_StartViewController) {
 			self.navigationController?.navigationBarHidden = true
 		}
 		super.viewWillDisappear(animated)
