@@ -145,21 +145,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
     }
     
 	@IBAction func doneButtonTapped(sender: UIButton) {
-		
 		let uc = UserAccountController.sharedInstance
 		
 		uc.newFirstName = firstName.text
 		uc.newLastName = lastName.text
 		uc.newPhoneNumber = phoneNumber.text
 		uc.newPassword = password.text
-		
-		
-		
-		
 	}
-	
-		
-	
 
     func showNextButton() {
         // If next button is already showing, animate reshow

@@ -21,10 +21,10 @@ class Tour_StartViewController: UIViewController {
          * * */
 		
         // Store screen dimensions
-        var screenSize:CGSize = CGSizeMake(self.view.frame.width, self.view.frame.height)
+        var screenSize:CGSize = CGSizeMake(self.view.frame.width, self.view.frame.height - 86)
 		
         // Initialize logo image
-        let unscaledLogo = UIImage(named: "Logo.png")!
+        /*let unscaledLogo = UIImage(named: "Logo.png")!
         var logoSize = CGSizeMake(screenSize.width * 0.75, screenSize.width * 0.75 * unscaledLogo.size.height / unscaledLogo.size.width)
         UIGraphicsBeginImageContextWithOptions(logoSize, false, 0.0)
         unscaledLogo.drawInRect(CGRect(origin: CGPointZero, size: logoSize))
@@ -33,16 +33,35 @@ class Tour_StartViewController: UIViewController {
         logoImage.sizeToFit()
         logoImage.center = CGPointMake(screenSize.width / 2, screenSize.height * 0.25)
         UIGraphicsEndImageContext()
-        self.view.addSubview(logoImage)
+        self.view.addSubview(logoImage)*/
+        var icon = CircleImageView()
+        icon.frame.size = CGSizeMake(125, 125)
+        icon.setDefaultImage(UIImage(named: "Tour_1.png")!)
+        icon.addBorder(0xFFFFFF)
+        icon.untappedBackground = AppData.util.UIColorFromRGB(0x00A4FF)
+        icon.performSetup(0.6)
+        icon.center = CGPointMake(self.view.frame.width / 2, screenSize.height / 3)
+        self.view.addSubview(icon)
+        
+        // Set up name label
+        var nameLabel = UILabel()
+        nameLabel.text = "Start"
+        nameLabel.font = UIFont(name: "Avenir-Heavy", size: 29.0)
+        nameLabel.textColor = UIColor.whiteColor()
+        nameLabel.sizeToFit()
+        nameLabel.numberOfLines = 0
+        nameLabel.center = CGPointMake(self.view.frame.width / 2, 300)
+        self.view.addSubview(nameLabel)
         
         // Initialize description label
         var descLabel = UILabel()
         descLabel.text = "Experience new human connection \n with people all around you."
-        descLabel.numberOfLines = 2
-        descLabel.textColor = AppData.util.UIColorFromRGB(0xFFFFFF)
         descLabel.textAlignment = NSTextAlignment.Center
-        descLabel.frame = CGRectMake(0, 0, screenSize.width, screenSize.height / 10)
-        descLabel.center = CGPointMake(screenSize.width / 2, screenSize.height * 0.65)
+        descLabel.font = UIFont(name: "Avenir-Book", size: 14.0)
+        descLabel.textColor = UIColor.whiteColor()
+        descLabel.numberOfLines = 2
+        descLabel.sizeToFit()
+        descLabel.center = CGPointMake(self.view.frame.width / 2, 400)
         self.view.addSubview(descLabel)
         
         super.viewDidLoad()

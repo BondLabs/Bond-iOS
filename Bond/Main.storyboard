@@ -624,11 +624,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QIG-zC-egB"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="Gfx-JN-Ff2"/>
-        <segue reference="2Zi-Zh-utD"/>
-        <segue reference="8BU-7d-1hK"/>
+        <segue reference="SCU-zk-ooq"/>
         <segue reference="dLw-JN-GVL"/>
+        <segue reference="8BU-7d-1hK"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="R23-YL-h3N"/>
     </inferredMetricsTieBreakers>
 </document>

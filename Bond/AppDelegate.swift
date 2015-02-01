@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-	func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
+	/*func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
 		if (extensionPointIdentifier == "com.apple.keyboard-service") {
 			return false
 		} else {
 			return true
 		}
-	}
+	}*/
 
     // Core Data functions
 

@@ -118,8 +118,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         loginButton.alpha = 0
         loginButton.userInteractionEnabled = false
         
-        // Initialize background image'
-        println("Tested")
+        // Initialize background image
         let unscaledBg = UIImage(named: "bg@2x.png")!
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)
         unscaledBg.drawInRect(CGRect(origin: CGPointZero, size: self.view.frame.size))
