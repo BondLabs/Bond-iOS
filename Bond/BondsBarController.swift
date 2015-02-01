@@ -38,6 +38,12 @@ class BondsBarController: UITabBarController, UITabBarControllerDelegate {
 		views[1].tabBarItem = UITabBarItem(title: nil, image: profImage, selectedImage: profImage)
 		views[0].tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
 		views[1].tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
+        
+        // Set up location services
+        var location = Location.sharedInstance
+        location.setup()
+        location.broadcast()
+        location.listen()
     }
 
 	// Change background color to match
