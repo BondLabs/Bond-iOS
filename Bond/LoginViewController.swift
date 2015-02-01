@@ -166,6 +166,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
      * * * Capture segue events
      * * */
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+        super.viewWillAppear(animated)
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         var count = self.navigationController?.viewControllers.count
         var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
@@ -173,15 +178,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.navigationBarHidden = true
         }
         super.viewWillDisappear(animated)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "LoginSegue" || segue.identifier == "nextView") {
-            // Use to authenticate login and cancel segue if illegal login credentials
-            AppData.data.userID = 1 // Store user id if successful authentication
-        } else if segue.destinationViewController is Tour_StartViewController {
-            self.navigationController?.navigationBarHidden = true
-        }
     }
     
     deinit {

@@ -25,6 +25,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     var nextIndex:Int!
     var viewBounds:CGSize!
     var nextButton:UIButton!
+    var bgImage:UIImageView!
     
     /* * *
     * * * Initial setup of the view--------------------------------------------
@@ -116,6 +117,19 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         loginButton.frame = CGRectMake(self.view.frame.width / 2, self.view.frame.height - 50, self.view.frame.width / 2, 50)
         loginButton.alpha = 0
         loginButton.userInteractionEnabled = false
+        
+        // Initialize background image'
+        println("Tested")
+        let unscaledBg = UIImage(named: "bg@2x.png")!
+        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)
+        unscaledBg.drawInRect(CGRect(origin: CGPointZero, size: self.view.frame.size))
+        bgImage = UIImageView()
+        bgImage.image = UIGraphicsGetImageFromCurrentImageContext()
+        bgImage.sizeToFit()
+        bgImage.frame.origin = CGPointZero
+        UIGraphicsEndImageContext()
+        bgImage.alpha = 0
+        self.view.insertSubview(bgImage, atIndex: 0)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -128,6 +142,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
             self.nextButton.alpha = 0
             self.signupButton.alpha = 1.0
             self.loginButton.alpha = 1.0
+            self.bgImage.alpha = 1
             }, completion: { finished in
                 self.nextButton.userInteractionEnabled = false
                 self.signupButton.userInteractionEnabled = true
@@ -140,6 +155,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
             self.nextButton.alpha = 1.0
             self.signupButton.alpha = 0
             self.loginButton.alpha = 0
+            self.bgImage.alpha = 0
             }, completion: { finished in
                 self.nextButton.userInteractionEnabled = true
                 self.signupButton.userInteractionEnabled = false

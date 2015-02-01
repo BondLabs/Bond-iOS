@@ -22,17 +22,6 @@ class Tour_StartViewController: UIViewController {
 		
         // Store screen dimensions
         var screenSize:CGSize = CGSizeMake(self.view.frame.width, self.view.frame.height)
-        
-        // Initialize background image
-        let unscaledBg = UIImage(named: "bg@2x.png")!
-        UIGraphicsBeginImageContextWithOptions(screenSize, false, 0.0)
-        unscaledBg.drawInRect(CGRect(origin: CGPointZero, size: screenSize))
-        var bgImage = UIImageView()
-        bgImage.image = UIGraphicsGetImageFromCurrentImageContext()
-        bgImage.sizeToFit()
-        bgImage.center = CGPointMake(screenSize.width / 2, screenSize.height / 2)
-        UIGraphicsEndImageContext()
-        self.view.addSubview(bgImage)
 		
         // Initialize logo image
         let unscaledLogo = UIImage(named: "Logo.png")!
