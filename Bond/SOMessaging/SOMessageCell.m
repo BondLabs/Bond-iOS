@@ -95,6 +95,7 @@ static BOOL cellIsDragging;
     self.userImageView = [[UIImageView alloc] init];
     self.userImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.messageMaxWidth, 0)];
+	self.userNameLabel = [[UILabel alloc] init];
     self.timeLabel = [[UILabel alloc] init];
     self.mediaImageView = [[UIImageView alloc] init];
     self.mediaOverlayView = [[UIView alloc] init];
@@ -121,7 +122,7 @@ static BOOL cellIsDragging;
     self.mediaImageView.clipsToBounds = YES;
     self.mediaImageView.backgroundColor = [UIColor clearColor];
     self.mediaImageView.userInteractionEnabled = YES;
-//    self.mediaImageView.layer.cornerRadius = 10;
+    self.mediaImageView.layer.cornerRadius = 10;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleMediaTapped:)];
     [self.mediaImageView addGestureRecognizer:tap];
     
@@ -144,6 +145,7 @@ static BOOL cellIsDragging;
     [self.containerView addSubview:self.textView];
     [self.containerView addSubview:self.mediaImageView];
     [self.containerView addSubview:self.userImageView];
+	[self.containerView addSubview:self.userNameLabel];
     
     [self.contentView addSubview:self.timeLabel];
     
@@ -153,6 +155,12 @@ static BOOL cellIsDragging;
     self.timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     self.timeLabel.textColor = [UIColor grayColor];
     self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+
+	self.userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
+	self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+
+
+
 }
 
 - (void)hideSubViews

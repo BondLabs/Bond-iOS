@@ -12,6 +12,8 @@ class BondTableCell: UITableViewCell {
     
     // Store name of the user
     var name:String!
+	var bondID: String!
+	var userID: Int!
     
     /* * *
      * * * Do setup
@@ -37,9 +39,9 @@ class BondTableCell: UITableViewCell {
         // Add a name label
         var nameLabel = UILabel()
         nameLabel.text = name
-        nameLabel.font = UIFont(name: "Avenir-Medium", size: 20.0)
+        nameLabel.font = UIFont(name: "Avenir-Medium", size: 18.0)
         nameLabel.sizeToFit()
-        nameLabel.frame.origin = CGPointMake(60, 8)
+        nameLabel.frame.origin = CGPointMake(78.5, 18)
         nameLabel.textColor = UIColor.whiteColor()
         self.addSubview(nameLabel)
         

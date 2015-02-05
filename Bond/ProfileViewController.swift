@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
 	
     var nameLabel: UILabel!
     var distLabel: UILabel!
+	var chatButton: UIButton!
     var profImage: CircleImageView!
 
     /* * *
@@ -93,6 +94,7 @@ class ProfileViewController: UIViewController {
 		chatButton.backgroundColor = UIColor.blueColor()
 		chatButton.layer.cornerRadius = 20.0
 		chatButton.layer.masksToBounds = true
+		
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedButton:")
 		chatButton.addGestureRecognizer(tapGestureRecognizer)
 		self.view.addSubview(chatButton)

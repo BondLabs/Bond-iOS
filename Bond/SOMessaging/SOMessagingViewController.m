@@ -58,7 +58,7 @@
 - (void)setup
 {
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -220,6 +220,7 @@
     
     // For user customization
     int index = (int)[[self messages] indexOfObject:message];
+	
     [self configureMessageCell:cell forMessageAtIndex:index];
     
     [cell adjustCell];
@@ -307,6 +308,7 @@
 
 - (void)configureMessageCell:(SOMessageCell *)cell forMessageAtIndex:(NSInteger)index
 {
+
 
 }
 

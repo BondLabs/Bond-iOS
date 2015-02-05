@@ -47,6 +47,7 @@
 @property (strong, nonatomic) UIFont *messageFont;
 
 @property (strong, nonatomic) UIImageView *userImageView;
+@property (strong, nonatomic) UILabel *userNameLabel;
 @property (strong, nonatomic) UITextView *textView;
 @property (strong, nonatomic) UILabel *timeLabel; //appears while dragging cell
 @property (strong, nonatomic) UIImageView *mediaImageView;

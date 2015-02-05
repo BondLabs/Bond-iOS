@@ -30,4 +30,5 @@ class ViewManager: NSObject {
 	
 	var ProgressHUD: MBProgressHUD?
 	
+	
 }

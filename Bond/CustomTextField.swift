@@ -20,7 +20,7 @@ class CustomTextField: UITextField, UITextFieldDelegate {
      * * */
     
     required init(coder aDecoder: NSCoder) {
-		NSLog("%@", aDecoder)
+		//NSLog("%@", aDecoder)
         super.init(coder: aDecoder)
         
         self.backgroundColor = AppData.util.UIColorFromRGB(0x404040)

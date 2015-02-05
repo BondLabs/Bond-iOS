@@ -9,10 +9,10 @@
 import UIKit
 
 class TraitArrayViewController: UIViewController {
-
+	
 	func setup(frame: CGRect, activities: [ActivityView]) {
 		self.view.frame = CGRect(origin: CGPointZero, size: frame.size)
-
+		
 		// Store explicit view bounds for ONE view controller
 		var width = self.view.frame.width
 		var height = self.view.frame.height
@@ -22,21 +22,21 @@ class TraitArrayViewController: UIViewController {
 		// Distances between views
 		var xdist:CGFloat = width / CGFloat(numXViews)
 		var ydist:CGFloat = height / CGFloat(numYViews)
-
+		
 		// Add activity views to main view
 		for (index, view) in enumerate(activities) {
 			// Store row and column of view
 			var xindex:CGFloat = CGFloat(index % numXViews)
 			var yindex:CGFloat = CGFloat(Int(index / numYViews) % numYViews)
-
+			
 			// Coordinates of view
 			var xcoor = (xindex + 0.5) * xdist
 			var ycoor = (yindex + 0.5) * ydist
-
+			
 			// Set up view and add to main view
 			view.center = CGPointMake(xcoor, ycoor)
 			self.view.addSubview(view)
 		}
 	}
-
+	
 }

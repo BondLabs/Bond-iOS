@@ -155,7 +155,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		uc.loginWithInfo(phoneNumber.text, password: password.text)
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
+		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeCustomView
+		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0, 0, 40, 40))
+		gmailView.startAnimating()
+		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Logging Into Bond"
 		//uc.newPhoneNumber = phoneNumber.text
 		//uc.newPassword = password.text

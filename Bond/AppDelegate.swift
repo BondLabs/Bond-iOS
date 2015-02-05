@@ -7,12 +7,22 @@
 //
 
 import UIKit
+import CoreBluetooth
+import CoreLocation
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
+	var count = 0
+	
+	var broadcastPower:Int!
+	var uuid:NSUUID!
+	var power:NSNumber!
+	var region:CLBeaconRegion!
+	var locationManager:CLLocationManager!
+	var peripheralManager:CBPeripheralManager!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -21,9 +31,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Medium", size: 16.5)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
 		UINavigationBar.appearance().barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
 		UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Light", size: 16.5)!], forState: UIControlState.Normal)
+		
+		
+		
+		
+		
+		
+				
+		
 
         return true
     }
+	
+	func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!) {
+		if(state == CLRegionState.Inside) {
+			NSLog("locationManager didDetermineState INSIDE for %@", region.identifier);
+		}
+		else if(state == CLRegionState.Outside) {
+			NSLog("locationManager didDetermineState OUTSIDE for %@", region.identifier);
+		}
+		else {
+			NSLog("locationManager didDetermineState OTHER for %@", region.identifier);
+		}
+	}
+	
+	func applicationDidEnterBackground(application: UIApplication) {
+		//Location.sharedInstance.locationManager.startUpdatingLocation()
+		bondLog("Application entered Background")
+	}
+	
+	
 
 	/*func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
 		if (extensionPointIdentifier == "com.apple.keyboard-service") {
@@ -64,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
+            AppData.bondLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
         }
         
@@ -90,7 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if moc.hasChanges && !moc.save(&error) {
                 // Replace this implementation with code to handle the error appropriately.
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
+                AppData.bondLog("Unresolved error \(error), \(error!.userInfo)")
                 abort()
             }
         }

@@ -149,9 +149,6 @@
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="XbX-z5-2es" kind="push" id="R23-YL-h3N"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -163,6 +160,7 @@
                     <connections>
                         <outlet property="descLabel" destination="Hfs-EC-nkC" id="wQh-7e-aL9"/>
                         <outlet property="nextButton" destination="a0c-HG-x4x" id="S1Q-ty-91o"/>
+                        <segue destination="XbX-z5-2es" kind="push" identifier="pushToCamera" id="sJ3-DR-SfO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Qn-gz-XLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -278,9 +276,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTq-xz-ibz" id="SUj-Gc-sX7">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="zCI-ja-LZO" kind="push" identifier="ShowBondDetail" id="hIk-ao-dlB"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -300,7 +295,7 @@
             <objects>
                 <viewController id="zCI-ja-LZO" customClass="BondsDetailViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G7A-MG-0sB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -323,7 +318,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="You" id="6Y0-Sq-k7n"/>
                     <connections>
-                        <segue destination="f4V-NC-ZBI" kind="push" identifier="chatSegue" id="fFM-1t-QFg"/>
+                        <segue destination="f4V-NC-ZBI" kind="modal" identifier="chatSegue" id="fFM-1t-QFg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7V-Bn-pk1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -671,11 +666,11 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="QIG-zC-egB"/>
-        <segue reference="IBU-xK-cv0"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
         <segue reference="2Zi-Zh-utD"/>
         <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="sJ3-DR-SfO"/>
+        <segue reference="QIG-zC-egB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -109,7 +109,9 @@ class AgeGenderViewController: UIViewController {
 				self.female.deselect()
 				self.divider1.alpha = 0.0
 				UserAccountController.sharedInstance.newGender = "male"
-				NSLog("I'm a male")
+				bondLog("gender should probably be \(UserAccountController.sharedInstance.newGender)")
+				//AppData.bondLog("I'm a male")
+				AppData.bondLog("I'm a male")
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {
@@ -123,8 +125,12 @@ class AgeGenderViewController: UIViewController {
 	@IBAction func tappedDone(sender: AnyObject) {
 		UserAccountController.sharedInstance.register()
 		ViewManager.sharedInstance.ProgressHUD = nil
+		bondLog("My gender is \(UserAccountController.sharedInstance.newGender)")
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
+		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeCustomView
+		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0, 0, 40, 40))
+		gmailView.startAnimating()
+		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Joining Bond"
 	}
 	
@@ -136,7 +142,7 @@ class AgeGenderViewController: UIViewController {
 				self.male.deselect()
 				self.divider1.alpha = 0.0
 				UserAccountController.sharedInstance.newGender = "female"
-				NSLog("I'm a female")
+				AppData.bondLog("I'm a female")
 			})
 		} else {
 			UIView.animateWithDuration(0.15, animations: {

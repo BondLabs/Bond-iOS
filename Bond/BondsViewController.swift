@@ -11,8 +11,11 @@ import UIKit
 class BondsViewController: UITableViewController {
     
     // Store bonds as a property of the controller
+	let YES = true
+	let NO = false
     var bonds:[String]!
 	var bondArray:[String]!
+	var bondIDArray:[String]!
     
     /* * *
      * * * Do basic setup
@@ -25,12 +28,13 @@ class BondsViewController: UITableViewController {
 		let UAC = UserAccountController.sharedInstance
 		
         // Get bonds from online
-		NSLog("items in array \(UAC.currentUser.bonds)")
+		AppData.bondLog("items in array \(UAC.currentUser.bonds)")
 		bondArray = UAC.currentUser.bonds.allValues as [String]
-		NSLog("all items in bond array \(bondArray)")
+		bondIDArray = UAC.currentUser.bonds.allKeys as [String]
+		AppData.bondLog("all items in bond array \(bondArray)")
 		
 		//let bondData = UserAccountController.sharedInstance.getBonds(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
-		//NSLog("\(bondData)")
+		//AppData.bondLog("\(bondData)")
         bonds = ["Kevin Zhang", "Daniel Singer", "Jason Fieldman"]
         
         // Customize view and navigation bar
@@ -58,8 +62,14 @@ class BondsViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BondTableCell", forIndexPath: indexPath) as BondTableCell
-		NSLog("all items in bond array \(bondArray[indexPath.row])")
-        cell.setup(bondArray[indexPath.row])
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedCell:")
+		cell.addGestureRecognizer(tapGestureRecognizer)
+		
+		cell.bondID = bondIDArray[indexPath.row]
+		AppData.bondLog("all items in bond array \(bondArray[indexPath.row])")
+		let name: String = UserAccountController.sharedInstance.currentUser.bonds.objectForKey(bondIDArray[indexPath.row]) as String
+        cell.setup(name)
+		
         return cell
     }
 
@@ -70,6 +80,25 @@ class BondsViewController: UITableViewController {
             bonds.removeAtIndex(indexPath.row)
         }
     }
+	
+	func tappedCell(sender: UIGestureRecognizer) {
+		
+		let senderCell: BondTableCell = sender.view as BondTableCell
+		let vc = BondsDetailViewController()
+		vc.id = senderCell.bondID.toInt()
+		bondLog("View controller ID is \(vc.id)")
+		vc.view.frame = self.view.frame
+		vc.nameLabel.text = senderCell.name
+		vc.name = senderCell.name
+		self.navigationController?.pushViewController(vc, animated: true)
+
+		
+		
+		
+		
+		//self.presentViewController(vc, animated: YES, completion: nil)
+		
+	}
 
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         var temp:String!

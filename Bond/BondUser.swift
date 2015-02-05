@@ -25,14 +25,14 @@ class BondUser: NSObject {
 		user.userID = id
 		user.authKey = authKey
 		//user.populateUser(id, authKey: authKey)
-		NSLog("Fetching user with ID: \(id) AuthKey: \(authKey)")
+		AppData.bondLog("Fetching user with ID: \(id) AuthKey: \(authKey)")
 		
 		let UAC = UserAccountController.sharedInstance
 		let currentUser = UAC.currentUser
 		UAC.getAndSaveUserInfo(id, authKey: authKey)
 		UAC.currentUser = user
 		UAC.isUserLoggedIn = true
-		//NSLog("Fetched user with name:\(currentUser.name), phone:\(currentUser.phoneNumber), age:\(currentUser.age), userID:\(currentUser.userID), gender:\(currentUser.gender)")
+		//AppData.bondLog("Fetched user with name:\(currentUser.name), phone:\(currentUser.phoneNumber), age:\(currentUser.age), userID:\(currentUser.userID), gender:\(currentUser.gender)")
 		return user
 		
 	}
@@ -62,7 +62,7 @@ class BondUser: NSObject {
 			
 			let URLResponseData = NSMutableData()
 			func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-				NSLog("connection %@ failed with error: %@", connection, error.description)
+				AppData.bondLog("connection \(connection) failed with error: \(error.description)")
 				superclass
 			}
 			
@@ -76,16 +76,16 @@ class BondUser: NSObject {
 			
 			func connectionDidFinishLoading(connection: NSURLConnection) {
 				let dataString = NSString(data: URLResponseData, encoding: NSUTF8StringEncoding)
-				//NSLog("We got a picture response! It's %@", dataString!)
+				//AppData.bondLog("We got a picture response! It's %@", dataString!)
 				
 				
 				var writeError: NSError?
 				var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
 				
-				//NSLog("\(dataDictionary)")
+				//AppData.bondLog("\(dataDictionary)")
 				
 				if (dataDictionary?.objectForKey("error") == nil) {
-					NSLog("Got Image")
+					AppData.bondLog("Got Image")
 					
 					
 					
@@ -93,7 +93,7 @@ class BondUser: NSObject {
 					let decodedData = NSData(fromBase64String: imageString)
 					//let decodedData = NSData(base64EncodedString: imageString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
 					var decodedimage = UIImage(data: decodedData!)
-					NSLog("Got an image, it's: \(decodedimage)")
+					AppData.bondLog("Got an image, it's: \(decodedimage)")
 					UserAccountController.sharedInstance.currentUser.image = decodedimage!
 					
 					//newUser.populateUser(userID.integerValue, authKey: authKey)

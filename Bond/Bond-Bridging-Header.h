@@ -9,4 +9,5 @@
 #import "MBProgressHUD.h"
 #import "SOMessagingViewController.h"
 #import "Message.h"
+#import "GmailLikeLoadingView.h"
 

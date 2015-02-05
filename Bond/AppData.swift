@@ -11,11 +11,26 @@ import UIKit
 
 
 
+struct bondColors {
+	static let color1 = AppData.util.UIColorFromRGB(0x008ad7)
+	static let color2 = AppData.util.UIColorFromRGB(0x50c1ff)
+	static let color3 = AppData.util.UIColorFromRGB(0x1dafff)
+	static let color4 = AppData.util.UIColorFromRGB(0x00a4ff)
+}
+
+func bondLog(x: AnyObject) {
+	
+	NSLog("\(x)")
+
+	
+}
+
+
 
 
 class AppData {
-    struct data {
-        static var userID:Int!
+	struct data {
+		static var userID:Int!
 		static var viewWidth = UIScreen.mainScreen().bounds.width
 		struct heights {
 			static var navBarHeight:CGFloat! =  UINavigationController().navigationBar.frame.height
@@ -27,19 +42,22 @@ class AppData {
 			static var tabBarViewHeight:CGFloat! = navViewHeight - tabBarHeight
 		}
 		static var activityNames:[String] = ["Active", "Artist", "Badass", "Brainy", "Caring", "Chill", "Creative", "Cultured", "Curious", "Driven", "Easygoing", "Empathetic", "Experienced", "Extroverted", "Fashionable", "Fit", "Free Spirited", "Friendly", "Fun", "Funky", "Hipster", "Introverted", "LOL", "Loud", "Modern", "Motivated", "Observant", "Ol'Skool", "Open Minded", "Outgoing", "Posh", "Rebellious", "Relaxed", "Romantic", "Rustic", "Sarcastic", "Serious", "Sporty", "Studious", "Thrilling", "Tough", "Traditional", "Trustworthy", "Visual", "Weird"]
-    }
-	
+	}
+	class func bondLog(x: AnyObject) {
+		
+		NSLog("\(x)")
+	}
 
-	
-    struct util {
-        static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-            return UIColor(
-                red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-                green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-                blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-                alpha: CGFloat(1.0)
-            )
-        }
+	struct util {
+		static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+			return UIColor(
+				red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+				green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+				blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+				alpha: CGFloat(1.0)
+			)
+		}
+		
 		static func UIColorFromRGBA(rgbValue: UInt, alphaValue: Float) -> UIColor {
 			return UIColor(
 				red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -48,7 +66,7 @@ class AppData {
 				alpha: CGFloat(alphaValue)
 			)
 		}
-
+		
 		static func scaleImage(image: UIImage, size: CGSize, scale: CGFloat) -> UIImage {
 			var smallSize = CGSizeMake(size.width * scale, size.height * scale)
 			UIGraphicsBeginImageContextWithOptions(smallSize, false, 0)
@@ -57,7 +75,7 @@ class AppData {
 			UIGraphicsEndImageContext()
 			return scaled
 		}
-
+		
 		static func cropImage(image:UIImage, fromSize:CGSize, toSize:CGSize) -> UIImage {
 			var cropCenter:CGPoint = CGPointMake(fromSize.width / 2, fromSize.height / 2)
 			var cropStart:CGPoint = CGPointMake(cropCenter.x - toSize.width/2, cropCenter.y - toSize.height / 2)
@@ -66,5 +84,28 @@ class AppData {
 			var cropImage:UIImage = UIImage(CGImage: cropRef)!
 			return cropImage
 		}
-    }
+		
+		static func convertToMM(user: Int) -> (Int, Int) {
+			return (Int(user / 65536), Int(user % 65536))
+		}
+		
+		static func convertToID(maj: Int, min: Int) -> Int {
+			return maj * 65536 + min
+		}
+	}
+}
+
+
+extension Bool {
+	
+	
+	var intValue: Int {
+		if self.boolValue {
+			return 1
+		}
+		else {
+			return 0
+		}
+	}
+	
 }
