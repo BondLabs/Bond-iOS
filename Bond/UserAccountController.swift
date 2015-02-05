@@ -51,7 +51,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	//@availability(deprecated)
 	func register() {
 		let name = NSString(format: "%@ %@", newFirstName, newLastName)
-		AppData.bondLog(NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, newPhoneNumber, newPassword, newAge, newGender))
+		AppData.bondLog(NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus))
 		//registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: nil)
 		
 		

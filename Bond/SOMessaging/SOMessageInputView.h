@@ -25,6 +25,7 @@
 #import <UIKit/UIKit.h>
 #import "SOPlaceholderedTextView.h"
 #import "SOMessagingDelegate.h"
+#import "SOMessageTextView.h"
 
 #define kAutoResizingMaskAll UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth
 

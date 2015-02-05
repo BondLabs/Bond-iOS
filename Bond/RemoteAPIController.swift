@@ -434,7 +434,8 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				
 				if (dataDictionary?.objectForKey("error") == nil) {
 					let dataString: String? = dataDictionary?.objectForKey("file") as? String
-					let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
+					//let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
+					let imageData = NSData(fromBase64String: dataString!)
 					var decodedImage = UIImage(data: imageData!)
 					if decodedImage != nil {
 					UserAccountController.sharedInstance.currentUser.image = decodedImage!
@@ -465,6 +466,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 			
 		else if (type == requestType.getChat) {
 			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
+
 				RemoteAPIController.sharedInstance.isNetworkBusy = false
 				let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
 				AppData.bondLog("We got a chat response! It's \(dataString!)")
@@ -515,7 +517,8 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					ChatContentManager.sharedManager.currentChat = NSMutableArray()
 				}
 				
-
+				ViewManager.sharedInstance.currentViewController?.navigationController?.presentViewController(ViewManager.sharedInstance.chatViewController!, animated: true, completion: nil)
+				ViewManager.sharedInstance.ProgressHUD?.hide(true)
 				//AppData.bondLog("bodns are \(UserAccountController.sharedInstance.currentUser.bonds)")
 				
 			}

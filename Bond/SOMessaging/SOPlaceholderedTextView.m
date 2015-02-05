@@ -92,12 +92,19 @@
 - (void)setText:(NSString *)text
 {
     [super setText:text];
-    
+
+	if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+		CGRect rect = [self.textContainer.layoutManager usedRectForTextContainer:self.textContainer];
+		UIEdgeInsets inset = self.textContainerInset;
+		self.contentSize = UIEdgeInsetsInsetRect(rect, inset).size;
+	}
+
     [self setNeedsDisplay];
 }
 
 - (void)textViewTextDidChange:(NSNotification *)note
 {
+
     [self setNeedsDisplay];
 }
 

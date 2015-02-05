@@ -94,7 +94,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		else {
 			cell.textView.textAlignment = NSTextAlignment.Left
 			cell.userNameLabel.text = self.barTitle
-			cell.userNameLabel.textColor = UIColor(red: 189/255, green: 164/255, blue: 255/255, alpha: 1)
+			cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 254/255, alpha: 1)
 		}
 
 

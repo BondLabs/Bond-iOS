@@ -34,6 +34,7 @@
 		020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934FDA61A484AB800E43B45 /* Main.storyboard */; };
 		021E53821A7DFFE9008B4F90 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021E53811A7DFFE9008B4F90 /* ChatViewController.swift */; };
 		0277FA7F1A74C3EE000FC661 /* BondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277FA7E1A74C3EE000FC661 /* BondUser.swift */; };
+		02802F7E1A83468B0078DDA2 /* SOMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02802F7D1A83468B0078DDA2 /* SOMessageTextView.m */; };
 		02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */; };
 		02AE42C41A7F305600AF9209 /* GmailLikeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE42C31A7F305600AF9209 /* GmailLikeLoadingView.m */; };
 		02BA37E41A7B59CA004F948B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BA37E31A7B59CA004F948B /* NSData+Base64.m */; };
@@ -227,6 +228,8 @@
 		020322AA1A70CAEF000C85F4 /* UserAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountController.swift; sourceTree = "<group>"; };
 		021E53811A7DFFE9008B4F90 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0277FA7E1A74C3EE000FC661 /* BondUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondUser.swift; sourceTree = "<group>"; };
+		02802F7C1A83468B0078DDA2 /* SOMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessageTextView.h; sourceTree = "<group>"; };
+		02802F7D1A83468B0078DDA2 /* SOMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOMessageTextView.m; sourceTree = "<group>"; };
 		02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPIController.swift; sourceTree = "<group>"; };
 		02AE42C21A7F305600AF9209 /* GmailLikeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailLikeLoadingView.h; sourceTree = "<group>"; };
 		02AE42C31A7F305600AF9209 /* GmailLikeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmailLikeLoadingView.m; sourceTree = "<group>"; };
@@ -439,6 +442,8 @@
 				0201A8981A7E078600D43347 /* SOMessageCell.m */,
 				0201A8991A7E078600D43347 /* SOMessageInputView.h */,
 				0201A89A1A7E078600D43347 /* SOMessageInputView.m */,
+				02802F7C1A83468B0078DDA2 /* SOMessageTextView.h */,
+				02802F7D1A83468B0078DDA2 /* SOMessageTextView.m */,
 				0201A89B1A7E078600D43347 /* SOMessageType.h */,
 				0201A89C1A7E078600D43347 /* SOMessagingDataSource.h */,
 				0201A89D1A7E078600D43347 /* SOMessagingDelegate.h */,
@@ -1095,6 +1100,7 @@
 				0201A8B21A7E078600D43347 /* SOMessagingViewController.m in Sources */,
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
 				02DA42121A7B6B220098012F /* NSURLConnection+AsyncBlocks.m in Sources */,
+				02802F7E1A83468B0078DDA2 /* SOMessageTextView.m in Sources */,
 				E93C44451A4D038F00E95265 /* TraitsViewController.swift in Sources */,
 				756E2CB11A7DBE5500037886 /* TourViewController.swift in Sources */,
 				756E2CAF1A7DBDE200037886 /* Location.swift in Sources */,

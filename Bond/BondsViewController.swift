@@ -84,6 +84,7 @@ class BondsViewController: UITableViewController {
 	func tappedCell(sender: UIGestureRecognizer) {
 		
 		let senderCell: BondTableCell = sender.view as BondTableCell
+
 		let vc = BondsDetailViewController()
 		vc.id = senderCell.bondID.toInt()
 		bondLog("View controller ID is \(vc.id)")

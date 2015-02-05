@@ -230,7 +230,7 @@
     
     CGFloat actualHeight = numberOfActualLines * lineHeight;
     
-    delta = actualHeight - self.textView.frame.size.height; //self.textView.font.lineHeight - 5;
+		//delta = actualHeight - self.textView.frame.size.height; //self.textView.font.lineHeight - 5;
     CGRect frm = self.frame;
     frm.size.height += ceilf(delta);
     frm.origin.y -= ceilf(delta);
@@ -264,8 +264,18 @@
 #pragma mark - textview delegate
 - (void)textViewDidChange:(UITextView *)textView
 {
-    [self adjustTextViewSize];    
+		//[self adjustTextViewSize];
+	CGRect frame = textView.frame;
+	frame.size.height = textView.contentSize.height;
+	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
+	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
+	self.frame = CGRectMake(self.frame.origin.x, (self.frame.origin.y + self.frame.size.height) - size.height, self.frame.size.width, size.height);
+
+
+
 }
+
+
 
 #pragma mark - Notifications handlers
 - (void)handleKeyboardWillShowNote:(NSNotification *)notification

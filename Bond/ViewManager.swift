@@ -24,7 +24,7 @@ class ViewManager: NSObject {
 	}
 
 	var currentViewController: UIViewController?
-
+	var chatViewController: UIViewController?
 	
 	
 	

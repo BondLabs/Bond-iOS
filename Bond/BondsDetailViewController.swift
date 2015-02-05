@@ -43,7 +43,7 @@ class BondsDetailViewController: UIViewController {
 		bondLog("Detail View Did Load")
 		ViewManager.sharedInstance.currentViewController = self
 
-		UserAccountController.sharedInstance.getChat(self.id, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+		
 
         // Set up view properties
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
@@ -65,14 +65,7 @@ class BondsDetailViewController: UIViewController {
         // Set up profile view for user using id
         self.setup(id)
 
-		ViewManager.sharedInstance.ProgressHUD = nil
 
-		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeCustomView
-		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0, 0, 40, 40))
-		gmailView.startAnimating()
-		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
-		ViewManager.sharedInstance.ProgressHUD!.labelText = "Loading"
     }
     
     /* * *
@@ -142,16 +135,26 @@ class BondsDetailViewController: UIViewController {
 		
 		
 		//let senderCell: BondTableCell = sender.view as BondTableCell
+		ViewManager.sharedInstance.ProgressHUD = nil
+
+		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeCustomView
+		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0, 0, 40, 40))
+		gmailView.startAnimating()
+		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
+		ViewManager.sharedInstance.ProgressHUD!.labelText = "Loading"
+		UserAccountController.sharedInstance.getChat(self.id, authKey: UserAccountController.sharedInstance.currentUser.authKey)
 		let vc = ChatViewController()
 		vc.barTitle = self.name
 		vc.chatBondID = self.id
+		ViewManager.sharedInstance.chatViewController = vc
 		bondLog("tapped Chat Button")
 		//vc.id = senderCell.bondID.toInt()
 		//bondLog("View controller ID is \(vc.id)")
 		//vc.view.frame = self.view.frame
 		//vc.nameLabel.text = senderCell.name
 		//vc.name = senderCell.name
-		self.navigationController?.presentViewController(vc, animated: true, completion: nil)
+		
 		//self.navigationController?.pushViewController(vc, animated: true)
 		//self.performSegueWithIdentifier("chatSegue", sender: self)
 		//self.navigationController?.navigationBarHidden = true
