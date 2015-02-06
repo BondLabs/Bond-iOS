@@ -11,6 +11,9 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     // Save controller elements
+	let YES = true
+	let NO = false
+	
     var nameLabel: UILabel!
     var distLabel: UILabel!
     var profImage: CircleImageView!
@@ -90,6 +93,8 @@ class ProfileViewController: UIViewController {
 		chatButton.backgroundColor = UIColor.blueColor()
 		chatButton.layer.cornerRadius = 20.0
 		chatButton.layer.masksToBounds = true
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedButton:")
+		chatButton.addGestureRecognizer(tapGestureRecognizer)
 		self.view.addSubview(chatButton)
         
         // Add activity views
@@ -102,6 +107,13 @@ class ProfileViewController: UIViewController {
             actView.center = CGPointMake(self.view.frame.width * CGFloat(xfac), self.view.frame.height * 3 / 5)
             self.view.addSubview(actView)
         }
+		
+		
     }
+    
+	func tappedButton(sender: UITapGestureRecognizer) {
+		self.performSegueWithIdentifier("chatSegue", sender: self)
+		self.navigationController?.navigationBarHidden = YES
+	}
     
 }

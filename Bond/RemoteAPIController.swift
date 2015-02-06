@@ -170,26 +170,26 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
 					let authKey: NSString = dataDictionary?.objectForKey("auth_key") as NSString
 					
+					UserAccountController.sharedInstance.getAndSaveBonds(userID.integerValue, authKey: authKey)
+					
 					let newUser = BondUser.fetchUserWithID(userID.integerValue, authKey: authKey)
 					UserAccountController.sharedInstance.currentUser.getUserPicture()
 					//newUser.populateUser(userID.integerValue, authKey: authKey)
 					
 					
-					if (ViewManager.sharedInstance.currentViewController != nil) {
-						
-						
-						dispatch_async(dispatch_get_main_queue(), {() -> Void in
-							let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
-							LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
-							ViewManager.sharedInstance.ProgressHUD?.hide(true)
-							NSLog("pushing the view")
-							})
-					}
+					
 					
 					NSLog("User created: %@ with ID: %@", newUser.description, userID)
 					
 					
 					
+				}
+				else {
+					dispatch_async(dispatch_get_main_queue(), {() -> Void in
+						
+						ViewManager.sharedInstance.ProgressHUD?.hide(true)
+						NSLog("oops, there was an error")
+					})
 				}
 
 			}
@@ -354,7 +354,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		
 		//Let her rip
 		if (type == requestType.user) {
-			var successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
+			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
 				let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
 				NSLog("We got a user response! It's %@", dataString!)
 				
@@ -388,12 +388,44 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					NSLog("User is now set! (hopefully) \n Name is \(user.name) \n Phone is \(user.phoneNumber) \n age is \(user.age) \n gender is \(user.gender)")
 					
 				}
+				
 			}
 
 			
 		}
 		else if (type == requestType.allbonds) {
-			connectionDelegate = allBondsDelegate.sharedInstance
+			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
+				RemoteAPIController.sharedInstance.isNetworkBusy = false
+				let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+				NSLog("We got a registration response! It's %@", dataString!)
+				
+				var writeError: NSError?
+				
+				
+				
+				var dataArray: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+				
+				
+				
+				
+				
+				NSLog("Dict is \(dataArray)")
+				
+				UserAccountController.sharedInstance.currentUser.bonds = dataArray!
+				
+				if (ViewManager.sharedInstance.currentViewController != nil) {
+					
+					
+					dispatch_async(dispatch_get_main_queue(), {() -> Void in
+						let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
+						LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
+						ViewManager.sharedInstance.ProgressHUD?.hide(true)
+						NSLog("pushing the view")
+					})
+				}
+				NSLog("bodns are \(UserAccountController.sharedInstance.currentUser.bonds)")
+
+			}
 		}
 			
 		else if (type == requestType.custom) {
@@ -509,6 +541,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 //MARK: - Delegates
 
 //MARK: Bond Fetching
+/*
 class allBondsDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
 	
 	
@@ -555,11 +588,12 @@ class allBondsDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDe
 		if (dataDictionary?.objectForKey("error") == nil) {
 			let user = UserAccountController.sharedInstance.currentUser
 			let dict = NSDictionary(dictionary: dataDictionary!)
-			user.bonds = dict.allValues
+			user.bonds = dict
 		}
 	}
 	
 }
+*/
 //MARK: request photo
 class requestPhotoDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
 	

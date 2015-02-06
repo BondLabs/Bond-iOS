@@ -54,9 +54,6 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		println("registerring for bond")
 		//registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: nil)
 		
-		
-		
-		
 		RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, newPhoneNumber, newPassword, newAge, newGender), api_key: authKey, type: requestType.register)
 	}
 	
@@ -109,7 +106,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 			
 			return dataDictionary!
 		}
-
+		
 		
 	}
 	
@@ -159,5 +156,5 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	}
 	
 	
-
+	
 }

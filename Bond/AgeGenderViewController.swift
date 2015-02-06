@@ -25,7 +25,7 @@ class AgeGenderViewController: UIViewController {
 		// Set up basic view properties
 		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
 
-		ViewManager.sharedInstance.AgeGenderViewController = self
+		
 		ViewManager.sharedInstance.currentViewController = self
 		
 		// Set up view description label

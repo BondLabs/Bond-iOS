@@ -12,6 +12,7 @@ class BondsViewController: UITableViewController {
     
     // Store bonds as a property of the controller
     var bonds:[String]!
+	var bondArray:[String]!
     
     /* * *
      * * * Do basic setup
@@ -20,9 +21,13 @@ class BondsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		ViewManager.sharedInstance.BondsViewController = self
-
+		ViewManager.sharedInstance.currentViewController = self
+		let UAC = UserAccountController.sharedInstance
+		
         // Get bonds from online
+		NSLog("items in array \(UAC.currentUser.bonds)")
+		bondArray = UAC.currentUser.bonds.allValues as [String]
+		NSLog("all items in bond array \(bondArray)")
 		
 		//let bondData = UserAccountController.sharedInstance.getBonds(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
 		//NSLog("\(bondData)")
@@ -48,13 +53,13 @@ class BondsViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bonds.count
+        return bondArray.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BondTableCell", forIndexPath: indexPath) as BondTableCell
-
-        cell.setup(bonds[indexPath.row])
+		NSLog("all items in bond array \(bondArray[indexPath.row])")
+        cell.setup(bondArray[indexPath.row])
         return cell
     }
 

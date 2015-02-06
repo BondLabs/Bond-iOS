@@ -8,6 +8,11 @@
 
 import UIKit
 
+
+
+
+
+
 class AppData {
     struct data {
         static var userID:Int!
@@ -23,7 +28,7 @@ class AppData {
 		}
 		static var activityNames:[String] = ["Active", "Artist", "Badass", "Brainy", "Caring", "Chill", "Creative", "Cultured", "Curious", "Driven", "Easygoing", "Empathetic", "Experienced", "Extroverted", "Fashionable", "Fit", "Free Spirited", "Friendly", "Fun", "Funky", "Hipster", "Introverted", "LOL", "Loud", "Modern", "Motivated", "Observant", "Ol'Skool", "Open Minded", "Outgoing", "Posh", "Rebellious", "Relaxed", "Romantic", "Rustic", "Sarcastic", "Serious", "Sporty", "Studious", "Thrilling", "Tough", "Traditional", "Trustworthy", "Visual", "Weird"]
     }
-    
+	
     struct util {
         static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
             return UIColor(
@@ -33,6 +38,7 @@ class AppData {
                 alpha: CGFloat(1.0)
             )
         }
+        
 		static func UIColorFromRGBA(rgbValue: UInt, alphaValue: Float) -> UIColor {
 			return UIColor(
 				red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
@@ -59,5 +65,13 @@ class AppData {
 			var cropImage:UIImage = UIImage(CGImage: cropRef)!
 			return cropImage
 		}
+        
+        static func convertToMM(user: Int) -> (Int, Int) {
+            return (Int(user / 65536), Int(user % 65536))
+        }
+        
+        static func convertToID(maj: Int, min: Int) -> Int {
+            return maj * 65536 + min
+        }
     }
 }

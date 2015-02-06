@@ -16,7 +16,8 @@ class BondUser: NSObject {
 	var userID = 0
 	var authKey = ""
 	var gender = ""
-	var bonds = NSArray()
+	var bonds = NSMutableDictionary()
+	//key is UID, value is name
 	var image = UIImage()
 	
 	class func fetchUserWithID(id: Int, authKey: NSString) -> BondUser {

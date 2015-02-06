@@ -77,18 +77,20 @@ class Location: NSObject, CLLocationManagerDelegate, CBPeripheralManagerDelegate
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         println("Entered: \(region)")
         self.locationManager.startRangingBeaconsInRegion(self.region)
+        self.sendLocalNotificationForRegionConfirmedWithText("Entered region")
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         println("Exited: \(region)")
         self.locationManager.stopRangingBeaconsInRegion(self.region)
+        self.sendLocalNotificationForRegionConfirmedWithText("Exited region")
     }
     
     func locationManager(manager: CLLocationManager!, didRangeBeacons beacons: [AnyObject]!, inRegion region: CLBeaconRegion!) {
         // Process beacons here (if necessary) to figure out which bonds should be retained
         println(beacons.count)
         /*if (beacons.count == 0) {
-            return
+        return
         }
         var beacon = beacons.last as CLBeacon
         println("Ranging beacons \(count)")
@@ -99,11 +101,9 @@ class Location: NSObject, CLLocationManagerDelegate, CBPeripheralManagerDelegate
     func locationManager(manager: CLLocationManager!, didDetermineState state: CLRegionState, forRegion region: CLRegion!) {
         if (state == CLRegionState.Inside) {
             self.locationManager.startRangingBeaconsInRegion(self.region)
-            // self.sendLocalNotificationForRegionConfirmedWithText("Region Inside")
             println("Region Inside")
         } else {
             self.locationManager.stopRangingBeaconsInRegion(self.region)
-            // self.sendLocalNotificationForRegionConfirmedWithText("Region Outside")
             println("Region Outside")
         }
     }
