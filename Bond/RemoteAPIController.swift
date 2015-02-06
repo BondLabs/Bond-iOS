@@ -610,6 +610,74 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		//return NSURLConnection.sendSynchronousRequest(request, returningResponse: urlResponse, error: error)!
 	}
 
+	func customAPIRequestWithBlocks(URL: NSString, data: NSString, header: (value: NSString, field: NSString)?, HTTPMethod: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
+
+		let hasData: Bool = !(data.isEqualToString(""))
+
+
+		let get = NSString(format: data)
+		//convert the string to an NSData object
+
+
+		let getData = get.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
+
+		//Calculate length for HTTP
+
+		let getLength = NSString(format: "%d", getData!.length)
+
+		//Create URL Request
+
+		let request = NSMutableURLRequest()
+
+		//Set the URL
+		request.URL = NSURL(string: URL)
+
+		//Set the method
+
+		request.HTTPMethod = HTTPMethod
+
+		AppData.bondLog("Establishing connection to URL \(URL) with protocol \(request.HTTPMethod)")
+
+		//Put the relevant info into the header (length, auth, format, etc.)
+
+
+		if (hasData)
+		{
+			request.setValue(getLength, forHTTPHeaderField: "Content-Length")
+		}
+		//if (api_key != nil) {
+		//request.setValue(api_key, forHTTPHeaderField: "x-api-key")
+		//}
+		//else {
+		if header != nil
+		{
+			request.setValue(header!.value, forHTTPHeaderField: header!.field)
+		}
+		//request.setValue(api_key, forHTTPHeaderField: "X-AUTH-KEY")
+		//}
+
+		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+		//Add the data to the request
+		if (hasData)
+		{
+			request.HTTPBody = getData
+		}
+
+
+		//Let her rip
+
+
+
+		//..let connection = NSURLConnection(request: request, delegate: connectionDelegate)
+		//let urlResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
+		//let error: NSErrorPointer! = nil;
+		isNetworkBusy = true
+		//let connection = NSURLConnection(request: request, delegate: delegate)
+		NSURLConnection.asyncRequest(request, success:success ,
+			failure:failure)
+	}
+
 	
 	//MARK: - Default Delegate Stuff
 	func connection(connection: NSURLConnection, didFailWithError error: NSError) {

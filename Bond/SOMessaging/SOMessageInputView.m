@@ -228,9 +228,9 @@
     CGFloat lineHeight = self.textView.font.lineHeight;
     int numberOfActualLines = ceilf(self.frame.size.height / lineHeight);
     
-    CGFloat actualHeight = numberOfActualLines * lineHeight;
+	CGFloat actualHeight = [self.textView.text sizeWithFont:self.textView.font constrainedToSize:self.frame.size].height;//numberOfActualLines * lineHeight;
     
-		//delta = actualHeight - self.textView.frame.size.height; //self.textView.font.lineHeight - 5;
+		delta = actualHeight - self.textView.font.lineHeight - 5;
     CGRect frm = self.frame;
     frm.size.height += ceilf(delta);
     frm.origin.y -= ceilf(delta);
@@ -240,7 +240,7 @@
             frm.size.height = self.textInitialHeight;
             frm.origin.y = self.superview.bounds.size.height - frm.size.height - keyboardFrame.size.height;
         }
-        
+
         [UIView animateWithDuration:0.3 animations:^{
             self.frame = frm;
 
@@ -264,13 +264,17 @@
 #pragma mark - textview delegate
 - (void)textViewDidChange:(UITextView *)textView
 {
-		//[self adjustTextViewSize];
+		[self adjustTextViewSize];
+
+
 	CGRect frame = textView.frame;
 	frame.size.height = textView.contentSize.height;
 	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
 
+
+
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
-	self.frame = CGRectMake(self.frame.origin.x, (self.frame.origin.y + self.frame.size.height) - size.height, self.frame.size.width, size.height);
+	self.frame = CGRectMake(self.frame.origin.x,(self.frame.origin.y + self.frame.size.height) - size.height, self.frame.size.width,  MAX(size.height, 40));
 
 
 
