@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Pl1-PC-Q3q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4rR-LT-faG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -556,12 +556,30 @@
                         <outlet property="flash" destination="acN-Ni-6Dw" id="3gw-sj-MaU"/>
                         <outlet property="flip" destination="LSk-S8-3hT" id="Wwn-SX-ZyD"/>
                         <outlet property="next" destination="70u-UK-QKV" id="sO7-H5-1xG"/>
-                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" id="QIG-zC-egB"/>
+                        <segue destination="4rR-LT-faG" kind="modal" identifier="nextView" id="ZpS-go-W1x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fAs-tZ-KZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2953" y="318"/>
+        </scene>
+        <!--Push Permission View Controller-->
+        <scene sceneID="rf5-3S-0T7">
+            <objects>
+                <viewController id="4rR-LT-faG" customClass="PushPermissionViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GPd-gf-6hs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="8nF-By-GCl"/>
+                    <connections>
+                        <segue destination="sTa-GV-XXK" kind="modal" identifier="seguePushToBonds" id="EuD-lz-BYh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YUi-mf-6D0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3845" y="318"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2HW-gx-5pc">
@@ -638,6 +656,24 @@
             </objects>
             <point key="canvasLocation" x="2953" y="1667"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ci0-BC-A00">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gxj-H7-He3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Npr-M2-tL8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4rR-LT-faG" kind="relationship" relationship="rootViewController" id="qLT-Gt-xqm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E0n-l7-17A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3485" y="318"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -645,11 +681,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="R23-YL-h3N"/>
         <segue reference="Gfx-JN-Ff2"/>
         <segue reference="2Zi-Zh-utD"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
-        <segue reference="SCU-zk-ooq"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="ZpS-go-W1x"/>
+        <segue reference="EuD-lz-BYh"/>
     </inferredMetricsTieBreakers>
 </document>

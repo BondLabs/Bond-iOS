@@ -37,6 +37,8 @@
 		02DA42151A7B712E0098012F /* NSURLConnection+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */; };
 		02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA21A7D86DF00B59C39 /* ViewManager.swift */; };
 		02F92FA61A7D8E3500B59C39 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA51A7D8E3500B59C39 /* MBProgressHUD.m */; };
+		752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752326931A847D7900BD3E93 /* PushPermissionViewController.swift */; };
+		752326961A848D4F00BD3E93 /* ChatBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 752326951A848D4F00BD3E93 /* ChatBubble.png */; };
 		752342081A7F5D4500584904 /* BluetoothCentral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752342071A7F5D4500584904 /* BluetoothCentral.swift */; };
 		755F35EA1A7E30E90065EDE0 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F35E31A7E30E90065EDE0 /* TourViewController.swift */; };
 		755F35EB1A7E30E90065EDE0 /* Tour_BondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F35E41A7E30E90065EDE0 /* Tour_BondViewController.swift */; };
@@ -248,6 +250,8 @@
 		02F92FA21A7D86DF00B59C39 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		02F92FA41A7D8E3500B59C39 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		02F92FA51A7D8E3500B59C39 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		752326931A847D7900BD3E93 /* PushPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionViewController.swift; sourceTree = "<group>"; };
+		752326951A848D4F00BD3E93 /* ChatBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChatBubble.png; sourceTree = "<group>"; };
 		752342071A7F5D4500584904 /* BluetoothCentral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothCentral.swift; sourceTree = "<group>"; };
 		755F35E31A7E30E90065EDE0 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		755F35E41A7E30E90065EDE0 /* Tour_BondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour_BondViewController.swift; sourceTree = "<group>"; };
@@ -518,6 +522,14 @@
 			name = Chat;
 			sourceTree = "<group>";
 		};
+		752326921A847D5300BD3E93 /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				752326931A847D7900BD3E93 /* PushPermissionViewController.swift */,
+			);
+			name = Permissions;
+			sourceTree = "<group>";
+		};
 		755F35F11A7E30EE0065EDE0 /* Tour */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +587,7 @@
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
 				02F92FA21A7D86DF00B59C39 /* ViewManager.swift */,
 				E934FDA61A484AB800E43B45 /* Main.storyboard */,
+				752326921A847D5300BD3E93 /* Permissions */,
 				021E53831A7E000E008B4F90 /* Chat */,
 				755F35F11A7E30EE0065EDE0 /* Tour */,
 				020322AC1A70CAFC000C85F4 /* User Account Stuff */,
@@ -765,6 +778,7 @@
 		E9F482DD1A52AF56006DB53C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				752326951A848D4F00BD3E93 /* ChatBubble.png */,
 				755F35F21A7E310D0065EDE0 /* Tour_1.png */,
 				755F35F31A7E310D0065EDE0 /* Tour_2.png */,
 				755F35F41A7E310D0065EDE0 /* Tour_3.png */,
@@ -949,6 +963,7 @@
 				E93EC81B1A6934A800C03170 /* Extroverted (i).png in Resources */,
 				0201A8AE1A7E078600D43347 /* play_button@2x.png in Resources */,
 				E93EC8181A6934A800C03170 /* Experienced (a).png in Resources */,
+				752326961A848D4F00BD3E93 /* ChatBubble.png in Resources */,
 				E93EC84E1A6934A800C03170 /* Thrilling (a).png in Resources */,
 				E93EC8011A6934A800C03170 /* Active (i).png in Resources */,
 				E93EC81F1A6934A800C03170 /* Fit (i).png in Resources */,
@@ -1094,6 +1109,7 @@
 				E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
 				02DA42151A7B712E0098012F /* NSURLConnection+Blocks.m in Sources */,
+				752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */,
 				02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */,
 				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
