@@ -25,6 +25,10 @@ func bondLog(x: AnyObject) {
 	
 }
 
+var screenSize: CGSize {
+	return UIScreen.mainScreen().bounds.size
+}
+
 
 
 

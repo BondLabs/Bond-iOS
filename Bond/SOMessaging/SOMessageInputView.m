@@ -268,6 +268,7 @@
 	CGRect frame = textView.frame;
 	frame.size.height = textView.contentSize.height;
 	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
+
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
 	self.frame = CGRectMake(self.frame.origin.x, (self.frame.origin.y + self.frame.size.height) - size.height, self.frame.size.width, size.height);
 

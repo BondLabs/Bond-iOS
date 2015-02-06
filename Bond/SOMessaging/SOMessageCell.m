@@ -156,8 +156,8 @@ static BOOL cellIsDragging;
     self.timeLabel.textColor = [UIColor grayColor];
     self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 
-	self.userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:30];
-	self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+	self.userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
+		//self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 
 
 
@@ -284,7 +284,8 @@ static BOOL cellIsDragging;
     
     frame.origin.x += self.contentInsets.left - self.contentInsets.right;
     
-    self.textView.frame = frame;
+    self.textView.frame = CGRectOffset(frame, 0, 40);
+
     
     CGRect userRect = self.userImageView.frame;
     

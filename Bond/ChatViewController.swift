@@ -85,16 +85,33 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 
 	override func configureMessageCell(cell: SOMessageCell!, forMessageAtIndex index: Int) {
 		let message: Message = self.dataSource[index] as Message
+
+
+		//cell.layer.borderColor = UIColor.whiteColor().CGColor
+		//cell.layer.borderWidth = 1
+
+
+
+
+
+
 		
 		if message.fromMe {
-			cell.textView.textAlignment = NSTextAlignment.Right
+
+
 			cell.userNameLabel.text = UserAccountController.sharedInstance.currentUser.name as? String
-			cell.userNameLabel.textColor = UIColor(red: 0, green: 164/255, blue: 255/255, alpha: 1)
+			cell.userNameLabel.frame = CGRectMake(0, -30, 200, 100)
+			cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
+			cell.userNameLabel.textAlignment = NSTextAlignment.Right
+			cell.textView.textAlignment = NSTextAlignment.Right
 		}
 		else {
+
+			cell.userNameLabel.text = barTitle
+			cell.userNameLabel.frame = CGRectMake(10, -30, 200, 100)
+			cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 244/255, alpha: 1)
+			cell.userNameLabel.textAlignment = NSTextAlignment.Left
 			cell.textView.textAlignment = NSTextAlignment.Left
-			cell.userNameLabel.text = self.barTitle
-			cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 254/255, alpha: 1)
 		}
 
 
@@ -104,7 +121,9 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		} else {
 			cell.contentInsets = UIEdgeInsetsMake(0, 0, 0, 4.0) //Move content for 4 pt. to left
 		}
-		cell.backgroundColor = UIColor.purpleColor()
+		cell.backgroundColor = UIColor.clearColor()
+		cell.textView.frame = CGRectOffset(cell.textView.frame, 0, 30)
+
 		cell.textView.textColor = UIColor.whiteColor()
 		cell.userImageView.layer.cornerRadius = 3
 		cell.userImageView.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin
@@ -120,8 +139,12 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 	}
 
 	func generateLabelForCell(cell: SOMessageCell) {
+
+
+		/*
 		let labelTag: NSInteger = 90
 		let message: SOMessage = cell.message as SOMessage
+
 		let formatter = NSDateFormatter()
 		formatter.dateFormat = "dd.MM.yyyy HH:mm"
 		var label: UILabel? = cell.contentView.viewWithTag(labelTag) as? UILabel
@@ -134,6 +157,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		}
 		label!.text = formatter.stringFromDate(message.date)
 		label?.sizeToFit()
+
 
 		var frame = label!.frame
 		let topMargin: CGFloat = 5.0
@@ -151,7 +175,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		}
 
 		label!.frame = frame
-
+	*/
 	}
 
 	override func balloonImageForSending() -> UIImage! {
