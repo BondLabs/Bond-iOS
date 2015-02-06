@@ -22,6 +22,17 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
+
+
+void bondLog(id x) {
+
+	NSLog(@"%@", x);
+
+
+}
+
+
+
 #import "SOMessageInputView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UINavigationController+Rotation.h"
@@ -264,7 +275,7 @@
 #pragma mark - textview delegate
 - (void)textViewDidChange:(UITextView *)textView
 {
-		[self adjustTextViewSize];
+		//[self adjustTextViewSize];
 
 
 	CGRect frame = textView.frame;
@@ -274,11 +285,23 @@
 
 
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
-	self.frame = CGRectMake(self.frame.origin.x,(self.frame.origin.y + self.frame.size.height) - size.height, self.frame.size.width,  MAX(size.height, 40));
+	CGRect origRect = self.frame;
+	[UIView animateWithDuration:0.1 animations:^ {
+	self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+	}];
+
+	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);
+	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
+
+
+
+
 
 
 
 }
+
+
 
 
 

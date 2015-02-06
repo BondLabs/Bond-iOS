@@ -18,6 +18,8 @@ struct bondColors {
 	static let color4 = AppData.util.UIColorFromRGB(0x00a4ff)
 }
 
+
+
 func bondLog(x: AnyObject) {
 	
 	NSLog("\(x)")
