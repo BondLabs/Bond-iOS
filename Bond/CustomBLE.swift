@@ -35,7 +35,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
     
     func setup() {
         self.beaconList = []
-        self.uuid = CBUUID(NSUUID: NSUUID(UUIDString: "5DBAC5C8-0B19-4FC7-B98E-E9681EC24DC9"))
+        self.uuid = CBUUID(NSUUID: NSUUID(UUIDString: "\(UserAccountController.sharedInstance.currentUser.userID)"))
         self.advertisingData = [CBAdvertisementDataLocalNameKey:"bond-peripheral",
         CBAdvertisementDataServiceUUIDsKey: [self.uuid]]
         self.peripheralManager = CBPeripheralManager(delegate: self, queue: nil)
@@ -88,7 +88,37 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
             println("Stopped scanning")
             self.filterDetected()
             println(self.beaconList)
+            
+            bondLog(UserAccountController.sharedInstance.currentUser.authKey)
+            bondLog(UserAccountController.sharedInstance.currentUser.userID)
+            
+            UserAccountController.sharedInstance.sendCustomRequestWithBlocks(NSString(format: "id=%d&list=%@", UserAccountController.sharedInstance.currentUser.userID, self.beaconListToString()), header: ("X-AUTH-KEY", UserAccountController.sharedInstance.currentUser.authKey), URL: "http://api.bond.sh/api/list", HTTProtocol: "POST", success: { (data, response) -> Void in
+                var writeError: NSError?
+                var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+                if (dataDictionary?.objectForKey("error") == nil) {
+                    bondLog(dataDictionary!)
+                }
+                }, failure: { (data, response) -> Void in
+                    var writeError: NSError?
+                    var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+                    if (dataDictionary?.objectForKey("error") != nil) {
+                        bondLog(dataDictionary!)
+                    }
+            })
         })
+    }
+    
+    func beaconListToString() -> String {
+        self.filterDetected()
+        if self.beaconList.count == 0 {
+            return ""
+        }
+        var list:String = self.beaconList[0] as String
+        for var i = 1; i < self.beaconList.count; i++ {
+            list += "," + self.beaconList[i]
+        }
+        println(list)
+        return list
     }
     
     func filterDetected() {

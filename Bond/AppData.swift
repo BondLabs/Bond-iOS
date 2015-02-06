@@ -8,12 +8,27 @@
 
 import UIKit
 
+func bondLog(x: AnyObject) {
+    NSLog("\(x)")
+}
 
-
-
-
+extension Bool {
+    var intValue: Int {
+        if self.boolValue {
+            return 1
+        }
+        else {
+            return 0
+        }
+    }
+}
 
 class AppData {
+    
+    class func bondLog(x: AnyObject) {
+        NSLog("\(x)")
+    }
+    
     struct data {
         static var userID:Int!
 		static var viewWidth = UIScreen.mainScreen().bounds.width

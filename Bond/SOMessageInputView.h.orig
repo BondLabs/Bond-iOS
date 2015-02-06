@@ -25,6 +25,10 @@
 #import <UIKit/UIKit.h>
 #import "SOPlaceholderedTextView.h"
 #import "SOMessagingDelegate.h"
+<<<<<<< HEAD
+#import "SOMessageTextView.h"
+=======
+>>>>>>> kevin-dev
 
 #define kAutoResizingMaskAll UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth
 
@@ -37,7 +41,10 @@
 @property (strong, nonatomic) UIButton *sendButton;
 
 @property (strong, nonatomic) UIView *separatorView;
+<<<<<<< HEAD
+=======
 @property (strong, nonatomic) UIView *textBg;
+>>>>>>> kevin-dev
 
 @property (nonatomic, readonly) BOOL viewIsDragging;
 

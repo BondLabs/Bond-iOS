@@ -55,6 +55,7 @@
     [self addSubview:self.placeholderLabel];
     self.placeholderLabel.hidden = YES;
     
+    [self addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew) context:NULL];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewTextDidChange:) name:UITextViewTextDidChangeNotification object:self];
 }
 
@@ -72,6 +73,15 @@
     [self setNeedsDisplay];
 }
 
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    UITextView *tv = object;
+    
+    //Bottom vertical alignment
+    CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height);
+    topCorrect = (topCorrect <0.0 ? 0.0 : topCorrect);
+    tv.contentOffset = (CGPoint){.x = -5, .y = -topCorrect};
+}
+
 - (void)setFont:(UIFont *)font
 {
     [super setFont:font];
@@ -82,12 +92,19 @@
 - (void)setText:(NSString *)text
 {
     [super setText:text];
-    
+
+	if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+		CGRect rect = [self.textContainer.layoutManager usedRectForTextContainer:self.textContainer];
+		UIEdgeInsets inset = self.textContainerInset;
+		self.contentSize = UIEdgeInsetsInsetRect(rect, inset).size;
+	}
+
     [self setNeedsDisplay];
 }
 
 - (void)textViewTextDidChange:(NSNotification *)note
 {
+
     [self setNeedsDisplay];
 }
 
@@ -116,10 +133,6 @@
     } else {
         self.placeholderLabel.hidden = YES;
     }
-}
-
-- (UIEdgeInsets)contentInset {
-    return UIEdgeInsetsZero;
 }
 
 - (void)dealloc

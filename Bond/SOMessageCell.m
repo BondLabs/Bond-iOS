@@ -95,6 +95,7 @@ static BOOL cellIsDragging;
     self.userImageView = [[UIImageView alloc] init];
     self.userImageView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.messageMaxWidth, 0)];
+	self.userNameLabel = [[UILabel alloc] init];
     self.timeLabel = [[UILabel alloc] init];
     self.mediaImageView = [[UIImageView alloc] init];
     self.mediaOverlayView = [[UIView alloc] init];
@@ -144,6 +145,7 @@ static BOOL cellIsDragging;
     [self.containerView addSubview:self.textView];
     [self.containerView addSubview:self.mediaImageView];
     [self.containerView addSubview:self.userImageView];
+	[self.containerView addSubview:self.userNameLabel];
     
     [self.contentView addSubview:self.timeLabel];
     
@@ -153,6 +155,12 @@ static BOOL cellIsDragging;
     self.timeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:12];
     self.timeLabel.textColor = [UIColor grayColor];
     self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+
+	self.userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
+		//self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+
+
+
 }
 
 - (void)hideSubViews
@@ -276,7 +284,8 @@ static BOOL cellIsDragging;
     
     frame.origin.x += self.contentInsets.left - self.contentInsets.right;
     
-    self.textView.frame = frame;
+    self.textView.frame = CGRectOffset(frame, 0, 40);
+
     
     CGRect userRect = self.userImageView.frame;
     

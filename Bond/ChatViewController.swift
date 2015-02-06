@@ -13,6 +13,8 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     let NO = false
     let YES = true
     var myImage: UIImage!
+    var barTitle: String!
+    var chatBondID: Int!
     var partnerImage: UIImage!
     var dataSource: NSMutableArray!
     var tableViewHeaderView: UIView!
@@ -35,11 +37,13 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         
         // Add name label to view
         var nameLabel = UILabel()
-        nameLabel.text = "Test"
+        nameLabel.text = barTitle
         nameLabel.textColor = UIColor.whiteColor()
         nameLabel.font = UIFont(name: "Avenir-Heavy", size: 24)
         nameLabel.sizeToFit()
         nameLabel.center = CGPointMake(self.view.frame.width / 2, 45)
+        let gestureRecogniser = UITapGestureRecognizer(target: self, action: "tappedName:")
+        nameLabel.addGestureRecognizer(gestureRecogniser)
         self.view.addSubview(nameLabel)
         
         // Set up tableview
@@ -60,7 +64,11 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         self.inputView.tableView = self.tableView
         self.inputView.adjustPosition()
     }
-
+    
+    func tappedName(sender: UIGestureRecognizer) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func loadMessages () {
         self.dataSource = ChatContentManager.sharedManager.generateConversation().mutableCopy() as NSMutableArray
     }
@@ -78,12 +86,44 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     override func configureMessageCell(cell: SOMessageCell!, forMessageAtIndex index: Int) {
         let message: Message = self.dataSource[index] as Message
         
+        
+        //cell.layer.borderColor = UIColor.whiteColor().CGColor
+        //cell.layer.borderWidth = 1
+        
+        
+        
+        
+        
+        
+        
+        if message.fromMe {
+            
+            
+            cell.userNameLabel.text = UserAccountController.sharedInstance.currentUser.name as? String
+            cell.userNameLabel.frame = CGRectMake(0, -30, 200, 100)
+            cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
+            cell.userNameLabel.textAlignment = NSTextAlignment.Right
+            cell.textView.textAlignment = NSTextAlignment.Right
+        }
+        else {
+            
+            cell.userNameLabel.text = barTitle
+            cell.userNameLabel.frame = CGRectMake(10, -30, 200, 100)
+            cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 244/255, alpha: 1)
+            cell.userNameLabel.textAlignment = NSTextAlignment.Left
+            cell.textView.textAlignment = NSTextAlignment.Left
+        }
+        
+        
+        
         if (!message.fromMe) {
             cell.contentInsets = UIEdgeInsetsMake(0, 4.0, 0, 0) //Move content for 4 pt. to right
         } else {
             cell.contentInsets = UIEdgeInsetsMake(0, 0, 0, 4.0) //Move content for 4 pt. to left
         }
-        cell.backgroundColor = UIColor.purpleColor()
+        cell.backgroundColor = UIColor.clearColor()
+        cell.textView.frame = CGRectOffset(cell.textView.frame, 0, 30)
+        
         cell.textView.textColor = UIColor.whiteColor()
         cell.userImageView.layer.cornerRadius = 3
         cell.userImageView.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin
@@ -99,20 +139,25 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     }
     
     func generateLabelForCell(cell: SOMessageCell) {
-        /*let labelTag: NSInteger = 90
+        
+        
+        /*
+        let labelTag: NSInteger = 90
         let message: SOMessage = cell.message as SOMessage
+        
         let formatter = NSDateFormatter()
         formatter.dateFormat = "dd.MM.yyyy HH:mm"
         var label: UILabel? = cell.contentView.viewWithTag(labelTag) as? UILabel
         if (label == nil) {
-            label = UILabel()
-            label!.font = UIFont.systemFontOfSize(8)
-            label!.textColor = UIColor.grayColor()
-            label!.tag = labelTag
-            cell.contentView.addSubview(label!)
+        label = UILabel()
+        label!.font = UIFont.systemFontOfSize(8)
+        label!.textColor = UIColor.grayColor()
+        label!.tag = labelTag
+        cell.contentView.addSubview(label!)
         }
         label!.text = formatter.stringFromDate(message.date)
         label?.sizeToFit()
+        
         
         var frame = label!.frame
         let topMargin: CGFloat = 5.0
@@ -120,13 +165,13 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         let rightMargin: CGFloat = 20.0
         
         if (message.fromMe) {
-            frame.origin.x = cell.contentView.frame.size.width - cell.userImageView.frame.size.width - frame.size.width - rightMargin;
-            frame.origin.y = cell.containerView.frame.origin.y + cell.containerView.frame.size.height + topMargin;
-            label!.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
+        frame.origin.x = cell.contentView.frame.size.width - cell.userImageView.frame.size.width - frame.size.width - rightMargin;
+        frame.origin.y = cell.containerView.frame.origin.y + cell.containerView.frame.size.height + topMargin;
+        label!.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
         } else {
-            frame.origin.x = cell.containerView.frame.origin.x + cell.userImageView.frame.origin.x + cell.userImageView.frame.size.width + leftMargin;
-            frame.origin.y = cell.containerView.frame.origin.y + cell.containerView.frame.size.height + topMargin;
-            label!.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin
+        frame.origin.x = cell.containerView.frame.origin.x + cell.userImageView.frame.origin.x + cell.userImageView.frame.size.width + leftMargin;
+        frame.origin.y = cell.containerView.frame.origin.y + cell.containerView.frame.size.height + topMargin;
+        label!.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin
         }
         
         label!.frame = frame
@@ -167,6 +212,8 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         if (message.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).utf16Count == 0) {
             return
         }
+        
+        UserAccountController.sharedInstance.newChat(chatBondID, userID: UserAccountController.sharedInstance.currentUser.userID, message: message, authKey: UserAccountController.sharedInstance.currentUser.authKey)
         let msg = Message()
         msg.text = message
         msg.fromMe = YES

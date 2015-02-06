@@ -67,6 +67,9 @@
     self.tableViewHeaderView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = self.tableViewHeaderView;
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+
+	CGPoint bottomOffset = CGPointMake(0, self.tableView.contentSize.height - self.tableView.bounds.size.height);
+	[self.tableView setContentOffset:bottomOffset animated:YES];
     
     [self.view addSubview:self.tableView];
     
@@ -220,10 +223,14 @@
     
     // For user customization
     int index = (int)[[self messages] indexOfObject:message];
+	
     [self configureMessageCell:cell forMessageAtIndex:index];
     
     [cell adjustCell];
-    
+		//tableView.layer.shouldRasterize = YES;
+		//tableView.layer.rasterizationScale = 2;
+	cell.layer.shouldRasterize = YES;
+	cell.layer.rasterizationScale = 2;
     return cell;
 }
 
@@ -307,6 +314,7 @@
 
 - (void)configureMessageCell:(SOMessageCell *)cell forMessageAtIndex:(NSInteger)index
 {
+
 
 }
 
@@ -449,6 +457,14 @@
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
     }
 }
+
+- (void)keyboardWillChange:(NSNotification *)notification {
+	NSDictionary* keyboardInfo = [notification userInfo];
+	NSValue* keyboardFrameBegin = [keyboardInfo valueForKey:UIKeyboardFrameEndUserInfoKey];
+	CGRect keyboardFrameBeginRect = [keyboardFrameBegin CGRectValue];
+	self.inputView.frame = CGRectMake(self.inputView.frame.origin.x, keyboardFrameBeginRect.size.height + self.inputView.frame.size.height, self.inputView.frame.size.width, self.inputView.frame.size.height);
+}
+
 #pragma mark - Helper methods
 - (UIImage *)tintImage:(UIImage *)image withColor:(UIColor *)color
 {

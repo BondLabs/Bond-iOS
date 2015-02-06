@@ -22,6 +22,17 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
+
+
+void bondLog(id x) {
+
+	NSLog(@"%@", x);
+
+
+}
+
+
+
 #import "SOMessageInputView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UINavigationController+Rotation.h"
@@ -36,7 +47,6 @@
     BOOL keyboardHidesFromDragging;
     UITapGestureRecognizer *tapGesture;
     UIPanGestureRecognizer *panGesture;
-    int numLines;
 }
 
 @property (weak, nonatomic) UIView *keyboardView;
@@ -75,26 +85,17 @@
 {
     self.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(164/255.0) blue:(255/255.0) alpha:0.5];
     
-    numLines = 1;
-    
     self.textView = [[SOPlaceholderedTextView alloc] init];
     self.textView.textColor = [UIColor whiteColor];
     self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:16.0];
     self.textView.delegate = self;
     self.textView.backgroundColor = [UIColor clearColor];
-    self.textView.scrollEnabled = NO;
-    self.textView.contentInset = UIEdgeInsetsMake(-8, 0, -8, 0);
-    //self.textView.textContainer.lineFragmentPadding = 0;
-    //self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.textView.textContainer.lineFragmentPadding = 0;
+    self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     inputAccessoryForFindingKeyboard = [[UIView alloc] initWithFrame:CGRectZero];
     self.textView.inputAccessoryView = inputAccessoryForFindingKeyboard;
-    self.textView.layer.borderColor = [[UIColor greenColor] CGColor];
-    self.textView.layer.borderWidth = 3.0;
-    self.textView.frame = CGRectMake(5, (self.frame.size.height - self.textView.font.lineHeight) / 2, self.frame.size.width - self.sendButton.frame.size.width - 75, self.textView.font.lineHeight);
-    [self addSubview:self.textView];
-    [self bringSubviewToFront:self.textView];
     [self adjustTextViewSize];
-    NSLog(@"%f", self.textView.font.lineHeight);
+    [self addSubview:self.textView];
     
     self.sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.sendButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -114,7 +115,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHideNote:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOrientationDidChandeNote:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     
-    //self.textView.placeholderText = NSLocalizedString(@"Type message...", nil);
+    self.textView.placeholderText = NSLocalizedString(@"Type message...", nil);
     [self.sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
     self.sendButton.frame = CGRectMake(0, 0, 70, self.textInitialHeight);
     
@@ -124,7 +125,9 @@
 #pragma mark - Public methods
 - (void)adjustInputView
 {
-    NSLog(@"adjusting input view");
+    CGFloat verticalInset = 10.0;
+    CGFloat horizontalInset = 5.0;
+    
     CGRect frame = self.frame;
     frame.size.height = self.textInitialHeight;
     self.frame = frame;
@@ -134,19 +137,29 @@
     self.sendButton.frame = sendFrame;
     self.sendButton.center = CGPointMake(self.sendButton.center.x, self.textInitialHeight/2);
     
+    CGRect txtBgFrame;
+    txtBgFrame.origin = CGPointMake(0, 0);
+    txtBgFrame.size = CGSizeMake(self.frame.size.width, self.textInitialHeight);
+    
+    CGRect txtFrame = self.frame;
+    txtFrame.origin.x = txtBgFrame.origin.x;
+    txtFrame.origin.y = txtBgFrame.origin.y;
+    txtFrame.size.width = txtBgFrame.size.width - 70;
+    txtFrame.size.height = txtBgFrame.size.height;
+    self.textView.frame = txtFrame;
+    
     [self adjustPosition];
 }
 
 - (void)adjustPosition
 {
-    NSLog(@"adjusting position");
     CGRect frame = self.frame;
     frame.origin.y = self.superview.bounds.size.height - frame.size.height;
     self.frame = frame;
     
-    /*UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, self.frame.size.height, 0.0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, self.frame.size.height, 0.0);
     self.tableView.contentInset = contentInsets;
-    self.tableView.scrollIndicatorInsets = contentInsets;*/
+    self.tableView.scrollIndicatorInsets = contentInsets;
     
     if (tapGesture) {
         [self removeGestureRecognizer:tapGesture];
@@ -173,8 +186,8 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, keyboardFrame.size.height + self.frame.size.height, 0.0);
     
     NSInteger section = [(id<UITableViewDataSource>)self.delegate numberOfSectionsInTableView:self.tableView] - 1;
-    if (section == -1) {
-        self.tableView.contentInset = contentInsets;
+     if (section == -1) {
+     	self.tableView.contentInset = contentInsets;
         self.tableView.scrollIndicatorInsets = contentInsets;
         return;
     }
@@ -198,7 +211,7 @@
         }
         [UIView commitAnimations];
     } else {
-        self.tableView.contentInset = contentInsets;
+    	self.tableView.contentInset = contentInsets;
         self.tableView.scrollIndicatorInsets = contentInsets;
     }
 }
@@ -218,35 +231,17 @@
 #pragma mark - private Methods
 - (void)adjustTextViewSize
 {
-    int newNumLines = [self numberOfRows:self.textView.text inView:self.textView];
-    NSLog(@"%d", newNumLines);
-    if (newNumLines == numLines) {
-        return;
-    }
-    NSLog(@"Test");
-    CGRect newFrame = self.frame;
-    int diffLines = newNumLines - numLines;
-    NSLog(@"%d", diffLines);
-    CGFloat lineHeight = self.textView.font.lineHeight;
-    newFrame.origin.y -= diffLines * lineHeight;
-    newFrame.size.height += diffLines * lineHeight;
-    self.frame = newFrame;
-    CGRect newTextFrame = self.textView.frame;
-    newTextFrame.size.height += diffLines * lineHeight;
-    NSLog(@"%f", diffLines * lineHeight);
-    self.textView.frame = newTextFrame;
-    numLines = newNumLines;
-    NSLog(@"%f", self.textView.frame.size.height);
+    CGRect usedFrame = [self.textView.layoutManager usedRectForTextContainer:self.textView.textContainer];
     
-    /*CGRect frame = self.textView.frame;
-    CGFloat delta = ceilf(usedFrame.size.heiaght) - frame.size.height;
+    CGRect frame = self.textView.frame;
+    CGFloat delta = ceilf(usedFrame.size.height) - frame.size.height;
     
     CGFloat lineHeight = self.textView.font.lineHeight;
-    int numberOfActualLines = (int)ceilf(usedFrame.size.height / lineHeight);
+    int numberOfActualLines = ceilf(self.frame.size.height / lineHeight);
     
-    CGFloat actualHeight = numberOfActualLines * lineHeight;
+	CGFloat actualHeight = [self.textView.text sizeWithFont:self.textView.font constrainedToSize:self.frame.size].height;//numberOfActualLines * lineHeight;
     
-    delta = actualHeight - self.textView.frame.size.height; //self.textView.font.lineHeight - 5;
+		delta = actualHeight - self.textView.font.lineHeight - 5;
     CGRect frm = self.frame;
     frm.size.height += ceilf(delta);
     frm.origin.y -= ceilf(delta);
@@ -256,56 +251,59 @@
             frm.size.height = self.textInitialHeight;
             frm.origin.y = self.superview.bounds.size.height - frm.size.height - keyboardFrame.size.height;
         }
-        
+
         [UIView animateWithDuration:0.3 animations:^{
             self.frame = frm;
-            
+
         } completion:^(BOOL finished) {
             [self scrollToCaretInTextView:self.textView animated:NO];
         }];
     } else {
         [self scrollToCaretInTextView:self.textView animated:NO];
-    } */
-    [self scrollToCaretInTextView:self.textView animated:NO];
+    }
+    
     [self adjustTableViewWithCurve:NO scrollsToBottom:YES];
-}
-
--(int)numberOfRows:(NSString *)string inView:(UITextView*)txtView
-{
-    
-    CGSize maximumLabelSize = CGSizeMake(MAXFLOAT , MAXFLOAT);
-    
-    NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine |
-    NSStringDrawingUsesLineFragmentOrigin;
-    
-    NSString *new = [string stringByReplacingOccurrencesOfString: @"\n" withString:@" "];
-    NSDictionary *attr = @{NSFontAttributeName: txtView.font};
-    CGRect bounds = [new boundingRectWithSize:maximumLabelSize
-                                      options:options
-                                   attributes:attr
-                                      context:nil];
-    
-    CGSize viewSize = bounds.size;
-    
-    
-    int row = floor(txtView.contentSize.height / viewSize.height ) ;
-    
-    
-    return row;
 }
 
 - (void)scrollToCaretInTextView:(UITextView *)textView animated:(BOOL)animated
 {
-    /*CGRect rect = [textView caretRectForPosition:textView.selectedTextRange.end];
+    CGRect rect = [textView caretRectForPosition:textView.selectedTextRange.end];
     rect.size.height += textView.textContainerInset.bottom;
-    [textView scrollRectToVisible:rect animated:animated];*/
+    [textView scrollRectToVisible:rect animated:animated];
 }
 
 #pragma mark - textview delegate
 - (void)textViewDidChange:(UITextView *)textView
 {
-    [self adjustTextViewSize];    
+		//[self adjustTextViewSize];
+
+
+	CGRect frame = textView.frame;
+	frame.size.height = textView.contentSize.height;
+	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
+
+
+
+	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
+	CGRect origRect = self.frame;
+	[UIView animateWithDuration:0.1 animations:^ {
+	self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+	}];
+
+	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);
+	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
+
+
+
+
+
+
+
 }
+
+
+
+
 
 #pragma mark - Notifications handlers
 - (void)handleKeyboardWillShowNote:(NSNotification *)notification
