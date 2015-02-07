@@ -64,7 +64,25 @@ class BondUser: NSObject {
     func setUserPicture(image: UIImage) {
         UserAccountController.sharedInstance.setUserPhoto(userID, authKey: authKey, image: image)
     }
-    
+
+	func getTraits() -> NSArray {
+		let Array = NSMutableArray()
+		if (UserAccountController.sharedInstance.currentUser.traitsString != nil) {
+			for i in AppData.data.activityNames {
+
+				let stringIndex = (AppData.data.activityNames as NSArray).indexOfObject(i)
+
+				let range = NSRange(location: stringIndex, length: 1)
+
+				let singleString = "\(UserAccountController.sharedInstance.currentUser.traitsString?[stringIndex])"
+				Array.addObject(singleString)
+			}
+		}
+
+
+		return Array as NSArray
+	}
+
     func getUserPicture() {
         
         
