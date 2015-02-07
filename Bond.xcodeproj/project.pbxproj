@@ -61,6 +61,7 @@
 		756645A61A7F6DE0009F8789 /* BLECombined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756645A51A7F6DE0009F8789 /* BLECombined.swift */; };
 		756645A81A7F7319009F8789 /* CustomBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756645A71A7F7319009F8789 /* CustomBLE.swift */; };
 		756E2CAF1A7DBDE200037886 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756E2CAE1A7DBDE200037886 /* Location.swift */; };
+		758E50201A85485600881BAE /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E501F1A85485600881BAE /* LocationPermissionViewController.swift */; };
 		75DFFB071A7ED76400FA8681 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFFB061A7ED76400FA8681 /* ChatViewController.swift */; };
 		E911E4041A64189D0027DB0C /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = E911E4031A6418090027DB0C /* Avenir.ttc */; };
 		E912FF381A650C0E004E79A9 /* Flip.png in Resources */ = {isa = PBXBuildFile; fileRef = E912FF371A650C0E004E79A9 /* Flip.png */; };
@@ -281,6 +282,7 @@
 		756645A51A7F6DE0009F8789 /* BLECombined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLECombined.swift; sourceTree = "<group>"; };
 		756645A71A7F7319009F8789 /* CustomBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBLE.swift; sourceTree = "<group>"; };
 		756E2CAE1A7DBDE200037886 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		758E501F1A85485600881BAE /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionViewController.swift; sourceTree = "<group>"; };
 		75DFFB061A7ED76400FA8681 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E911E4031A6418090027DB0C /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		E912FF371A650C0E004E79A9 /* Flip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flip.png; sourceTree = "<group>"; };
@@ -495,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				752326931A847D7900BD3E93 /* PushPermissionViewController.swift */,
+				758E501F1A85485600881BAE /* LocationPermissionViewController.swift */,
 			);
 			name = Permissions;
 			sourceTree = "<group>";
@@ -898,7 +901,7 @@
 				TargetAttributes = {
 					E934FD631A4826A400E43B45 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = XF283F7SB6;
+						DevelopmentTeam = 2X8H64ZMTL;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1139,6 +1142,7 @@
 				7560D87D1A849DE2007D61C7 /* SOMessagingViewController.m in Sources */,
 				E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */,
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
+				758E50201A85485600881BAE /* LocationPermissionViewController.swift in Sources */,
 				755F35EE1A7E30E90065EDE0 /* Tour_BondingViewController.swift in Sources */,
 				752342081A7F5D4500584904 /* BluetoothCentral.swift in Sources */,
 				755F35EB1A7E30E90065EDE0 /* Tour_BondViewController.swift in Sources */,

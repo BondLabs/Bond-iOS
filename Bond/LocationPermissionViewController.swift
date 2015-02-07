@@ -8,8 +8,8 @@
 
 import UIKit
 
-class PushPermissionViewController: UIViewController {
-
+class LocationPermissionViewController: UIViewController {
+    
     var nameLabel:UILabel!
     var bubble:UIView!
     var bubbleView:UIImageView!
@@ -21,7 +21,7 @@ class PushPermissionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         
         nameLabel = UILabel()
@@ -97,7 +97,7 @@ class PushPermissionViewController: UIViewController {
         
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -106,17 +106,17 @@ class PushPermissionViewController: UIViewController {
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Slide)
     }
     
-    func nextTapped() {
-        println("Captured tap on next button for push VC")
-        self.presentNextController()
-    }
-
     func noThanksTapped() {
         self.presentNextController()
     }
     
+    func nextTapped() {
+        println("Captured tap on next button for location VC")
+        self.presentNextController()
+    }
+    
     func presentNextController() {
-        self.performSegueWithIdentifier("seguePushToLocation", sender: self)
+        self.performSegueWithIdentifier("segueLocationToBonds", sender: self.nextButton)
     }
     
 }

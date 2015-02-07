@@ -50,18 +50,16 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     
     //@availability(deprecated)
     func register() {
+        println("UAC register")
         let name = NSString(format: "%@ %@", newFirstName, newLastName)
         AppData.bondLog(NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus))
         //registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: nil)
         
-        
-        
-        
-        RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, newPhoneNumber, newPassword, newAge, newGender), api_key: authKey, type: requestType.register)
+        RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@&relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus), api_key: authKey, type: requestType.register)
     }
     
-    func registerWithInfo(name: NSString, phone: NSString, password: NSString, age: Int, gender: NSString) {
-        RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@", name, phone, password, age, gender), api_key: authKey, type: requestType.register)
+    func registerWithInfo(name: NSString, phone: NSString, password: NSString, age: Int, gender: NSString, relationship: String) {
+        RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@&relationship=%@", name, phone, password, age, gender, relationship), api_key: authKey, type: requestType.register)
     }
     
     

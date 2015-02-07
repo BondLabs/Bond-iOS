@@ -98,7 +98,9 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
     }
     //MARK: Regular
     func sendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString!, type: requestType) {
+        println("RAC sendAPIRequestToURL")
         let post = NSString(format: data)
+        println("test \(post)")
         //convert the string to an NSData object
         let postData = post.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
         
@@ -244,6 +246,8 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         NSURLConnection.asyncRequest(request, success:successBlock ,
             failure:failureBlock)
         //let connection = NSURLConnection(request: request, delegate: connectionDelegate)
+        
+        println("RAC api request done")
     }
     
     //MARK: - GET
