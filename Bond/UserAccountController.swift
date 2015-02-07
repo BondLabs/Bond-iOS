@@ -179,7 +179,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         RemoteAPIController.sharedInstance.customAPIRequest(URL, data: data, header: header, HTTPMethod: HTTProtocol, delegate: delegate)
     }
     
-    func sendCustomRequest(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
+    func sendCustomRequestWithBlocks(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
         RemoteAPIController.sharedInstance.customAPIRequestWithBlocks(URL, data: data, header: header, HTTPMethod: HTTProtocol, success: success, failure: failure)
     }
     

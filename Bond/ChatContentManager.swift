@@ -29,9 +29,9 @@ class ChatContentManager: NSObject {
     func generateConversation() -> NSArray {
         bondLog("Current chat is \(currentChat)")
         
+		return NSArray()
         
-        
-        if currentChat == nil {
+        /*if currentChat == nil {
             return NSArray()
         }
         else {
@@ -43,7 +43,7 @@ class ChatContentManager: NSObject {
             
             currentChat!.addObject(message)
             return currentChat! as NSArray
-        }
+        }*/
         
         //var result = NSMutableArray()
         

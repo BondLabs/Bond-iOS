@@ -12,6 +12,7 @@ class BondTableCell: UITableViewCell {
     
     // Store name of the user
     var name:String!
+	var bondID:String!
     
     /* * *
      * * * Do setup

@@ -502,39 +502,14 @@
 		75F147EA1A8616EE00C90500 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
-				75F1481F1A86179C00C90500 /* MBProgressHUD.h */,
-				75F148201A86179C00C90500 /* MBProgressHUD.m */,
-				75F148211A86179C00C90500 /* NSURLConnection+AsyncBlocks.h */,
-				75F148221A86179C00C90500 /* NSURLConnection+AsyncBlocks.m */,
-				75F148231A86179C00C90500 /* NSURLConnection+Blocks.h */,
-				75F148241A86179C00C90500 /* NSURLConnection+Blocks.m */,
-				75F148251A86179C00C90500 /* NSData+Base64.h */,
-				75F148261A86179C00C90500 /* NSData+Base64.m */,
-				75F148271A86179D00C90500 /* UILabel+WhiteUIDatePickerLabels.h */,
-				75F148281A86179D00C90500 /* UILabel+WhiteUIDatePickerLabels.m */,
-				75F147EB1A86178000C90500 /* GmailLikeLoadingView.h */,
-				75F147EC1A86178000C90500 /* GmailLikeLoadingView.m */,
-				75F147ED1A86178000C90500 /* NSString+Calculation.h */,
-				75F147EE1A86178000C90500 /* NSString+Calculation.m */,
+				75F148391A861AE200C90500 /* MBProgressHUD */,
+				75F1483A1A861AEC00C90500 /* NSURL */,
+				75F1483B1A861AF800C90500 /* UILabel */,
+				75F1483C1A861B0400C90500 /* Gmail */,
+				75F1483D1A861B0B00C90500 /* NSString */,
 				75F147EF1A86178000C90500 /* Resources */,
-				75F147FA1A86178000C90500 /* SOImageBrowserView.h */,
-				75F147FB1A86178000C90500 /* SOImageBrowserView.m */,
-				75F147FC1A86178000C90500 /* SOMessage.h */,
-				75F147FD1A86178000C90500 /* SOMessageCell.h */,
-				75F147FE1A86178000C90500 /* SOMessageCell.m */,
-				75F147FF1A86178000C90500 /* SOMessageInputView.h */,
-				75F148001A86178000C90500 /* SOMessageInputView.m */,
-				75F148011A86178000C90500 /* SOMessageTextView.h */,
-				75F148021A86178000C90500 /* SOMessageTextView.m */,
-				75F148031A86178000C90500 /* SOMessageType.h */,
-				75F148041A86178000C90500 /* SOMessagingDataSource.h */,
-				75F148051A86178000C90500 /* SOMessagingDelegate.h */,
-				75F148061A86178000C90500 /* SOMessagingViewController.h */,
-				75F148071A86178000C90500 /* SOMessagingViewController.m */,
-				75F148081A86178000C90500 /* SOPlaceholderedTextView.h */,
-				75F148091A86178000C90500 /* SOPlaceholderedTextView.m */,
-				75F1480A1A86178000C90500 /* UINavigationController+Rotation.h */,
-				75F1480B1A86178000C90500 /* UINavigationController+Rotation.m */,
+				75F1483E1A861B1500C90500 /* SOMessaging */,
+				75F1483F1A861B2300C90500 /* UINavigation */,
 			);
 			name = "Custom Classes";
 			sourceTree = "<group>";
@@ -566,6 +541,87 @@
 				75F148321A86182300C90500 /* ParseUI.framework */,
 			);
 			name = Parse;
+			sourceTree = "<group>";
+		};
+		75F148391A861AE200C90500 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				75F1481F1A86179C00C90500 /* MBProgressHUD.h */,
+				75F148201A86179C00C90500 /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		75F1483A1A861AEC00C90500 /* NSURL */ = {
+			isa = PBXGroup;
+			children = (
+				75F148211A86179C00C90500 /* NSURLConnection+AsyncBlocks.h */,
+				75F148221A86179C00C90500 /* NSURLConnection+AsyncBlocks.m */,
+				75F148231A86179C00C90500 /* NSURLConnection+Blocks.h */,
+				75F148241A86179C00C90500 /* NSURLConnection+Blocks.m */,
+				75F148251A86179C00C90500 /* NSData+Base64.h */,
+				75F148261A86179C00C90500 /* NSData+Base64.m */,
+			);
+			name = NSURL;
+			sourceTree = "<group>";
+		};
+		75F1483B1A861AF800C90500 /* UILabel */ = {
+			isa = PBXGroup;
+			children = (
+				75F148271A86179D00C90500 /* UILabel+WhiteUIDatePickerLabels.h */,
+				75F148281A86179D00C90500 /* UILabel+WhiteUIDatePickerLabels.m */,
+			);
+			name = UILabel;
+			sourceTree = "<group>";
+		};
+		75F1483C1A861B0400C90500 /* Gmail */ = {
+			isa = PBXGroup;
+			children = (
+				75F147EB1A86178000C90500 /* GmailLikeLoadingView.h */,
+				75F147EC1A86178000C90500 /* GmailLikeLoadingView.m */,
+			);
+			name = Gmail;
+			sourceTree = "<group>";
+		};
+		75F1483D1A861B0B00C90500 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				75F147ED1A86178000C90500 /* NSString+Calculation.h */,
+				75F147EE1A86178000C90500 /* NSString+Calculation.m */,
+			);
+			name = NSString;
+			sourceTree = "<group>";
+		};
+		75F1483E1A861B1500C90500 /* SOMessaging */ = {
+			isa = PBXGroup;
+			children = (
+				75F147FA1A86178000C90500 /* SOImageBrowserView.h */,
+				75F147FB1A86178000C90500 /* SOImageBrowserView.m */,
+				75F147FC1A86178000C90500 /* SOMessage.h */,
+				75F147FD1A86178000C90500 /* SOMessageCell.h */,
+				75F147FE1A86178000C90500 /* SOMessageCell.m */,
+				75F147FF1A86178000C90500 /* SOMessageInputView.h */,
+				75F148001A86178000C90500 /* SOMessageInputView.m */,
+				75F148011A86178000C90500 /* SOMessageTextView.h */,
+				75F148021A86178000C90500 /* SOMessageTextView.m */,
+				75F148031A86178000C90500 /* SOMessageType.h */,
+				75F148041A86178000C90500 /* SOMessagingDataSource.h */,
+				75F148051A86178000C90500 /* SOMessagingDelegate.h */,
+				75F148061A86178000C90500 /* SOMessagingViewController.h */,
+				75F148071A86178000C90500 /* SOMessagingViewController.m */,
+				75F148081A86178000C90500 /* SOPlaceholderedTextView.h */,
+				75F148091A86178000C90500 /* SOPlaceholderedTextView.m */,
+			);
+			name = SOMessaging;
+			sourceTree = "<group>";
+		};
+		75F1483F1A861B2300C90500 /* UINavigation */ = {
+			isa = PBXGroup;
+			children = (
+				75F1480A1A86178000C90500 /* UINavigationController+Rotation.h */,
+				75F1480B1A86178000C90500 /* UINavigationController+Rotation.m */,
+			);
+			name = UINavigation;
 			sourceTree = "<group>";
 		};
 		E9227F521A52BEBA004DDE48 /* Bonds */ = {
@@ -616,10 +672,10 @@
 				E9F482E01A52BADC006DB53C /* Traits Selection */,
 				E98BE8F31A60A17300BEC452 /* Camera */,
 				E9227F521A52BEBA004DDE48 /* Bonds */,
+				E934FD671A4826A400E43B45 /* Resources */,
 				75F147EA1A8616EE00C90500 /* Custom Classes */,
 				E934FD6B1A4826A400E43B45 /* Bond.xcdatamodeld */,
 				E934FD731A4826A400E43B45 /* Images.xcassets */,
-				E934FD671A4826A400E43B45 /* Resources */,
 				020012821A721FF900322BC7 /* Bond-Bridging-Header.h */,
 			);
 			path = Bond;
@@ -1262,10 +1318,7 @@
 				);
 				INFOPLIST_FILE = Bond/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
@@ -1286,10 +1339,7 @@
 				);
 				INFOPLIST_FILE = Bond/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";

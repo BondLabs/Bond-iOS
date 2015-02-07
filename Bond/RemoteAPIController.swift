@@ -436,6 +436,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         }
         
         if (type == requestType.traits) {
+			println("Requesting traits page")
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got a user response! It's \(dataString!)")

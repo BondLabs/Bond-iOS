@@ -124,7 +124,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="XbX-z5-2es" kind="push" id="R23-YL-h3N"/>
+                                    <segue destination="XbX-z5-2es" kind="push" identifier="pushToCamera" id="R23-YL-h3N"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -717,13 +717,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fpt-JI-uvE"/>
-        <segue reference="Jfy-Ox-HKQ"/>
-        <segue reference="ZpS-go-W1x"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="Dt3-wl-Kcu"/>
-        <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
+        <segue reference="8BU-7d-1hK"/>
         <segue reference="2Zi-Zh-utD"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="ZpS-go-W1x"/>
+        <segue reference="Jfy-Ox-HKQ"/>
+        <segue reference="SCU-zk-ooq"/>
     </inferredMetricsTieBreakers>
 </document>

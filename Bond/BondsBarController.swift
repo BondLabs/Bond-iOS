@@ -40,10 +40,9 @@ class BondsBarController: UITabBarController, UITabBarControllerDelegate {
 		views[1].tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0, bottom: -5, right: 0)
 		
 		// Set up location services
-		var location = Location.sharedInstance
+		var location = CustomBLE.sharedInstance
 		location.setup()
-		location.broadcast()
-		location.listen()
+		location.scan()
 	}
 	
 	// Change background color to match

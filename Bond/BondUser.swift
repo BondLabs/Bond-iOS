@@ -16,6 +16,7 @@ class BondUser: NSObject {
     var userID = 0
     var authKey = ""
     var gender = ""
+	var relationship = ""
     var bonds = NSMutableDictionary()
     var traitsString: String?
     /*var traits: NSArray = {

@@ -8,5 +8,5 @@
 #import "NSURLConnection+Blocks.h"
 #import "MBProgressHUD.h"
 #import "SOMessagingViewController.h"
-#import "SOImageBrowserView.h"
 #import "Message.h"
+#import "GmailLikeLoadingView.h"
