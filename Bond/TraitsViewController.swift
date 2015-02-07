@@ -62,6 +62,8 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
 		self.nextButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
+		let gestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedNext:")
+		self.nextButton.addGestureRecognizer(gestureRecognizer)
         
         /* * *
          * * * Set up activity views and page controller -----------------------
@@ -83,7 +85,7 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
 			newActivity.addToggle()
 			activityArray.append(newActivity)
 		}
-
+		
 		// Create and store all view controllers to be shown
 		var viewCount = Int(ceil(Double(activityArray.count / 9)))
 		for var i = 0; i < viewCount; i++ {
@@ -105,7 +107,21 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
 		self.addChildViewController(traitsPageVC)
 		self.view.addSubview(traitsPageVC.view)
 	}
-
+	
+	func tappedNext(gestureRecognizer: UITapGestureRecognizer) {
+		self.performSegueWithIdentifier("pushToCamera", sender: self)
+		
+		var traits = ""
+		for button: ActivityView in activityArray {
+			
+			traits = traits.stringByAppendingString("\(button.iconView.selected.intValue)")
+			
+			
+		}
+		UserAccountController.sharedInstance.sendTraits(traits)
+		bondLog("traits are \(traits)")
+	}
+	
 	func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
 		var index:Int! = find(traitsVCs, viewController as TraitArrayViewController)
 		if (index == traitsVCs.count - 1) {

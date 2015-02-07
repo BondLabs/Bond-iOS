@@ -98,9 +98,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
     }
     //MARK: Regular
     func sendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString!, type: requestType) {
-        println("RAC sendAPIRequestToURL")
         let post = NSString(format: data)
-        println("test \(post)")
         //convert the string to an NSData object
         let postData = post.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
         
@@ -194,6 +192,9 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     dispatch_async(dispatch_get_main_queue(), {() -> Void in
                         
                         ViewManager.sharedInstance.ProgressHUD?.hide(true)
+                        let alert = UIAlertView(title: "Oops", message: dataDictionary?.objectForKey("error") as? String, delegate: nil, cancelButtonTitle: "Okay")
+                        
+                        alert.show()
                         AppData.bondLog("oops, there was an error")
                     })
                 }
@@ -237,6 +238,10 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     let user = UserAccountController.sharedInstance.currentUser
                     
                 }
+                else {
+                    let alert = UIAlertView(title: "Oops", message: dataDictionary?.objectForKey("error") as? String, delegate: nil, cancelButtonTitle: "Okay")
+                    
+                    alert.show()				}
             }
         }
         
@@ -246,8 +251,6 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         NSURLConnection.asyncRequest(request, success:successBlock ,
             failure:failureBlock)
         //let connection = NSURLConnection(request: request, delegate: connectionDelegate)
-        
-        println("RAC api request done")
     }
     
     //MARK: - GET
@@ -385,9 +388,17 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     let userGender: AnyObject? = dataDictionary?.objectForKey("gender")
                     AppData.bondLog("gender is \(userGender)")
                     user.gender = NSString(format:"\(userGender)")
+                    let userRelationship: AnyObject? = dataDictionary?.objectForKey("relationship")
+                    AppData.bondLog("relationship is \(userRelationship)")
+                    user.relationship = NSString(format: "\(userRelationship)")
                     
                     AppData.bondLog("User is now set! (hopefully) \n Name is \(user.name) \n Phone is \(user.phoneNumber) \n age is \(user.age) \n gender is \(user.gender)")
                     
+                }
+                else {
+                    let alert = UIAlertView(title: "Oops", message: dataDictionary?.objectForKey("error") as? String, delegate: nil, cancelButtonTitle: "Okay")
+                    
+                    alert.show()
                 }
                 
             }
@@ -424,6 +435,46 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
             
         }
         
+        if (type == requestType.traits) {
+            successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
+                let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                AppData.bondLog("We got a user response! It's \(dataString!)")
+                
+                
+                var writeError: NSError?
+                var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+                
+                AppData.bondLog("\(dataDictionary)")
+                //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
+                
+                if (dataDictionary?.objectForKey("error") == nil) {
+                    let dataString: String? = dataDictionary?.objectForKey("file") as? String
+                    //let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
+                    let imageData = NSData(fromBase64String: dataString!)
+                    var decodedImage = UIImage(data: imageData!)
+                    if decodedImage != nil {
+                        UserAccountController.sharedInstance.currentUser.image = decodedImage!
+                    }
+                    
+                }
+                
+                
+                if (ViewManager.sharedInstance.currentViewController != nil) {
+                    
+                    
+                    dispatch_async(dispatch_get_main_queue(), {() -> Void in
+                        let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
+                        LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
+                        ViewManager.sharedInstance.ProgressHUD?.hide(true)
+                        AppData.bondLog("pushing the view")
+                    })
+                }
+                
+            }
+            
+            
+        }
+        
         if (type == requestType.userImage) {
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
@@ -447,6 +498,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     
                 }
                 
+                
                 if (ViewManager.sharedInstance.currentViewController != nil) {
                     
                     
@@ -457,6 +509,8 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                         AppData.bondLog("pushing the view")
                     })
                 }
+                
+                UserAccountController.sharedInstance.getTraits(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
                 
             }
             
@@ -519,6 +573,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 }
                 else {
                     ChatContentManager.sharedManager.currentChat = NSMutableArray()
+                    
                 }
                 
                 ViewManager.sharedInstance.currentViewController?.navigationController?.presentViewController(ViewManager.sharedInstance.chatViewController!, animated: true, completion: nil)
@@ -806,6 +861,7 @@ class requestPhotoDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDa
             let user = UserAccountController.sharedInstance.currentUser
             
         }
+        
     }
     
 }

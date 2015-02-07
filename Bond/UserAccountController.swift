@@ -50,15 +50,17 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     
     //@availability(deprecated)
     func register() {
-        println("UAC register")
         let name = NSString(format: "%@ %@", newFirstName, newLastName)
         AppData.bondLog(NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus))
         //registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: nil)
         
+        
+        
+        
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@&relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus), api_key: authKey, type: requestType.register)
     }
     
-    func registerWithInfo(name: NSString, phone: NSString, password: NSString, age: Int, gender: NSString, relationship: String) {
+    func registerWithInfo(name: NSString, phone: NSString, password: NSString, age: Int, gender: NSString, relationship: NSString) {
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@&relationship=%@", name, phone, password, age, gender, relationship), api_key: authKey, type: requestType.register)
     }
     
@@ -160,6 +162,10 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/traits", data: "id=\(id)&traits=\(bitString)", api_key: authKey, type: requestType.traits)
     }
     
+    func getTraits(id: Int, authKey: String) {
+        RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/traits/\(id)", api_key: authKey, type: requestType.traits, delegate: nil)
+    }
+    
     func getChat(bondID: Int, authKey: String) {
         RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/chats/\(bondID)", api_key: authKey, type: requestType.getChat, delegate:nil)
     }
@@ -173,10 +179,8 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         RemoteAPIController.sharedInstance.customAPIRequest(URL, data: data, header: header, HTTPMethod: HTTProtocol, delegate: delegate)
     }
     
-    func sendCustomRequestWithBlocks(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
+    func sendCustomRequest(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
         RemoteAPIController.sharedInstance.customAPIRequestWithBlocks(URL, data: data, header: header, HTTPMethod: HTTProtocol, success: success, failure: failure)
     }
-    
-    
     
 }

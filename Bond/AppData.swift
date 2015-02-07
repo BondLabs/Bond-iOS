@@ -8,8 +8,19 @@
 
 import UIKit
 
+struct bondColors {
+    static let color1 = AppData.util.UIColorFromRGB(0x008ad7)
+    static let color2 = AppData.util.UIColorFromRGB(0x50c1ff)
+    static let color3 = AppData.util.UIColorFromRGB(0x1dafff)
+    static let color4 = AppData.util.UIColorFromRGB(0x00a4ff)
+}
+
 func bondLog(x: AnyObject) {
     NSLog("\(x)")
+}
+
+var screenSize: CGSize {
+    return UIScreen.mainScreen().bounds.size
 }
 
 extension Bool {
@@ -88,5 +99,38 @@ class AppData {
         static func convertToID(maj: Int, min: Int) -> Int {
             return maj * 65536 + min
         }
+    }
+}
+
+extension String {
+    
+    // MARK: - sub String
+    func substringToIndex(index:Int) -> String {
+        return self.substringToIndex(advance(self.startIndex, index))
+    }
+    func substringFromIndex(index:Int) -> String {
+        return self.substringFromIndex(advance(self.startIndex, index))
+    }
+    func substringWithRange(range:Range<Int>) -> String {
+        let start = advance(self.startIndex, range.startIndex)
+        let end = advance(self.startIndex, range.endIndex)
+        return self.substringWithRange(start..<end)
+    }
+    
+    subscript(index:Int) -> Character{
+        return self[advance(self.startIndex, index)]
+    }
+    subscript(range:Range<Int>) -> String {
+        let start = advance(self.startIndex, range.startIndex)
+        let end = advance(self.startIndex, range.endIndex)
+        return self[start..<end]
+    }
+    
+    
+    // MARK: - replace
+    func replaceCharactersInRange(range:Range<Int>, withString: String!) -> String {
+        var result:NSMutableString = NSMutableString(string: self)
+        result.replaceCharactersInRange(NSRange(range), withString: withString)
+        return result
     }
 }

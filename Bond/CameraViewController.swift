@@ -409,6 +409,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Uploading Image"
 	}
+	
 	// Selected an image
 	func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
 		// Handle new image
