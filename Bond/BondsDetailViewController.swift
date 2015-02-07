@@ -127,6 +127,7 @@ class BondsDetailViewController: UIViewController {
 		}
 		
 	}
+	
 	func tappedButton(sender: UITapGestureRecognizer) {
 		
 		

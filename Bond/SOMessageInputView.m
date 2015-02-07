@@ -125,9 +125,6 @@ void bondLog(id x) {
 #pragma mark - Public methods
 - (void)adjustInputView
 {
-    CGFloat verticalInset = 10.0;
-    CGFloat horizontalInset = 5.0;
-    
     CGRect frame = self.frame;
     frame.size.height = self.textInitialHeight;
     self.frame = frame;
@@ -222,7 +219,7 @@ void bondLog(id x) {
     NSString *msg = self.textView.text;
     self.textView.text = @"";
     [self adjustTextViewSize];
-    
+	
     if (self.delegate && [self.delegate respondsToSelector:@selector(messageInputView:didSendMessage:)]) {
         [self.delegate messageInputView:self didSendMessage:msg];
     }

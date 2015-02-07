@@ -37,7 +37,7 @@ extension Bool {
 class AppData {
     
     class func bondLog(x: AnyObject) {
-        NSLog("\(x)")
+        //NSLog("\(x)")
     }
     
     struct data {
