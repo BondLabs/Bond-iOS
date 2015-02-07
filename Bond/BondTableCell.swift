@@ -38,7 +38,8 @@ class BondTableCell: UITableViewCell {
         // Add a name label
         var nameLabel = UILabel()
         nameLabel.text = name
-        nameLabel.font = UIFont(name: "Avenir-Medium", size: 20.0)
+		nameLabel.font = UIFont(name: "Avenir-Medium", size: 20.0)
+
         nameLabel.sizeToFit()
         nameLabel.frame.origin = CGPointMake(60, 8)
         nameLabel.textColor = UIColor.whiteColor()

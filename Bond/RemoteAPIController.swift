@@ -449,14 +449,15 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
                 
                 if (dataDictionary?.objectForKey("error") == nil) {
-                    let dataString: String? = dataDictionary?.objectForKey("file") as? String
+					/*
+                    let dataString: String? = dataDictionary?.objectForKey("traits") as? String
                     //let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
                     let imageData = NSData(fromBase64String: dataString!)
                     var decodedImage = UIImage(data: imageData!)
                     if decodedImage != nil {
                         UserAccountController.sharedInstance.currentUser.image = decodedImage!
                     }
-                    
+                    */
                 }
                 
                 
@@ -491,15 +492,17 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 if (dataDictionary?.objectForKey("error") == nil) {
                     let dataString: String? = dataDictionary?.objectForKey("file") as? String
                     //let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
-                    let imageData = NSData(fromBase64String: dataString!)
-                    var decodedImage = UIImage(data: imageData!)
-                    if decodedImage != nil {
-                        UserAccountController.sharedInstance.currentUser.image = decodedImage!
-                    }
-                    
+					if (dataString != nil){
+						bondLog("dataString = \(dataString!)")
+						let imageData = NSData(fromBase64String: dataString!)
+						var decodedImage = UIImage(data: imageData!)
+						if decodedImage != nil {
+							UserAccountController.sharedInstance.currentUser.image = decodedImage!
+						}
+					}
                 }
                 
-                
+                /*
                 if (ViewManager.sharedInstance.currentViewController != nil) {
                     
                     
@@ -510,7 +513,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                         AppData.bondLog("pushing the view")
                     })
                 }
-                
+                */
                 UserAccountController.sharedInstance.getTraits(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
                 
             }
