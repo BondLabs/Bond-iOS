@@ -12,6 +12,18 @@
 		0201A8C01A7E21DD00D43347 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8BF1A7E21DD00D43347 /* Message.m */; };
 		020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020322AA1A70CAEF000C85F4 /* UserAccountController.swift */; };
 		020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934FDA61A484AB800E43B45 /* Main.storyboard */; };
+		02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02657F9D1A862F98008029F5 /* PushNotificationController.swift */; };
+		02657F9F1A8630BD008029F5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201F1A594A0000C97429 /* CFNetwork.framework */; };
+		02657FA01A8630BD008029F5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201D1A5949DA00C97429 /* libsqlite3.dylib */; };
+		02657FA11A8630BD008029F5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E97320011A59463F00C97429 /* SystemConfiguration.framework */; };
+		02657FA21A8630BD008029F5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FFD1A59462D00C97429 /* Security.framework */; };
+		02657FA31A8630BD008029F5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FFB1A59462700C97429 /* QuartzCore.framework */; };
+		02657FA41A8630BD008029F5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF91A59461F00C97429 /* MobileCoreServices.framework */; };
+		02657FA51A8630BD008029F5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF71A59461600C97429 /* libz.dylib */; };
+		02657FA61A8630BD008029F5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF51A59460E00C97429 /* CoreLocation.framework */; };
+		02657FA71A8630BD008029F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF31A59460800C97429 /* CoreGraphics.framework */; };
+		02657FA81A8630BD008029F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FF11A59460000C97429 /* Foundation.framework */; };
+		02657FA91A8630BD008029F5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FEF1A5945FB00C97429 /* AudioToolbox.framework */; };
 		0277FA7F1A74C3EE000FC661 /* BondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277FA7E1A74C3EE000FC661 /* BondUser.swift */; };
 		02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */; };
 		02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA21A7D86DF00B59C39 /* ViewManager.swift */; };
@@ -213,6 +225,7 @@
 		0201A8BE1A7E21DD00D43347 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		0201A8BF1A7E21DD00D43347 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		020322AA1A70CAEF000C85F4 /* UserAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountController.swift; sourceTree = "<group>"; };
+		02657F9D1A862F98008029F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		0277FA7E1A74C3EE000FC661 /* BondUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondUser.swift; sourceTree = "<group>"; };
 		02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPIController.swift; sourceTree = "<group>"; };
 		02F92FA21A7D86DF00B59C39 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
@@ -437,11 +450,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				75F148371A86182300C90500 /* ParseUI.framework in Frameworks */,
-				0201A8B61A7E07CF00D43347 /* MediaPlayer.framework in Frameworks */,
 				75F148341A86182300C90500 /* Parse.framework in Frameworks */,
 				75F148331A86182300C90500 /* Bolts.framework in Frameworks */,
 				75F148361A86182300C90500 /* ParseFacebookUtils.framework in Frameworks */,
 				75F148351A86182300C90500 /* ParseCrashReporting.framework in Frameworks */,
+				0201A8B61A7E07CF00D43347 /* MediaPlayer.framework in Frameworks */,
+				02657F9F1A8630BD008029F5 /* CFNetwork.framework in Frameworks */,
+				02657FA01A8630BD008029F5 /* libsqlite3.dylib in Frameworks */,
+				02657FA11A8630BD008029F5 /* SystemConfiguration.framework in Frameworks */,
+				02657FA21A8630BD008029F5 /* Security.framework in Frameworks */,
+				02657FA31A8630BD008029F5 /* QuartzCore.framework in Frameworks */,
+				02657FA41A8630BD008029F5 /* MobileCoreServices.framework in Frameworks */,
+				02657FA51A8630BD008029F5 /* libz.dylib in Frameworks */,
+				02657FA61A8630BD008029F5 /* CoreLocation.framework in Frameworks */,
+				02657FA71A8630BD008029F5 /* CoreGraphics.framework in Frameworks */,
+				02657FA81A8630BD008029F5 /* Foundation.framework in Frameworks */,
+				02657FA91A8630BD008029F5 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,6 +685,7 @@
 				E96956E31A586C7F001D2308 /* AppData.swift */,
 				756645A71A7F7319009F8789 /* CustomBLE.swift */,
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
+				02657F9D1A862F98008029F5 /* PushNotificationController.swift */,
 				02F92FA21A7D86DF00B59C39 /* ViewManager.swift */,
 				E934FDA61A484AB800E43B45 /* Main.storyboard */,
 				752326921A847D5300BD3E93 /* Permissions */,
@@ -1163,6 +1188,7 @@
 				E98BE8F21A60979C00BEC452 /* CustomSegmentedButton.swift in Sources */,
 				75F1481C1A86178000C90500 /* SOMessagingViewController.m in Sources */,
 				020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */,
+				02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */,
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
 				E9EDF96A1A62A71D004A9446 /* MaskView.swift in Sources */,
 				0201A8C01A7E21DD00D43347 /* Message.m in Sources */,
@@ -1310,7 +1336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1320,7 +1346,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "103453c6-a1e3-482f-811c-d5e2309c51c8";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1331,7 +1357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1341,7 +1367,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "103453c6-a1e3-482f-811c-d5e2309c51c8";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 			};
 			name = Release;

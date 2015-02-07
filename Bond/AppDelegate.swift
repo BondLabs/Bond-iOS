@@ -13,8 +13,28 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+	var pushNotificationController:PushNotificationController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+
+		self.pushNotificationController = PushNotificationController()
+
+
+		// Register for Push Notitications, if running iOS 8
+		if application.respondsToSelector("registerUserNotificationSettings:") {
+
+			let types:UIUserNotificationType = (.Alert | .Badge | .Sound)
+			let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+
+			application.registerUserNotificationSettings(settings)
+			application.registerForRemoteNotifications()
+
+		} else {
+			// Register for Push Notifications before iOS 8
+			application.registerForRemoteNotificationTypes(.Alert | .Badge | .Sound)
+		}
+
 
 		// Set default font for all controls in app
 		UILabel.appearance().font = UIFont(name: "Avenir-Book", size: 16.5)
@@ -24,6 +44,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+
+	func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+		println("didRegisterForRemoteNotificationsWithDeviceToken")
+
+		let currentInstallation = PFInstallation.currentInstallation()
+
+		currentInstallation.setDeviceTokenFromData(deviceToken)
+		currentInstallation.saveInBackgroundWithBlock { (succeeded, e) -> Void in
+			//code
+		}
+	}
+
+	func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+		println("failed to register for remote notifications:  (error)")
+		bondLog(error)
+	}
+
+	func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+		println("didReceiveRemoteNotification")
+		PFPush.handlePush(userInfo)
+	}
 
 	/*func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
 		if (extensionPointIdentifier == "com.apple.keyboard-service") {

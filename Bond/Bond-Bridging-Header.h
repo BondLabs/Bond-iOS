@@ -10,3 +10,4 @@
 #import "SOMessagingViewController.h"
 #import "Message.h"
 #import "GmailLikeLoadingView.h"
+#import <Parse/Parse.h>

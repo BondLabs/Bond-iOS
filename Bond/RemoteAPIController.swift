@@ -168,11 +168,15 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 
                 if (dataDictionary?.objectForKey("error") == nil) {
                     
-                    
-                    
-                    
+
+
+
                     let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
                     let authKey: NSString = dataDictionary?.objectForKey("auth_key") as NSString
+
+					let currentInstallation = PFInstallation.currentInstallation()
+					currentInstallation.addUniqueObject("u\(userID)", forKey: "channels")
+					currentInstallation.save()
                     
                     UserAccountController.sharedInstance.getAndSaveBonds(userID.integerValue, authKey: authKey)
                     
