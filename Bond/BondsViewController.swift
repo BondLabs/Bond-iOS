@@ -10,6 +10,8 @@ import UIKit
 
 class BondsViewController: UITableViewController {
 	
+	// var noBondsView:UIView!
+	
 	// Store bonds as a property of the controller
 	let YES = true
 	let NO = false
@@ -48,6 +50,43 @@ class BondsViewController: UITableViewController {
 		
 		// Set row height
 		self.tableView.rowHeight = 60.0
+		
+		/*// Set up nobondsview
+		noBondsView = UIView(frame: self.tableView.frame)
+		var bigLabel = UILabel()
+		bigLabel.text = "No Bonds Yet!"
+		bigLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
+		bigLabel.sizeToFit()
+		bigLabel.center = CGPointMake(noBondsView.frame.width / 2, 50)
+		bigLabel.textColor = AppData.util.UIColorFromRGB(0x5D5D5D)
+		noBondsView.addSubview(bigLabel)
+		var noBondsIcon = UIImageView()
+		noBondsIcon.image = AppData.util.scaleImage(UIImage(named: "No Bonds.png")!, size: CGSizeMake(250, 250), scale: 0.5)
+		noBondsIcon.sizeToFit()
+		noBondsIcon.center = CGPointMake(noBondsView.frame.width / 2, 120)
+		noBondsView.addSubview(noBondsIcon)
+		var noBondsDesc = UILabel()
+		noBondsDesc.numberOfLines = 0
+		noBondsDesc.text = "Go out to some social places and Bond will\nconnect you to the people you should know\nwhen you are around them."
+		noBondsDesc.font = UIFont(name: "Avenir-Book", size: 15.0)
+		noBondsDesc.sizeToFit()
+		noBondsDesc.center = CGPointMake(noBondsView.frame.width / 2, 200)
+		noBondsDesc.textColor = AppData.util.UIColorFromRGB(0x5D5D5D)
+		
+		// Add nobondsview if there's no bonds
+		if self.bonds.count == 0 {
+			self.tableView.backgroundColor = UIColor.clearColor()
+			self.view.insertSubview(noBondsView, belowSubview: self.tableView)
+			println("no bonds")
+			UIApplication.sharedApplication().delegate?.window!?.rootViewController!.view.addSubview(self.noBondsView)*/
+		if self.bondArray.count == 0
+		{
+			var noBondsImage = UIImage(named: "No Bonds Image.png")!
+			var scale = self.view.frame.width / 750
+			self.view.backgroundColor = UIColor(patternImage: AppData.util.scaleImage(noBondsImage, size: noBondsImage.size, scale: scale))
+		} else {
+			self.view.backgroundColor = UIColor.whiteColor()
+		}
 	}
 	
 	/* * *

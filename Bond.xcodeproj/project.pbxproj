@@ -32,6 +32,7 @@
 		02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA21A7D86DF00B59C39 /* ViewManager.swift */; };
 		752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752326931A847D7900BD3E93 /* PushPermissionViewController.swift */; };
 		752326961A848D4F00BD3E93 /* ChatBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 752326951A848D4F00BD3E93 /* ChatBubble.png */; };
+		7542E5181A8770F900A245BB /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542E5171A8770F900A245BB /* ThanksViewController.swift */; };
 		755F35EA1A7E30E90065EDE0 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F35E31A7E30E90065EDE0 /* TourViewController.swift */; };
 		755F35EB1A7E30E90065EDE0 /* Tour_BondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F35E41A7E30E90065EDE0 /* Tour_BondViewController.swift */; };
 		755F35EC1A7E30E90065EDE0 /* Tour_PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F35E51A7E30E90065EDE0 /* Tour_PeopleViewController.swift */; };
@@ -46,6 +47,7 @@
 		755F35FB1A7E310D0065EDE0 /* Tour_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 755F35F61A7E310D0065EDE0 /* Tour_5.png */; };
 		756645A81A7F7319009F8789 /* CustomBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756645A71A7F7319009F8789 /* CustomBLE.swift */; };
 		758E50201A85485600881BAE /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E501F1A85485600881BAE /* LocationPermissionViewController.swift */; };
+		75A9A1CE1A87923D00F02EF1 /* No Bonds Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */; };
 		75DFFB071A7ED76400FA8681 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFFB061A7ED76400FA8681 /* ChatViewController.swift */; };
 		75F1480C1A86178000C90500 /* GmailLikeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F147EC1A86178000C90500 /* GmailLikeLoadingView.m */; };
 		75F1480D1A86178000C90500 /* NSString+Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F147EE1A86178000C90500 /* NSString+Calculation.m */; };
@@ -239,6 +241,7 @@
 		02F92FA21A7D86DF00B59C39 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		752326931A847D7900BD3E93 /* PushPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionViewController.swift; sourceTree = "<group>"; };
 		752326951A848D4F00BD3E93 /* ChatBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChatBubble.png; sourceTree = "<group>"; };
+		7542E5171A8770F900A245BB /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
 		755F35E31A7E30E90065EDE0 /* TourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		755F35E41A7E30E90065EDE0 /* Tour_BondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour_BondViewController.swift; sourceTree = "<group>"; };
 		755F35E51A7E30E90065EDE0 /* Tour_PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour_PeopleViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +256,7 @@
 		755F35F61A7E310D0065EDE0 /* Tour_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tour_5.png; sourceTree = "<group>"; };
 		756645A71A7F7319009F8789 /* CustomBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBLE.swift; sourceTree = "<group>"; };
 		758E501F1A85485600881BAE /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionViewController.swift; sourceTree = "<group>"; };
+		75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "No Bonds Image.png"; sourceTree = "<group>"; };
 		75DFFB061A7ED76400FA8681 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		75F147EB1A86178000C90500 /* GmailLikeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailLikeLoadingView.h; sourceTree = "<group>"; };
 		75F147EC1A86178000C90500 /* GmailLikeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmailLikeLoadingView.m; sourceTree = "<group>"; };
@@ -529,6 +533,7 @@
 		752326921A847D5300BD3E93 /* Permissions */ = {
 			isa = PBXGroup;
 			children = (
+				7542E5171A8770F900A245BB /* ThanksViewController.swift */,
 				752326931A847D7900BD3E93 /* PushPermissionViewController.swift */,
 				758E501F1A85485600881BAE /* LocationPermissionViewController.swift */,
 			);
@@ -908,6 +913,7 @@
 		E9F482DD1A52AF56006DB53C /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */,
 				752326951A848D4F00BD3E93 /* ChatBubble.png */,
 				755F35F21A7E310D0065EDE0 /* Tour_1.png */,
 				755F35F31A7E310D0065EDE0 /* Tour_2.png */,
@@ -1150,6 +1156,7 @@
 				E93EC8211A6934A800C03170 /* Free Spirited (i).png in Resources */,
 				E9857EDB1A512AA40095EA76 /* Star(a).png in Resources */,
 				75F148141A86178000C90500 /* inputTextBG.png in Resources */,
+				75A9A1CE1A87923D00F02EF1 /* No Bonds Image.png in Resources */,
 				E93EC80A1A6934A800C03170 /* Chill (a).png in Resources */,
 				E93EC8371A6934A800C03170 /* Ol'Skool (i).png in Resources */,
 				E93EC80C1A6934A800C03170 /* Creative (a).png in Resources */,
@@ -1230,6 +1237,7 @@
 				02192B6A1A87319C000F8D78 /* UIColor+BLColors.m in Sources */,
 				75F1481A1A86178000C90500 /* SOMessageInputView.m in Sources */,
 				02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */,
+				7542E5181A8770F900A245BB /* ThanksViewController.swift in Sources */,
 				75F1482C1A86179D00C90500 /* NSData+Base64.m in Sources */,
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
 				E9CC5A751A600AA300CB7912 /* AgeGenderViewController.swift in Sources */,
@@ -1368,8 +1376,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1389,8 +1397,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

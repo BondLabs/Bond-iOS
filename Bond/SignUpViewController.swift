@@ -75,21 +75,42 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         // Set up firstName and lastName fields
         self.firstName.setPlaceholder("First")
         self.lastName.setPlaceholder("Last")
-        self.firstName.frame = CGRectMake(10, 85, self.view.frame.width / 2 - 15, 40)
-        self.lastName.frame = CGRectMake(self.view.frame.width / 2 + 5, 85, self.view.frame.width / 2 - 15, 40)
+        self.firstName.frame = CGRectMake(10, 135, self.view.frame.width / 2 - 15, 40)
+        self.lastName.frame = CGRectMake(self.view.frame.width / 2 + 5, 135, self.view.frame.width / 2 - 15, 40)
         
         // Set up phoneNumber field
         self.phoneNumber.setPlaceholder("Phone number")
-        self.phoneNumber.frame = CGRectMake(10, 135, self.view.frame.width - 20, 40)
+        self.phoneNumber.frame = CGRectMake(10, 185, self.view.frame.width - 20, 40)
         
         // Set up password field
         self.password.setPlaceholder("Password")
-        self.password.frame = CGRectMake(10, 185, self.view.frame.width - 20, 40)
-        
+        self.password.frame = CGRectMake(10, 235, self.view.frame.width - 20, 40)
+		
+		// Set up agreement terms
+		var agreeToTerms = UILabel()
+		agreeToTerms.numberOfLines = 0
+		agreeToTerms.textAlignment = NSTextAlignment.Center
+		agreeToTerms.userInteractionEnabled = true
+		var termsText = NSMutableAttributedString(string: "By pressing next, you hereby agree to our Terms & Conditions and \n Privacy Policy.")
+		termsText.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(int: 1), range: NSMakeRange(42, 18))
+		termsText.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(int: 1), range: NSMakeRange(65, 16))
+		termsText.addAttribute(NSForegroundColorAttributeName, value: AppData.util.UIColorFromRGB(0xADADAD), range: NSMakeRange(0, termsText.length))
+		termsText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Book", size: 9.0)!, range: NSMakeRange(0, termsText.length))
+		agreeToTerms.attributedText = termsText
+		agreeToTerms.frame.size = CGSizeMake(self.view.frame.width, 30)
+		agreeToTerms.center = CGPointMake(self.view.frame.width / 2, 300)
+		self.view.addSubview(agreeToTerms)
+		agreeToTerms.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showTerms"))
+		
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
-    
+	
+	func showTerms() {
+		// Eventually this code should present the website with terms and conditions
+		UIApplication.sharedApplication().openURL(NSURL(string: "http://bond.sh")!)
+	}
+	
     /* * *
      * * * Customize keyboard and button animations-----------------------------
      * * */
@@ -106,6 +127,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
+		UIView.animateWithDuration(0.25, animations: {
+			self.view.frame.origin.y = AppData.data.heights.navBarHeight + AppData.data.heights.statusBarHeight - 100
+		})
         selectedField = textField
         if (textField != password) {
             self.showNextButton()
@@ -118,9 +142,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 		}
 		textField.layer.borderWidth = 1.5
+		if (textField.secureTextEntry) {
+			textField.font = UIFont.systemFontOfSize(textField.font.pointSize)
+		}
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
+		UIView.animateWithDuration(0.25, animations: {
+			self.view.frame.origin.y = AppData.data.heights.navBarHeight + AppData.data.heights.statusBarHeight
+		})
 		textField.layer.borderWidth = 0
 		if (textField.text == "") {
 			var placeholder = textField.attributedPlaceholder?.string
@@ -128,6 +158,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
 		}
 		selectedField = nil
+		if (textField.secureTextEntry) {
+			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
+		}
 	}
     
     // Capture taps on nextButton
@@ -152,14 +185,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		uc.newLastName = lastName.text
 		uc.newPhoneNumber = phoneNumber.text
 		uc.newPassword = password.text
-		
-		
-		
-		
 	}
-	
-		
-	
 
     func showNextButton() {
         // If next button is already showing, animate reshow
@@ -217,13 +243,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		keyboardHeight = (sender.userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().height
 
         UIView.animateWithDuration(0.5, animations: {
-            self.nextButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight - 50)
-            self.doneButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight - 50)
+            self.nextButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight + 50)
+            self.doneButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight + 50)
         })
     }
 
 	func keyboardWillHide(sender: NSNotification) {
-
+		
 	}
     
     func setButtonFrames() {

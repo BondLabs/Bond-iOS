@@ -23,9 +23,10 @@ class PushPermissionViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+		ViewManager.sharedInstance.currentViewController = self
         
         nameLabel = UILabel()
-        nameLabel.text = "Hi Daniel!"//\(UserAccountController.sharedInstance.currentUser.name as String)"
+        nameLabel.text = "Hi \(UserAccountController.sharedInstance.currentUser.name as String)"
         nameLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         nameLabel.textColor = UIColor.whiteColor()
         nameLabel.sizeToFit()
@@ -107,8 +108,24 @@ class PushPermissionViewController: UIViewController {
     }
     
     func nextTapped() {
-        println("Captured tap on next button for push VC")
-        self.presentNextController()
+		bondLog("Captured tap on next button for push VC")
+		// Register for PushNotitications, if running iOS 8
+		if (UIApplication.sharedApplication().isRegisteredForRemoteNotifications()) {
+			if UIApplication.sharedApplication().respondsToSelector("registerUserNotificationSettings:") {
+				
+				let types:UIUserNotificationType = (.Alert | .Badge | .Sound)
+				let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
+				
+				UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+				UIApplication.sharedApplication().registerForRemoteNotifications()
+				
+			} else {
+				// Register for Push Notifications before iOS 8
+				UIApplication.sharedApplication().registerForRemoteNotificationTypes(.Alert | .Badge | .Sound)
+			}
+		} else {
+			self.presentNextController()
+		}
     }
 
     func noThanksTapped() {

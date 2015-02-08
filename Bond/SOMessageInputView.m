@@ -303,7 +303,9 @@ void bondLog(id x) {
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
 	CGRect origRect = self.frame;
 	[UIView animateWithDuration:0.1 animations:^ {
-	self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, self.frame.size.height);
+		[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
 	}];
 
 	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);

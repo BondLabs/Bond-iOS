@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 		// Register for Push Notitications, if running iOS 8
-		if application.respondsToSelector("registerUserNotificationSettings:") {
+		/*if application.respondsToSelector("registerUserNotificationSettings:") {
 
 			let types:UIUserNotificationType = (.Alert | .Badge | .Sound)
 			let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		} else {
 			// Register for Push Notifications before iOS 8
 			application.registerForRemoteNotificationTypes(.Alert | .Badge | .Sound)
-		}
+		}*/
 
 
 		// Set default font for all controls in app
@@ -48,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
 		println("didRegisterForRemoteNotificationsWithDeviceToken")
 
+		(ViewManager.sharedInstance.currentViewController as PushPermissionViewController).presentNextController()
+		
 		let currentInstallation = PFInstallation.currentInstallation()
 
 		currentInstallation.setDeviceTokenFromData(deviceToken)
@@ -59,20 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
 		println("failed to register for remote notifications:  (error)")
 		bondLog(error)
+		
+		(ViewManager.sharedInstance.currentViewController as PushPermissionViewController).presentNextController()
 	}
 
 	func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
 		println("didReceiveRemoteNotification")
 		PFPush.handlePush(userInfo)
 	}
-
-	/*func application(application: UIApplication, shouldAllowExtensionPointIdentifier extensionPointIdentifier: String) -> Bool {
-		if (extensionPointIdentifier == "com.apple.keyboard-service") {
-			return false
+	
+	func applicationWillEnterForeground(application: UIApplication) {
+		if (ViewManager.sharedInstance.currentViewController is SignUpViewController) {
+			(ViewManager.sharedInstance.currentViewController as SignUpViewController).hideKeyboard()
+		} else if (ViewManager.sharedInstance.currentViewController is LoginViewController) {
+			(ViewManager.sharedInstance.currentViewController as LoginViewController).hideKeyboard()
 		} else {
-			return true
+			self.window?.endEditing(true)
 		}
-	}*/
+	}
 
     // Core Data functions
 

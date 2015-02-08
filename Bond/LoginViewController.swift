@@ -77,10 +77,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.password.frame = CGRectMake(10, viewSize.height * 15/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
         self.password.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
         self.password.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
-        
+		
+		// Set up agreement terms
+		var forgotPW = UILabel()
+		forgotPW.numberOfLines = 0
+		forgotPW.textAlignment = NSTextAlignment.Center
+		forgotPW.userInteractionEnabled = true
+		var forgotText = NSMutableAttributedString(string: "Forgot Password?")
+		//forgotText.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(int: 1), range: NSMakeRange(42, 18))
+		//forgotText.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(int: 1), range: NSMakeRange(65, 16))
+		forgotText.addAttribute(NSForegroundColorAttributeName, value: AppData.util.UIColorFromRGB(0xADADAD), range: NSMakeRange(0, forgotText.length))
+		forgotText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Book", size: 9.0)!, range: NSMakeRange(0, forgotText.length))
+		forgotPW.attributedText = forgotText
+		forgotPW.frame.size = CGSizeMake(self.view.frame.width, 30)
+		forgotPW.center = CGPointMake(self.view.frame.width / 2, 300)
+		self.view.addSubview(forgotPW)
+		forgotPW.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showForgotPW"))
+		
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
+	
+	func showForgotPW() {
+		// Eventually this code should present the website with terms and conditions
+		UIApplication.sharedApplication().openURL(NSURL(string: "http://bond.sh")!)
+	}
     
     /* * *
      * * * Customize keyboard and button animations-----------------------------
@@ -102,6 +123,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 		}
 		textField.layer.borderWidth = 1.5
+		if (textField.secureTextEntry) {
+			textField.font = UIFont.systemFontOfSize(textField.font.pointSize)
+		}
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
@@ -110,6 +134,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 			var placeholder = textField.attributedPlaceholder?.string
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+		}
+		if (textField.secureTextEntry) {
+			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
 		}
 	}
 
@@ -171,26 +198,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
      * * * Capture segue events
      * * */
     
-    override func viewWillDisappear(animated: Bool) {
-        var count = self.navigationController?.viewControllers.count
-        var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-        if (nextVC is Tour_StartViewController) {
-            self.navigationController?.navigationBarHidden = true
-        }
-        super.viewWillDisappear(animated)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "LoginSegue" || segue.identifier == "nextView") {
-            // Use to authenticate login and cancel segue if illegal login credentials
-            AppData.data.userID = 1 // Store user id if successful authentication
-        } else if segue.destinationViewController is Tour_StartViewController {
-            self.navigationController?.navigationBarHidden = true
-        }
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		self.navigationController?.navigationBarHidden = false
+		super.viewWillAppear(animated)
+	}
+	
+	override func viewWillDisappear(animated: Bool) {
+		var count = self.navigationController?.viewControllers.count
+		var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
+		if (nextVC is Tour_StartViewController) {
+			self.navigationController?.navigationBarHidden = true
+		}
+		super.viewWillDisappear(animated)
+	}
+	
 }

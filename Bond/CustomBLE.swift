@@ -142,6 +142,10 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 	}
 
 	func centralManagerDidUpdateState(central: CBCentralManager) {
+		if (ViewManager.sharedInstance.currentViewController is LocationPermissionViewController) {
+			(ViewManager.sharedInstance.currentViewController as LocationPermissionViewController).presentNextController()
+		}
+		
 		if central.state != CBCentralManagerState.PoweredOn {
 			println("Central manager scanner off")
 			central.stopScan()

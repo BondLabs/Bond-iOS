@@ -270,6 +270,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 			return
 		} else {
 			capture.toggleColors()
+			chooser.hidden = true
 		}
 
 		if videoConnection == nil {
@@ -289,6 +290,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 
 				self.scaleImage()
 				self.setupImagePreview()
+				self.capture.toggleColors()
 				self.stopCapture()
 			})
 	}
@@ -340,10 +342,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		imagePreview = nil
 		captureSession.startRunning()
 		previewLayer.connection.enabled = true
-		capture.toggleColors()
 		flash.hidden = false
 		flip.hidden = false
 		cancel.hidden = true
+		chooser.hidden = false
 		takingPhoto = false
 		canceling = false
 		takingPhoto = false
@@ -402,6 +404,10 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 	}
 
 	@IBAction func hitNextButton(sender: UIButton) {
+		if (self.image == nil) {
+			return
+		}
+		
 		UserAccountController.sharedInstance.currentUser.setUserPicture(self.image)
 		
 		ViewManager.sharedInstance.ProgressHUD = nil
