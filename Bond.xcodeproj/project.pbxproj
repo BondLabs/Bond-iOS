@@ -11,7 +11,6 @@
 		0201A8B81A7E0C2100D43347 /* ChatContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8B71A7E0C2100D43347 /* ChatContentManager.swift */; };
 		0201A8C01A7E21DD00D43347 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8BF1A7E21DD00D43347 /* Message.m */; };
 		020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020322AA1A70CAEF000C85F4 /* UserAccountController.swift */; };
-		020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934FDA61A484AB800E43B45 /* Main.storyboard */; };
 		02192B6A1A87319C000F8D78 /* UIColor+BLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 02192B691A87319C000F8D78 /* UIColor+BLColors.m */; };
 		02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02657F9D1A862F98008029F5 /* PushNotificationController.swift */; };
 		02657F9F1A8630BD008029F5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201F1A594A0000C97429 /* CFNetwork.framework */; };
@@ -48,6 +47,7 @@
 		756645A81A7F7319009F8789 /* CustomBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756645A71A7F7319009F8789 /* CustomBLE.swift */; };
 		758E50201A85485600881BAE /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E501F1A85485600881BAE /* LocationPermissionViewController.swift */; };
 		75A9A1CE1A87923D00F02EF1 /* No Bonds Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */; };
+		75A9A1D01A87A01200F02EF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A9A1CF1A87A01200F02EF1 /* Main.storyboard */; };
 		75DFFB071A7ED76400FA8681 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DFFB061A7ED76400FA8681 /* ChatViewController.swift */; };
 		75F1480C1A86178000C90500 /* GmailLikeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F147EC1A86178000C90500 /* GmailLikeLoadingView.m */; };
 		75F1480D1A86178000C90500 /* NSString+Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F147EE1A86178000C90500 /* NSString+Calculation.m */; };
@@ -257,6 +257,7 @@
 		756645A71A7F7319009F8789 /* CustomBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBLE.swift; sourceTree = "<group>"; };
 		758E501F1A85485600881BAE /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionViewController.swift; sourceTree = "<group>"; };
 		75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "No Bonds Image.png"; sourceTree = "<group>"; };
+		75A9A1CF1A87A01200F02EF1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		75DFFB061A7ED76400FA8681 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		75F147EB1A86178000C90500 /* GmailLikeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailLikeLoadingView.h; sourceTree = "<group>"; };
 		75F147EC1A86178000C90500 /* GmailLikeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmailLikeLoadingView.m; sourceTree = "<group>"; };
@@ -324,7 +325,6 @@
 		E934FD941A48282100E43B45 /* Logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo@3x.png"; sourceTree = "<group>"; };
 		E934FDA01A4847C000E43B45 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E934FDA21A4847CF00E43B45 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E934FDA61A484AB800E43B45 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E93C443A1A4ADB1100E95265 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		E93C443B1A4ADB1100E95265 /* Icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@3x.png"; sourceTree = "<group>"; };
 		E93C44441A4D038F00E95265 /* TraitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraitsViewController.swift; sourceTree = "<group>"; };
@@ -720,7 +720,7 @@
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
 				02657F9D1A862F98008029F5 /* PushNotificationController.swift */,
 				02F92FA21A7D86DF00B59C39 /* ViewManager.swift */,
-				E934FDA61A484AB800E43B45 /* Main.storyboard */,
+				75A9A1CF1A87A01200F02EF1 /* Main.storyboard */,
 				752326921A847D5300BD3E93 /* Permissions */,
 				021E53831A7E000E008B4F90 /* Chat */,
 				755F35F11A7E30EE0065EDE0 /* Tour */,
@@ -1113,6 +1113,7 @@
 				E93EC81E1A6934A800C03170 /* Fit (a).png in Resources */,
 				E93EC82F1A6934A800C03170 /* Loud (i).png in Resources */,
 				E93EC80E1A6934A800C03170 /* Cultured (a).png in Resources */,
+				75A9A1D01A87A01200F02EF1 /* Main.storyboard in Resources */,
 				E93EC8241A6934A800C03170 /* Fun (a).png in Resources */,
 				E93EC8491A6934A800C03170 /* Serious (i).png in Resources */,
 				E93EC83B1A6934A800C03170 /* Outgoing (i).png in Resources */,
@@ -1175,7 +1176,6 @@
 				E93EC8321A6934A800C03170 /* Motivated (a).png in Resources */,
 				E93EC8091A6934A800C03170 /* Caring (i).png in Resources */,
 				E93EC8581A6934A800C03170 /* Weird (a).png in Resources */,
-				020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */,
 				E973202A1A5A0F6500C97429 /* Camera.png in Resources */,
 				E93EC8511A6934A800C03170 /* Tough (i).png in Resources */,
 				E934FD9C1A48282100E43B45 /* Logo@2x.png in Resources */,

@@ -79,18 +79,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         self.firstName.setPlaceholder("First")
 		self.firstName.backgroundColor = UIColor.whiteColor()
 		self.firstName.textColor = UIColor.bl_silverChaliceColor()
-        self.lastName.setPlaceholder("Last")
-<<<<<<< HEAD
-        self.firstName.frame = CGRectMake(10, 135, self.view.frame.width / 2 - 15, 40)
+		self.firstName.frame = CGRectMake(10, 135, self.view.frame.width / 2 - 15, 40)
+		self.lastName.setPlaceholder("Last")
         self.lastName.frame = CGRectMake(self.view.frame.width / 2 + 5, 135, self.view.frame.width / 2 - 15, 40)
+		self.lastName.backgroundColor = UIColor.whiteColor()
+		self.lastName.textColor = UIColor.bl_silverChaliceColor()
         
         // Set up phoneNumber field
         self.phoneNumber.setPlaceholder("Phone number")
         self.phoneNumber.frame = CGRectMake(10, 185, self.view.frame.width - 20, 40)
-        
-        // Set up password field
+		self.phoneNumber.backgroundColor = UIColor.whiteColor()
+		self.phoneNumber.textColor = UIColor.bl_silverChaliceColor()
+		
+		// Set up password field
         self.password.setPlaceholder("Password")
         self.password.frame = CGRectMake(10, 235, self.view.frame.width - 20, 40)
+		self.password.backgroundColor = UIColor.whiteColor()
+		self.password.textColor = UIColor.bl_silverChaliceColor()
 		
 		// Set up agreement terms
 		var agreeToTerms = UILabel()
@@ -108,26 +113,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		self.view.addSubview(agreeToTerms)
 		agreeToTerms.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showTerms"))
 		
-=======
-		self.firstName.setPlaceholder("First")
-		self.lastName.backgroundColor = UIColor.whiteColor()
-		self.lastName.textColor = UIColor.bl_silverChaliceColor()
-        self.firstName.frame = CGRectMake(10, 85, self.view.frame.width / 2 - 15, 40)
-        self.lastName.frame = CGRectMake(self.view.frame.width / 2 + 5, 85, self.view.frame.width / 2 - 15, 40)
-        
-        // Set up phoneNumber field
-        self.phoneNumber.setPlaceholder("Phone number")
-        self.phoneNumber.frame = CGRectMake(10, 135, self.view.frame.width - 20, 40)
-		self.phoneNumber.backgroundColor = UIColor.whiteColor()
-		self.phoneNumber.textColor = UIColor.bl_silverChaliceColor()
-
-        // Set up password field
-        self.password.setPlaceholder("Password")
-        self.password.frame = CGRectMake(10, 185, self.view.frame.width - 20, 40)
-		self.password.backgroundColor = UIColor.whiteColor()
-		self.password.textColor = UIColor.bl_silverChaliceColor()
-
->>>>>>> Something-thats-not-common-dev
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
@@ -168,14 +153,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 		}
 		textField.layer.borderWidth = 1.5
-<<<<<<< HEAD
+		textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		textField.textColor = UIColor.bl_azureRadianceColor()
 		if (textField.secureTextEntry) {
 			textField.font = UIFont.systemFontOfSize(textField.font.pointSize)
 		}
-=======
-		textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
-		textField.textColor = UIColor.bl_azureRadianceColor()
->>>>>>> Something-thats-not-common-dev
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
@@ -189,13 +171,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
 		}
 		selectedField = nil
-<<<<<<< HEAD
+		textField.textColor = UIColor.bl_silverChaliceColor()
 		if (textField.secureTextEntry) {
 			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
 		}
-=======
-		textField.textColor = UIColor.bl_silverChaliceColor()
->>>>>>> Something-thats-not-common-dev
 	}
     
     // Capture taps on nextButton

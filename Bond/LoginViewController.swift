@@ -85,9 +85,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Set up password field
         self.password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.bl_silverChaliceColor()])
         self.password.frame = CGRectMake(10, viewSize.height * 15/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
-<<<<<<< HEAD
-        self.password.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
-        self.password.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
+		self.password.backgroundColor = UIColor.whiteColor()
+		self.password.textColor = UIColor.bl_silverChaliceColor()
 		
 		// Set up agreement terms
 		var forgotPW = UILabel()
@@ -105,15 +104,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		self.view.addSubview(forgotPW)
 		forgotPW.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showForgotPW"))
 		
-=======
-		//self.password.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
-		self.password.backgroundColor = UIColor.whiteColor()
-		//self.password.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
-		self.password.textColor = UIColor.bl_silverChaliceColor()
-		//self.password.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
-		//self.password.layer.borderWidth = 1.5
-        
->>>>>>> Something-thats-not-common-dev
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
@@ -143,14 +133,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 		}
 		textField.layer.borderWidth = 1.5
-<<<<<<< HEAD
+		textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		textField.textColor = UIColor.bl_azureRadianceColor()
 		if (textField.secureTextEntry) {
 			textField.font = UIFont.systemFontOfSize(textField.font.pointSize)
 		}
-=======
-		textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
-		textField.textColor = UIColor.bl_azureRadianceColor()
->>>>>>> Something-thats-not-common-dev
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
@@ -160,13 +147,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
 		}
-<<<<<<< HEAD
 		if (textField.secureTextEntry) {
 			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
 		}
-=======
 		textField.textColor = UIColor.bl_silverChaliceColor()
->>>>>>> Something-thats-not-common-dev
 	}
 
     func showButton() {
