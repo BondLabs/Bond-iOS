@@ -13,6 +13,7 @@ struct bondColors {
     static let color2 = AppData.util.UIColorFromRGB(0x50c1ff)
     static let color3 = AppData.util.UIColorFromRGB(0x1dafff)
     static let color4 = AppData.util.UIColorFromRGB(0x00a4ff)
+
 }
 
 func bondLog(x: AnyObject) {

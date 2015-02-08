@@ -12,6 +12,7 @@
 		0201A8C01A7E21DD00D43347 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8BF1A7E21DD00D43347 /* Message.m */; };
 		020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020322AA1A70CAEF000C85F4 /* UserAccountController.swift */; };
 		020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934FDA61A484AB800E43B45 /* Main.storyboard */; };
+		02192B6A1A87319C000F8D78 /* UIColor+BLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 02192B691A87319C000F8D78 /* UIColor+BLColors.m */; };
 		02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02657F9D1A862F98008029F5 /* PushNotificationController.swift */; };
 		02657F9F1A8630BD008029F5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201F1A594A0000C97429 /* CFNetwork.framework */; };
 		02657FA01A8630BD008029F5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201D1A5949DA00C97429 /* libsqlite3.dylib */; };
@@ -227,6 +228,8 @@
 		0201A8BE1A7E21DD00D43347 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		0201A8BF1A7E21DD00D43347 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		020322AA1A70CAEF000C85F4 /* UserAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountController.swift; sourceTree = "<group>"; };
+		02192B681A87319C000F8D78 /* UIColor+BLColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BLColors.h"; sourceTree = "<group>"; };
+		02192B691A87319C000F8D78 /* UIColor+BLColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BLColors.m"; sourceTree = "<group>"; };
 		02657F9D1A862F98008029F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		02657FAA1A86CFBB008029F5 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		02657FAB1A86CFBB008029F5 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -494,6 +497,15 @@
 			name = "User Account Stuff";
 			sourceTree = "<group>";
 		};
+		02192B6B1A8731A6000F8D78 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				02192B681A87319C000F8D78 /* UIColor+BLColors.h */,
+				02192B691A87319C000F8D78 /* UIColor+BLColors.m */,
+			);
+			name = UIColor;
+			sourceTree = "<group>";
+		};
 		021E53831A7E000E008B4F90 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +552,7 @@
 		75F147EA1A8616EE00C90500 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				02192B6B1A8731A6000F8D78 /* UIColor */,
 				02657FAD1A86CFBF008029F5 /* Keychain */,
 				75F148391A861AE200C90500 /* MBProgressHUD */,
 				75F1483A1A861AEC00C90500 /* NSURL */,
@@ -1214,6 +1227,7 @@
 				02E6D5331A86D9880022FD50 /* AutoLogInViewController.swift in Sources */,
 				75DFFB071A7ED76400FA8681 /* ChatViewController.swift in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
+				02192B6A1A87319C000F8D78 /* UIColor+BLColors.m in Sources */,
 				75F1481A1A86178000C90500 /* SOMessageInputView.m in Sources */,
 				02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */,
 				75F1482C1A86179D00C90500 /* NSData+Base64.m in Sources */,

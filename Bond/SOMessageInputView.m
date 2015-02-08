@@ -83,7 +83,15 @@ void bondLog(id x) {
 
 - (void)setup
 {
-    self.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(164/255.0) blue:(255/255.0) alpha:0.5];
+    self.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:0.5];
+
+
+	UIVisualEffect *blurEffect;
+	blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+	UIVisualEffectView *visualEffectView;
+	visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+	visualEffectView.frame = self.bounds;
+	[self addSubview:visualEffectView];
     
     self.textView = [[SOPlaceholderedTextView alloc] init];
     self.textView.textColor = [UIColor whiteColor];
@@ -105,11 +113,9 @@ void bondLog(id x) {
     self.sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
     [self.sendButton addTarget:self action:@selector(sendTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.sendButton];
-    
-    self.separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0.5f)];
-    self.separatorView.backgroundColor = [UIColor lightGrayColor];
-    self.separatorView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
-    [self addSubview:self.separatorView];
+
+
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillShowNote:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHideNote:) name:UIKeyboardWillHideNotification object:nil];

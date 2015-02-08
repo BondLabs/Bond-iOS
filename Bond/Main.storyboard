@@ -54,7 +54,7 @@
             <objects>
                 <viewController id="UxE-dx-lU8" customClass="LoginViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wjk-Dc-JVd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MOY-7h-5G5">
@@ -327,11 +327,21 @@
                     <view key="view" contentMode="scaleToFill" id="5Co-ib-xQV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YbG-Cq-BfX">
+                                <rect key="frame" x="120" y="445" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="TO1-JX-8pg"/>
                     <connections>
                         <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" id="WQw-Ge-6PW"/>
+                        <segue destination="UxE-dx-lU8" kind="modal" id="1WM-S3-HBx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60z-Zf-Z4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -736,13 +746,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="WQw-Ge-6PW"/>
-        <segue reference="dLw-JN-GVL"/>
-        <segue reference="8BU-7d-1hK"/>
-        <segue reference="2Zi-Zh-utD"/>
-        <segue reference="Gfx-JN-Ff2"/>
-        <segue reference="R23-YL-h3N"/>
         <segue reference="ZpS-go-W1x"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="8BU-7d-1hK"/>
+        <segue reference="1WM-S3-HBx"/>
+        <segue reference="WQw-Ge-6PW"/>
         <segue reference="Jfy-Ox-HKQ"/>
     </inferredMetricsTieBreakers>
 </document>
