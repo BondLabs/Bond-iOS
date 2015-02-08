@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Set up navigation controller properties
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         
         // Set up instructions label
         self.descLabel.textColor = UIColor.whiteColor()

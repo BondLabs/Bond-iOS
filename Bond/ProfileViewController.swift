@@ -30,7 +30,8 @@ class ProfileViewController: UIViewController {
 		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
 		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
         self.navigationItem.title = "You"
-		signOutButton = UIBarButtonItem(title: "Sign Out", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedButton:")
+		signOutButton = UIBarButtonItem(title: "Log Out", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedButton:")
+
 		signOutButton.tintColor = UIColor.whiteColor()
 		self.navigationItem.rightBarButtonItem = signOutButton
 		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
@@ -40,9 +41,10 @@ class ProfileViewController: UIViewController {
         // Darker sub background
         var subBG = UIView()
 		//subBG.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-		subBG.backgroundColor = UIColor.bl_backgroundColorColor()
+		subBG.backgroundColor = UIColor.whiteColor()
         subBG.layer.borderWidth = 0.5
-        subBG.layer.borderColor = UIColor.blackColor().CGColor
+		//subBG.layer.borderColor = UIColor.blackColor().CGColor
+		subBG.layer.borderColor = UIColor.bl_altoColor().CGColor
         subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
         subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
         self.view.addSubview(subBG)
