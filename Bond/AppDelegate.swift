@@ -71,8 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if((userInfo as NSDictionary).objectForKey("type") != nil){
             let type = (userInfo as NSDictionary).objectForKey("type") as String
-            if(type == "chat")
-            {
+            if(type == "chat"){
                 let bid = push.objectForKey("bid")?.integerValue
                 if(ViewManager.sharedInstance.currentViewController == ViewManager.sharedInstance.chatViewController){
                     let chatbondid = "\((ViewManager.sharedInstance.chatViewController as ChatViewController).chatBondID)" as String
@@ -103,9 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let bid = push.objectForKey("bid")?.integerValue
                 if application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background
                 {
-                    let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-                    let startViewController: UIViewController = viewStoryBoard.instantiateViewControllerWithIdentifier("bond") as UIViewController
-                    ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
+//                    let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+//                    let startViewController: UIViewController = viewStoryBoard.instantiateViewControllerWithIdentifier("bond") as UIViewController
+//                    ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
                 }
             }
         }
