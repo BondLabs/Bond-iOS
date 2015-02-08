@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 Kevin Zhang. All rights reserved.
 //
 
+
+
 import UIKit
 
 class BondUser: NSObject {
@@ -19,6 +21,10 @@ class BondUser: NSObject {
 	var relationship = ""
     var bonds = NSMutableDictionary()
     var traitsString: String?
+
+
+
+
     /*var traits: NSArray = {
     
     let Array = NSMutableArray()

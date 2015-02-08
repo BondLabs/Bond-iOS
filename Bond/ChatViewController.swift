@@ -83,7 +83,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         return height
     }
     
-    override func configureMessageCell(cell: SOMessageCell!, forMessageAtIndex index: Int) {
+    override func configureMessageCell(cell: SOMessageCell, forMessageAtIndex index: Int) {
         let message: Message = self.dataSource[index] as Message
         
         
@@ -204,11 +204,11 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         return 243
     }
     
-    override func didSelectMedia(media: NSData!, inMessageCell cell: SOMessageCell!) {
+    override func didSelectMedia(media: NSData, inMessageCell cell: SOMessageCell!) {
         super.didSelectMedia(media, inMessageCell: cell)
     }
     
-    override func messageInputView(inputView: SOMessageInputView!, didSendMessage message: String!) {
+    override func messageInputView(inputView: SOMessageInputView, didSendMessage message: String) {
         if (message.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).utf16Count == 0) {
             return
         }

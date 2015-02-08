@@ -13,6 +13,7 @@ struct bondColors {
     static let color2 = AppData.util.UIColorFromRGB(0x50c1ff)
     static let color3 = AppData.util.UIColorFromRGB(0x1dafff)
     static let color4 = AppData.util.UIColorFromRGB(0x00a4ff)
+
 }
 
 func bondLog(x: AnyObject) {
@@ -35,10 +36,15 @@ extension Bool {
 }
 
 class AppData {
+
+
+	
     
     class func bondLog(x: AnyObject) {
         NSLog("\(x)")
     }
+
+
     
     struct data {
         static var userID:Int!
@@ -128,7 +134,7 @@ extension String {
     
     
     // MARK: - replace
-    func replaceCharactersInRange(range:Range<Int>, withString: String!) -> String {
+    func replaceCharactersInRange(range:Range<Int>, withString: String) -> String {
         var result:NSMutableString = NSMutableString(string: self)
         result.replaceCharactersInRange(NSRange(range), withString: withString)
         return result

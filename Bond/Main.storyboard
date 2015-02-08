@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Pl1-PC-Q3q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Pl1-PC-Q3q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -42,6 +42,7 @@
                     <connections>
                         <outlet property="loginButton" destination="Fz5-xq-0gb" id="Fb3-9B-S2S"/>
                         <outlet property="signupButton" destination="0uw-pl-7sA" id="71q-Si-mpG"/>
+                        <segue destination="vZc-qf-t1h" kind="push" identifier="goToBondsDirectly" id="uWm-rt-j2Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -53,7 +54,7 @@
             <objects>
                 <viewController id="UxE-dx-lU8" customClass="LoginViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wjk-Dc-JVd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MOY-7h-5G5">
@@ -100,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZO-Xm-ynX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2056" y="1105"/>
+            <point key="canvasLocation" x="1806" y="1903"/>
         </scene>
         <!--Profile-->
         <scene sceneID="UoX-e2-sak">
@@ -241,10 +242,11 @@
         <scene sceneID="sSs-G2-R28">
             <objects>
                 <tableViewController title="Bonds" id="roy-Ek-R35" customClass="BondsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8yj-2l-WrK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8yj-2l-WrK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BondTableCell" rowHeight="60" id="wTq-xz-ibz" customClass="BondTableCell" customModule="Bond" customModuleProvider="target">
@@ -318,6 +320,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryi-cy-jtq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3929" y="1743"/>
+        </scene>
+        <!--Auto Log In View Controller-->
+        <scene sceneID="Auf-z1-0xy">
+            <objects>
+                <viewController id="vZc-qf-t1h" customClass="AutoLogInViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Co-ib-xQV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YbG-Cq-BfX">
+                                <rect key="frame" x="120" y="445" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TO1-JX-8pg"/>
+                    <connections>
+                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" id="WQw-Ge-6PW"/>
+                        <segue destination="UxE-dx-lU8" kind="modal" id="1WM-S3-HBx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="60z-Zf-Z4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2017" y="1139"/>
         </scene>
         <!--Bonds Bar Controller-->
         <scene sceneID="SUf-Ad-0C7">
@@ -461,12 +491,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHe-Da-r9x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="1105"/>
+            <point key="canvasLocation" x="1306" y="1919"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vp9-go-qcG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pl1-PC-Q3q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="originalController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pl1-PC-Q3q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hjd-Ax-XTG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -717,13 +747,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dLw-JN-GVL"/>
-        <segue reference="8BU-7d-1hK"/>
-        <segue reference="2Zi-Zh-utD"/>
-        <segue reference="Gfx-JN-Ff2"/>
-        <segue reference="R23-YL-h3N"/>
         <segue reference="ZpS-go-W1x"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="8BU-7d-1hK"/>
+        <segue reference="1WM-S3-HBx"/>
+        <segue reference="WQw-Ge-6PW"/>
         <segue reference="Jfy-Ox-HKQ"/>
-        <segue reference="SCU-zk-ooq"/>
     </inferredMetricsTieBreakers>
 </document>

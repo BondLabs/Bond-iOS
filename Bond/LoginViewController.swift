@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Set up navigation controller properties
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
         
         // Set up instructions label
         self.descLabel.textColor = UIColor.whiteColor()
@@ -151,12 +151,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
 	@IBAction func didTouchButton(sender: UIButton) {
 		let uc = UserAccountController.sharedInstance
-		
+
+
 		uc.loginWithInfo(phoneNumber.text, password: password.text)
+		uc.newPhoneNumber = phoneNumber.text
+		uc.newPassword = password.text
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Logging Into Bond"
+
+		
 		//uc.newPhoneNumber = phoneNumber.text
 		//uc.newPassword = password.text
 		//uc.login()

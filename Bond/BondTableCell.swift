@@ -20,8 +20,8 @@ class BondTableCell: UITableViewCell {
     
     func setup(id: String) {
         // Set up basic properties
-        self.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
-        
+		//self.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
+        self.backgroundColor = UIColor.whiteColor()
         // Get profile pic
         self.name = id
         var profPic:UIImage = self.getProfPic()
@@ -42,7 +42,8 @@ class BondTableCell: UITableViewCell {
 
         nameLabel.sizeToFit()
         nameLabel.frame.origin = CGPointMake(60, 8)
-        nameLabel.textColor = UIColor.whiteColor()
+		//nameLabel.textColor = UIColor.whiteColor()
+		nameLabel.textColor = UIColor.bl_doveGrayColor()
         self.addSubview(nameLabel)
         
         // TODO: Get distance

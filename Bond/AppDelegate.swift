@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// Set default font for all controls in app
 		UILabel.appearance().font = UIFont(name: "Avenir-Book", size: 16.5)
 		UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Medium", size: 16.5)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
-		UINavigationBar.appearance().barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
 		UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Light", size: 16.5)!], forState: UIControlState.Normal)
 
         return true

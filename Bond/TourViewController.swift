@@ -44,6 +44,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         
         // Set current view controller
         ViewManager.sharedInstance.currentViewController = self
+		ViewManager.sharedInstance.firstViewController = self
         
         // Unhide navigation bar if hidden
         self.navigationController?.navigationBarHidden = true
@@ -132,10 +133,34 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.navigationBarHidden = true
-        super.viewWillAppear(animated)
+
+		let keychainStore = UserAccountController.sharedInstance.keychainItemStore
+		let passwordData: AnyObject! = keychainStore.objectForKey(kSecValueData)
+
+		bondLog("username is \(keychainStore.objectForKey(kSecAttrAccount))")
+		bondLog("password data is \(passwordData)")
+		//let passwordText = (NSString(data: passwordData as NSData, encoding:NSUTF8StringEncoding))
+
+		bondLog("\(UserAccountController.sharedInstance.userDefaults)")
+
+		let unExists = (UserAccountController.sharedInstance.userDefaults.objectForKey("name") != nil) && !(UserAccountController.sharedInstance.userDefaults.objectForKey("name") as NSString).isEqualToString("")
+
+		bondLog("Username Exists: \(unExists)")
+
+
+
+
+
+		if unExists {
+			self.performSegueWithIdentifier("goToBondsDirectly", sender: self)
+
+		}
+		else {
+			self.navigationController?.navigationBarHidden = true
+			super.viewWillAppear(animated)
+		}
     }
-    
+
     func showStartButtons() {
         UIView.animateWithDuration(0.5, animations: {
             self.nextButton.alpha = 0

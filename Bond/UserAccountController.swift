@@ -47,6 +47,51 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         
         return Static.instance!
     }
+
+
+	var keychainItemStore = KeychainItemWrapper(identifier: "BondLogin", accessGroup: nil)
+	var userDefaults = NSUserDefaults.standardUserDefaults()
+
+
+	func logout() {
+
+		CustomBLE.sharedInstance.stopScanning()
+		CustomBLE.sharedInstance.timer.invalidate()
+
+		self.keychainItemStore.resetKeychainItem()
+		self.keychainItemStore.setObject("", forKey: kSecAttrAccount)
+		self.keychainItemStore.setObject("", forKey: kSecValueData)
+
+		self.userDefaults.setObject("", forKey: "phoneNumber")
+		self.userDefaults.setObject("", forKey: "name")
+		self.userDefaults.setObject(1, forKey: "age")
+		self.userDefaults.setObject("other", forKey: "gender")
+		self.userDefaults.setObject("complicated", forKey: "relationship")
+		//self.userDefaults.setObject(UIImage(), forKey: "image")
+
+		self.userDefaults.synchronize()
+
+		self.newFirstName = ""
+		self.newLastName = ""
+		self.newPhoneNumber = ""
+		self.newEmail = ""
+		self.newAge = 1
+		self.newGender = "other"
+		self.newRelationshipStatus = "complicated"
+		self.newProfileImage = UIImage()
+		self.id = 1
+
+		self.currentUser = nil
+
+
+		//let viewStoryBoard = ViewManager.sharedInstance.currentViewController?.storyboard
+		let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+		let startViewController: UIViewController = viewStoryBoard.instantiateInitialViewController() as UIViewController
+		//let startViewController = ViewManager.sharedInstance.firstViewController
+
+		bondLog("view controller is \(startViewController)")
+		ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
+	}
     
     //@availability(deprecated)
     func register() {

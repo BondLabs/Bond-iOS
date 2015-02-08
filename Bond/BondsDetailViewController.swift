@@ -47,16 +47,21 @@ class BondsDetailViewController: UIViewController {
 		
 		
 		// Set up view properties
-		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-		self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
+		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
+		self.navigationController?.navigationBar.translucent = false
 		// var name = "Test" // Get name of user using id
 		self.navigationItem.title = self.name
 		
 		// Darker sub background
 		var subBG = UIView()
-		subBG.backgroundColor = AppData.util.UIColorFromRGB(0x535353)
+		//subBG.backgroundColor = AppData.util.UIColorFromRGB(0x535353)
+		subBG.backgroundColor = UIColor.whiteColor()
 		subBG.layer.borderWidth = 0.5
-		subBG.layer.borderColor = UIColor.blackColor().CGColor
+		//subBG.layer.borderColor = UIColor.blackColor().CGColor
+		subBG.layer.borderColor = UIColor.bl_altoColor().CGColor
 		subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
 		subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
 		self.view.addSubview(subBG)
@@ -83,7 +88,8 @@ class BondsDetailViewController: UIViewController {
 		// Add a name label
 		nameLabel = UILabel()
 		nameLabel.text = name
-		nameLabel.textColor = UIColor.whiteColor()
+		//nameLabel.textColor = UIColor.whiteColor()
+		nameLabel.textColor = UIColor.bl_doveGrayColor()
 		nameLabel.font = UIFont(name: "Helvetica-Bold", size: 24.0)
 		nameLabel.sizeToFit()
 		nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
@@ -98,7 +104,8 @@ class BondsDetailViewController: UIViewController {
 		profImage.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 5)
 		profImage.setDefaultImage(UIImage(named: "Profile(i).png")!)
 		profImage.performSetup(1)
-		profImage.layer.borderColor = UIColor.blackColor().CGColor
+		//profImage.layer.borderColor = UIColor.blackColor().CGColor
+		profImage.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
 		profImage.layer.borderWidth = 1.0
 		self.view.addSubview(profImage)
 		

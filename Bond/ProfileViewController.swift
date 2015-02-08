@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
 	
     var nameLabel: UILabel!
     var distLabel: UILabel!
+	var signOutButton: UIBarButtonItem!
     var profImage: CircleImageView!
 
     /* * *
@@ -26,16 +27,24 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Set up view properties
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
+		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)
+		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
         self.navigationItem.title = "You"
-        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		signOutButton = UIBarButtonItem(title: "Log Out", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedButton:")
+
+		signOutButton.tintColor = UIColor.whiteColor()
+		self.navigationItem.rightBarButtonItem = signOutButton
+		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
 		self.tabBarItem.selectedImage = UIImage(named: "Profile.png")!
         
         // Darker sub background
         var subBG = UIView()
-        subBG.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		//subBG.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		subBG.backgroundColor = UIColor.whiteColor()
         subBG.layer.borderWidth = 0.5
-        subBG.layer.borderColor = UIColor.blackColor().CGColor
+		//subBG.layer.borderColor = UIColor.blackColor().CGColor
+		subBG.layer.borderColor = UIColor.bl_altoColor().CGColor
         subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
         subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
         self.view.addSubview(subBG)
@@ -56,11 +65,14 @@ class ProfileViewController: UIViewController {
         var dist:Int! = 8
         var profPic:UIImage!
         var activities:[String]! = ["Brainy", "Curious"]
-		
+
+
+
         // Add a name label
         nameLabel = UILabel()
         nameLabel.text = name
-        nameLabel.textColor = UIColor.whiteColor()
+		// nameLabel.textColor = UIColor.whiteColor()
+		nameLabel.textColor = UIColor.bl_doveGrayColor()
         nameLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         nameLabel.sizeToFit()
         nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
@@ -70,10 +82,10 @@ class ProfileViewController: UIViewController {
         distLabel = UILabel()
         distLabel.text = "\(dist) Feet Away"
 		distLabel.font = UIFont(name: "Avenir-Medium", size: 18.0)
-        distLabel.textColor = UIColor.whiteColor()
+		distLabel.textColor = UIColor.whiteColor()
         distLabel.sizeToFit()
         distLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 70)
-        self.view.addSubview(distLabel)
+		//self.view.addSubview(distLabel)
         
         // Add profile picture
         profImage = CircleImageView()
@@ -83,7 +95,8 @@ class ProfileViewController: UIViewController {
 		//profImage.setDefaultImage(UserAccountController.sharedInstance.currentUser.image)
 		profImage.image = UserAccountController.sharedInstance.currentUser.image
         profImage.performSetup(1)
-        profImage.layer.borderColor = UIColor.blackColor().CGColor
+		//profImage.layer.borderColor = UIColor.blackColor().CGColor
+		profImage.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
         profImage.layer.borderWidth = 1.0
         self.view.addSubview(profImage)
 		
@@ -95,7 +108,7 @@ class ProfileViewController: UIViewController {
 		chatButton.layer.masksToBounds = true
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedButton:")
 		chatButton.addGestureRecognizer(tapGestureRecognizer)
-		self.view.addSubview(chatButton)
+		//self.view.addSubview(chatButton)
         
         // Add activity views
         var activityCount = min(activities.count, 4)
@@ -112,8 +125,8 @@ class ProfileViewController: UIViewController {
     }
     
 	func tappedButton(sender: UITapGestureRecognizer) {
-		self.performSegueWithIdentifier("chatSegue", sender: self)
-		self.navigationController?.navigationBarHidden = YES
+		UserAccountController.sharedInstance.logout()
+		
 	}
     
 }
