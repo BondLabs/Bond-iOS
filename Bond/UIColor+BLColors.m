@@ -66,4 +66,12 @@
                            alpha:1.0f];
 }
 
++ (UIColor *)bl_altoColor {
+	return [UIColor colorWithRed:215.0f / 255.0f
+						   green:215.0f / 255.0f
+							blue:215.0f / 255.0f
+						   alpha:1.0f];
+}
+
+
 @end

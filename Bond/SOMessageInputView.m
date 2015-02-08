@@ -83,14 +83,27 @@ void bondLog(id x) {
 
 - (void)setup
 {
-    self.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:0.5];
+		//self.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:0.2];
 
 
-	UIVisualEffect *blurEffect;
+	UIBlurEffect *blurEffect;
+
 	blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+
+
+	UIView *colorView = [[UIView alloc] initWithFrame:self.frame];
+	colorView.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(164/255.0) blue:(255/255.0) alpha:0.5];
+
 	UIVisualEffectView *visualEffectView;
 	visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+
+
+
 	visualEffectView.frame = self.bounds;
+		//visualEffectView.tintColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:1.0];
+	[visualEffectView.contentView addSubview:colorView];
+
+
 	[self addSubview:visualEffectView];
     
     self.textView = [[SOPlaceholderedTextView alloc] init];

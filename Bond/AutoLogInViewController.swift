@@ -25,7 +25,7 @@ class AutoLogInViewController: UIViewController {
 		newUser.gender = userDefaults.objectForKey("gender")! as String
 		newUser.relationship = userDefaults.objectForKey("relationship")! as String
 
-
+		UIApplication.sharedApplication().networkActivityIndicatorVisible = true
 		UserAccountController.sharedInstance.currentUser = newUser
 
 		ViewManager.sharedInstance.currentViewController = self
@@ -56,14 +56,16 @@ class AutoLogInViewController: UIViewController {
     }
     
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+
+		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+
 
 }

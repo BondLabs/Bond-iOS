@@ -18,5 +18,6 @@
 + (UIColor *)bl_azureRadianceColor;
 + (UIColor *)bl_lochmaraColor;
 + (UIColor *)bl_backgroundColorColor;
++ (UIColor *)bl_altoColor;
 
 @end

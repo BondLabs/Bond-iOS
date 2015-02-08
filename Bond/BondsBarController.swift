@@ -10,9 +10,12 @@ import UIKit
 
 class BondsBarController: UITabBarController, UITabBarControllerDelegate {
 	
-	var selectedBGColor:UIColor! = AppData.util.UIColorFromRGB(0x212121)
-	var deselectedBGColor:UIColor! = AppData.util.UIColorFromRGB(0x2D2D2D)
-	
+	//var selectedBGColor:UIColor! = AppData.util.UIColorFromRGB(0x212121)
+	//var deselectedBGColor:UIColor! = AppData.util.UIColorFromRGB(0x2D2D2D)
+
+	var selectedBGColor:UIColor! = UIColor.whiteColor()
+	var deselectedBGColor:UIColor! = UIColor.whiteColor()
+
 	// Store controller properties
 	var views:[UIViewController]!
 	
@@ -26,7 +29,8 @@ class BondsBarController: UITabBarController, UITabBarControllerDelegate {
 		views = self.viewControllers as [UIViewController]
 		
 		// Set up view properties
-		self.tabBar.tintColor = AppData.util.UIColorFromRGB(0x575757)
+		//self.tabBar.tintColor = AppData.util.UIColorFromRGB(0x575757)
+		self.tabBar.tintColor = UIColor.bl_azureRadianceColor()
 		self.tabBar.translucent = false
 		self.setItemSelected(0)
 		

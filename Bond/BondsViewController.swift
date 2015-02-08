@@ -38,10 +38,12 @@ class BondsViewController: UITableViewController {
 		bonds = ["Kevin Zhang", "Daniel Singer", "Jason Fieldman"]
 		
 		// Customize view and navigation bar
-		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-		self.tableView.separatorColor = UIColor.blackColor()
+		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
+		self.tableView.separatorColor = UIColor.bl_altoColor()
 		self.navigationItem.title = "Bonds"
-		self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
 		self.tableView.tableFooterView = UIView()
 		
 		// Set row height
