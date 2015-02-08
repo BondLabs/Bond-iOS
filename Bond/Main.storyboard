@@ -747,13 +747,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZpS-go-W1x"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="Gfx-JN-Ff2"/>
-        <segue reference="2Zi-Zh-utD"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="1WM-S3-HBx"/>
-        <segue reference="WQw-Ge-6PW"/>
+        <segue reference="SCU-zk-ooq"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="ZpS-go-W1x"/>
         <segue reference="Jfy-Ox-HKQ"/>
     </inferredMetricsTieBreakers>
 </document>

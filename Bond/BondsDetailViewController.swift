@@ -147,7 +147,9 @@ class BondsDetailViewController: UIViewController {
 		gmailView.startAnimating()
 		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Loading"
-		UserAccountController.sharedInstance.getChat(self.id, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+		UserAccountController.sharedInstance.getChat(self.id, authKey:UserAccountController.sharedInstance.currentUser.authKey)
+
+		
 		let vc = ChatViewController()
 		vc.barTitle = self.name
 		vc.chatBondID = self.id

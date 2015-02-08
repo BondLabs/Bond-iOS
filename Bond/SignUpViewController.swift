@@ -42,6 +42,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         lastName.delegate = self
         phoneNumber.delegate = self
         password.delegate = self
+
+		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
+		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         // Set up buttons
         self.nextButton.alpha = 0.0
@@ -63,10 +66,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
 
         // Set up navigation controller properties
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-        
+		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+        self.view.backgroundColor = UIColor.bl_backgroundColorColor()
         // Set up instructions label
-        self.descLabel.textColor = UIColor.whiteColor()
+        self.descLabel.textColor = UIColor.bl_doveGrayColor()
 		self.descLabel.font = UIFont(name: "Helvetica-Neue", size: 18.0)
 		self.descLabel.numberOfLines = 0
 		self.descLabel.sizeToFit()
@@ -74,18 +77,27 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         
         // Set up firstName and lastName fields
         self.firstName.setPlaceholder("First")
+		self.firstName.backgroundColor = UIColor.whiteColor()
+		self.firstName.textColor = UIColor.bl_silverChaliceColor()
         self.lastName.setPlaceholder("Last")
+		self.firstName.setPlaceholder("First")
+		self.lastName.backgroundColor = UIColor.whiteColor()
+		self.lastName.textColor = UIColor.bl_silverChaliceColor()
         self.firstName.frame = CGRectMake(10, 85, self.view.frame.width / 2 - 15, 40)
         self.lastName.frame = CGRectMake(self.view.frame.width / 2 + 5, 85, self.view.frame.width / 2 - 15, 40)
         
         // Set up phoneNumber field
         self.phoneNumber.setPlaceholder("Phone number")
         self.phoneNumber.frame = CGRectMake(10, 135, self.view.frame.width - 20, 40)
-        
+		self.phoneNumber.backgroundColor = UIColor.whiteColor()
+		self.phoneNumber.textColor = UIColor.bl_silverChaliceColor()
+
         // Set up password field
         self.password.setPlaceholder("Password")
         self.password.frame = CGRectMake(10, 185, self.view.frame.width - 20, 40)
-        
+		self.password.backgroundColor = UIColor.whiteColor()
+		self.password.textColor = UIColor.bl_silverChaliceColor()
+
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
@@ -118,6 +130,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 		}
 		textField.layer.borderWidth = 1.5
+		textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		textField.textColor = UIColor.bl_azureRadianceColor()
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
@@ -128,6 +142,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
 		}
 		selectedField = nil
+		textField.textColor = UIColor.bl_silverChaliceColor()
 	}
     
     // Capture taps on nextButton
