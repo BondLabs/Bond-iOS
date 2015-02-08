@@ -93,6 +93,4 @@
  */
 - (CGSize)userImageSize;
 
-
-
  @end

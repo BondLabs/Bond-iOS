@@ -159,8 +159,6 @@ static BOOL cellIsDragging;
 	self.userNameLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
 		//self.timeLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 
-
-
 }
 
 - (void)hideSubViews
@@ -331,8 +329,6 @@ static BOOL cellIsDragging;
             frm.origin.x -= userImageViewLeftMargin + userRect.size.width;
         }
     }
-
-
     if (frm.size.height < self.userImageViewSize.height) {
         CGFloat delta = self.userImageViewSize.height - frm.size.height;
         frm.size.height = self.userImageViewSize.height;
@@ -486,8 +482,6 @@ static BOOL cellIsDragging;
     playButtonImageView.center = CGPointMake(self.mediaOverlayView.frame.size.width/2 + self.contentInsets.left - self.contentInsets.right, self.mediaOverlayView.frame.size.height/2);
     [self.mediaOverlayView addSubview:playButtonImageView];
 }
-
-
 #pragma mark - GestureRecognizer delegates
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {

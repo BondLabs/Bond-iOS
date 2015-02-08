@@ -16,25 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var pushNotificationController:PushNotificationController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-
+		
 		self.pushNotificationController = PushNotificationController()
-
-
-		// Register for Push Notitications, if running iOS 8
-		/*if application.respondsToSelector("registerUserNotificationSettings:") {
-
-			let types:UIUserNotificationType = (.Alert | .Badge | .Sound)
-			let settings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
-
-			application.registerUserNotificationSettings(settings)
-			application.registerForRemoteNotifications()
-
-		} else {
-			// Register for Push Notifications before iOS 8
-			application.registerForRemoteNotificationTypes(.Alert | .Badge | .Sound)
-		}*/
-
 
 		// Set default font for all controls in app
 		UILabel.appearance().font = UIFont(name: "Avenir-Book", size: 16.5)
@@ -55,12 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		currentInstallation.setDeviceTokenFromData(deviceToken)
 		currentInstallation.saveInBackgroundWithBlock { (succeeded, e) -> Void in
-			//code
+			// Handle success
 		}
 	}
 
 	func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-		println("failed to register for remote notifications:  (error)")
 		bondLog(error)
 		
 		(ViewManager.sharedInstance.currentViewController as PushPermissionViewController).presentNextController()

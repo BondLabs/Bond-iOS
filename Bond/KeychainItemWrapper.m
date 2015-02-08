@@ -237,8 +237,6 @@
 	}
 	[returnDictionary setObject:val forKey:(__bridge id)kSecValueData];
 #endif
-
-
 	return returnDictionary;
 }
 

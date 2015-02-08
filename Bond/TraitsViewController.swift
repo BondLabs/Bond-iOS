@@ -113,10 +113,7 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
 		
 		var traits = ""
 		for button: ActivityView in activityArray {
-			
 			traits = traits.stringByAppendingString("\(button.iconView.selected.intValue)")
-			
-			
 		}
 		UserAccountController.sharedInstance.sendTraits(traits)
 		bondLog("traits are \(traits)")

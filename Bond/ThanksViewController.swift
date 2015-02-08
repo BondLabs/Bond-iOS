@@ -51,16 +51,6 @@ class ThanksViewController: UIViewController {
 		bubble.backgroundColor = UIColor.whiteColor()
 		self.view.addSubview(bubble)
 		
-		/*bubbleView = UIImageView()
-		var bubbleImage = UIImage(named: "ChatBubble.png")!
-		bubbleImage = AppData.util.scaleImage(bubbleImage, size: bubbleImage.size, scale: 0.5)
-		bubbleView.image = bubbleImage
-		bubbleView.sizeToFit()
-		bubbleView.center = CGPointMake(self.view.frame.width / 2, 250)
-		self.view.addSubview(bubbleView)*/
-		
-		
-		
 		promptLabel = UILabel()
 		promptLabel.numberOfLines = 0
 		promptLabel.text = "Thanks for joining!"
@@ -69,16 +59,6 @@ class ThanksViewController: UIViewController {
 		promptLabel.sizeToFit()
 		promptLabel.center = CGPointMake(self.view.frame.width / 2, 160)
 		self.view.addSubview(promptLabel)
-		
-		/*descLabel = UILabel()
-		descLabel.numberOfLines = 3
-		descLabel.text = "Bond needs push notifications \nto function properly. \nWould you like to allow this?"
-		descLabel.textAlignment = NSTextAlignment.Left
-		descLabel.textColor = UIColor.whiteColor()
-		descLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.5)
-		descLabel.sizeToFit()
-		descLabel.center = CGPointMake(self.view.frame.width / 2, 250)
-		self.view.addSubview(descLabel)*/
 		
 		subDescLabel = UILabel()
 		subDescLabel.numberOfLines = 3

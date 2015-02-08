@@ -22,16 +22,10 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 
-
-
 void bondLog(id x) {
 
 	NSLog(@"%@", x);
-
-
 }
-
-
 
 #import "SOMessageInputView.h"
 #import <QuartzCore/QuartzCore.h>
@@ -84,26 +78,18 @@ void bondLog(id x) {
 - (void)setup
 {
 		//self.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:0.2];
-
-
 	UIBlurEffect *blurEffect;
 
 	blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-
-
 	UIView *colorView = [[UIView alloc] initWithFrame:self.frame];
 	colorView.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(164/255.0) blue:(255/255.0) alpha:0.5];
 
 	UIVisualEffectView *visualEffectView;
 	visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
 
-
-
 	visualEffectView.frame = self.bounds;
 		//visualEffectView.tintColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:1.0];
 	[visualEffectView.contentView addSubview:colorView];
-
-
 	[self addSubview:visualEffectView];
     
     self.textView = [[SOPlaceholderedTextView alloc] init];
@@ -126,8 +112,6 @@ void bondLog(id x) {
     self.sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
     [self.sendButton addTarget:self action:@selector(sendTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.sendButton];
-
-
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillShowNote:) name:UIKeyboardWillShowNotification object:nil];
@@ -292,13 +276,9 @@ void bondLog(id x) {
 - (void)textViewDidChange:(UITextView *)textView
 {
 		//[self adjustTextViewSize];
-
-
 	CGRect frame = textView.frame;
 	frame.size.height = textView.contentSize.height;
 	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
-
-
 
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
 	CGRect origRect = self.frame;
@@ -313,15 +293,7 @@ void bondLog(id x) {
 
 
 
-
-
-
-
 }
-
-
-
-
 
 #pragma mark - Notifications handlers
 - (void)handleKeyboardWillShowNote:(NSNotification *)notification

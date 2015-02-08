@@ -31,8 +31,6 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @protocol MBProgressHUDDelegate;
-
-
 typedef enum {
 	/** Progress is shown using an UIActivityIndicatorView. This is the default. */
 	MBProgressHUDModeIndeterminate,
@@ -56,8 +54,6 @@ typedef enum {
 	MBProgressHUDAnimationZoomOut = MBProgressHUDAnimationZoom,
 	MBProgressHUDAnimationZoomIn
 } MBProgressHUDAnimation;
-
-
 #ifndef MB_INSTANCETYPE
 #if __has_feature(objc_instancetype)
 	#define MB_INSTANCETYPE instancetype
@@ -87,8 +83,6 @@ typedef enum {
 #if NS_BLOCKS_AVAILABLE
 typedef void (^MBProgressHUDCompletionBlock)();
 #endif
-
-
 /** 
  * Displays a simple HUD window containing a progress indicator and two optional labels for short messages.
  *
@@ -424,24 +418,18 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * The minimum size of the HUD bezel. Defaults to CGSizeZero (no minimum size).
  */
 @property (assign) CGSize minSize;
-
-
 /**
  * The actual size of the HUD bezel.
  * You can use this to limit touch handling on the bezel aria only.
  * @see https://github.com/jdg/MBProgressHUD/pull/200
  */
 @property (atomic, assign, readonly) CGSize size;
-
-
 /**
  * Force the HUD dimensions to be equal if possible. 
  */
 @property (assign, getter = isSquare) BOOL square;
 
 @end
-
-
 @protocol MBProgressHUDDelegate <NSObject>
 
 @optional
@@ -452,8 +440,6 @@ typedef void (^MBProgressHUDCompletionBlock)();
 - (void)hudWasHidden:(MBProgressHUD *)hud;
 
 @end
-
-
 /**
  * A progress view for showing definite progress by filling up a circle (pie chart).
  */
@@ -482,8 +468,6 @@ typedef void (^MBProgressHUDCompletionBlock)();
 @property (nonatomic, assign, getter = isAnnular) BOOL annular;
 
 @end
-
-
 /**
  * A flat bar progress view. 
  */

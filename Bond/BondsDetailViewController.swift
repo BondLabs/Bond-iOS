@@ -7,8 +7,6 @@
 //
 
 import UIKit
-
-
 class BondsDetailViewController: UIViewController {
 	
 	// Store id of relevant user
@@ -37,14 +35,11 @@ class BondsDetailViewController: UIViewController {
 		return Static.instance!
 	}
 	
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		bondLog("Detail View Did Load")
 		ViewManager.sharedInstance.currentViewController = self
-		
-		
 		
 		// Set up view properties
 		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
@@ -66,12 +61,8 @@ class BondsDetailViewController: UIViewController {
 		subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
 		self.view.addSubview(subBG)
 		
-		
-		
 		// Set up profile view for user using id
 		self.setup(id)
-		
-		
 	}
 	
 	/* * *
@@ -95,9 +86,6 @@ class BondsDetailViewController: UIViewController {
 		nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
 		self.view.addSubview(nameLabel)
 		
-		// Add a distance label if distance is not nil
-		
-		
 		// Add profile picture
 		profImage = CircleImageView()
 		profImage.frame.size = CGSizeMake(160, 160)
@@ -116,10 +104,6 @@ class BondsDetailViewController: UIViewController {
 		chatButton.layer.cornerRadius = 20.0
 		chatButton.layer.masksToBounds = true
 		
-		
-		
-		//self.view.addSubview(chatButton)
-		
 		// Add activity views
 		var activityCount = min(activities.count, 4)
 		for var i = 0; i < activityCount; i++ {
@@ -137,8 +121,6 @@ class BondsDetailViewController: UIViewController {
 	
 	func tappedButton(sender: UITapGestureRecognizer) {
 		
-		
-		//let senderCell: BondTableCell = sender.view as BondTableCell
 		ViewManager.sharedInstance.ProgressHUD = nil
 		
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
@@ -149,21 +131,10 @@ class BondsDetailViewController: UIViewController {
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Loading"
 		UserAccountController.sharedInstance.getChat(self.id, authKey:UserAccountController.sharedInstance.currentUser.authKey)
 
-		
 		let vc = ChatViewController()
 		vc.barTitle = self.name
 		vc.chatBondID = self.id
 		ViewManager.sharedInstance.chatViewController = vc
 		bondLog("tapped Chat Button")
-		//vc.id = senderCell.bondID.toInt()
-		//bondLog("View controller ID is \(vc.id)")
-		//vc.view.frame = self.view.frame
-		//vc.nameLabel.text = senderCell.name
-		//vc.name = senderCell.name
-		
-		//self.navigationController?.pushViewController(vc, animated: true)
-		//self.performSegueWithIdentifier("chatSegue", sender: self)
-		//self.navigationController?.navigationBarHidden = true
 	}
-	
 }

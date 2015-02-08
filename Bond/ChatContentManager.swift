@@ -11,8 +11,7 @@ import UIKit
 class ChatContentManager: NSObject {
     
     var currentChat:NSMutableArray?
-    
-    
+	
     class var sharedManager: ChatContentManager {
         struct Static {
             static var instance: ChatContentManager?
@@ -30,24 +29,5 @@ class ChatContentManager: NSObject {
         bondLog("Current chat is \(currentChat)")
         
 		return currentChat! as NSArray
-        
-        /*if currentChat == nil {
-            return NSArray()
-        }
-        else {
-            let message = Message()
-            message.fromMe = false
-            message.text = "lol you're dumb as hell"
-            message.type = SOMessageTypeText
-            message.date = NSDate(timeIntervalSinceNow: 50)
-            
-            currentChat!.addObject(message)
-            return currentChat! as NSArray
-        }*/
-        
-        //var result = NSMutableArray()
-        
-        //return result
-        
     }
 }

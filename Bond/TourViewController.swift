@@ -147,10 +147,6 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
 
 		bondLog("Username Exists: \(unExists)")
 
-
-
-
-
 		if unExists {
 			self.performSegueWithIdentifier("goToBondsDirectly", sender: self)
 

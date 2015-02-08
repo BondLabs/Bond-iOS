@@ -13,11 +13,26 @@ struct bondColors {
     static let color2 = AppData.util.UIColorFromRGB(0x50c1ff)
     static let color3 = AppData.util.UIColorFromRGB(0x1dafff)
     static let color4 = AppData.util.UIColorFromRGB(0x00a4ff)
-
 }
 
 func bondLog(x: AnyObject) {
     NSLog("\(x)")
+}
+
+func kevinLog(x: AnyObject) {
+	NSLog("Kevin: \(x)")
+}
+
+func bryceLog(x: AnyObject) {
+	NSLog("Bryce: \(x)")
+}
+
+func misbahLog(x: AnyObject) {
+	NSLog("Misbah: \(x)")
+}
+
+func danielLog(x: AnyObject) {
+	NSLog("Daniel: \(x)")
 }
 
 var screenSize: CGSize {
@@ -36,16 +51,11 @@ extension Bool {
 }
 
 class AppData {
-
-
-	
     
     class func bondLog(x: AnyObject) {
         NSLog("\(x)")
     }
-
-
-    
+	
     struct data {
         static var userID:Int!
 		static var viewWidth = UIScreen.mainScreen().bounds.width
@@ -131,7 +141,6 @@ extension String {
         let end = advance(self.startIndex, range.endIndex)
         return self[start..<end]
     }
-    
     
     // MARK: - replace
     func replaceCharactersInRange(range:Range<Int>, withString: String) -> String {

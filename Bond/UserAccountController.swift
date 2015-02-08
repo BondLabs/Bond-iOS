@@ -9,17 +9,10 @@
 import UIKit
 
 
-
-
 class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
     
-    
-    
-    
-    
-    
     var currentUser: BondUser!
-    
+	
     var newFirstName: NSString = "First"
     var newLastName: NSString = "Last"
     var newPhoneNumber: NSString = "5555555555"
@@ -32,9 +25,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     var id: Int = 1
     let authKey = "37D74DBC-C160-455D-B4AE-A6396FEE7954"
     var isUserLoggedIn = false
-    
-    
-    
+	
     class var sharedInstance: UserAccountController {
         struct Static {
             static var instance: UserAccountController?
@@ -47,12 +38,10 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         
         return Static.instance!
     }
-
-
+	
 	var keychainItemStore = KeychainItemWrapper(identifier: "BondLogin", accessGroup: nil)
 	var userDefaults = NSUserDefaults.standardUserDefaults()
-
-
+	
 	func logout() {
 
 		CustomBLE.sharedInstance.stopScanning()
@@ -67,7 +56,6 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		self.userDefaults.setObject(1, forKey: "age")
 		self.userDefaults.setObject("other", forKey: "gender")
 		self.userDefaults.setObject("complicated", forKey: "relationship")
-		//self.userDefaults.setObject(UIImage(), forKey: "image")
 
 		self.userDefaults.synchronize()
 
@@ -82,26 +70,17 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		self.id = 1
 
 		self.currentUser = nil
-
-
-		//let viewStoryBoard = ViewManager.sharedInstance.currentViewController?.storyboard
 		let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
 		let startViewController: UIViewController = viewStoryBoard.instantiateInitialViewController() as UIViewController
-		//let startViewController = ViewManager.sharedInstance.firstViewController
 
 		bondLog("view controller is \(startViewController)")
 		ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
 	}
-    
-    //@availability(deprecated)
+	
     func register() {
         let name = NSString(format: "%@ %@", newFirstName, newLastName)
         AppData.bondLog(NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus))
-        //registerOrLoginWithURL("http://api.bond.sh/api/users", id: id, name: name, email: newEmail, phone: newPhoneNumber, password: newPassword, age: newAge, gender: newGender, auth_key: nil)
-        
-        
-        
-        
+		
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@&relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus), api_key: authKey, type: requestType.register)
     }
     
@@ -112,21 +91,17 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     
     @availability(*, deprecated=8.0, message="You relly shouldn't use this, try loginWithInfo() instead")
     func login() {
-        
-        
         AppData.bondLog("loggin into bond out of registration")
         AppData.bondLog("Loggin in user with phone number: \(newPhoneNumber), password: \(newPassword)")
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", newPhoneNumber, newPassword), api_key: "", type: requestType.login)
     }
-    
-    
+	
     func loginWithInfo(phone: NSString, password: NSString)
     {
         AppData.bondLog("loggin into bond")
-        
         AppData.bondLog("value is \(authKey)")
-        
         AppData.bondLog("Loggin in user with phone number: \(phone), password: \(password)")
+		
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", phone, password), api_key: authKey, type: requestType.login)
     }
     
@@ -136,28 +111,14 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         let URLResponseData = RemoteAPIController.sharedInstance.returnSendAPIRequestToURL("http://api.bond.sh/api/login", data: NSString(format: "phone=%@&password=%@", phone, password), api_key: authKey, type: requestType.login)
         var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
         
-        
-        //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-        
         if (dataDictionary?.objectForKey("error") != nil)
         {
-            
-            
-            
-            
-            //let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
-            
-            
             return NSDictionary(object: "getLoginWithInfo dictionary doesn't exist", forKey: "error")
-        }
-        else {
-            
+        } else {
             return dataDictionary!
         }
-        
-        
-    }
-    
+	}
+	
     func getUserInfo(id: Int, authKey: NSString, delegate: NSURLConnectionDataDelegate) -> NSData
     {
         return RemoteAPIController.sharedInstance.returnGetAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.custom)
@@ -169,7 +130,6 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     }
     
     func setUserPhoto(id: Int, authKey: NSString, image: UIImage) {
-        //var imageData = UIImagePNGRepresentation(image)
         UserAccountController.sharedInstance.currentUser.image = image
         var imageData = UIImageJPEGRepresentation(image, 50)
         let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
@@ -188,7 +148,6 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     
     func getBonds(id: Int, authKey: NSString) -> NSDictionary
     {
-        
         let dictData = RemoteAPIController.sharedInstance.returnGetAPIRequestFromURL("http://api.bond.sh/api/bonds/\(id)", api_key: authKey, type: requestType.allbonds)
         
         var writeError: NSError?
@@ -198,7 +157,8 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         if (dataDictionary?.objectForKey("error") == nil) {
             returningDictionary = NSDictionary(dictionary: dataDictionary!)
         }
-        return returningDictionary
+		
+		return returningDictionary
     }
     
     func sendTraits(bitString: NSString) {

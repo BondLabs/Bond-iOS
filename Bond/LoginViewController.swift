@@ -180,8 +180,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIView.animateWithDuration(0.5, animations: {
             self.loginButton.frame.origin = CGPointMake(0, self.viewSize.height - self.keyboardHeight - UIScreen.mainScreen().bounds.height / 12 - 20)
         })
-
-
     }
     
     func keyboardWillHide(sender: NSNotification) {
@@ -193,8 +191,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
 	@IBAction func didTouchButton(sender: UIButton) {
 		let uc = UserAccountController.sharedInstance
-
-
 		uc.loginWithInfo(phoneNumber.text, password: password.text)
 		uc.newPhoneNumber = phoneNumber.text
 		uc.newPassword = password.text

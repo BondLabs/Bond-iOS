@@ -6,8 +6,6 @@
 
 #import "MBProgressHUD.h"
 #import <tgmath.h>
-
-
 #if __has_feature(objc_arc)
 	#define MB_AUTORELEASE(exp) exp
 	#define MB_RELEASE(exp) exp
@@ -47,13 +45,9 @@
 #ifndef kCFCoreFoundationVersionNumber_iOS_8_0
 	#define kCFCoreFoundationVersionNumber_iOS_8_0 1129.15
 #endif
-
-
 static const CGFloat kPadding = 4.f;
 static const CGFloat kLabelFontSize = 16.f;
 static const CGFloat kDetailsLabelFontSize = 12.f;
-
-
 @interface MBProgressHUD () {
 	BOOL useAnimation;
 	SEL methodForExecution;
@@ -69,11 +63,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 @property (atomic, MB_STRONG) NSTimer *graceTimer;
 @property (atomic, MB_STRONG) NSTimer *minShowTimer;
 @property (atomic, MB_STRONG) NSDate *showStarted;
-
-
 @end
-
-
 @implementation MBProgressHUD
 
 #pragma mark - Properties
@@ -208,8 +198,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return self;
 }
-
-
 
 - (id)initWithView:(UIView *)view {
 	NSAssert(view, @"View must not be nil.");
@@ -784,8 +772,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 }
 
 @end
-
-
 @implementation MBRoundProgressView
 
 #pragma mark - Lifecycle
@@ -890,8 +876,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 }
 
 @end
-
-
 @implementation MBBarProgressView
 
 #pragma mark - Lifecycle

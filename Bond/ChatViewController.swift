@@ -86,36 +86,20 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     override func configureMessageCell(cell: SOMessageCell, forMessageAtIndex index: Int) {
         let message: Message = self.dataSource[index] as Message
         
-        
-        //cell.layer.borderColor = UIColor.whiteColor().CGColor
-        //cell.layer.borderWidth = 1
-        
-        
-        
-        
-        
-        
-        
         if message.fromMe {
-            
-            
             cell.userNameLabel.text = UserAccountController.sharedInstance.currentUser.name as? String
             cell.userNameLabel.frame = CGRectMake(0, -30, 200, 100)
             cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
             cell.userNameLabel.textAlignment = NSTextAlignment.Right
             cell.textView.textAlignment = NSTextAlignment.Right
-        }
-        else {
-            
+        } else {
             cell.userNameLabel.text = barTitle
             cell.userNameLabel.frame = CGRectMake(10, -30, 200, 100)
             cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 244/255, alpha: 1)
             cell.userNameLabel.textAlignment = NSTextAlignment.Left
             cell.textView.textAlignment = NSTextAlignment.Left
         }
-        
-        
-        
+		
         if (!message.fromMe) {
             cell.contentInsets = UIEdgeInsetsMake(0, 4.0, 0, 0) //Move content for 4 pt. to right
         } else {
@@ -123,7 +107,6 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         }
         cell.backgroundColor = UIColor.clearColor()
         cell.textView.frame = CGRectOffset(cell.textView.frame, 0, 30)
-        
         cell.textView.textColor = UIColor.whiteColor()
         cell.userImageView.layer.cornerRadius = 3
         cell.userImageView.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin
@@ -139,43 +122,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     }
     
     func generateLabelForCell(cell: SOMessageCell) {
-        
-        
-        /*
-        let labelTag: NSInteger = 90
-        let message: SOMessage = cell.message as SOMessage
-        
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy HH:mm"
-        var label: UILabel? = cell.contentView.viewWithTag(labelTag) as? UILabel
-        if (label == nil) {
-        label = UILabel()
-        label!.font = UIFont.systemFontOfSize(8)
-        label!.textColor = UIColor.grayColor()
-        label!.tag = labelTag
-        cell.contentView.addSubview(label!)
-        }
-        label!.text = formatter.stringFromDate(message.date)
-        label?.sizeToFit()
-        
-        
-        var frame = label!.frame
-        let topMargin: CGFloat = 5.0
-        let leftMargin: CGFloat = 15.0
-        let rightMargin: CGFloat = 20.0
-        
-        if (message.fromMe) {
-        frame.origin.x = cell.contentView.frame.size.width - cell.userImageView.frame.size.width - frame.size.width - rightMargin;
-        frame.origin.y = cell.containerView.frame.origin.y + cell.containerView.frame.size.height + topMargin;
-        label!.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
-        } else {
-        frame.origin.x = cell.containerView.frame.origin.x + cell.userImageView.frame.origin.x + cell.userImageView.frame.size.width + leftMargin;
-        frame.origin.y = cell.containerView.frame.origin.y + cell.containerView.frame.size.height + topMargin;
-        label!.autoresizingMask = UIViewAutoresizing.FlexibleRightMargin
-        }
-        
-        label!.frame = frame
-        */
+		
     }
     
     override func balloonImageForSending() -> UIImage! {

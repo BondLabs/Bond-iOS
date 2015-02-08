@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 enum requestType {
     case login
     case register
@@ -24,12 +23,10 @@ enum requestType {
 }
 
 class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectionDelegate {
-    
-    
+	
     let URLResponseData = NSMutableData()
     var isNetworkBusy = false
-    
-    
+	
     class var sharedInstance: RemoteAPIController {
         struct Static {
             static var instance: RemoteAPIController?
@@ -43,48 +40,32 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         return Static.instance!
     }
     
-    //MARK: - POST
-    
-    //MARK:Return (not working)
+    //MARK: Return (not working)
     func returnSendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString, type: requestType) -> NSData {
         let post = NSString(format: data)
-        //convert the string to an NSData object
-        
+		
+		//convert the string to an NSData object
         let postData = post.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
         
         //Calculate length for HTTP
-        
-        let postLength = NSString(format: "%d", postData!.length)
+		let postLength = NSString(format: "%d", postData!.length)
         
         //Create URL Request
-        
         let request = NSMutableURLRequest()
         
         //Set the URL
         request.URL = NSURL(string: URL)
         
         //We obviously want to POST
-        
         request.HTTPMethod = "POST"
         
         //Put the relevant info into the header (length, auth, format, etc.)
-        
         request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-        
-        
-        //if (api_key != nil) {
-        //request.setValue(api_key, forHTTPHeaderField: "x-api-key")
-        //}
-        //else {
-        request.setValue("37D74DBC-C160-455D-B4AE-A6396FEE7954", forHTTPHeaderField: "x-api-key")
-        //}
-        
+		request.setValue("37D74DBC-C160-455D-B4AE-A6396FEE7954", forHTTPHeaderField: "x-api-key")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         //Add the data to the request
-        
         request.HTTPBody = postData
-        
         
         //Let her rip
         isNetworkBusy = true
@@ -96,83 +77,62 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         return NSURLConnection.sendSyncRequest(request)
         
     }
+	
     //MARK: Regular
     func sendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString, type: requestType) {
         let post = NSString(format: data)
-        //convert the string to an NSData object
+		
+		//convert the string to an NSData object
         let postData = post.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
         
         //Calculate length for HTTP
-        
         let postLength = NSString(format: "%d", postData!.length)
         
         //Create URL Request
-        
         let request = NSMutableURLRequest()
         
         //Set the URL
         request.URL = NSURL(string: URL)
         
         //We obviously want to POST
-        
         request.HTTPMethod = "POST"
         
         //Put the relevant info into the header (length, auth, format, etc.)
-        
         request.setValue(postLength, forHTTPHeaderField: "Content-Length")
         
-        
-        //if (api_key != nil) {
-        //request.setValue(api_key, forHTTPHeaderField: "x-api-key")
-        //}
-        //else {
         if type == requestType.image || type == requestType.traits || type == requestType.sendMessage {
             request.setValue(api_key, forHTTPHeaderField: "x-auth-key")
         }
-        
         request.setValue("37D74DBC-C160-455D-B4AE-A6396FEE7954", forHTTPHeaderField: "x-api-key")
-        //}
-        
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         //Add the data to the request
-        
         request.HTTPBody = postData
         
-        var connectionDelegate: AnyObject = self
-        
+		var connectionDelegate: AnyObject = self
         var successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
         }
         
         var failureBlock = {(data: NSData!, error: NSError!) -> Void in
             AppData.bondLog("connection failed with error: \(error.description)")
             RemoteAPIController.sharedInstance.isNetworkBusy = false
-            
         }
         
         //Let her rip
         if (type == requestType.login) {
             //connectionDelegate = loginDelegate.sharedInstance
-            
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
-                
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got a login response! It's \(dataString!)")
-                
                 
                 var writeError: NSError?
                 var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
                 
                 AppData.bondLog("\(dataDictionary)")
-                //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
                 
                 if (dataDictionary?.objectForKey("error") == nil) {
-                    
-
-					UserAccountController.sharedInstance.keychainItemStore.setObject(UserAccountController.sharedInstance.newPhoneNumber, forKey: kSecAttrAccount)
+                    UserAccountController.sharedInstance.keychainItemStore.setObject(UserAccountController.sharedInstance.newPhoneNumber, forKey: kSecAttrAccount)
 					UserAccountController.sharedInstance.keychainItemStore.setObject(UserAccountController.sharedInstance.newPassword, forKey: kSecValueData)
-
-
                     let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
                     let authKey: NSString = dataDictionary?.objectForKey("auth_key") as NSString
 
@@ -188,23 +148,12 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					UserAccountController.sharedInstance.userDefaults.setObject(authKey, forKey: "authKey")
 					UserAccountController.sharedInstance.userDefaults.synchronize()
                     UserAccountController.sharedInstance.currentUser.getUserPicture()
-                    //newUser.populateUser(userID.integerValue, authKey: authKey)
-
-
 
 					bondLog("stuff in keychain: \(UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecAttrAccount)), and also \(UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecValueData))")
 
-
-
-                    
-                    AppData.bondLog("User created: \(newUser.description) with ID: \(userID)")
-                    
-                    
-                    
-                }
-                else {
+					AppData.bondLog("User created: \(newUser.description) with ID: \(userID)")
+				} else {
                     dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                        
                         ViewManager.sharedInstance.ProgressHUD?.hide(true)
                         let alert = UIAlertView(title: "Oops", message: dataDictionary?.objectForKey("error") as? String, delegate: nil, cancelButtonTitle: "Okay")
                         
@@ -212,28 +161,19 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                         AppData.bondLog("oops, there was an error")
                     })
                 }
-                
             }
-        }
-        else if (type == requestType.register) {
+        } else if (type == requestType.register) {
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
-                
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got a registration response! It's \(dataString!)")
                 UserAccountController.sharedInstance.login()
-                
-                
             }
-            
-        }
-        else if (type == requestType.image) {
+        } else if (type == requestType.image) {
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got an image response! It's \(dataString!)")
                 
                 if (ViewManager.sharedInstance.currentViewController != nil) {
-                    
-                    
                     dispatch_async(dispatch_get_main_queue(), {() -> Void in
                         let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
                         LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
@@ -246,29 +186,23 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
                 
                 AppData.bondLog("\(dataDictionary)")
-                //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
                 
                 if (dataDictionary?.objectForKey("error") == nil) {
                     let user = UserAccountController.sharedInstance.currentUser
-                    
-                }
-                else {
+                } else {
                     let alert = UIAlertView(title: "Oops", message: dataDictionary?.objectForKey("error") as? String, delegate: nil, cancelButtonTitle: "Okay")
-                    
-                    alert.show()				}
+                    alert.show()
+				}
             }
         }
-        
-        
-        
+		
         //MARK: Testing shit
         NSURLConnection.asyncRequest(request, success:successBlock ,
             failure:failureBlock)
-        //let connection = NSURLConnection(request: request, delegate: connectionDelegate)
     }
     
     //MARK: - GET
-    //MARK:Return (not working)
+    //MARK: Return (not working)
     func returnGetAPIRequestFromURL(URL: NSString, api_key: NSString, type: requestType) -> NSData {
         
         let request = NSMutableURLRequest()
@@ -277,97 +211,51 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         request.URL = NSURL(string: URL)
         
         //We obviously want to GET
-        
         request.HTTPMethod = "GET"
         
-        
         AppData.bondLog("Establishing connection to URL \(URL) with protocol \(request.HTTPMethod)")
-        //Put the relevant info into the header (length, auth, format, etc.)
-        
-        
-        
-        
+		
+		//Put the relevant info into the header (length, auth, format, etc.)
         request.setValue("37D74DBC-C160-455D-B4AE-A6396FEE7954", forHTTPHeaderField: "x-api-key")
         request.setValue(api_key, forHTTPHeaderField: "X-AUTH-KEY")
-        
-        
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         //Add the data to the request
-        
-        
         var connectionDelegate: AnyObject = self
         
         //Let her rip
-        
-        
-        
-        
         let urlResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
         let error: NSErrorPointer! = nil
-        //let connection = NSURLConnection(request: request, delegate: connectionDelegate)
+		
+		//let connection = NSURLConnection(request: request, delegate: connectionDelegate)
         isNetworkBusy = true
-        
         return NSURLConnection.sendSyncRequest(request)
-        
     }
+	
     //MARK: Regular
     func getAPIRequestFromURL(URL: NSString, api_key: NSString, type: requestType, delegate: NSURLConnectionDataDelegate?) {
-        
-        //let hasData: Bool = (data == nil)
-        //let get = NSString(format: data)
-        //convert the string to an NSData object
-        
-        
-        //let getData = get.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
-        
-        //Calculate length for HTTP
-        
-        //let getLength = NSString(format: "%d", getData!.length)
-        
-        //Create URL Request
-        
-        let request = NSMutableURLRequest()
+		
+		let request = NSMutableURLRequest()
         
         //Set the URL
         request.URL = NSURL(string: URL)
         
         //We obviously want to POST
-        
         request.HTTPMethod = "GET"
         
         AppData.bondLog("Establishing connection to URL \(URL) with protocol \(request.HTTPMethod)")
         
         //Put the relevant info into the header (length, auth, format, etc.)
-        
-        
-        
-        //request.setValue(getLength, forHTTPHeaderField: "Content-Length")
-        
-        
-        //if (api_key != nil) {
-        //request.setValue(api_key, forHTTPHeaderField: "x-api-key")
-        //}
-        //else {
         request.setValue("37D74DBC-C160-455D-B4AE-A6396FEE7954", forHTTPHeaderField: "x-api-key")
         request.setValue(api_key, forHTTPHeaderField: "X-AUTH-KEY")
-        //}
-        
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-        //Add the data to the request
-        
-        //request.HTTPBody = getData
-        
         var connectionDelegate: AnyObject = self
-        
         var successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
         }
-        
         var failureBlock = {(data: NSData!, error: NSError!) -> Void in
             AppData.bondLog("connection failed with error: \(error.description)")
             RemoteAPIController.sharedInstance.isNetworkBusy = false
-            
         }
         
         //Let her rip
@@ -376,20 +264,15 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got a user response! It's \(dataString!)")
                 
-                
                 var writeError: NSError?
                 var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
                 
                 AppData.bondLog("\(dataDictionary)")
-                //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
                 
                 if (dataDictionary?.objectForKey("error") == nil) {
-                    
-                    
-                    let user = UserAccountController.sharedInstance.currentUser
+					let user = UserAccountController.sharedInstance.currentUser
 					let userDefaults = UserAccountController.sharedInstance.userDefaults
                     
-                    //let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
                     AppData.bondLog ("fetched userData!")
                     let userName: NSString = dataDictionary?.objectForKey("name") as NSString
                     AppData.bondLog("name is \(userName)")
@@ -419,19 +302,13 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					userDefaults.synchronize()
                     
                     AppData.bondLog("User is now set! (hopefully) \n Name is \(user.name) \n Phone is \(user.phoneNumber) \n age is \(user.age) \n gender is \(user.gender)")
-                    
-                }
-                else {
+                } else {
                     let alert = UIAlertView(title: "Oops", message: dataDictionary?.objectForKey("error") as? String, delegate: nil, cancelButtonTitle: "Okay")
                     
                     alert.show()
                 }
-                
             }
-            
-            
-        }
-        else if (type == requestType.allbonds) {
+        } else if (type == requestType.allbonds) {
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
                 RemoteAPIController.sharedInstance.isNetworkBusy = false
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
@@ -439,26 +316,16 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 
                 var writeError: NSError?
                 
-                
-                
-                var dataArray: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
-                
-                
-                
-                
-                
+				var dataArray: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+				
                 AppData.bondLog("Dict is \(dataArray)")
                 if dataArray != nil {
                     UserAccountController.sharedInstance.currentUser.bonds = dataArray!
                     AppData.bondLog("bodns are \(UserAccountController.sharedInstance.currentUser.bonds)")
                 }
-                UserAccountController.sharedInstance.getUserPhoto(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+				
+				UserAccountController.sharedInstance.getUserPhoto(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
             }
-            
-            
-            
-            
-            
         }
         
         if (type == requestType.traits) {
@@ -467,29 +334,16 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got a user response! It's \(dataString!)")
                 
-                
                 var writeError: NSError?
                 var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
                 
                 AppData.bondLog("\(dataDictionary)")
-                //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-                
+				
                 if (dataDictionary?.objectForKey("error") == nil) {
-					/*
-                    let dataString: String? = dataDictionary?.objectForKey("traits") as? String
-                    //let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
-                    let imageData = NSData(fromBase64String: dataString!)
-                    var decodedImage = UIImage(data: imageData!)
-                    if decodedImage != nil {
-                        UserAccountController.sharedInstance.currentUser.image = decodedImage!
-                    }
-                    */
+					// Handle dictionary error
                 }
-                
-                
+				
                 if (ViewManager.sharedInstance.currentViewController != nil) {
-                    
-                    
                     dispatch_async(dispatch_get_main_queue(), {() -> Void in
                         let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
                         LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
@@ -497,28 +351,22 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                         AppData.bondLog("pushing the view")
                     })
                 }
-                
             }
-            
-            
-        }
+		}
         
         if (type == requestType.userImage) {
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got a user response! It's \(dataString!)")
                 
-                
                 var writeError: NSError?
                 var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
                 
                 AppData.bondLog("\(dataDictionary)")
-                //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-                
+				
                 if (dataDictionary?.objectForKey("error") == nil) {
                     let dataString: String? = dataDictionary?.objectForKey("file") as? String
-                    //let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
-					if (dataString != nil){
+        			if (dataString != nil){
 						bondLog("dataString = \(dataString!)")
 						let imageData = NSData(fromBase64String: dataString!)
 						var decodedImage = UIImage(data: imageData!)
@@ -528,33 +376,12 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					}
                 }
                 
-                /*
-                if (ViewManager.sharedInstance.currentViewController != nil) {
-                    
-                    
-                    dispatch_async(dispatch_get_main_queue(), {() -> Void in
-                        let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
-                        LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
-                        ViewManager.sharedInstance.ProgressHUD?.hide(true)
-                        AppData.bondLog("pushing the view")
-                    })
-                }
-                */
-                UserAccountController.sharedInstance.getTraits(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
-                
-            }
-            
-            
-        }
-            
-            
-        else if (type == requestType.custom) {
+				UserAccountController.sharedInstance.getTraits(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+			}
+        } else if (type == requestType.custom) {
             connectionDelegate = delegate!
-        }
-            
-        else if (type == requestType.getChat) {
+        } else if (type == requestType.getChat) {
             successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
-                
                 RemoteAPIController.sharedInstance.isNetworkBusy = false
                 let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 AppData.bondLog("We got a chat response! It's \(dataString!)")
@@ -563,9 +390,6 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 
                 var dataArray: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
                 
-                //AppData.bondLog("Chat shit is \(dataArray)")
-                
-                //UserAccountController.sharedInstance.currentUser.bonds = dataArray!
                 if (dataArray?.objectForKey("error") == nil) {
                     let id1: Int = dataArray?.objectForKey("id1") as Int
                     bondLog("id 1 = \(id1)")
@@ -574,7 +398,6 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     let messages: NSArray = dataArray?.objectForKey("messages") as NSArray
                     let messageArray = NSMutableArray()
                     for i in messages {
-                        
                         let messageDict = i as NSDictionary
                         let messageID = messageDict.objectForKey("id") as Int
                         let messageContent = messageDict.objectForKey("messages") as String
@@ -600,174 +423,107 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     if (ViewManager.sharedInstance.currentViewController != nil) {
                         ViewManager.sharedInstance.ProgressHUD?.hide(true)
                     }
-                }
-                else {
+                } else {
                     ChatContentManager.sharedManager.currentChat = NSMutableArray()
-                    
                 }
                 
                 ViewManager.sharedInstance.currentViewController?.navigationController?.presentViewController(ViewManager.sharedInstance.chatViewController!, animated: true, completion: nil)
                 ViewManager.sharedInstance.ProgressHUD?.hide(true)
-                //AppData.bondLog("bodns are \(UserAccountController.sharedInstance.currentUser.bonds)")
-                
-            }
-            
-        }
-            
-        else {
+			}
+        } else {
             connectionDelegate = self
         }
-        
-        
-        //..let connection = NSURLConnection(request: request, delegate: connectionDelegate)
-        //let urlResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
-        //let error: NSErrorPointer! = nil;
-        isNetworkBusy = true
-        //let connection = NSURLConnection(request: request, delegate: connectionDelegate)
-        
-        
-        
+		
+		isNetworkBusy = true
+		
         NSURLConnection.asyncRequest(request, success:successBlock ,
             failure:failureBlock)
-        //return NSURLConnection.sendSynchronousRequest(request, returningResponse: urlResponse, error: error)!
-    }
-    //MARK: - Custom API Request
+	}
+	
+	//MARK: - Custom API Request
     func customAPIRequest(URL: NSString, data: NSString, header: (value: NSString, field: NSString)?, HTTPMethod: NSString, delegate: NSURLConnectionDataDelegate) {
         
         let hasData: Bool = !(data.isEqualToString(""))
-        
-        
-        let get = NSString(format: data)
-        //convert the string to an NSData object
-        
-        
-        let getData = get.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
+		
+		//convert the string to an NSData object
+		let get = NSString(format: data)
+		let getData = get.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
         
         //Calculate length for HTTP
-        
         let getLength = NSString(format: "%d", getData!.length)
         
         //Create URL Request
-        
         let request = NSMutableURLRequest()
         
         //Set the URL
         request.URL = NSURL(string: URL)
         
         //Set the method
-        
         request.HTTPMethod = HTTPMethod
-        
+		
         AppData.bondLog("Establishing connection to URL \(URL) with protocol \(request.HTTPMethod)")
         
         //Put the relevant info into the header (length, auth, format, etc.)
-        
-        
-        if (hasData)
-        {
+        if (hasData) {
             request.setValue(getLength, forHTTPHeaderField: "Content-Length")
         }
-        //if (api_key != nil) {
-        //request.setValue(api_key, forHTTPHeaderField: "x-api-key")
-        //}
-        //else {
-        if header != nil
-        {
+        if header != nil {
             request.setValue(header!.value, forHTTPHeaderField: header!.field)
         }
-        //request.setValue(api_key, forHTTPHeaderField: "X-AUTH-KEY")
-        //}
-        
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         //Add the data to the request
-        if (hasData)
-        {
+        if (hasData) {
             request.HTTPBody = getData
         }
-        
-        
+		
         //Let her rip
-        
-        
-        
-        //..let connection = NSURLConnection(request: request, delegate: connectionDelegate)
-        //let urlResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
-        //let error: NSErrorPointer! = nil;
         isNetworkBusy = true
         let connection = NSURLConnection(request: request, delegate: delegate)
-        //return NSURLConnection.sendSynchronousRequest(request, returningResponse: urlResponse, error: error)!
-    }
+	}
     
     func customAPIRequestWithBlocks(URL: NSString, data: NSString, header: (value: NSString, field: NSString)?, HTTPMethod: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
         
         let hasData: Bool = !(data.isEqualToString(""))
-        
-        
         let get = NSString(format: data)
-        //convert the string to an NSData object
-        
-        
+		
+		//convert the string to an NSData object
         let getData = get.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
         
         //Calculate length for HTTP
-        
         let getLength = NSString(format: "%d", getData!.length)
         
         //Create URL Request
-        
         let request = NSMutableURLRequest()
         
         //Set the URL
         request.URL = NSURL(string: URL)
         
         //Set the method
-        
         request.HTTPMethod = HTTPMethod
         
         AppData.bondLog("Establishing connection to URL \(URL) with protocol \(request.HTTPMethod)")
         
         //Put the relevant info into the header (length, auth, format, etc.)
-        
-        
-        if (hasData)
-        {
+        if (hasData) {
             request.setValue(getLength, forHTTPHeaderField: "Content-Length")
         }
-        //if (api_key != nil) {
-        //request.setValue(api_key, forHTTPHeaderField: "x-api-key")
-        //}
-        //else {
-        if header != nil
-        {
+        if header != nil {
             request.setValue(header!.value, forHTTPHeaderField: header!.field)
         }
-        //request.setValue(api_key, forHTTPHeaderField: "X-AUTH-KEY")
-        //}
-        
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
         //Add the data to the request
-        if (hasData)
-        {
+        if (hasData) {
             request.HTTPBody = getData
         }
-        
-        
+		
         //Let her rip
-        
-        
-        
-        //..let connection = NSURLConnection(request: request, delegate: connectionDelegate)
-        //let urlResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
-        //let error: NSErrorPointer! = nil;
         isNetworkBusy = true
-        //let connection = NSURLConnection(request: request, delegate: delegate)
         NSURLConnection.asyncRequest(request, success:success ,
             failure:failure)
     }
-    
-    
+	
     //MARK: - Default Delegate Stuff
     func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         AppData.bondLog("connection \(connection) failed with error: \(error.description)")
@@ -791,67 +547,11 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 
 //MARK: - Delegates
 
-//MARK: Bond Fetching
-/*
-class allBondsDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
-
-
-let URLResponseData = NSMutableData()
-
-
-class var sharedInstance: allBondsDelegate {
-struct Static {
-static var instance: allBondsDelegate?
-static var token: dispatch_once_t = 0
-}
-
-dispatch_once(&Static.token) {
-Static.instance = allBondsDelegate()
-}
-
-return Static.instance!
-}
-
-func connection(connection: NSURLConnection, didFailWithError error: NSError) {
-RemoteAPIController.sharedInstance.isNetworkBusy = false
-AppData.bondLog("connection %@ failed with error: %@", connection, error.description)
-}
-
-func connection(connection: NSURLConnection, didReceiveData data: NSData) {
-URLResponseData.appendData(data)
-}
-
-func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-URLResponseData.length = 0
-}
-
-func connectionDidFinishLoading(connection: NSURLConnection) {
-RemoteAPIController.sharedInstance.isNetworkBusy = false
-let dataString = NSString(data: URLResponseData, encoding: NSUTF8StringEncoding)
-AppData.bondLog("We got a registration response! It's %@", dataString!)
-
-var writeError: NSError?
-var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
-
-AppData.bondLog("\(dataDictionary)")
-//AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
-
-if (dataDictionary?.objectForKey("error") == nil) {
-let user = UserAccountController.sharedInstance.currentUser
-let dict = NSDictionary(dictionary: dataDictionary!)
-user.bonds = dict
-}
-}
-
-}
-*/
 //MARK: request photo
 class requestPhotoDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
-    
-    
+	
     let URLResponseData = NSMutableData()
-    
-    
+	
     class var sharedInstance: requestPhotoDelegate {
         struct Static {
             static var instance: requestPhotoDelegate?
@@ -885,14 +585,9 @@ class requestPhotoDelegate: NSObject, NSURLConnectionDelegate, NSURLConnectionDa
         var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(URLResponseData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
         
         AppData.bondLog("\(dataDictionary)")
-        //AppData.bondLog("%@", dataDictionary?.objectForKey("id") as NSNumber)
         
         if (dataDictionary?.objectForKey("error") == nil) {
             let user = UserAccountController.sharedInstance.currentUser
-            
         }
-        
     }
-    
 }
-

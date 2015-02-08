@@ -73,26 +73,6 @@ class AgeGenderViewController: UIViewController {
 		divider2.layer.cornerRadius = 0.25
 		self.view.addSubview(divider2)
 
-		// Set up date picker for age
-		/*
-		let blurEffect = UIBlurEffect(style: .Dark)
-		let visualEffectView = UIVisualEffectView(effect: blurEffect) as UIVisualEffectView
-		visualEffectView.tintColor = AppData.util.UIColorFromRGB(0x00A4FF)
-		visualEffectView.layer.cornerRadius = 5
-		visualEffectView.bounds = agePicker.bounds
-		
-		agePicker.addSubview(visualEffectView)
-
-		*/
-		
-		
-		
-		//agePicker.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
-		//agePicker.backgroundColor = AppData.util.UIColorFromRGB(0x707070)
-		//agePicker.layer.cornerRadius = 20
-		//agePicker.layer.masksToBounds = true
-		
-
 		// Set up next button
 		next.frame.size = CGSizeMake(self.view.frame.width, 50)
 		next.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height - 85)

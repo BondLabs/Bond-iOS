@@ -32,40 +32,15 @@ class AutoLogInViewController: UIViewController {
 		let phoneNumber: String = UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecAttrAccount) as String
 		let password: NSData = UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecValueData) as NSData
 		UserAccountController.sharedInstance.getAndSaveBonds(userID.integerValue, authKey: authKey)
-
-/*
-		let dataString = NSString(data: password, encoding: NSUTF8StringEncoding)
-
-
-		UserAccountController.sharedInstance.newPassword = dataString!
-		UserAccountController.sharedInstance.newPhoneNumber = phoneNumber
-
-		UserAccountController.sharedInstance.loginWithInfo(phoneNumber, password: dataString!)
-
-		ViewManager.sharedInstance.ProgressHUD = nil
-		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
-		ViewManager.sharedInstance.ProgressHUD!.labelText = "Logging Into Bond"
-*/
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
 
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
 		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-
-
 }

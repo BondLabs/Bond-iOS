@@ -46,9 +46,7 @@ class BondTableCell: UITableViewCell {
 		nameLabel.textColor = UIColor.bl_doveGrayColor()
         self.addSubview(nameLabel)
         
-        // TODO: Get distance
-		
-		// TODO: Get time
+        // TODO: Get time
 		srand48(0)
 		var time:Int! = Int(drand48() * 100000)
 		var tdenom:String!

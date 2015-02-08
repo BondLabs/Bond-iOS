@@ -66,8 +66,6 @@ class ProfileViewController: UIViewController {
         var profPic:UIImage!
         var activities:[String]! = ["Brainy", "Curious"]
 
-
-
         // Add a name label
         nameLabel = UILabel()
         nameLabel.text = name
@@ -120,13 +118,9 @@ class ProfileViewController: UIViewController {
             actView.center = CGPointMake(self.view.frame.width * CGFloat(xfac), self.view.frame.height * 3 / 5)
             self.view.addSubview(actView)
         }
-		
-		
-    }
+	}
     
 	func tappedButton(sender: UITapGestureRecognizer) {
 		UserAccountController.sharedInstance.logout()
-		
 	}
-    
 }

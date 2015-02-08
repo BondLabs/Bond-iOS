@@ -44,8 +44,6 @@
 @property (strong, nonatomic) UIView *tableViewHeaderView;
 
 @property (strong, nonatomic) NSMutableArray *conversation;
-
-
 @property (strong, nonatomic) SOImageBrowserView *imageBrowser;
 @property (strong, nonatomic) MPMoviePlayerViewController *moviePlayerController;
 
@@ -314,8 +312,6 @@
 
 - (void)configureMessageCell:(SOMessageCell *)cell forMessageAtIndex:(NSInteger)index
 {
-
-
 }
 
 - (CGFloat)messageMaxWidth

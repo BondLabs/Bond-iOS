@@ -10,9 +10,6 @@ import UIKit
 
 class BondsBarController: UITabBarController, UITabBarControllerDelegate {
 	
-	//var selectedBGColor:UIColor! = AppData.util.UIColorFromRGB(0x212121)
-	//var deselectedBGColor:UIColor! = AppData.util.UIColorFromRGB(0x2D2D2D)
-
 	var selectedBGColor:UIColor! = UIColor.whiteColor()
 	var deselectedBGColor:UIColor! = UIColor.whiteColor()
 

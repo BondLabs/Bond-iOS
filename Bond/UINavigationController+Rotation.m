@@ -60,6 +60,4 @@ NSString const *kCantAutorotateKey = @"cantAutorotate.key";
 	return NO;
 }
 
-
-
 @end

@@ -17,13 +17,9 @@ typedef enum {
     kFlipRightLeft,
     kFlipStopAnimating
 } kFlipDirectionState;
-
-
 UIColor* UIColorFromRGB(rgbValue) {
 	return [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0];
 }
-
-
 @interface GmailLikeLoadingView (){
     kFlipDirectionState flipState;
     kFlipDirectionState previousFlipState;
@@ -59,8 +55,6 @@ UIColor* UIColorFromRGB(rgbValue) {
 					   [UIColor colorWithRed:221.0/255.0f green:0.0/255.0f blue:31.0/255.0 alpha:1.0], nil];
         
  */
-
-
 		colorsArray = [NSMutableArray arrayWithObjects:
 					   UIColorFromRGB(0x008ad7),
 					   UIColorFromRGB(0x50c1ff),
@@ -261,8 +255,6 @@ UIColor* UIColorFromRGB(rgbValue) {
 	[secondHalfBackLayerView.layer addAnimation:bottomAnim forKey:@"bottomDownFlip"];
     
 }
-
-
 -(void)checkFlipDirectionState {
     switch (flipState) {
         case kFlipBottomTop:
@@ -347,13 +339,9 @@ UIColor* UIColorFromRGB(rgbValue) {
 {
 	[self checkFlipDirectionState];
 }
-
-
 - (void)moveObjectsInArray{
         id obj = [colorsArray objectAtIndex:0];
         [colorsArray removeObjectAtIndex:0];
         [colorsArray addObject:obj];
 }
-
-
 @end
