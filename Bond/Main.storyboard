@@ -783,6 +783,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="2Zi-Zh-utD"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
@@ -791,6 +792,15 @@
         <segue reference="R23-YL-h3N"/>
         <segue reference="SBh-Oe-6x9"/>
         <segue reference="zMl-4c-kIB"/>
+=======
+        <segue reference="8BU-7d-1hK"/>
+        <segue reference="1WM-S3-HBx"/>
+        <segue reference="SCU-zk-ooq"/>
+        <segue reference="2Zi-Zh-utD"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="ZpS-go-W1x"/>
+>>>>>>> Something-thats-not-common-dev
         <segue reference="Jfy-Ox-HKQ"/>
     </inferredMetricsTieBreakers>
 </document>

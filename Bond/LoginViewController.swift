@@ -40,6 +40,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Store size of screen
         var barHeight = self.navigationController?.navigationBar.bounds.height
         viewSize = CGSizeMake(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - barHeight!)
+
+		
         
         // Set delegates
         phoneNumber.delegate = self
@@ -57,24 +59,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillShowNotification, object: nil)
         
         // Set up navigation controller properties
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
         self.navigationController?.navigationBarHidden = false
+
+		self.navigationItem.backBarButtonItem?.tintColor = UIColor.whiteColor()
 		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
-        
+        self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
+		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         // Set up instructions label
-        self.descLabel.textColor = UIColor.whiteColor()
+        self.descLabel.textColor = UIColor.bl_doveGrayColor()
         self.descLabel.center = CGPointMake(viewSize.width / 2, viewSize.height / 12)
         self.descLabel.text = "Welcome Back!"
         
         // Set up phoneNumber field
-        self.phoneNumber.attributedPlaceholder = NSAttributedString(string: "Phone Number", attributes: [NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+        self.phoneNumber.attributedPlaceholder = NSAttributedString(string: "Phone Number", attributes: [NSForegroundColorAttributeName: UIColor.bl_silverChaliceColor()])
         self.phoneNumber.frame = CGRectMake(10, viewSize.height * 10/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
-        self.phoneNumber.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
-        self.phoneNumber.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
+		// self.phoneNumber.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
+		self.phoneNumber.backgroundColor = UIColor.whiteColor()
+		//self.phoneNumber.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
+		self.phoneNumber.textColor = UIColor.bl_silverChaliceColor()
+		//self.phoneNumber.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		//self.phoneNumber.layer.borderWidth = 1.5
         
         // Set up password field
-        self.password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+        self.password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: UIColor.bl_silverChaliceColor()])
         self.password.frame = CGRectMake(10, viewSize.height * 15/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
+<<<<<<< HEAD
         self.password.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
         self.password.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
 		
@@ -94,6 +105,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		self.view.addSubview(forgotPW)
 		forgotPW.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "showForgotPW"))
 		
+=======
+		//self.password.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
+		self.password.backgroundColor = UIColor.whiteColor()
+		//self.password.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
+		self.password.textColor = UIColor.bl_silverChaliceColor()
+		//self.password.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		//self.password.layer.borderWidth = 1.5
+        
+>>>>>>> Something-thats-not-common-dev
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
@@ -123,9 +143,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 		}
 		textField.layer.borderWidth = 1.5
+<<<<<<< HEAD
 		if (textField.secureTextEntry) {
 			textField.font = UIFont.systemFontOfSize(textField.font.pointSize)
 		}
+=======
+		textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		textField.textColor = UIColor.bl_azureRadianceColor()
+>>>>>>> Something-thats-not-common-dev
     }
 
 	func textFieldDidEndEditing(textField: UITextField) {
@@ -135,9 +160,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
 		}
+<<<<<<< HEAD
 		if (textField.secureTextEntry) {
 			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
 		}
+=======
+		textField.textColor = UIColor.bl_silverChaliceColor()
+>>>>>>> Something-thats-not-common-dev
 	}
 
     func showButton() {
@@ -167,6 +196,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         UIView.animateWithDuration(0.5, animations: {
             self.loginButton.frame.origin = CGPointMake(0, self.viewSize.height - self.keyboardHeight - UIScreen.mainScreen().bounds.height / 12 - 20)
         })
+
+
     }
     
     func keyboardWillHide(sender: NSNotification) {

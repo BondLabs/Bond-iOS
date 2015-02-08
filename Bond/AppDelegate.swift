@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir-Medium", size: 16.5)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
 		UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
 		UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Light", size: 16.5)!], forState: UIControlState.Normal)
+		UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 
         return true
     }
