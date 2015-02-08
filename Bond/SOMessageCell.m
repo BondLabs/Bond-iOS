@@ -206,7 +206,6 @@ static BOOL cellIsDragging;
     _message = message;
 
     [self setInitialSizes];
-//    [self adjustCell];
 }
 
 - (void)adjustCell

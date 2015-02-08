@@ -225,8 +225,6 @@
     [self configureMessageCell:cell forMessageAtIndex:index];
     
     [cell adjustCell];
-		//tableView.layer.shouldRasterize = YES;
-		//tableView.layer.rasterizationScale = 2;
 	cell.layer.shouldRasterize = YES;
 	cell.layer.rasterizationScale = 2;
     return cell;

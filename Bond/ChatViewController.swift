@@ -79,25 +79,34 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     
     override func heightForMessageForIndex(index: Int) -> CGFloat {
         var height = super.heightForMessageForIndex(index)
-        height += 15
         return height
     }
     
     override func configureMessageCell(cell: SOMessageCell, forMessageAtIndex index: Int) {
-        let message: Message = self.dataSource[index] as Message
-        
+        let message:Message = self.dataSource[index] as Message
+		
+		cell.layer.borderColor = UIColor.greenColor().CGColor
+		cell.layer.borderWidth = 1
+		
         if message.fromMe {
-            cell.userNameLabel.text = UserAccountController.sharedInstance.currentUser.name as? String
-            cell.userNameLabel.frame = CGRectMake(0, -30, 200, 100)
-            cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
-            cell.userNameLabel.textAlignment = NSTextAlignment.Right
-            cell.textView.textAlignment = NSTextAlignment.Right
-        } else {
-            cell.userNameLabel.text = barTitle
-            cell.userNameLabel.frame = CGRectMake(10, -30, 200, 100)
-            cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 244/255, alpha: 1)
-            cell.userNameLabel.textAlignment = NSTextAlignment.Left
-            cell.textView.textAlignment = NSTextAlignment.Left
+			cell.textView.textAlignment = NSTextAlignment.Right
+			if index == 0  || (index != 0 && !(self.dataSource[index - 1] as Message).fromMe) {
+				cell.userNameLabel.text = UserAccountController.sharedInstance.currentUser.name as? String
+				cell.userNameLabel.frame = CGRectMake(0, -30, 200, 100)
+				cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
+				cell.userNameLabel.textAlignment = NSTextAlignment.Right
+				cell.textView.textAlignment = NSTextAlignment.Right
+				cell.frame.size = CGSizeMake(cell.frame.size.width, cell.frame.size.height + 40)
+			}
+		} else {
+			cell.textView.textAlignment = NSTextAlignment.Left
+			if index == 0 || (index != 0 && (self.dataSource[index - 1] as Message).fromMe) {
+				cell.userNameLabel.text = barTitle
+				cell.userNameLabel.frame = CGRectMake(10, -30, 200, 100)
+				cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 244/255, alpha: 1)
+				cell.userNameLabel.textAlignment = NSTextAlignment.Left
+				cell.frame.size = CGSizeMake(cell.frame.size.width, cell.frame.size.height + 40)
+			}
         }
 		
         if (!message.fromMe) {
