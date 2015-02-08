@@ -89,21 +89,24 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 			self.filterDetected()
 			println(self.beaconList)
 
-			bondLog(UserAccountController.sharedInstance.currentUser.authKey)
-			bondLog(UserAccountController.sharedInstance.currentUser.userID)
+			if UserAccountController.sharedInstance.currentUser != nil {
 
-			UserAccountController.sharedInstance.sendCustomRequestWithBlocks(NSString(format: "id=%d&list=%@", UserAccountController.sharedInstance.currentUser.userID, self.beaconListToString()), header: (UserAccountController.sharedInstance.currentUser.authKey, "X-AUTH-KEY"), URL: "http://api.bond.sh/api/list", HTTProtocol: "POST",
-				success: { (data, response) -> Void in
-					var writeError: NSError?
-					var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
-					if (dataDictionary?.objectForKey("error") == nil) {
-						bondLog(dataDictionary!)
-					}
-				},
-				failure: { (data, error) -> Void in
-					AppData.bondLog("connection failed with error: \(error.description)")
-					RemoteAPIController.sharedInstance.isNetworkBusy = false
-			})
+			bondLog(UserAccountController.sharedInstance.currentUser.authKey)
+				bondLog(UserAccountController.sharedInstance.currentUser.userID)
+
+				UserAccountController.sharedInstance.sendCustomRequestWithBlocks(NSString(format: "id=%d&list=%@", UserAccountController.sharedInstance.currentUser.userID, self.beaconListToString()), header: (UserAccountController.sharedInstance.currentUser.authKey, "X-AUTH-KEY"), URL: "http://api.bond.sh/api/list", HTTProtocol: "POST",
+					success: { (data, response) -> Void in
+						var writeError: NSError?
+						var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+						if (dataDictionary?.objectForKey("error") == nil) {
+							bondLog(dataDictionary!)
+						}
+					},
+					failure: { (data, error) -> Void in
+						AppData.bondLog("connection failed with error: \(error.description)")
+						RemoteAPIController.sharedInstance.isNetworkBusy = false
+				})
+			}
 		})
 	}
 
@@ -169,6 +172,6 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 	}
 
 	func peripheralManagerIsReadyToUpdateSubscribers(peripheral: CBPeripheralManager!) {
-
+		
 	}
 }

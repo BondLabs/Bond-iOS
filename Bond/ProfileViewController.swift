@@ -112,8 +112,8 @@ class ProfileViewController: UIViewController {
     }
     
 	func tappedButton(sender: UITapGestureRecognizer) {
-		self.performSegueWithIdentifier("chatSegue", sender: self)
-		self.navigationController?.navigationBarHidden = YES
+		UserAccountController.sharedInstance.logout()
+		
 	}
     
 }

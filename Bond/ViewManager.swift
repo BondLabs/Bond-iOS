@@ -28,5 +28,7 @@ class ViewManager: NSObject {
 	var ProgressHUD: MBProgressHUD?
     
     var chatViewController: UIViewController?
+
+	var firstViewController: UIViewController?
 	
 }

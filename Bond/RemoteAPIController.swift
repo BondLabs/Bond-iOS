@@ -169,6 +169,8 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                 if (dataDictionary?.objectForKey("error") == nil) {
                     
 
+					UserAccountController.sharedInstance.keychainItemStore.setObject(UserAccountController.sharedInstance.newPhoneNumber, forKey: kSecAttrAccount)
+					UserAccountController.sharedInstance.keychainItemStore.setObject(UserAccountController.sharedInstance.newPassword, forKey: kSecValueData)
 
 
                     let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
@@ -181,11 +183,19 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     UserAccountController.sharedInstance.getAndSaveBonds(userID.integerValue, authKey: authKey)
                     
                     let newUser = BondUser.fetchUserWithID(userID.integerValue, authKey: authKey)
+
+					UserAccountController.sharedInstance.userDefaults.setObject(userID, forKey: "userID")
+					UserAccountController.sharedInstance.userDefaults.setObject(authKey, forKey: "authKey")
+					UserAccountController.sharedInstance.userDefaults.synchronize()
                     UserAccountController.sharedInstance.currentUser.getUserPicture()
                     //newUser.populateUser(userID.integerValue, authKey: authKey)
-                    
-                    
-                    
+
+
+
+					bondLog("stuff in keychain: \(UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecAttrAccount)), and also \(UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecValueData))")
+
+
+
                     
                     AppData.bondLog("User created: \(newUser.description) with ID: \(userID)")
                     
@@ -377,24 +387,36 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     
                     
                     let user = UserAccountController.sharedInstance.currentUser
+					let userDefaults = UserAccountController.sharedInstance.userDefaults
                     
                     //let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
                     AppData.bondLog ("fetched userData!")
                     let userName: NSString = dataDictionary?.objectForKey("name") as NSString
                     AppData.bondLog("name is \(userName)")
                     user.name = "\(userName)"
+					userDefaults.setObject(userName, forKey: "name")
+
                     let userPhone: AnyObject? = dataDictionary?.objectForKey("phone")
                     AppData.bondLog("phone is \(userPhone)")
                     user.phoneNumber = NSString(format:"\(userPhone)")
+					userDefaults.setObject(NSString(format:"\(userPhone)"), forKey: "phone")
+
                     let userAge: Int! = dataDictionary?.objectForKey("age") as Int
                     AppData.bondLog("age is \(userAge)")
                     user.age = userAge
+					userDefaults.setObject(userAge, forKey: "age")
+
                     let userGender: AnyObject? = dataDictionary?.objectForKey("gender")
                     AppData.bondLog("gender is \(userGender)")
                     user.gender = NSString(format:"\(userGender)")
+					userDefaults.setObject(NSString(format:"\(userGender)"), forKey: "gender")
+
                     let userRelationship: AnyObject? = dataDictionary?.objectForKey("relationship")
                     AppData.bondLog("relationship is \(userRelationship)")
                     user.relationship = NSString(format: "\(userRelationship)")
+					userDefaults.setObject(NSString(format: "\(userRelationship)"), forKey: "relationship")
+
+					userDefaults.synchronize()
                     
                     AppData.bondLog("User is now set! (hopefully) \n Name is \(user.name) \n Phone is \(user.phoneNumber) \n age is \(user.age) \n gender is \(user.gender)")
                     

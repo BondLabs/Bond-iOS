@@ -151,12 +151,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
 	@IBAction func didTouchButton(sender: UIButton) {
 		let uc = UserAccountController.sharedInstance
-		
+
+
 		uc.loginWithInfo(phoneNumber.text, password: password.text)
+		uc.newPhoneNumber = phoneNumber.text
+		uc.newPassword = password.text
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Logging Into Bond"
+
+		
 		//uc.newPhoneNumber = phoneNumber.text
 		//uc.newPassword = password.text
 		//uc.login()

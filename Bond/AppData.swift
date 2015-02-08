@@ -35,10 +35,15 @@ extension Bool {
 }
 
 class AppData {
+
+
+	
     
     class func bondLog(x: AnyObject) {
         NSLog("\(x)")
     }
+
+
     
     struct data {
         static var userID:Int!
