@@ -109,7 +109,12 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
 	}
 	
 	func tappedNext(gestureRecognizer: UITapGestureRecognizer) {
-		self.performSegueWithIdentifier("pushToCamera", sender: self)
+		if (self.currentIndex == traitsVCs.count - 1) {
+			self.performSegueWithIdentifier("pushToCamera", sender: self)
+		} else {
+			self.currentIndex = self.currentIndex + 1
+			self.traitsPageVC.setViewControllers([traitsVCs[self.currentIndex]], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+		}
 		
 		var traits = ""
 		for button: ActivityView in activityArray {
