@@ -46,7 +46,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
     //MARK: - POST
     
     //MARK:Return (not working)
-    func returnSendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString!, type: requestType) -> NSData {
+    func returnSendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString, type: requestType) -> NSData {
         let post = NSString(format: data)
         //convert the string to an NSData object
         
@@ -97,7 +97,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         
     }
     //MARK: Regular
-    func sendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString!, type: requestType) {
+    func sendAPIRequestToURL(URL: NSString, data: NSString, api_key: NSString, type: requestType) {
         let post = NSString(format: data)
         //convert the string to an NSData object
         let postData = post.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)

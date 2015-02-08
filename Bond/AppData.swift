@@ -134,7 +134,7 @@ extension String {
     
     
     // MARK: - replace
-    func replaceCharactersInRange(range:Range<Int>, withString: String!) -> String {
+    func replaceCharactersInRange(range:Range<Int>, withString: String) -> String {
         var result:NSMutableString = NSMutableString(string: self)
         result.replaceCharactersInRange(NSRange(range), withString: withString)
         return result

@@ -64,7 +64,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 		self.centralManager.stopScan()
 	}
 
-	func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+	func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [NSObject : AnyObject], RSSI: NSNumber) {
 		println("FOUND PERIPHERAL")
 		println(peripheral)
 		self.discovered = peripheral
@@ -75,7 +75,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 		self.beaconList.append(peripheral.identifier.UUIDString);
 	}
 
-	func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+	func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
 		println("Able to connect to peripheral")
 	}
 
@@ -137,11 +137,11 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 		}
 	}
 
-	func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+	func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError) {
 		println("Failed to connect to peripheral")
 	}
 
-	func centralManagerDidUpdateState(central: CBCentralManager!) {
+	func centralManagerDidUpdateState(central: CBCentralManager) {
 		if central.state != CBCentralManagerState.PoweredOn {
 			println("Central manager scanner off")
 			central.stopScan()
@@ -157,7 +157,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 		self.centralManager.scanForPeripheralsWithServices(services, options: nil)
 	}
 
-	func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager!) {
+	func peripheralManagerDidUpdateState(peripheral: CBPeripheralManager) {
 		if peripheral.state != CBPeripheralManagerState.PoweredOn {
 			println("Peripheral manager not on")
 			peripheral.stopAdvertising()
@@ -167,7 +167,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 		}
 	}
 
-	func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+	func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError) {
 		println("Disconnected from peripheral \(peripheral)")
 	}
 
