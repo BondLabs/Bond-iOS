@@ -307,6 +307,7 @@ void bondLog(id x) {
 	[UIView animateWithDuration:0.1 animations:^ {
 		self.contentMode = UIViewContentModeCenter;
 	self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+		self.textView.frame = self.bounds;
 		self.blurView.frame = self.bounds;
 		self.tintView.frame = self.bounds;
 	}];
