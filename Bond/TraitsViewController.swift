@@ -57,7 +57,7 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
         // Set up description label
         self.descLabel.text = "Pick those that best suit you"
         self.descLabel.sizeToFit()
-        self.descLabel.textColor = UIColor.whiteColor()
+        self.descLabel.textColor = UIColor.bl_doveGrayColor()
         self.descLabel.center = CGPointMake(viewBounds.width / 2, viewBounds.height / 15)
         
         // Set up nextButton
