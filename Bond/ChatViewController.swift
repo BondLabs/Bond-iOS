@@ -23,8 +23,6 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         super.viewDidLoad()
         self.loadMessages()
         
-        ViewManager.sharedInstance.currentViewController  = self; 
-        
         // Create image for background
         let unscaledBg = UIImage(named: "bg@2x.png")!
         UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)

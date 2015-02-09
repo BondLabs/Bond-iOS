@@ -49,53 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
-        
-        let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let chatViewController = ChatViewController()
-        
-        let push = userInfo as NSDictionary
-        
-        if((userInfo as NSDictionary).objectForKey("type") != nil){
-            let type = (userInfo as NSDictionary).objectForKey("type") as String
-            if(type == "chat"){
-                let bid = push.objectForKey("bid")?.integerValue
-                if(ViewManager.sharedInstance.currentViewController == ViewManager.sharedInstance.chatViewController){
-                    let chatbondid = "\((ViewManager.sharedInstance.chatViewController as ChatViewController).chatBondID)" as String
-                    bondLog(chatbondid)
-                    bondLog("\(bid)")
-                    if (chatbondid == NSString(format: "%d", bid!)) {
-                        bondLog("IN THE CURRENT CHAT")
-                        let message = Message()
-                        message.fromMe = false;
-                        message.text = push.objectForKey("msg")?.string
-                        message.type = SOMessageTypeText
-                        message.date = NSDate(timeIntervalSinceNow: 0)
-                        chatViewController.receiveMessage(message)
-                        bondLog(message)
-                    } else {
-                        bondLog("IN A DIFFERENT CHAT")
-                    }
-                } else {
-                    if application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background
-                    {
-                        chatViewController.chatBondID = bid
-                        chatViewController.barTitle = push.objectForKey("name")?.string
-                        ViewManager.sharedInstance.chatViewController = chatViewController
-                        UserAccountController.sharedInstance.getChat(bid!, authKey: UserAccountController.sharedInstance.currentUser.authKey)
-                    }
-                }
-            } else if(type == "bond") {
-                let bid = push.objectForKey("bid")?.integerValue
-                if application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background
-                {
-//                    let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-//                    let startViewController: UIViewController = viewStoryBoard.instantiateViewControllerWithIdentifier("bond") as UIViewController
-//                    ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
-                }
-            }
-        }
-        
+		println("didReceiveRemoteNotification")
 		PFPush.handlePush(userInfo)
 	}
 	

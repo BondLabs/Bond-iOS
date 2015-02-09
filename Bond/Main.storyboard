@@ -241,7 +241,7 @@
         <!--Bonds-->
         <scene sceneID="sSs-G2-R28">
             <objects>
-                <tableViewController storyboardIdentifier="bond" title="Bonds" id="roy-Ek-R35" customClass="BondsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Bonds" id="roy-Ek-R35" customClass="BondsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8yj-2l-WrK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -309,7 +309,7 @@
         <!--Chat View Controller-->
         <scene sceneID="JFH-tz-FPp">
             <objects>
-                <viewController storyboardIdentifier="chat" id="f4V-NC-ZBI" customClass="ChatViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="f4V-NC-ZBI" customClass="ChatViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BK0-Fm-p6Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -788,15 +788,9 @@
         <segue reference="dLw-JN-GVL"/>
         <segue reference="WQw-Ge-6PW"/>
         <segue reference="Gfx-JN-Ff2"/>
-<<<<<<< HEAD
         <segue reference="R23-YL-h3N"/>
         <segue reference="SBh-Oe-6x9"/>
         <segue reference="zMl-4c-kIB"/>
         <segue reference="Jfy-Ox-HKQ"/>
-=======
-        <segue reference="K6A-sB-QbA"/>
-        <segue reference="ZpS-go-W1x"/>
-        <segue reference="IBU-xK-cv0"/>
->>>>>>> origin/misbah-dev
     </inferredMetricsTieBreakers>
 </document>
