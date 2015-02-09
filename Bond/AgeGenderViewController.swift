@@ -18,12 +18,14 @@ class AgeGenderViewController: UIViewController {
 	@IBOutlet var next: UIButton!
 	var divider1:UIView!
 	var divider2:UIView!
+	var label: UILabel!
 	//@IBOutlet var agePicker: UIDatePicker!
 	@IBOutlet var agePicker: UIDatePicker!
 
+	@IBOutlet var datePickerLabelView: UIView!
 	override func viewDidLoad() {
 		// Set up basic view properties
-		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
 
 		
 		ViewManager.sharedInstance.currentViewController = self
@@ -32,7 +34,7 @@ class AgeGenderViewController: UIViewController {
 		descLabel.text = "Let's get some basics"
 		descLabel.numberOfLines = 1
 		descLabel.sizeToFit()
-		descLabel.textColor = UIColor.whiteColor()
+		descLabel.textColor = UIColor.bl_doveGrayColor()
 		descLabel.center = CGPointMake(self.view.frame.width/2, self.view.frame.height / 10)
 		descLabel.font = UIFont(name: "Helvetica-Neue", size: 18.0)
 		self.view.addSubview(descLabel)
@@ -85,9 +87,24 @@ class AgeGenderViewController: UIViewController {
 
 		*/
 		
-		
-		
-		//agePicker.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+		self.datePickerLabelView.backgroundColor = UIColor.bl_azureRadianceColor()
+		datePickerLabelView.frame = CGRect(
+			origin: datePickerLabelView.frame.origin,
+			size: CGSize(
+				width: agePicker.frame.size.width,
+				height: datePickerLabelView.frame.size.height))
+
+
+		agePicker.maximumDate = NSDate()
+		label = UILabel(frame: CGRectInset(self.datePickerLabelView.bounds, 8, 0))
+		label.text = "Age"
+		label.font = UIFont(name: "Avenir-Book", size: 16.5)
+		label.textColor = UIColor.whiteColor()
+		self.datePickerLabelView.addSubview(label)
+
+		agePicker.backgroundColor = UIColor.whiteColor()
+
+
 		//agePicker.backgroundColor = AppData.util.UIColorFromRGB(0x707070)
 		//agePicker.layer.cornerRadius = 20
 		//agePicker.layer.masksToBounds = true
@@ -102,6 +119,14 @@ class AgeGenderViewController: UIViewController {
 		next.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
 	}
 
+	@IBAction func dateViewChanged(sender: AnyObject) {
+
+		let timeInterval = (sender as UIDatePicker).date.timeIntervalSinceNow
+
+		let years = Int(-floor((((timeInterval / 60) / 60) / 24) / 365.25))
+		label.text = "Age: \(years - 1)"
+		
+	}
 	@IBAction func maleTapped(sender: AnyObject) {
 		if (male.active == false) {
 			UIView.animateWithDuration(0.15, animations: {
@@ -120,7 +145,16 @@ class AgeGenderViewController: UIViewController {
 		}
 	}
 	
+
 	@IBAction func tappedDone(sender: AnyObject) {
+
+
+
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss.S"
+
+
+		UserAccountController.sharedInstance.newAge = dateFormatter.stringFromDate(agePicker.date)
 		UserAccountController.sharedInstance.register()
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

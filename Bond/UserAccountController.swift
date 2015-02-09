@@ -25,7 +25,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     var newPhoneNumber: NSString = "5555555555"
     var newPassword: NSString = "hunter2"
     var newEmail: NSString = "example@example.com"
-    var newAge: Int = 1
+    var newAge: NSString = ""
     var newGender: NSString = "other"
     var newRelationshipStatus = "complicated"
     var newProfileImage = UIImage()
@@ -75,7 +75,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		self.newLastName = ""
 		self.newPhoneNumber = ""
 		self.newEmail = ""
-		self.newAge = 1
+		self.newAge = ""
 		self.newGender = "other"
 		self.newRelationshipStatus = "complicated"
 		self.newProfileImage = UIImage()
