@@ -25,7 +25,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     var id: Int = 1
     let authKey = "37D74DBC-C160-455D-B4AE-A6396FEE7954"
     var isUserLoggedIn = false
-    var otherUserImages:[String: UIImage]! = []
+	var otherUserImages:[String: UIImage]! = [:]
 
     class var sharedInstance: UserAccountController {
         struct Static {
