@@ -58,7 +58,22 @@ class BondsViewController: UITableViewController {
 		} else {
 			self.view.backgroundColor = UIColor.whiteColor()
 		}
+        
+        getBondImages()
 	}
+    
+    /* * *
+    * * * Getting images for bonds
+    * * */
+    
+    func getBondImages() {
+        for (bid, name) in UserAccountController.sharedInstance.currentUser.bonds {
+            AppData.bondLog("getBondImages(): \(bid)")
+            UserAccountController.sharedInstance.getOtherUserPhoto(bid.integerValue, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+        }
+        
+    }
+
 	
 	/* * *
 	 * * * Function necessary for tableview
@@ -77,6 +92,8 @@ class BondsViewController: UITableViewController {
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedCell:")
 		cell.addGestureRecognizer(tapGestureRecognizer)
 		
+        
+        
 		cell.bondID = bondIDArray[indexPath.row]
 		AppData.bondLog("all items in bond array \(bondArray[indexPath.row])")
 		let name: String = UserAccountController.sharedInstance.currentUser.bonds.objectForKey(bondIDArray[indexPath.row]) as String

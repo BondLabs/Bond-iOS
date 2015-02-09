@@ -18,6 +18,7 @@ enum requestType {
     case getChat
     case traits
     case userImage
+    case otherUserImage
     case sendMessage
     case custom
 }
@@ -99,8 +100,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
         
         //Put the relevant info into the header (length, auth, format, etc.)
         request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-        
-        if type == requestType.image || type == requestType.traits || type == requestType.sendMessage {
+        if type == requestType.otherUserImage || type == requestType.image || type == requestType.traits || type == requestType.sendMessage {
             request.setValue(api_key, forHTTPHeaderField: "x-auth-key")
         }
         request.setValue("37D74DBC-C160-455D-B4AE-A6396FEE7954", forHTTPHeaderField: "x-api-key")
@@ -194,8 +194,32 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
                     alert.show()
 				}
             }
+        } else if (type == requestType.otherUserImage) {
+            successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
+                let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                AppData.bondLog("We got an otherUserImage response! It's \(dataString!)")
+                
+                var writeError: NSError?
+                var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+                
+                AppData.bondLog("\(dataDictionary)")
+//                AppData.bondLog("%@", dataDictionary?.objectForKey("id") as String)
+                
+                if (dataDictionary?.objectForKey("error") == nil) {
+                    let dataString: String? = dataDictionary?.objectForKey("file") as? String
+                    //let imageData = NSData(base64EncodedString: dataString!, options: NSDataBase64DecodingOptions.allZeros)
+                    if (dataString != nil){
+                        bondLog("dataString = \(dataString!)")
+                        let imageData = NSData(fromBase64String: dataString!)
+                        var decodedImage = UIImage(data: imageData!)
+                        if decodedImage != nil {
+                            UserAccountController.sharedInstance.otherUserImages["1"] = decodedImage!
+                        }
+                    }
+                }
+            }
         }
-		
+			
         //MARK: Testing shit
         NSURLConnection.asyncRequest(request, success:successBlock ,
             failure:failureBlock)
