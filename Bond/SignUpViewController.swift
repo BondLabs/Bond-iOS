@@ -8,15 +8,13 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnectionDelegate {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
-    /* * * 
-     * * * View properties------------------------------------------------------
-     * * */
-
+    var alphabetChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    var viewSize:CGSize!
     var selectedField:UITextField!
     var keyboardHeight:CGFloat!
-	var viewHeight:CGFloat!
+    var barHeight:CGFloat!
     
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var firstName: CustomTextField!
@@ -26,17 +24,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
     @IBOutlet var nextButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
     
-    /* * *
-     * * * Set up the view------------------------------------------------------
-     * * */
-    
-	override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-		ViewManager.sharedInstance.SignUpViewController = self
-		ViewManager.sharedInstance.currentViewController = self
-		// Store frame data
-		viewHeight = self.view.frame.height - AppData.data.heights.navBarHeight - AppData.data.heights.statusBarHeight
-
+        
+        // Store dimensions of bar and screen
+        barHeight = self.navigationController?.navigationBar.bounds.height
+        viewSize = CGSizeMake(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - barHeight!)
+        
         // Set delegates
         firstName.delegate = self
         lastName.delegate = self
@@ -45,60 +39,51 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         
         // Set up buttons
         self.nextButton.alpha = 0.0
-        self.nextButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+        self.nextButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
         self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        self.nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
-		self.nextButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
-		// self.nextButton.buttonType = UIButtonType.DetailDisclosure
-		self.view.bringSubviewToFront(nextButton)
+        self.nextButton.setTitle("Next", forState: UIControlState.Normal)
         self.doneButton.alpha = 0.0
-        self.doneButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+        self.doneButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
         self.doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        self.doneButton.setTitle("Done 〉", forState: UIControlState.Normal)
-		self.doneButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
-		self.view.bringSubviewToFront(doneButton)
+        self.doneButton.setTitle("Done", forState: UIControlState.Normal)
         
         // Add keyboard selectors
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
 
         // Set up navigation controller properties
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
+        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.navigationBar.barTintColor = self.UIColorFromRGB(0x2D2D2D)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         // Set up instructions label
         self.descLabel.textColor = UIColor.whiteColor()
-		self.descLabel.font = UIFont(name: "Helvetica-Neue", size: 18.0)
-		self.descLabel.numberOfLines = 0
-		self.descLabel.sizeToFit()
-        self.descLabel.center = CGPointMake(self.view.frame.width / 2, 50)
+        self.descLabel.center = CGPointMake(viewSize.width / 2, viewSize.height / 12)
         
         // Set up firstName and lastName fields
         self.firstName.setPlaceholder("First")
         self.lastName.setPlaceholder("Last")
-        self.firstName.frame = CGRectMake(10, 85, self.view.frame.width / 2 - 15, 40)
-        self.lastName.frame = CGRectMake(self.view.frame.width / 2 + 5, 85, self.view.frame.width / 2 - 15, 40)
+        self.firstName.frame = CGRectMake(10, viewSize.height * 9/60, viewSize.width / 2 - 15, viewSize.height * 5/60 - 10)
+        self.lastName.frame = CGRectMake(viewSize.width / 2 + 5, viewSize.height * 9/60, viewSize.width / 2 - 15, viewSize.height * 5/60 - 10)
         
         // Set up phoneNumber field
         self.phoneNumber.setPlaceholder("Phone number")
-        self.phoneNumber.frame = CGRectMake(10, 135, self.view.frame.width - 20, 40)
+        self.phoneNumber.frame = CGRectMake(10, viewSize.height * 14/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
         
         // Set up password field
         self.password.setPlaceholder("Password")
-        self.password.frame = CGRectMake(10, 185, self.view.frame.width - 20, 40)
+        self.password.frame = CGRectMake(10, viewSize.height * 19/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
         
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
     }
     
-    /* * *
-     * * * Customize keyboard and button animations-----------------------------
-     * * */
-    
     func hideKeyboard() {
         UIView.animateWithDuration(0.50, animations: {
-            self.nextButton.frame.origin = CGPointMake(0, self.viewHeight)
+            self.nextButton.frame.origin = CGPointMake(0, self.viewSize!.height)
             self.nextButton.alpha = 0.0
-            self.doneButton.frame.origin = CGPointMake(0, self.viewHeight)
+            self.doneButton.frame.origin = CGPointMake(0, self.viewSize!.height)
             self.doneButton.alpha = 0.0
             self.view.endEditing(true)
         })
@@ -112,27 +97,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         } else {
             self.showDoneButton()
         }
-		if (textField.text == "") {
-			var placeholder = textField.attributedPlaceholder?.string
-			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
-				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-		}
-		textField.layer.borderWidth = 1.5
     }
-
-	func textFieldDidEndEditing(textField: UITextField) {
-		textField.layer.borderWidth = 0
-		if (textField.text == "") {
-			var placeholder = textField.attributedPlaceholder?.string
-			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
-				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
-		}
-		selectedField = nil
-	}
     
     // Capture taps on nextButton
     @IBAction func nextButtonTapped(sender: UIButton) {
-		if (selectedField == self.firstName) {
+        if (selectedField == self.firstName) {
             self.showNextButton()
             lastName.becomeFirstResponder()
         } else if (selectedField == self.lastName) {
@@ -144,26 +113,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
         }
     }
     
-	@IBAction func doneButtonTapped(sender: UIButton) {
-		
-		let uc = UserAccountController.sharedInstance
-		
-		uc.newFirstName = firstName.text
-		uc.newLastName = lastName.text
-		uc.newPhoneNumber = phoneNumber.text
-		uc.newPassword = password.text
-		
-		
-		
-		
-	}
-	
-		
-	
-
     func showNextButton() {
         // If next button is already showing, animate reshow
-		if (nextButton.alpha == 1.0) {
+        if (nextButton.alpha == 1.0) {
             UIView.animateWithDuration(0.15, animations: {
                 self.nextButton.alpha = 0.5
             }, completion: { finished in
@@ -211,49 +163,45 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
     
     func keyboardWillShow(sender: NSNotification) {
         // One time storage and setup
-		if (keyboardHeight == nil) {
-			self.setButtonFrames()
-		}
-		keyboardHeight = (sender.userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().height
-
+        if keyboardHeight == nil {
+            keyboardHeight = (sender.userInfo![UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().height
+            self.setButtonFrames()
+        }
+        
         UIView.animateWithDuration(0.5, animations: {
-            self.nextButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight - 50)
-            self.doneButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight - 50)
+            self.nextButton.frame.origin = CGPointMake(0, self.viewSize.height - self.keyboardHeight - UIScreen.mainScreen().bounds.height / 12 - 20)
+            self.doneButton.frame.origin = CGPointMake(0, self.viewSize.height - self.keyboardHeight - UIScreen.mainScreen().bounds.height / 12 - 20)
         })
     }
-
-	func keyboardWillHide(sender: NSNotification) {
-
-	}
+    
+    func keyboardWillHide(sender: NSNotification) {
+        
+    }
     
     func setButtonFrames() {
         // Set up next button frame
-        self.nextButton.frame = CGRectMake(0, viewHeight, self.view.frame.width, 50)
+        self.nextButton.frame = CGRectMake(0, viewSize.height, viewSize.width, UIScreen.mainScreen().bounds.height / 12)
         
         // Set up done button frame
-        self.doneButton.frame = CGRectMake(0, viewHeight, self.view.frame.width, 50)
+        self.doneButton.frame = CGRectMake(0, viewSize.height, viewSize.width, UIScreen.mainScreen().bounds.height / 12)
     }
     
-    /* * *
-     * * * Capture segue events
-     * * */
-
-	deinit {
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+        super.viewWillDisappear(animated)
+    }
+    
+    deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-
-	override func viewWillAppear(animated: Bool) {
-		self.navigationController?.navigationBarHidden = false
-		super.viewWillAppear(animated)
-	}
-
-	override func viewWillDisappear(animated: Bool) {
-		var count = self.navigationController?.viewControllers.count
-		var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-		if (nextVC is StartViewController) {
-			self.navigationController?.navigationBarHidden = true
-		}
-		super.viewWillDisappear(animated)
-	}
 
 }

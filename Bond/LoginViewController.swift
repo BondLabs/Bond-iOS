@@ -10,10 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    /* * *
-     * * * View properties------------------------------------------------------
-     * * */
-    
     var viewSize:CGSize!
     var selectedField:UITextField!
     
@@ -22,19 +18,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var password: UITextField!
     @IBOutlet var nextButton: UIButton!
     
-    /* * *
-     * * * Set up the view------------------------------------------------------
-     * * */
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		
-		ViewManager.sharedInstance.LogInViewController = self
-		ViewManager.sharedInstance.currentViewController = self
-        /* * *
-         * * * Do basic setup---------------------------------------------------
-         * * */
         
         // Store size of screen
         var barHeight = self.navigationController?.navigationBar.bounds.height
@@ -44,26 +29,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         phoneNumber.delegate = self
         password.delegate = self
         
-<<<<<<< HEAD
-        // Set up login button
-        self.loginButton.alpha = 0.0
-        self.loginButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
-        self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        self.loginButton.setTitle("Log In", forState: UIControlState.Normal)
-		self.loginButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
-=======
         // Hide nextButton
         self.nextButton.hidden = true
->>>>>>> parent of bf6e634... Login View and PW Field
         
         // Add keyboard selectors
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
         
         // Set up navigation controller properties
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+        self.view.backgroundColor = self.UIColorFromRGB(0x5A5A5A)
         self.navigationController?.navigationBarHidden = false
-        self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
+        self.navigationController?.navigationBar.barTintColor = self.UIColorFromRGB(0x2D2D2D)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         // Set up instructions label
         self.descLabel.textColor = UIColor.whiteColor()
@@ -71,64 +48,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.descLabel.text = "Welcome Back!"
         
         // Set up phoneNumber field
-        self.phoneNumber.attributedPlaceholder = NSAttributedString(string: "Phone Number", attributes: [NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+        self.phoneNumber.attributedPlaceholder = NSAttributedString(string: "Phone Number", attributes: [NSForegroundColorAttributeName: self.UIColorFromRGB(0x6E6E6E)])
         self.phoneNumber.frame = CGRectMake(10, viewSize.height * 10/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
-        self.phoneNumber.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
-        self.phoneNumber.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
+        self.phoneNumber.backgroundColor = self.UIColorFromRGB(0x404040)
+        self.phoneNumber.textColor = self.UIColorFromRGB(0x6E6E6E)
         
         // Set up password field
-        self.password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+        self.password.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName: self.UIColorFromRGB(0x6E6E6E)])
         self.password.frame = CGRectMake(10, viewSize.height * 15/60, viewSize.width - 20, viewSize.height * 5/60 - 10)
-        self.password.backgroundColor = AppData.util.UIColorFromRGB(0x404040)
-        self.password.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
+        self.password.backgroundColor = self.UIColorFromRGB(0x404040)
+        self.password.textColor = self.UIColorFromRGB(0x6E6E6E)
         
         // Add tap selector to resign keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resignKeyboard"))
     }
     
-<<<<<<< HEAD
-    /* * *
-     * * * Customize keyboard and button animations-----------------------------
-     * * */
-    
-    func hideKeyboard() {
-        UIView.animateWithDuration(0.5, animations: {
-            self.loginButton.frame.origin = CGPointMake(0, self.viewSize!.height)
-            self.loginButton.alpha = 0.0
-            self.view.endEditing(true)
-        })
-    }
-    
-    func textFieldDidBeginEditing(textField: UITextField) {
-        self.showButton()
-		if (textField.text == "") {
-			var placeholder = textField.attributedPlaceholder?.string
-			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
-				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
-		}
-		textField.layer.borderWidth = 1.5
-    }
-
-	func textFieldDidEndEditing(textField: UITextField) {
-		textField.layer.borderWidth = 0
-		if (textField.text == "") {
-			var placeholder = textField.attributedPlaceholder?.string
-			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
-				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
-		}
-	}
-
-    func showButton() {
-        // If Login button is already showing, animate reshow
-        if (self.loginButton.alpha == 1.0) {
-            UIView.animateWithDuration(0.15, animations: {
-                self.loginButton.alpha = 0.5
-            }, completion: {finished in
-                UIView.animateWithDuration(0.15, animations: {
-                    self.loginButton.alpha = 1.0
-                })
-            })
-=======
     func resignKeyboard() {
         self.view.endEditing(true)
     }
@@ -148,7 +82,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         selectedField = textField
         if (textField == phoneNumber) {
             nextButton.setTitle("Log In", forState: UIControlState.Normal)
->>>>>>> parent of bf6e634... Login View and PW Field
         } else {
             nextButton.setTitle(" Log In ", forState: UIControlState.Normal)
         }
@@ -163,17 +96,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func nextButtonTapped(sender: UIButton) {
         // Use this function to log user in
         
-<<<<<<< HEAD
-        UIView.animateWithDuration(0.5, animations: {
-            self.loginButton.frame.origin = CGPointMake(0, self.viewSize.height - self.keyboardHeight - UIScreen.mainScreen().bounds.height / 12 - 20)
-        })
-=======
         if (selectedField == phoneNumber) {
             nextButton.setTitle(" Log In ", forState: UIControlState.Normal)
         } else if (selectedField == password) {
             nextButton.setTitle("Log In", forState: UIControlState.Normal)
         }
->>>>>>> parent of bf6e634... Login View and PW Field
     }
     
     func keyboardWillShow(sender: NSNotification) {
@@ -202,39 +129,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-	@IBAction func didTouchButton(sender: UIButton) {
-		let uc = UserAccountController.sharedInstance
-		
-		uc.loginWithInfo(phoneNumber.text, password: password.text)
-		ViewManager.sharedInstance.ProgressHUD = nil
-		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
-		ViewManager.sharedInstance.ProgressHUD!.labelText = "Logging Into Bond"
-		//uc.newPhoneNumber = phoneNumber.text
-		//uc.newPassword = password.text
-		//uc.login()
-		
-	}
-    /* * *
-     * * * Capture segue events
-     * * */
-    
-    override func viewWillDisappear(animated: Bool) {
-        var count = self.navigationController?.viewControllers.count
-        var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-        if (nextVC is StartViewController) {
-            self.navigationController?.navigationBarHidden = true
-        }
-        super.viewWillDisappear(animated)
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "LoginSegue" || segue.identifier == "nextView") {
-            // Use to authenticate login and cancel segue if illegal login credentials
-            AppData.data.userID = 1 // Store user id if successful authentication
-        } else if segue.destinationViewController is StartViewController {
-            self.navigationController?.navigationBarHidden = true
-        }
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+        super.viewWillDisappear(animated)
     }
     
     deinit {
