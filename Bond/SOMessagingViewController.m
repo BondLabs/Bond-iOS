@@ -354,6 +354,7 @@
 
 - (void)receiveMessage:(id<SOMessage>) message
 {
+    NSLog(@"RECIEVE MESSAGE: %@", self);
     message.fromMe = NO;
 
     NSMutableArray *messages = [self messages];
