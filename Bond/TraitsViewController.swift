@@ -40,13 +40,17 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
         
         // Unhide navigation bar if hidden
         self.navigationController?.navigationBarHidden = false
-        
+
+		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
+		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
         // Store view dimensions
         var barHeight = self.navigationController?.navigationBar.bounds.height
         viewBounds = CGSizeMake(AppData.data.viewWidth, AppData.data.heights.navViewHeight)
 
         // Show navigation bar and set title
-        self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
         self.navigationController?.navigationBar.hidden = false
         self.navigationController?.title = "Profile"
         

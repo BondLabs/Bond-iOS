@@ -85,12 +85,26 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 
 
 		//let viewStoryBoard = ViewManager.sharedInstance.currentViewController?.storyboard
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("tourViewController") as UIViewController
+		let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as UINavigationController
+		navigationController.viewControllers = [vc]
+		//self.rootViewController = navigationController
+
+
 		let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
 		let startViewController: UIViewController = viewStoryBoard.instantiateInitialViewController() as UIViewController
 		//let startViewController = ViewManager.sharedInstance.firstViewController
 
 		bondLog("view controller is \(startViewController)")
-		ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
+		//ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
+
+		bondLog("vc is \(vc)")
+
+		ViewManager.sharedInstance.currentViewController?.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+
+		//ViewManager.sharedInstance.currentViewController?.navigationController?.pushViewController(vc, animated: true)
+		//ViewManager.sharedInstance.currentViewController?.presentViewController(navigationController, animated: true, completion: nil)
 	}
     
     //@availability(deprecated)

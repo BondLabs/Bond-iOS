@@ -126,8 +126,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 			var placeholder = textField.attributedPlaceholder?.string
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+			textField.textColor = UIColor.bl_silverChaliceColor()
 		}
-		textField.textColor = UIColor.bl_silverChaliceColor()
+
 	}
 
     func showButton() {
@@ -196,6 +197,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if (nextVC is Tour_StartViewController) {
             self.navigationController?.navigationBarHidden = true
         }
+
+		if nextVC?.restorationIdentifier == "tourViewController" {
+			 self.navigationController?.navigationBarHidden = true
+		}
         super.viewWillDisappear(animated)
     }
     

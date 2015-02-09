@@ -13,6 +13,9 @@
 		020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020322AA1A70CAEF000C85F4 /* UserAccountController.swift */; };
 		020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934FDA61A484AB800E43B45 /* Main.storyboard */; };
 		02192B6A1A87319C000F8D78 /* UIColor+BLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 02192B691A87319C000F8D78 /* UIColor+BLColors.m */; };
+		023FF5C91A883B64008DF802 /* Load Screen i6p.png in Resources */ = {isa = PBXBuildFile; fileRef = 023FF5C81A883B64008DF802 /* Load Screen i6p.png */; };
+		023FF5CB1A883B6A008DF802 /* Load Screen i5.png in Resources */ = {isa = PBXBuildFile; fileRef = 023FF5CA1A883B6A008DF802 /* Load Screen i5.png */; };
+		023FF5CD1A883DDE008DF802 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023FF5CC1A883DDE008DF802 /* PushNoAnimationSegue.swift */; };
 		02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02657F9D1A862F98008029F5 /* PushNotificationController.swift */; };
 		02657F9F1A8630BD008029F5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201F1A594A0000C97429 /* CFNetwork.framework */; };
 		02657FA01A8630BD008029F5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201D1A5949DA00C97429 /* libsqlite3.dylib */; };
@@ -230,6 +233,9 @@
 		020322AA1A70CAEF000C85F4 /* UserAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountController.swift; sourceTree = "<group>"; };
 		02192B681A87319C000F8D78 /* UIColor+BLColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BLColors.h"; sourceTree = "<group>"; };
 		02192B691A87319C000F8D78 /* UIColor+BLColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BLColors.m"; sourceTree = "<group>"; };
+		023FF5C81A883B64008DF802 /* Load Screen i6p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Load Screen i6p.png"; sourceTree = "<group>"; };
+		023FF5CA1A883B6A008DF802 /* Load Screen i5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Load Screen i5.png"; sourceTree = "<group>"; };
+		023FF5CC1A883DDE008DF802 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
 		02657F9D1A862F98008029F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		02657FAA1A86CFBB008029F5 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		02657FAB1A86CFBB008029F5 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -569,6 +575,8 @@
 		75F147EF1A86178000C90500 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				023FF5CA1A883B6A008DF802 /* Load Screen i5.png */,
+				023FF5C81A883B64008DF802 /* Load Screen i6p.png */,
 				75F147F01A86178000C90500 /* attachment.png */,
 				75F147F11A86178000C90500 /* attachment@2x.png */,
 				75F147F21A86178000C90500 /* bubble.png */,
@@ -953,6 +961,7 @@
 		E9F482E11A52BAF8006DB53C /* Signup/Login */ = {
 			isa = PBXGroup;
 			children = (
+				023FF5CC1A883DDE008DF802 /* PushNoAnimationSegue.swift */,
 				02E6D5321A86D9880022FD50 /* AutoLogInViewController.swift */,
 				E934FDA01A4847C000E43B45 /* SignUpViewController.swift */,
 				E934FDA21A4847CF00E43B45 /* LoginViewController.swift */,
@@ -1006,7 +1015,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "Kevin Zhang";
+				ORGANIZATIONNAME = "Bond Labs";
 				TargetAttributes = {
 					E934FD631A4826A400E43B45 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -1122,8 +1131,10 @@
 				E9857EDD1A512AA40095EA76 /* Profile(a).png in Resources */,
 				E93EC8531A6934A800C03170 /* Traditional (i).png in Resources */,
 				E93EC83D1A6934A800C03170 /* Posh (i).png in Resources */,
+				023FF5CB1A883B6A008DF802 /* Load Screen i5.png in Resources */,
 				E93EC8481A6934A800C03170 /* Serious (a).png in Resources */,
 				755F35FA1A7E310D0065EDE0 /* Tour_4.png in Resources */,
+				023FF5C91A883B64008DF802 /* Load Screen i6p.png in Resources */,
 				E93EC84B1A6934A800C03170 /* Sporty (i).png in Resources */,
 				E9C909081A6207CC00B8291D /* Profile.png in Resources */,
 				E93EC8021A6934A800C03170 /* Artist (a).png in Resources */,
@@ -1260,6 +1271,7 @@
 				E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */,
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
 				75F1481B1A86178000C90500 /* SOMessageTextView.m in Sources */,
+				023FF5CD1A883DDE008DF802 /* PushNoAnimationSegue.swift in Sources */,
 				755F35EA1A7E30E90065EDE0 /* TourViewController.swift in Sources */,
 				E93C44451A4D038F00E95265 /* TraitsViewController.swift in Sources */,
 				E96956E41A586C7F001D2308 /* AppData.swift in Sources */,
@@ -1368,8 +1380,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1378,7 +1390,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b80a913b-a8b5-4e81-a38a-bce2573ae7e8";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1389,8 +1401,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bryce Dougherty (89R873X5DK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1399,7 +1411,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b80a913b-a8b5-4e81-a38a-bce2573ae7e8";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

@@ -7,9 +7,9 @@
         <!--Tour View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="TourViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tourViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="TourViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0uw-pl-7sA">
@@ -108,7 +108,7 @@
             <objects>
                 <viewController id="WOG-iO-aje" customClass="TraitsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A2f-Wk-daK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick those that best suit you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hfs-EC-nkC">
@@ -149,7 +149,7 @@
             <objects>
                 <viewController id="5NR-vc-Jp2" customClass="AgeGenderViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c1W-5l-xxl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="naK-u0-VcY">
@@ -334,25 +334,16 @@
         <!--Auto Log In View Controller-->
         <scene sceneID="Auf-z1-0xy">
             <objects>
-                <viewController id="vZc-qf-t1h" customClass="AutoLogInViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AutoLogInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vZc-qf-t1h" customClass="AutoLogInViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Co-ib-xQV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YbG-Cq-BfX">
-                                <rect key="frame" x="120" y="445" width="81" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="TO1-JX-8pg"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" id="WQw-Ge-6PW"/>
-                        <segue destination="UxE-dx-lU8" kind="modal" id="1WM-S3-HBx"/>
+                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" animates="NO" id="WQw-Ge-6PW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60z-Zf-Z4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,7 +375,7 @@
             <objects>
                 <viewController id="xbs-4z-EWi" customClass="SignUpViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XM9-3G-pIm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" id="hMC-78-0y8" userLabel="First" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
@@ -506,7 +497,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Vp9-go-qcG">
             <objects>
-                <navigationController storyboardIdentifier="originalController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pl1-PC-Q3q" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="originalController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Pl1-PC-Q3q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hjd-Ax-XTG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -757,13 +748,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="dLw-JN-GVL"/>
         <segue reference="8BU-7d-1hK"/>
-        <segue reference="1WM-S3-HBx"/>
-        <segue reference="SCU-zk-ooq"/>
         <segue reference="2Zi-Zh-utD"/>
         <segue reference="Gfx-JN-Ff2"/>
         <segue reference="R23-YL-h3N"/>
         <segue reference="ZpS-go-W1x"/>
         <segue reference="Jfy-Ox-HKQ"/>
+        <segue reference="WQw-Ge-6PW"/>
     </inferredMetricsTieBreakers>
 </document>
