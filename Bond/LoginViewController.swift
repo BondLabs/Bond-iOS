@@ -15,13 +15,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
      * * */
     
     var viewSize:CGSize!
-    var keyboardHeight:CGFloat!
-    var barHeight:CGFloat!
+    var selectedField:UITextField!
     
     @IBOutlet var descLabel: UILabel!
     @IBOutlet var phoneNumber: UITextField!
     @IBOutlet var password: UITextField!
-    @IBOutlet var loginButton: UIButton!
+    @IBOutlet var nextButton: UIButton!
     
     /* * *
      * * * Set up the view------------------------------------------------------
@@ -45,16 +44,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         phoneNumber.delegate = self
         password.delegate = self
         
+<<<<<<< HEAD
         // Set up login button
         self.loginButton.alpha = 0.0
         self.loginButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
         self.loginButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         self.loginButton.setTitle("Log In", forState: UIControlState.Normal)
 		self.loginButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
+=======
+        // Hide nextButton
+        self.nextButton.hidden = true
+>>>>>>> parent of bf6e634... Login View and PW Field
         
         // Add keyboard selectors
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
         
         // Set up navigation controller properties
         self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
@@ -79,9 +83,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.password.textColor = AppData.util.UIColorFromRGB(0x6E6E6E)
         
         // Add tap selector to resign keyboard
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "hideKeyboard"))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "resignKeyboard"))
     }
     
+<<<<<<< HEAD
     /* * *
      * * * Customize keyboard and button animations-----------------------------
      * * */
@@ -123,30 +128,78 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.loginButton.alpha = 1.0
                 })
             })
+=======
+    func resignKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        selectedField = textField
+        nextButton.setTitle("", forState: UIControlState.Normal)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.resignKeyboard()
+        selectedField = nil
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        selectedField = textField
+        if (textField == phoneNumber) {
+            nextButton.setTitle("Log In", forState: UIControlState.Normal)
+>>>>>>> parent of bf6e634... Login View and PW Field
         } else {
-            UIView.animateWithDuration(0.3, animations: {
-                self.loginButton.alpha = 1.0
-            })
+            nextButton.setTitle(" Log In ", forState: UIControlState.Normal)
         }
     }
     
-    func keyboardWillShow(sender: NSNotification) {
-        // One time storage and setup
-        if keyboardHeight == nil {
-            keyboardHeight = (sender.userInfo![UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().height
-            self.setButtonFrame()
-        }
+    // Use to ensure only certain characters are typeable in text fields
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+    
+    // Capture taps on nextButton
+    @IBAction func nextButtonTapped(sender: UIButton) {
+        // Use this function to log user in
         
+<<<<<<< HEAD
         UIView.animateWithDuration(0.5, animations: {
             self.loginButton.frame.origin = CGPointMake(0, self.viewSize.height - self.keyboardHeight - UIScreen.mainScreen().bounds.height / 12 - 20)
         })
+=======
+        if (selectedField == phoneNumber) {
+            nextButton.setTitle(" Log In ", forState: UIControlState.Normal)
+        } else if (selectedField == password) {
+            nextButton.setTitle("Log In", forState: UIControlState.Normal)
+        }
+>>>>>>> parent of bf6e634... Login View and PW Field
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        if (self.nextButton.hidden) {
+            var keyboardSize:CGRect
+            keyboardSize = (sender.userInfo![UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue()
+            println(viewSize.height)
+            println(keyboardSize.height)
+            println(viewSize.height - keyboardSize.height - UIScreen.mainScreen().bounds.height / 12 - 20)
+            println(UIScreen.mainScreen().bounds.height / 12)
+            self.nextButton.frame = CGRectMake(0, viewSize.height - keyboardSize.height - UIScreen.mainScreen().bounds.height / 12 - 20, viewSize.width, UIScreen.mainScreen().bounds.height / 12)
+            println(nextButton.frame.origin.y)
+            self.nextButton.backgroundColor = self.UIColorFromRGB(0x00A4FF)
+            self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            self.nextButton.setTitle("Log In", forState: UIControlState.Normal)
+        }
+        self.nextButton.hidden = false
     }
     
     func keyboardWillHide(sender: NSNotification) {
-    }
-    
-    func setButtonFrame() {
-        self.loginButton.frame = CGRectMake(0, viewSize.height, viewSize.width, UIScreen.mainScreen().bounds.height / 12)
+        UIView.animateWithDuration(0.2, animations: {
+            self.nextButton.alpha = 0.0
+            }, completion: { finished in
+                self.nextButton.hidden = true
+                self.nextButton.alpha = 1.0
+        })
     }
     
 	@IBAction func didTouchButton(sender: UIButton) {

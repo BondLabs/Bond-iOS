@@ -45,12 +45,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+<<<<<<< HEAD
                                     <action selector="loginReleased:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="0uf-PL-wyp"/>
                                     <action selector="loginReleased:" destination="vXZ-lx-hvc" eventType="touchDragExit" id="AV9-Cn-aGm"/>
                                     <action selector="loginReleased:" destination="vXZ-lx-hvc" eventType="touchCancel" id="B4f-N5-2lf"/>
                                     <action selector="loginTouched:" destination="vXZ-lx-hvc" eventType="touchDown" id="CXn-Jj-UlQ"/>
                                     <action selector="loginTouched:" destination="vXZ-lx-hvc" eventType="touchDragEnter" id="Yhd-kR-K4d"/>
                                     <segue destination="UxE-dx-lU8" kind="push" id="dLw-JN-GVL"/>
+=======
+                                    <segue destination="UxE-dx-lU8" kind="push" id="Qmo-qX-xvY"/>
+>>>>>>> parent of bf6e634... Login View and PW Field
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uMi-Ff-UYU">
@@ -118,7 +122,7 @@
                     <navigationItem key="navigationItem" title="Log In" id="1OY-V9-GEj"/>
                     <connections>
                         <outlet property="descLabel" destination="MOY-7h-5G5" id="SY0-Fi-KkS"/>
-                        <outlet property="loginButton" destination="nra-qY-02X" id="tNX-2b-9LZ"/>
+                        <outlet property="nextButton" destination="nra-qY-02X" id="kEJ-rW-5lH"/>
                         <outlet property="password" destination="2eC-zp-jXa" id="ZBQ-dN-lcb"/>
                         <outlet property="phoneNumber" destination="sGI-gm-MDF" id="JOZ-Lc-8e0"/>
                         <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" id="SCU-zk-ooq"/>
@@ -144,14 +148,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="a0c-HG-x4x">
-                                <rect key="frame" x="0.0" y="426" width="320" height="64"/>
+                                <rect key="frame" x="0.0" y="426" width="320" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+<<<<<<< HEAD
                                 <connections>
                                     <segue destination="XbX-z5-2es" kind="push" id="R23-YL-h3N"/>
                                 </connections>
+=======
+>>>>>>> parent of bf6e634... Login View and PW Field
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -330,8 +337,12 @@
         <!--Bonds Bar Controller-->
         <scene sceneID="SUf-Ad-0C7">
             <objects>
+<<<<<<< HEAD
                 <tabBarController id="sTa-GV-XXK" customClass="BondsBarController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="oC3-bW-xob"/>
+=======
+                <tabBarController id="sTa-GV-XXK" sceneMemberID="viewController">
+>>>>>>> parent of bf6e634... Login View and PW Field
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="d3E-9v-pvK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -359,8 +370,34 @@
                                 <rect key="frame" x="16" y="104" width="115" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
+<<<<<<< HEAD
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16.5"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+=======
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="erR-EB-m5N" userLabel="Last" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
+                                <rect key="frame" x="189" y="104" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="ooC-eq-tLf" userLabel="Phone Number" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
+                                <rect key="frame" x="16" y="164" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="7az-Da-6dW" userLabel="Password" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
+                                <rect key="frame" x="16" y="225" width="288" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+>>>>>>> parent of bf6e634... Login View and PW Field
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us a bit about yourself" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KdI-Wo-n3v" userLabel="Description">
                                 <rect key="frame" x="60" y="39" width="200" height="21"/>
@@ -653,11 +690,17 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="QIG-zC-egB"/>
         <segue reference="IBU-xK-cv0"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
         <segue reference="2Zi-Zh-utD"/>
         <segue reference="Gfx-JN-Ff2"/>
+=======
+        <segue reference="Qmo-qX-xvY"/>
+        <segue reference="dVJ-Yv-gsK"/>
+        <segue reference="W0g-ig-6ij"/>
+>>>>>>> parent of bf6e634... Login View and PW Field
     </inferredMetricsTieBreakers>
 </document>

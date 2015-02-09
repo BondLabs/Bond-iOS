@@ -24,7 +24,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
     @IBOutlet var phoneNumber: CustomTextField!
     @IBOutlet var password: CustomTextField!
     @IBOutlet var nextButton: UIButton!
-    @IBOutlet var doneButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     
     /* * *
      * * * Set up the view------------------------------------------------------
