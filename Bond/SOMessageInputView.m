@@ -305,6 +305,7 @@ void bondLog(id x) {
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
 	CGRect origRect = self.frame;
 	[UIView animateWithDuration:0.1 animations:^ {
+		self.contentMode = UIViewContentModeCenter;
 	self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
 		self.blurView.frame = self.bounds;
 		self.tintView.frame = self.bounds;
@@ -486,7 +487,8 @@ void bondLog(id x) {
                 kbFrame.size.height = 0;
             }
 
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, kbFrame.size.height + self.frame.size.height, 0.0);
+				UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, kbFrame.size.height + self.frame.size.height, 0.0);
+
             [UIView beginAnimations:@"animKb" context:NULL];
             [UIView setAnimationDuration:keyboardDuration];
 
