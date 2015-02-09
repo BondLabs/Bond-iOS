@@ -26,15 +26,13 @@ class ThanksViewController: UIViewController {
 		ViewManager.sharedInstance.currentViewController = self
 		
 		ViewManager.sharedInstance.ProgressHUD = nil
+		
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeCustomView
-		var gmailFrame = CGRect()
-		gmailFrame.size = CGSizeMake(40, 40)
-		gmailFrame.origin = CGPointZero
-		let gmailView = GmailLikeLoadingView(frame: gmailFrame)
+		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0, 0, 40, 40))
 		gmailView.startAnimating()
-		self.view.addSubview(gmailView)
 		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
+		ViewManager.sharedInstance.ProgressHUD!.labelText = "Loading"
 		
 		nameLabel = UILabel()
 		nameLabel.text = "Hi Daniel"//\(UserAccountController.sharedInstance.currentUser.name as String)"
