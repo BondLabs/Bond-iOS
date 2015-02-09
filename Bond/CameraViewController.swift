@@ -179,7 +179,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 				return
 			}
 		}
-		AppData.bondLog("Unable to find capture device for position \(position.rawValue)")
+		println("Unable to find capture device for position \(position.rawValue)")
 	}
 
 	// Reset inputs
@@ -197,7 +197,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 	func findVideo() {
 		videoConnection = nil
 		if cameraOutput == nil {
-			AppData.bondLog("Cannot start video connection: no camera output found")
+			println("Cannot start video connection: no camera output found")
 			return
 		}
 		for connection in self.cameraOutput.connections as [AVCaptureConnection] {
@@ -225,7 +225,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 	// Set up preview layer
 	func startPreview() {
 		if captureSession == nil {
-			AppData.bondLog("Cannot set up capture preview: no capture session found")
+			println("Cannot set up capture preview: no capture session found")
 			return
 		}
 		previewLayer = AVCaptureVideoPreviewLayer()
@@ -249,7 +249,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 				captureDevice?.flashMode = .Auto
 			}
 		} else {
-			AppData.bondLog("Capture device's flash is unavailable")
+			println("Capture device's flash is unavailable")
 		}
 	}
 
@@ -273,7 +273,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		}
 
 		if videoConnection == nil {
-			AppData.bondLog("Unable to find a video connection")
+			println("Unable to find a video connection")
 			return
 		}
 
@@ -406,10 +406,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeCustomView
-		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0, 0, 40, 40))
-		gmailView.startAnimating()
-		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
+		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Uploading Image"
 	}
 	// Selected an image

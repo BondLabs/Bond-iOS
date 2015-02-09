@@ -8,35 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		020012851A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 020012841A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.m */; };
-		0201A8A41A7E078600D43347 /* NSString+Calculation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8881A7E078600D43347 /* NSString+Calculation.m */; };
-		0201A8A51A7E078600D43347 /* attachment.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A88A1A7E078600D43347 /* attachment.png */; };
-		0201A8A61A7E078600D43347 /* attachment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A88B1A7E078600D43347 /* attachment@2x.png */; };
-		0201A8A71A7E078600D43347 /* bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A88C1A7E078600D43347 /* bubble.png */; };
-		0201A8A81A7E078600D43347 /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A88D1A7E078600D43347 /* bubble@2x.png */; };
-		0201A8A91A7E078600D43347 /* bubbleReceive.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A88E1A7E078600D43347 /* bubbleReceive.png */; };
-		0201A8AA1A7E078600D43347 /* bubbleReceive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A88F1A7E078600D43347 /* bubbleReceive@2x.png */; };
-		0201A8AB1A7E078600D43347 /* inputTextBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A8901A7E078600D43347 /* inputTextBG.png */; };
-		0201A8AC1A7E078600D43347 /* inputTextBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A8911A7E078600D43347 /* inputTextBG@2x.png */; };
-		0201A8AD1A7E078600D43347 /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A8921A7E078600D43347 /* play_button.png */; };
-		0201A8AE1A7E078600D43347 /* play_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0201A8931A7E078600D43347 /* play_button@2x.png */; };
-		0201A8AF1A7E078600D43347 /* SOImageBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8951A7E078600D43347 /* SOImageBrowserView.m */; };
-		0201A8B01A7E078600D43347 /* SOMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8981A7E078600D43347 /* SOMessageCell.m */; };
-		0201A8B11A7E078600D43347 /* SOMessageInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A89A1A7E078600D43347 /* SOMessageInputView.m */; };
-		0201A8B21A7E078600D43347 /* SOMessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A89F1A7E078600D43347 /* SOMessagingViewController.m */; };
-		0201A8B31A7E078600D43347 /* SOPlaceholderedTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8A11A7E078600D43347 /* SOPlaceholderedTextView.m */; };
-		0201A8B41A7E078600D43347 /* UINavigationController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8A31A7E078600D43347 /* UINavigationController+Rotation.m */; };
-		0201A8B61A7E07CF00D43347 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0201A8B51A7E07CE00D43347 /* MediaPlayer.framework */; };
-		0201A8B81A7E0C2100D43347 /* ChatContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8B71A7E0C2100D43347 /* ChatContentManager.swift */; };
-		0201A8C01A7E21DD00D43347 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8BF1A7E21DD00D43347 /* Message.m */; };
 		020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020322AA1A70CAEF000C85F4 /* UserAccountController.swift */; };
 		020322AD1A70D87D000C85F4 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934FD8C1A48270800E43B45 /* StartViewController.swift */; };
 		020322AE1A70D881000C85F4 /* BlurredButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E2C6521A7015D3001817D4 /* BlurredButton.swift */; };
 		020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E934FDA61A484AB800E43B45 /* Main.storyboard */; };
-		021E53821A7DFFE9008B4F90 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021E53811A7DFFE9008B4F90 /* ChatViewController.swift */; };
 		0277FA7F1A74C3EE000FC661 /* BondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277FA7E1A74C3EE000FC661 /* BondUser.swift */; };
-		02802F7E1A83468B0078DDA2 /* SOMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02802F7D1A83468B0078DDA2 /* SOMessageTextView.m */; };
 		02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */; };
-		02AE42C41A7F305600AF9209 /* GmailLikeLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AE42C31A7F305600AF9209 /* GmailLikeLoadingView.m */; };
 		02BA37E41A7B59CA004F948B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 02BA37E31A7B59CA004F948B /* NSData+Base64.m */; };
 		02DA42121A7B6B220098012F /* NSURLConnection+AsyncBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */; };
 		02DA42151A7B712E0098012F /* NSURLConnection+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */; };
@@ -193,46 +170,9 @@
 		020012821A721FF900322BC7 /* Bond-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bond-Bridging-Header.h"; sourceTree = "<group>"; };
 		020012831A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+WhiteUIDatePickerLabels.h"; sourceTree = "<group>"; };
 		020012841A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WhiteUIDatePickerLabels.m"; sourceTree = "<group>"; };
-		0201A8871A7E078600D43347 /* NSString+Calculation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Calculation.h"; sourceTree = "<group>"; };
-		0201A8881A7E078600D43347 /* NSString+Calculation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Calculation.m"; sourceTree = "<group>"; };
-		0201A88A1A7E078600D43347 /* attachment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attachment.png; sourceTree = "<group>"; };
-		0201A88B1A7E078600D43347 /* attachment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attachment@2x.png"; sourceTree = "<group>"; };
-		0201A88C1A7E078600D43347 /* bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble.png; sourceTree = "<group>"; };
-		0201A88D1A7E078600D43347 /* bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble@2x.png"; sourceTree = "<group>"; };
-		0201A88E1A7E078600D43347 /* bubbleReceive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleReceive.png; sourceTree = "<group>"; };
-		0201A88F1A7E078600D43347 /* bubbleReceive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubbleReceive@2x.png"; sourceTree = "<group>"; };
-		0201A8901A7E078600D43347 /* inputTextBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inputTextBG.png; sourceTree = "<group>"; };
-		0201A8911A7E078600D43347 /* inputTextBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "inputTextBG@2x.png"; sourceTree = "<group>"; };
-		0201A8921A7E078600D43347 /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
-		0201A8931A7E078600D43347 /* play_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_button@2x.png"; sourceTree = "<group>"; };
-		0201A8941A7E078600D43347 /* SOImageBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOImageBrowserView.h; sourceTree = "<group>"; };
-		0201A8951A7E078600D43347 /* SOImageBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOImageBrowserView.m; sourceTree = "<group>"; };
-		0201A8961A7E078600D43347 /* SOMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessage.h; sourceTree = "<group>"; };
-		0201A8971A7E078600D43347 /* SOMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessageCell.h; sourceTree = "<group>"; };
-		0201A8981A7E078600D43347 /* SOMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOMessageCell.m; sourceTree = "<group>"; };
-		0201A8991A7E078600D43347 /* SOMessageInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessageInputView.h; sourceTree = "<group>"; };
-		0201A89A1A7E078600D43347 /* SOMessageInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOMessageInputView.m; sourceTree = "<group>"; };
-		0201A89B1A7E078600D43347 /* SOMessageType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessageType.h; sourceTree = "<group>"; };
-		0201A89C1A7E078600D43347 /* SOMessagingDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessagingDataSource.h; sourceTree = "<group>"; };
-		0201A89D1A7E078600D43347 /* SOMessagingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessagingDelegate.h; sourceTree = "<group>"; };
-		0201A89E1A7E078600D43347 /* SOMessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessagingViewController.h; sourceTree = "<group>"; };
-		0201A89F1A7E078600D43347 /* SOMessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOMessagingViewController.m; sourceTree = "<group>"; };
-		0201A8A01A7E078600D43347 /* SOPlaceholderedTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOPlaceholderedTextView.h; sourceTree = "<group>"; };
-		0201A8A11A7E078600D43347 /* SOPlaceholderedTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOPlaceholderedTextView.m; sourceTree = "<group>"; };
-		0201A8A21A7E078600D43347 /* UINavigationController+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Rotation.h"; sourceTree = "<group>"; };
-		0201A8A31A7E078600D43347 /* UINavigationController+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Rotation.m"; sourceTree = "<group>"; };
-		0201A8B51A7E07CE00D43347 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		0201A8B71A7E0C2100D43347 /* ChatContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContentManager.swift; sourceTree = "<group>"; };
-		0201A8BE1A7E21DD00D43347 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		0201A8BF1A7E21DD00D43347 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		020322AA1A70CAEF000C85F4 /* UserAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountController.swift; sourceTree = "<group>"; };
-		021E53811A7DFFE9008B4F90 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0277FA7E1A74C3EE000FC661 /* BondUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondUser.swift; sourceTree = "<group>"; };
-		02802F7C1A83468B0078DDA2 /* SOMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOMessageTextView.h; sourceTree = "<group>"; };
-		02802F7D1A83468B0078DDA2 /* SOMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOMessageTextView.m; sourceTree = "<group>"; };
 		02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPIController.swift; sourceTree = "<group>"; };
-		02AE42C21A7F305600AF9209 /* GmailLikeLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmailLikeLoadingView.h; sourceTree = "<group>"; };
-		02AE42C31A7F305600AF9209 /* GmailLikeLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmailLikeLoadingView.m; sourceTree = "<group>"; };
 		02BA37E21A7B59CA004F948B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		02BA37E31A7B59CA004F948B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		02DA42101A7B6B220098012F /* NSURLConnection+AsyncBlocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+AsyncBlocks.h"; sourceTree = "<group>"; };
@@ -402,7 +342,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0201A8B61A7E07CF00D43347 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,59 +358,18 @@
 		020012861A72201200322BC7 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
-				02AE42C51A7F306200AF9209 /* Gmail Loading */,
-				0201A8861A7E078600D43347 /* SOMessaging */,
-				02AE42C61A7F308100AF9209 /* MBProgressHUD */,
-				02AE42C71A7F308C00AF9209 /* NSURLConnection */,
-				02AE42C81A7F309400AF9209 /* NSData */,
-				02AE42C91A7F309B00AF9209 /* UILabel */,
+				02F92FA41A7D8E3500B59C39 /* MBProgressHUD.h */,
+				02F92FA51A7D8E3500B59C39 /* MBProgressHUD.m */,
+				02DA42101A7B6B220098012F /* NSURLConnection+AsyncBlocks.h */,
+				02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */,
+				02DA42131A7B712E0098012F /* NSURLConnection+Blocks.h */,
+				02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */,
+				02BA37E21A7B59CA004F948B /* NSData+Base64.h */,
+				02BA37E31A7B59CA004F948B /* NSData+Base64.m */,
+				020012831A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.h */,
+				020012841A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.m */,
 			);
 			name = "Custom Classes";
-			sourceTree = "<group>";
-		};
-		0201A8861A7E078600D43347 /* SOMessaging */ = {
-			isa = PBXGroup;
-			children = (
-				0201A8871A7E078600D43347 /* NSString+Calculation.h */,
-				0201A8881A7E078600D43347 /* NSString+Calculation.m */,
-				0201A8891A7E078600D43347 /* Resources */,
-				0201A8941A7E078600D43347 /* SOImageBrowserView.h */,
-				0201A8951A7E078600D43347 /* SOImageBrowserView.m */,
-				0201A8961A7E078600D43347 /* SOMessage.h */,
-				0201A8971A7E078600D43347 /* SOMessageCell.h */,
-				0201A8981A7E078600D43347 /* SOMessageCell.m */,
-				0201A8991A7E078600D43347 /* SOMessageInputView.h */,
-				0201A89A1A7E078600D43347 /* SOMessageInputView.m */,
-				02802F7C1A83468B0078DDA2 /* SOMessageTextView.h */,
-				02802F7D1A83468B0078DDA2 /* SOMessageTextView.m */,
-				0201A89B1A7E078600D43347 /* SOMessageType.h */,
-				0201A89C1A7E078600D43347 /* SOMessagingDataSource.h */,
-				0201A89D1A7E078600D43347 /* SOMessagingDelegate.h */,
-				0201A89E1A7E078600D43347 /* SOMessagingViewController.h */,
-				0201A89F1A7E078600D43347 /* SOMessagingViewController.m */,
-				0201A8A01A7E078600D43347 /* SOPlaceholderedTextView.h */,
-				0201A8A11A7E078600D43347 /* SOPlaceholderedTextView.m */,
-				0201A8A21A7E078600D43347 /* UINavigationController+Rotation.h */,
-				0201A8A31A7E078600D43347 /* UINavigationController+Rotation.m */,
-			);
-			path = SOMessaging;
-			sourceTree = "<group>";
-		};
-		0201A8891A7E078600D43347 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0201A88A1A7E078600D43347 /* attachment.png */,
-				0201A88B1A7E078600D43347 /* attachment@2x.png */,
-				0201A88C1A7E078600D43347 /* bubble.png */,
-				0201A88D1A7E078600D43347 /* bubble@2x.png */,
-				0201A88E1A7E078600D43347 /* bubbleReceive.png */,
-				0201A88F1A7E078600D43347 /* bubbleReceive@2x.png */,
-				0201A8901A7E078600D43347 /* inputTextBG.png */,
-				0201A8911A7E078600D43347 /* inputTextBG@2x.png */,
-				0201A8921A7E078600D43347 /* play_button.png */,
-				0201A8931A7E078600D43347 /* play_button@2x.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		020322AC1A70CAFC000C85F4 /* User Account Stuff */ = {
@@ -482,65 +380,6 @@
 				02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */,
 			);
 			name = "User Account Stuff";
-			sourceTree = "<group>";
-		};
-		021E53831A7E000E008B4F90 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				0201A8B71A7E0C2100D43347 /* ChatContentManager.swift */,
-				021E53811A7DFFE9008B4F90 /* ChatViewController.swift */,
-				0201A8BE1A7E21DD00D43347 /* Message.h */,
-				0201A8BF1A7E21DD00D43347 /* Message.m */,
-			);
-			name = Chat;
-			sourceTree = "<group>";
-		};
-		02AE42C51A7F306200AF9209 /* Gmail Loading */ = {
-			isa = PBXGroup;
-			children = (
-				02AE42C21A7F305600AF9209 /* GmailLikeLoadingView.h */,
-				02AE42C31A7F305600AF9209 /* GmailLikeLoadingView.m */,
-			);
-			name = "Gmail Loading";
-			path = SOMessaging;
-			sourceTree = "<group>";
-		};
-		02AE42C61A7F308100AF9209 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				02F92FA41A7D8E3500B59C39 /* MBProgressHUD.h */,
-				02F92FA51A7D8E3500B59C39 /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
-			sourceTree = "<group>";
-		};
-		02AE42C71A7F308C00AF9209 /* NSURLConnection */ = {
-			isa = PBXGroup;
-			children = (
-				02DA42101A7B6B220098012F /* NSURLConnection+AsyncBlocks.h */,
-				02DA42111A7B6B220098012F /* NSURLConnection+AsyncBlocks.m */,
-				02DA42131A7B712E0098012F /* NSURLConnection+Blocks.h */,
-				02DA42141A7B712E0098012F /* NSURLConnection+Blocks.m */,
-			);
-			name = NSURLConnection;
-			sourceTree = "<group>";
-		};
-		02AE42C81A7F309400AF9209 /* NSData */ = {
-			isa = PBXGroup;
-			children = (
-				02BA37E21A7B59CA004F948B /* NSData+Base64.h */,
-				02BA37E31A7B59CA004F948B /* NSData+Base64.m */,
-			);
-			name = NSData;
-			sourceTree = "<group>";
-		};
-		02AE42C91A7F309B00AF9209 /* UILabel */ = {
-			isa = PBXGroup;
-			children = (
-				020012831A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.h */,
-				020012841A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.m */,
-			);
-			name = UILabel;
 			sourceTree = "<group>";
 		};
 		E9227F521A52BEBA004DDE48 /* Bonds */ = {
@@ -584,7 +423,6 @@
 				E934FDA61A484AB800E43B45 /* Main.storyboard */,
 				E934FD8C1A48270800E43B45 /* StartViewController.swift */,
 				02E2C6521A7015D3001817D4 /* BlurredButton.swift */,
-				021E53831A7E000E008B4F90 /* Chat */,
 				756E2CB01A7DBE5500037886 /* TourViewController.swift */,
 				020322AC1A70CAFC000C85F4 /* User Account Stuff */,
 				E9F482E11A52BAF8006DB53C /* Signup/Login */,
@@ -737,7 +575,6 @@
 		E973202B1A5A102500C97429 /* Native Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0201A8B51A7E07CE00D43347 /* MediaPlayer.framework */,
 				E973201F1A594A0000C97429 /* CFNetwork.framework */,
 				E973201D1A5949DA00C97429 /* libsqlite3.dylib */,
 				E97320011A59463F00C97429 /* SystemConfiguration.framework */,
@@ -869,7 +706,7 @@
 				TargetAttributes = {
 					E934FD631A4826A400E43B45 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = FMKG4J2L9M;
+						DevelopmentTeam = XF283F7SB6;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -892,19 +729,6 @@
 			knownRegions = (
 				en,
 				Base,
-				de,
-				es,
-				fr,
-				he,
-				it,
-				nl,
-				pl,
-				pt,
-				ro,
-				ru,
-				tr,
-				"zh-Hans",
-				"zh-Hant",
 			);
 			mainGroup = E934FD5B1A4826A400E43B45;
 			productRefGroup = E934FD651A4826A400E43B45 /* Products */;
@@ -924,14 +748,11 @@
 			files = (
 				E93EC8151A6934A800C03170 /* Easygoing (i).png in Resources */,
 				E93EC83E1A6934A800C03170 /* Rebellious (a).png in Resources */,
-				0201A8A71A7E078600D43347 /* bubble.png in Resources */,
 				E93EC8521A6934A800C03170 /* Traditional (a).png in Resources */,
-				0201A8A51A7E078600D43347 /* attachment.png in Resources */,
 				E93EC8101A6934A800C03170 /* Curious (a).png in Resources */,
 				E93EC8071A6934A800C03170 /* Brainy (i).png in Resources */,
 				E93EC8171A6934A800C03170 /* Empathetic (i).png in Resources */,
 				E911E4041A64189D0027DB0C /* Avenir.ttc in Resources */,
-				0201A8AC1A7E078600D43347 /* inputTextBG@2x.png in Resources */,
 				E97320261A5A0F6500C97429 /* Flash On.png in Resources */,
 				E93EC8031A6934A800C03170 /* Artist (i).png in Resources */,
 				E9857EDC1A512AA40095EA76 /* Profile(i).png in Resources */,
@@ -950,13 +771,11 @@
 				E93EC8261A6934A800C03170 /* Funky (a).png in Resources */,
 				E93EC82B1A6934A800C03170 /* Introverted (i).png in Resources */,
 				E93EC81B1A6934A800C03170 /* Extroverted (i).png in Resources */,
-				0201A8AE1A7E078600D43347 /* play_button@2x.png in Resources */,
 				E93EC8181A6934A800C03170 /* Experienced (a).png in Resources */,
 				E93EC84E1A6934A800C03170 /* Thrilling (a).png in Resources */,
 				E93EC8011A6934A800C03170 /* Active (i).png in Resources */,
 				E93EC81F1A6934A800C03170 /* Fit (i).png in Resources */,
 				E93EC8411A6934A800C03170 /* Relaxed (i).png in Resources */,
-				0201A8A81A7E078600D43347 /* bubble@2x.png in Resources */,
 				E93EC80F1A6934A800C03170 /* Cultured (i).png in Resources */,
 				E93EC8301A6934A800C03170 /* Modern (a).png in Resources */,
 				E93EC8251A6934A800C03170 /* Fun (i).png in Resources */,
@@ -1017,9 +836,7 @@
 				E93EC8221A6934A800C03170 /* Friendly (a).png in Resources */,
 				E93EC8121A6934A800C03170 /* Driven (a).png in Resources */,
 				E93EC8441A6934A800C03170 /* Rustic (a).png in Resources */,
-				0201A8A91A7E078600D43347 /* bubbleReceive.png in Resources */,
 				E93EC8321A6934A800C03170 /* Motivated (a).png in Resources */,
-				0201A8AB1A7E078600D43347 /* inputTextBG.png in Resources */,
 				E93EC8091A6934A800C03170 /* Caring (i).png in Resources */,
 				E93EC8581A6934A800C03170 /* Weird (a).png in Resources */,
 				020322B01A70DC2C000C85F4 /* Main.storyboard in Resources */,
@@ -1037,15 +854,12 @@
 				E93EC8191A6934A800C03170 /* Experienced (i).png in Resources */,
 				E93EC8431A6934A800C03170 /* Romantic (i).png in Resources */,
 				E9857EDE1A512AA40095EA76 /* Bonds(i).png in Resources */,
-				0201A8AA1A7E078600D43347 /* bubbleReceive@2x.png in Resources */,
 				E93EC8471A6934A800C03170 /* Sarcastic (i).png in Resources */,
 				E93EC80B1A6934A800C03170 /* Chill (i).png in Resources */,
 				E93EC8391A6934A800C03170 /* Open Minded (i).png in Resources */,
 				E93EC8351A6934A800C03170 /* Observant (i).png in Resources */,
 				E97320291A5A0F6500C97429 /* Cancel.png in Resources */,
 				E93EC84C1A6934A800C03170 /* Studious (a).png in Resources */,
-				0201A8AD1A7E078600D43347 /* play_button.png in Resources */,
-				0201A8A61A7E078600D43347 /* attachment@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1065,17 +879,11 @@
 			files = (
 				E98BE8F51A60A19800BEC452 /* CameraViewController.swift in Sources */,
 				020012851A721FFA00322BC7 /* UILabel+WhiteUIDatePickerLabels.m in Sources */,
-				0201A8B11A7E078600D43347 /* SOMessageInputView.m in Sources */,
 				E98BE8F21A60979C00BEC452 /* CustomSegmentedButton.swift in Sources */,
 				020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */,
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
 				020322AE1A70D881000C85F4 /* BlurredButton.swift in Sources */,
 				E9EDF96A1A62A71D004A9446 /* MaskView.swift in Sources */,
-				0201A8A41A7E078600D43347 /* NSString+Calculation.m in Sources */,
-				0201A8C01A7E21DD00D43347 /* Message.m in Sources */,
-				0201A8B81A7E0C2100D43347 /* ChatContentManager.swift in Sources */,
-				021E53821A7DFFE9008B4F90 /* ChatViewController.swift in Sources */,
-				0201A8B31A7E078600D43347 /* SOPlaceholderedTextView.m in Sources */,
 				02F92FA61A7D8E3500B59C39 /* MBProgressHUD.m in Sources */,
 				E93C44471A4D102100E95265 /* ActivityView.swift in Sources */,
 				02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */,
@@ -1084,8 +892,6 @@
 				020322AD1A70D87D000C85F4 /* StartViewController.swift in Sources */,
 				02BA37E41A7B59CA004F948B /* NSData+Base64.m in Sources */,
 				0277FA7F1A74C3EE000FC661 /* BondUser.swift in Sources */,
-				0201A8B41A7E078600D43347 /* UINavigationController+Rotation.m in Sources */,
-				0201A8B01A7E078600D43347 /* SOMessageCell.m in Sources */,
 				E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */,
 				E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
@@ -1094,17 +900,13 @@
 				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
 				E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */,
-				02AE42C41A7F305600AF9209 /* GmailLikeLoadingView.m in Sources */,
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
 				E9227F541A52C0F9004DDE48 /* BondsBarController.swift in Sources */,
-				0201A8B21A7E078600D43347 /* SOMessagingViewController.m in Sources */,
 				E9227F561A52CC30004DDE48 /* BondsDetailViewController.swift in Sources */,
 				02DA42121A7B6B220098012F /* NSURLConnection+AsyncBlocks.m in Sources */,
-				02802F7E1A83468B0078DDA2 /* SOMessageTextView.m in Sources */,
 				E93C44451A4D038F00E95265 /* TraitsViewController.swift in Sources */,
 				756E2CB11A7DBE5500037886 /* TourViewController.swift in Sources */,
 				756E2CAF1A7DBDE200037886 /* Location.swift in Sources */,
-				0201A8AF1A7E078600D43347 /* SOImageBrowserView.m in Sources */,
 				E96956E41A586C7F001D2308 /* AppData.swift in Sources */,
 				E9E5C5491A6B463A00BE9B2B /* TraitArrayViewController.swift in Sources */,
 			);
@@ -1212,7 +1014,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kevin Zhang (42U5ATDSKM)";
 				INFOPLIST_FILE = Bond/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1232,7 +1034,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Kevin Zhang (42U5ATDSKM)";
 				INFOPLIST_FILE = Bond/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

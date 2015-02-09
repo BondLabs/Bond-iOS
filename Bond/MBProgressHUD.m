@@ -209,8 +209,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	return self;
 }
 
-
-
 - (id)initWithView:(UIView *)view {
 	NSAssert(view, @"View must not be nil.");
 	return [self initWithFrame:view.bounds];
@@ -273,13 +271,8 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 			return;
 		} 
 	}
-
-	[UIView animateWithDuration:0.1 animations:^{
-		[self setAlpha:0.0f];
-	}
-	 ];
 	// ... otherwise hide the HUD immediately
-	//[self hideUsingAnimation:useAnimation];
+	[self hideUsingAnimation:useAnimation];
 }
 
 - (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay {
@@ -344,8 +337,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 - (void)hideUsingAnimation:(BOOL)animated {
 	// Fade out
-	//[self removeFromSuperview];
-	//self.alpha = 0.0f;
 	if (animated && showStarted) {
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.30];
@@ -359,16 +350,14 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 			self.transform = CGAffineTransformConcat(rotationTransform, CGAffineTransformMakeScale(0.5f, 0.5f));
 		}
 
-		self.alpha = 0.00f;
+		self.alpha = 0.02f;
 		[UIView commitAnimations];
-		[self done];
 	}
 	else {
 		self.alpha = 0.0f;
 		[self done];
 	}
 	self.showStarted = nil;
-
 }
 
 - (void)animationFinished:(NSString *)animationID finished:(BOOL)finished context:(void*)context {

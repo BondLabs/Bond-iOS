@@ -7,7 +7,3 @@
 #import "NSURLConnection+AsyncBlocks.h"
 #import "NSURLConnection+Blocks.h"
 #import "MBProgressHUD.h"
-#import "SOMessagingViewController.h"
-#import "Message.h"
-#import "GmailLikeLoadingView.h"
-
