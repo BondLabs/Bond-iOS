@@ -25,6 +25,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		ViewManager.sharedInstance.currentViewController = self
         
         // Set up view properties
 		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x5A5A5A)

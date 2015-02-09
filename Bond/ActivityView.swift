@@ -37,7 +37,7 @@ class ActivityView: UIView {
         nameLabel = UILabel()
         nameLabel.text = name
         nameLabel.backgroundColor = UIColor.clearColor()
-        nameLabel.textColor = UIColor.whiteColor()
+        nameLabel.textColor = UIColor.bl_doveGrayColor()
         nameLabel.font = UIFont(name: "Avenir-Medium", size: 16.0)
         nameLabel.sizeToFit()
         nameLabel.center = CGPointMake(viewSize.width / 2, viewSize.width + (viewSize.height - viewSize.width) / 2)

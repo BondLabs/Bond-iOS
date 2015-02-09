@@ -1,4 +1,5 @@
 #import "UILabel+WhiteUIDatePickerLabels.h"
+#import "UIColor+BLColors.h"
 #import <objc/runtime.h>
 
 @implementation UILabel (WhiteUIDatePickerLabels)
@@ -18,7 +19,7 @@
 	if([self view:self hasSuperviewOfClass:[UIDatePicker class]] ||
 	   [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerWeekMonthDayView")] ||
 	   [self view:self hasSuperviewOfClass:NSClassFromString(@"UIDatePickerContentView")]){
-		[self swizzledSetTextColor:[UIColor whiteColor]];
+		[self swizzledSetTextColor:[UIColor bl_doveGray1Color]];
 	} else {
 		//Carry on with the default
 		[self swizzledSetTextColor:textColor];

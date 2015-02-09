@@ -26,6 +26,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Light", size: 16.5)!], forState: UIControlState.Normal)
 		UINavigationBar.appearance().tintColor = UIColor.whiteColor()
 
+
+						//let passwordText = (NSString(data: passwordData as NSData, encoding:NSUTF8StringEncoding))
+
+		bondLog("\(UserAccountController.sharedInstance.userDefaults)")
+
+		let unExists = (UserAccountController.sharedInstance.userDefaults.objectForKey("name") != nil) && !(UserAccountController.sharedInstance.userDefaults.objectForKey("name") as NSString).isEqualToString("")
+
+		bondLog("Username Exists: \(unExists)")
+
+
+
+
+
+		if unExists {
+			//self.performSegueWithIdentifier("goToBondsDirectly", sender: self)
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("AutoLogInViewController") as UIViewController
+			let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as UINavigationController
+			navigationController.viewControllers = [vc]
+			self.window?.rootViewController = navigationController
+
+
+
+		}
+
+
+
+
+
+
+
+
         return true
     }
 

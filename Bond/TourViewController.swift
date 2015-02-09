@@ -57,6 +57,10 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         * * */
         
         // Initialize page view controller
+
+
+
+
         tourPageVC = UIPageViewController(transitionStyle: UIPageViewControllerTransitionStyle.Scroll, navigationOrientation: UIPageViewControllerNavigationOrientation.Horizontal, options: nil)
         tourPageVC.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - 50)
         tourViewFrame = CGRect(origin: CGPointZero, size: CGSizeMake(tourPageVC.view.frame.width, tourPageVC.view.frame.height - AppData.data.heights.pageControlHeight))
@@ -133,7 +137,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     }
     
     override func viewWillAppear(animated: Bool) {
-
+/*
 		let keychainStore = UserAccountController.sharedInstance.keychainItemStore
 		let passwordData: AnyObject! = keychainStore.objectForKey(kSecValueData)
 
@@ -155,6 +159,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
 			self.navigationController?.navigationBarHidden = true
 			super.viewWillAppear(animated)
 		}
+*/
     }
 
     func showStartButtons() {

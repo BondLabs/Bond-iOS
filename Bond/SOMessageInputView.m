@@ -44,6 +44,8 @@ void bondLog(id x) {
 }
 
 @property (weak, nonatomic) UIView *keyboardView;
+@property (strong, nonatomic) UIVisualEffectView *blurView;
+@property (strong, nonatomic) UIView *tintView;
 
 @end
 
@@ -81,16 +83,15 @@ void bondLog(id x) {
 	UIBlurEffect *blurEffect;
 
 	blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-	UIView *colorView = [[UIView alloc] initWithFrame:self.frame];
-	colorView.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(164/255.0) blue:(255/255.0) alpha:0.5];
 
-	UIVisualEffectView *visualEffectView;
-	visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+	self.tintView = [[UIView alloc] initWithFrame:self.frame];
+	self.tintView.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(164/255.0) blue:(255/255.0) alpha:0.5];
 
-	visualEffectView.frame = self.bounds;
-		//visualEffectView.tintColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:1.0];
-	[visualEffectView.contentView addSubview:colorView];
-	[self addSubview:visualEffectView];
+	self.blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+	self.blurView.frame = self.bounds;
+	[self.blurView.contentView addSubview:self.tintView];
+
+	[self addSubview:self.blurView];
     
     self.textView = [[SOPlaceholderedTextView alloc] init];
     self.textView.textColor = [UIColor whiteColor];
@@ -283,10 +284,16 @@ void bondLog(id x) {
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
 	CGRect origRect = self.frame;
 	[UIView animateWithDuration:0.1 animations:^ {
-		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
 		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, self.frame.size.height);
 		[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
+		self.contentMode = UIViewContentModeCenter;
+		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+		self.textView.frame = self.bounds;
+		self.blurView.frame = self.bounds;
+		self.tintView.frame = self.bounds;
 	}];
+
+
 
 	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);
 	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
@@ -454,7 +461,8 @@ void bondLog(id x) {
                 kbFrame.size.height = 0;
             }
 
-            UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, kbFrame.size.height + self.frame.size.height, 0.0);
+				UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0.0, kbFrame.size.height + self.frame.size.height, 0.0);
+
             [UIView beginAnimations:@"animKb" context:NULL];
             [UIView setAnimationDuration:keyboardDuration];
 

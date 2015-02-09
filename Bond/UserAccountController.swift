@@ -18,7 +18,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     var newPhoneNumber: NSString = "5555555555"
     var newPassword: NSString = "hunter2"
     var newEmail: NSString = "example@example.com"
-    var newAge: Int = 1
+    var newAge: NSString = ""
     var newGender: NSString = "other"
     var newRelationshipStatus = "complicated"
     var newProfileImage = UIImage()
@@ -64,18 +64,27 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		self.newLastName = ""
 		self.newPhoneNumber = ""
 		self.newEmail = ""
-		self.newAge = 1
+		self.newAge = ""
 		self.newGender = "other"
 		self.newRelationshipStatus = "complicated"
 		self.newProfileImage = UIImage()
 		self.id = 1
 
 		self.currentUser = nil
+		
+		//let viewStoryBoard = ViewManager.sharedInstance.currentViewController?.storyboard
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc: UIViewController = storyboard.instantiateViewControllerWithIdentifier("tourViewController") as UIViewController
+		let navigationController:UINavigationController = storyboard.instantiateInitialViewController() as UINavigationController
+		navigationController.viewControllers = [vc]
+
 		let viewStoryBoard = UIStoryboard(name: "Main", bundle: nil)
 		let startViewController: UIViewController = viewStoryBoard.instantiateInitialViewController() as UIViewController
 
 		bondLog("view controller is \(startViewController)")
-		ViewManager.sharedInstance.currentViewController?.presentViewController(startViewController, animated: true, completion: nil)
+		bondLog("vc is \(vc)")
+
+		ViewManager.sharedInstance.currentViewController?.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
 	}
 	
     func register() {

@@ -13,6 +13,13 @@ class AutoLogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		let bgImage = UIImageView(image: UIImage(named: "Load Screen i6p"))
+		bgImage.frame = self.view.frame
+		self.view.addSubview(bgImage)
+
+		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
+		self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
 		let userDefaults = UserAccountController.sharedInstance.userDefaults
 
 		let userID = userDefaults.objectForKey("userID") as NSNumber
@@ -29,8 +36,7 @@ class AutoLogInViewController: UIViewController {
 		UserAccountController.sharedInstance.currentUser = newUser
 
 		ViewManager.sharedInstance.currentViewController = self
-		let phoneNumber: String = UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecAttrAccount) as String
-		let password: NSData = UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecValueData) as NSData
+		
 		UserAccountController.sharedInstance.getAndSaveBonds(userID.integerValue, authKey: authKey)
     }
 

@@ -146,6 +146,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 			var placeholder = textField.attributedPlaceholder?.string
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+			textField.textColor = UIColor.bl_silverChaliceColor()
 		}
 		if (textField.secureTextEntry) {
 			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
@@ -208,7 +209,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     /* * *
      * * * Capture segue events
      * * */
-    
+	
 	deinit {
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
@@ -218,13 +219,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		super.viewWillAppear(animated)
 	}
 	
-	override func viewWillDisappear(animated: Bool) {
-		var count = self.navigationController?.viewControllers.count
-		var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-		if (nextVC is Tour_StartViewController) {
-			self.navigationController?.navigationBarHidden = true
+    override func viewWillDisappear(animated: Bool) {
+        var count = self.navigationController?.viewControllers.count
+        var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
+        if (nextVC is Tour_StartViewController) {
+            self.navigationController?.navigationBarHidden = true
+        }
+
+		if nextVC?.restorationIdentifier == "tourViewController" {
+			 self.navigationController?.navigationBarHidden = true
 		}
-		super.viewWillDisappear(animated)
-	}
-	
+        super.viewWillDisappear(animated)
+    }
 }
