@@ -62,6 +62,10 @@ class BondsViewController: UITableViewController {
         getBondImages()
 	}
     
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     /* * *
     * * * Getting images for bonds
     * * */

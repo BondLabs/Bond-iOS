@@ -25,7 +25,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     var id: Int = 1
     let authKey = "37D74DBC-C160-455D-B4AE-A6396FEE7954"
     var isUserLoggedIn = false
-	var otherUserImages:[String: UIImage]! = [:]
+    var otherUserImages = NSMutableDictionary()
 
     class var sharedInstance: UserAccountController {
         struct Static {
@@ -153,6 +153,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     
     func getOtherUserPhoto(id: Int, authKey: NSString)
     {
+        bondLog("getting other user photo")
         RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/images/\(id)", api_key: authKey, type: requestType.otherUserImage, delegate:nil)
     }
     

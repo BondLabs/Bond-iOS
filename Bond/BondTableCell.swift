@@ -73,8 +73,21 @@ class BondTableCell: UITableViewCell {
     
     func getProfPic() -> UIImage {
         // Use this to get the profile picture for the bond
+        var image = UIImage(named: "Profile(i).png")!
         
-        return UIImage(named: "Profile(i).png")!
+        if (UserAccountController.sharedInstance.otherUserImages.allKeys.count > 0){
+            bondLog(_stdlib_getTypeName(UserAccountController.sharedInstance.otherUserImages.allKeys[0]))   
+        }
+        
+        if UserAccountController.sharedInstance.otherUserImages.objectForKey(self.bondID.toInt()!) != nil
+        {
+            image = UserAccountController.sharedInstance.otherUserImages.objectForKey(self.bondID.toInt()!) as UIImage
+        }else{
+            bondLog("IMAGE IS NIL BOND ID IS: \(self.bondID as String)")
+//            bondLog("other user images is: \(UserAccountController.sharedInstance.otherUserImages)")
+        
+        }
+        return image
     }
 
 }

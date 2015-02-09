@@ -265,7 +265,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="zCI-ja-LZO" kind="push" identifier="ShowBondDetail" id="hIk-ao-dlB"/>
+                                    <segue destination="zCI-ja-LZO" kind="push" identifier="nextView" id="hIk-ao-dlB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -784,9 +784,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2Zi-Zh-utD"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
+        <segue reference="2Zi-Zh-utD"/>
         <segue reference="Gfx-JN-Ff2"/>
         <segue reference="R23-YL-h3N"/>
         <segue reference="SBh-Oe-6x9"/>
