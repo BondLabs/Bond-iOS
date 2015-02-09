@@ -48,7 +48,22 @@ class BondsViewController: UITableViewController {
 		
 		// Set row height
 		self.tableView.rowHeight = 60.0
+        
+        getBondImages()
 	}
+    
+    /* * *
+    * * * Getting images for bonds
+    * * */
+    
+    func getBondImages() {
+        for (bid, name) in UserAccountController.sharedInstance.currentUser.bonds {
+            AppData.bondLog("getBondImages(): \(bid)")
+            UserAccountController.sharedInstance.getOtherUserPhoto(bid.integerValue, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+        }
+        
+    }
+
 	
 	/* * *
 	* * * Function necessary for tableview
@@ -67,6 +82,8 @@ class BondsViewController: UITableViewController {
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedCell:")
 		cell.addGestureRecognizer(tapGestureRecognizer)
 		
+        
+        
 		cell.bondID = bondIDArray[indexPath.row]
 		AppData.bondLog("all items in bond array \(bondArray[indexPath.row])")
 		let name: String = UserAccountController.sharedInstance.currentUser.bonds.objectForKey(bondIDArray[indexPath.row]) as String
@@ -94,10 +111,6 @@ class BondsViewController: UITableViewController {
 		vc.nameLabel.text = senderCell.name
 		vc.name = senderCell.name
 		self.navigationController?.pushViewController(vc, animated: true)
-		
-		
-		
-		
 		
 		//self.presentViewController(vc, animated: YES, completion: nil)
 		

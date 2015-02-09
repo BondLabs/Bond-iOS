@@ -75,6 +75,7 @@ class BondTableCell: UITableViewCell {
     
     func getProfPic() -> UIImage {
         // Use this to get the profile picture for the bond
+        
         return UIImage(named: "Profile(i).png")!
     }
 
