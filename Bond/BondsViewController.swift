@@ -39,7 +39,8 @@ class BondsViewController: UITableViewController {
 		
 		// Customize view and navigation bar
 		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
+		//self.view.backgroundColor = UIColor.bl_backgroundColorColor()
+		self.view.backgroundColor = AppData.util.UIColorFromRGB(0xF1F1F1)
 		self.tableView.separatorColor = UIColor.bl_altoColor()
 		self.navigationItem.title = "Bonds"
 		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
@@ -90,6 +91,10 @@ class BondsViewController: UITableViewController {
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return bondArray.count
 	}
+
+	override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		return false
+	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("BondTableCell", forIndexPath: indexPath) as BondTableCell
@@ -97,7 +102,7 @@ class BondsViewController: UITableViewController {
 		cell.addGestureRecognizer(tapGestureRecognizer)
 		
         
-        
+
 		cell.bondID = bondIDArray[indexPath.row]
 		AppData.bondLog("all items in bond array \(bondArray[indexPath.row])")
 		let name: String = UserAccountController.sharedInstance.currentUser.bonds.objectForKey(bondIDArray[indexPath.row]) as String

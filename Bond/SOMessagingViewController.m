@@ -30,6 +30,8 @@
 
 #import "SOImageBrowserView.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "SLKTextView.h"
+
 
 #define kMessageMaxWidth 240.0f
 
@@ -72,10 +74,14 @@
     [self.view addSubview:self.tableView];
     
     self.inputView = [[SOMessageInputView alloc] init];
+
     self.inputView.delegate = self;
     self.inputView.tableView = self.tableView;
     [self.view addSubview:self.inputView];
     [self.inputView adjustPosition];
+
+		//SLKTextView *textView = [[SLKTextView alloc] initWithFrame:self.inputView.frame];
+		//[self.view addSubview:textView];
 }
 
 #pragma mark - View lifecicle

@@ -10,6 +10,17 @@
 		0201A8B61A7E07CF00D43347 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0201A8B51A7E07CE00D43347 /* MediaPlayer.framework */; };
 		0201A8B81A7E0C2100D43347 /* ChatContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8B71A7E0C2100D43347 /* ChatContentManager.swift */; };
 		0201A8C01A7E21DD00D43347 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 0201A8BF1A7E21DD00D43347 /* Message.m */; };
+		0202BAF21A886AC400925BA7 /* SLKTextView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAEC1A886AC400925BA7 /* SLKTextView+SLKAdditions.m */; };
+		0202BAF31A886AC400925BA7 /* UIScrollView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAEF1A886AC400925BA7 /* UIScrollView+SLKAdditions.m */; };
+		0202BAF41A886AC400925BA7 /* UIView+SLKAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAF11A886AC400925BA7 /* UIView+SLKAdditions.m */; };
+		0202BB001A886AD600925BA7 /* SLKInputAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAF71A886AD600925BA7 /* SLKInputAccessoryView.m */; };
+		0202BB011A886AD600925BA7 /* SLKTextInputbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAF91A886AD600925BA7 /* SLKTextInputbar.m */; };
+		0202BB021A886AD600925BA7 /* SLKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAFB1A886AD600925BA7 /* SLKTextView.m */; };
+		0202BB031A886AD600925BA7 /* SLKTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAFD1A886AD600925BA7 /* SLKTextViewController.m */; };
+		0202BB041A886AD600925BA7 /* SLKTypingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BAFF1A886AD600925BA7 /* SLKTypingIndicatorView.m */; };
+		0202BB091A886FB100925BA7 /* HPGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BB061A886FB000925BA7 /* HPGrowingTextView.m */; };
+		0202BB0A1A886FB100925BA7 /* HPTextViewInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BB081A886FB100925BA7 /* HPTextViewInternal.m */; };
+		0202BB0F1A88718100925BA7 /* AUIAutoGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0202BB0E1A88718100925BA7 /* AUIAutoGrowingTextView.m */; };
 		020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020322AA1A70CAEF000C85F4 /* UserAccountController.swift */; };
 		02192B6A1A87319C000F8D78 /* UIColor+BLColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 02192B691A87319C000F8D78 /* UIColor+BLColors.m */; };
 		023FF5C91A883B64008DF802 /* Load Screen i6p.png in Resources */ = {isa = PBXBuildFile; fileRef = 023FF5C81A883B64008DF802 /* Load Screen i6p.png */; };
@@ -232,6 +243,29 @@
 		0201A8B71A7E0C2100D43347 /* ChatContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatContentManager.swift; sourceTree = "<group>"; };
 		0201A8BE1A7E21DD00D43347 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		0201A8BF1A7E21DD00D43347 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		0202BAEB1A886AC400925BA7 /* SLKTextView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SLKTextView+SLKAdditions.h"; sourceTree = "<group>"; };
+		0202BAEC1A886AC400925BA7 /* SLKTextView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SLKTextView+SLKAdditions.m"; sourceTree = "<group>"; };
+		0202BAED1A886AC400925BA7 /* SLKUIConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKUIConstants.h; sourceTree = "<group>"; };
+		0202BAEE1A886AC400925BA7 /* UIScrollView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SLKAdditions.h"; sourceTree = "<group>"; };
+		0202BAEF1A886AC400925BA7 /* UIScrollView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SLKAdditions.m"; sourceTree = "<group>"; };
+		0202BAF01A886AC400925BA7 /* UIView+SLKAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SLKAdditions.h"; sourceTree = "<group>"; };
+		0202BAF11A886AC400925BA7 /* UIView+SLKAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SLKAdditions.m"; sourceTree = "<group>"; };
+		0202BAF61A886AD600925BA7 /* SLKInputAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKInputAccessoryView.h; sourceTree = "<group>"; };
+		0202BAF71A886AD600925BA7 /* SLKInputAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKInputAccessoryView.m; sourceTree = "<group>"; };
+		0202BAF81A886AD600925BA7 /* SLKTextInputbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextInputbar.h; sourceTree = "<group>"; };
+		0202BAF91A886AD600925BA7 /* SLKTextInputbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextInputbar.m; sourceTree = "<group>"; };
+		0202BAFA1A886AD600925BA7 /* SLKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextView.h; sourceTree = "<group>"; };
+		0202BAFB1A886AD600925BA7 /* SLKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextView.m; sourceTree = "<group>"; };
+		0202BAFC1A886AD600925BA7 /* SLKTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTextViewController.h; sourceTree = "<group>"; };
+		0202BAFD1A886AD600925BA7 /* SLKTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTextViewController.m; sourceTree = "<group>"; };
+		0202BAFE1A886AD600925BA7 /* SLKTypingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLKTypingIndicatorView.h; sourceTree = "<group>"; };
+		0202BAFF1A886AD600925BA7 /* SLKTypingIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLKTypingIndicatorView.m; sourceTree = "<group>"; };
+		0202BB051A886FB000925BA7 /* HPGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPGrowingTextView.h; sourceTree = "<group>"; };
+		0202BB061A886FB000925BA7 /* HPGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPGrowingTextView.m; sourceTree = "<group>"; };
+		0202BB071A886FB100925BA7 /* HPTextViewInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPTextViewInternal.h; sourceTree = "<group>"; };
+		0202BB081A886FB100925BA7 /* HPTextViewInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPTextViewInternal.m; sourceTree = "<group>"; };
+		0202BB0D1A88718100925BA7 /* AUIAutoGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUIAutoGrowingTextView.h; sourceTree = "<group>"; };
+		0202BB0E1A88718100925BA7 /* AUIAutoGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUIAutoGrowingTextView.m; sourceTree = "<group>"; };
 		020322AA1A70CAEF000C85F4 /* UserAccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountController.swift; sourceTree = "<group>"; };
 		02192B681A87319C000F8D78 /* UIColor+BLColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BLColors.h"; sourceTree = "<group>"; };
 		02192B691A87319C000F8D78 /* UIColor+BLColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BLColors.m"; sourceTree = "<group>"; };
@@ -497,6 +531,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0202BAF51A886AC900925BA7 /* Slack */ = {
+			isa = PBXGroup;
+			children = (
+				0202BAEB1A886AC400925BA7 /* SLKTextView+SLKAdditions.h */,
+				0202BAEC1A886AC400925BA7 /* SLKTextView+SLKAdditions.m */,
+				0202BAED1A886AC400925BA7 /* SLKUIConstants.h */,
+				0202BAEE1A886AC400925BA7 /* UIScrollView+SLKAdditions.h */,
+				0202BAEF1A886AC400925BA7 /* UIScrollView+SLKAdditions.m */,
+				0202BAF61A886AD600925BA7 /* SLKInputAccessoryView.h */,
+				0202BAF71A886AD600925BA7 /* SLKInputAccessoryView.m */,
+				0202BAF81A886AD600925BA7 /* SLKTextInputbar.h */,
+				0202BAF91A886AD600925BA7 /* SLKTextInputbar.m */,
+				0202BAFA1A886AD600925BA7 /* SLKTextView.h */,
+				0202BAFB1A886AD600925BA7 /* SLKTextView.m */,
+				0202BAFC1A886AD600925BA7 /* SLKTextViewController.h */,
+				0202BAFD1A886AD600925BA7 /* SLKTextViewController.m */,
+				0202BAFE1A886AD600925BA7 /* SLKTypingIndicatorView.h */,
+				0202BAFF1A886AD600925BA7 /* SLKTypingIndicatorView.m */,
+				0202BAF01A886AC400925BA7 /* UIView+SLKAdditions.h */,
+				0202BAF11A886AC400925BA7 /* UIView+SLKAdditions.m */,
+			);
+			name = Slack;
+			sourceTree = "<group>";
+		};
+		0202BB0B1A886FB500925BA7 /* HPText */ = {
+			isa = PBXGroup;
+			children = (
+				0202BB051A886FB000925BA7 /* HPGrowingTextView.h */,
+				0202BB061A886FB000925BA7 /* HPGrowingTextView.m */,
+				0202BB071A886FB100925BA7 /* HPTextViewInternal.h */,
+				0202BB081A886FB100925BA7 /* HPTextViewInternal.m */,
+			);
+			name = HPText;
+			sourceTree = "<group>";
+		};
+		0202BB0C1A88718100925BA7 /* AutoGrowingTextView */ = {
+			isa = PBXGroup;
+			children = (
+				0202BB0D1A88718100925BA7 /* AUIAutoGrowingTextView.h */,
+				0202BB0E1A88718100925BA7 /* AUIAutoGrowingTextView.m */,
+			);
+			path = AutoGrowingTextView;
+			sourceTree = "<group>";
+		};
 		020322AC1A70CAFC000C85F4 /* User Account Stuff */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +641,9 @@
 		75F147EA1A8616EE00C90500 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0202BB0C1A88718100925BA7 /* AutoGrowingTextView */,
+				0202BB0B1A886FB500925BA7 /* HPText */,
+				0202BAF51A886AC900925BA7 /* Slack */,
 				02192B6B1A8731A6000F8D78 /* UIColor */,
 				02657FAD1A86CFBF008029F5 /* Keychain */,
 				75F148391A861AE200C90500 /* MBProgressHUD */,
@@ -1234,12 +1315,19 @@
 				755F35F01A7E30E90065EDE0 /* Tour_StartViewController.swift in Sources */,
 				E98BE8F21A60979C00BEC452 /* CustomSegmentedButton.swift in Sources */,
 				75F1481C1A86178000C90500 /* SOMessagingViewController.m in Sources */,
+				0202BB0A1A886FB100925BA7 /* HPTextViewInternal.m in Sources */,
+				0202BB011A886AD600925BA7 /* SLKTextInputbar.m in Sources */,
+				0202BAF31A886AC400925BA7 /* UIScrollView+SLKAdditions.m in Sources */,
+				0202BAF41A886AC400925BA7 /* UIView+SLKAdditions.m in Sources */,
 				020322AB1A70CAEF000C85F4 /* UserAccountController.swift in Sources */,
 				02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */,
 				E934FDA31A4847CF00E43B45 /* LoginViewController.swift in Sources */,
+				0202BB001A886AD600925BA7 /* SLKInputAccessoryView.m in Sources */,
 				E9EDF96A1A62A71D004A9446 /* MaskView.swift in Sources */,
+				0202BB0F1A88718100925BA7 /* AUIAutoGrowingTextView.m in Sources */,
 				0201A8C01A7E21DD00D43347 /* Message.m in Sources */,
 				75F1480D1A86178000C90500 /* NSString+Calculation.m in Sources */,
+				0202BB041A886AD600925BA7 /* SLKTypingIndicatorView.m in Sources */,
 				75F1480C1A86178000C90500 /* GmailLikeLoadingView.m in Sources */,
 				0201A8B81A7E0C2100D43347 /* ChatContentManager.swift in Sources */,
 				02E6D5331A86D9880022FD50 /* AutoLogInViewController.swift in Sources */,
@@ -1254,6 +1342,7 @@
 				E9CC5A751A600AA300CB7912 /* AgeGenderViewController.swift in Sources */,
 				75F1482A1A86179D00C90500 /* NSURLConnection+AsyncBlocks.m in Sources */,
 				75F1482D1A86179D00C90500 /* UILabel+WhiteUIDatePickerLabels.m in Sources */,
+				0202BB091A886FB100925BA7 /* HPGrowingTextView.m in Sources */,
 				75F1481E1A86178000C90500 /* UINavigationController+Rotation.m in Sources */,
 				0277FA7F1A74C3EE000FC661 /* BondUser.swift in Sources */,
 				755F35EC1A7E30E90065EDE0 /* Tour_PeopleViewController.swift in Sources */,
@@ -1261,6 +1350,7 @@
 				E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */,
 				E999839B1A53A20000EDB8F3 /* BondsViewController.swift in Sources */,
 				75F148291A86179D00C90500 /* MBProgressHUD.m in Sources */,
+				0202BB031A886AD600925BA7 /* SLKTextViewController.m in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
 				75F148181A86178000C90500 /* SOImageBrowserView.m in Sources */,
 				752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */,
@@ -1281,6 +1371,8 @@
 				75F1481B1A86178000C90500 /* SOMessageTextView.m in Sources */,
 				023FF5CD1A883DDE008DF802 /* PushNoAnimationSegue.swift in Sources */,
 				755F35EA1A7E30E90065EDE0 /* TourViewController.swift in Sources */,
+				0202BAF21A886AC400925BA7 /* SLKTextView+SLKAdditions.m in Sources */,
+				0202BB021A886AD600925BA7 /* SLKTextView.m in Sources */,
 				E93C44451A4D038F00E95265 /* TraitsViewController.swift in Sources */,
 				E96956E41A586C7F001D2308 /* AppData.swift in Sources */,
 				E9E5C5491A6B463A00BE9B2B /* TraitArrayViewController.swift in Sources */,

@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController {
 		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
         self.navigationItem.title = "You"
 		signOutButton = UIBarButtonItem(title: "Log Out", style: UIBarButtonItemStyle.Plain, target: self, action: "tappedButton:")
+		signOutButton.width = 100
 
 		signOutButton.tintColor = UIColor.whiteColor()
 		self.navigationItem.rightBarButtonItem = signOutButton
