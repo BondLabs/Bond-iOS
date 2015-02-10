@@ -15,6 +15,12 @@ struct bondColors {
     static let color4 = AppData.util.UIColorFromRGB(0x00a4ff)
 }
 
+enum barButtonType {
+	case Title
+	case button_big
+	case button_small
+}
+
 func bondLog(x: AnyObject) {
     NSLog("\(x)")
 }
