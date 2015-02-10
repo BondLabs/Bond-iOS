@@ -155,11 +155,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 	}
 	
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-		if countElements(string) > 10 {
-			return false
-		} else {
-			return true
-		}
+		return range.location + range.length < 10
 	}
 
     func showButton() {
