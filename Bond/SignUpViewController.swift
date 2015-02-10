@@ -176,6 +176,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
 		}
 	}
+	
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		if string.utf16count > 10 {
+			return false
+		}
+	}
     
     // Capture taps on nextButton
     @IBAction func nextButtonTapped(sender: UIButton) {

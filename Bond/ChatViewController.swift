@@ -18,6 +18,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     var partnerImage: UIImage!
     var dataSource: NSMutableArray!
     var tableViewHeaderView: UIView!
+	var noChatsView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +64,19 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         self.inputView.delegate = self
         self.inputView.tableView = self.tableView
         self.inputView.adjustPosition()
+		
+		// Add no chats yet if no chats
+		if self.dataSource.count == 0 {
+			if self.noChatsView == nil {
+				var noChatsImage = UIImage(named: "No Chat Image.png")!
+				noChatsImage = AppData.util.scaleImage(noChatsImage, size: noChatsImage.size, scale: 0.5)
+				noChatsView = UIImageView()
+				noChatsView.image = noChatsImage
+				noChatsView.sizeToFit()
+				noChatsView.center = CGPointMake(self.view.frame.width / 2, 250)
+			}
+			self.view.addSubview(noChatsView)
+		}
     }
     
     func tappedName(sender: UIGestureRecognizer) {
@@ -175,6 +189,8 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         msg.fromMe = YES
         
         self.sendMessage(msg)
+		
+		self.noChatsView.removeFromSuperview()
     }
     
 }

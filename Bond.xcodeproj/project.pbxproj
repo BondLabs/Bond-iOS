@@ -47,6 +47,8 @@
 		755F35F91A7E310D0065EDE0 /* Tour_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 755F35F41A7E310D0065EDE0 /* Tour_3.png */; };
 		755F35FA1A7E310D0065EDE0 /* Tour_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 755F35F51A7E310D0065EDE0 /* Tour_4.png */; };
 		755F35FB1A7E310D0065EDE0 /* Tour_5.png in Resources */ = {isa = PBXBuildFile; fileRef = 755F35F61A7E310D0065EDE0 /* Tour_5.png */; };
+		75603EC31A89D27E00500943 /* CustomTactileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603EC21A89D27E00500943 /* CustomTactileButton.swift */; };
+		756065651A8868AB00BBE792 /* No Chat Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 756065641A8868AB00BBE792 /* No Chat Image.png */; };
 		756645A81A7F7319009F8789 /* CustomBLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756645A71A7F7319009F8789 /* CustomBLE.swift */; };
 		758E50201A85485600881BAE /* LocationPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758E501F1A85485600881BAE /* LocationPermissionViewController.swift */; };
 		75A9A1CE1A87923D00F02EF1 /* No Bonds Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */; };
@@ -260,6 +262,8 @@
 		755F35F41A7E310D0065EDE0 /* Tour_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tour_3.png; sourceTree = "<group>"; };
 		755F35F51A7E310D0065EDE0 /* Tour_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tour_4.png; sourceTree = "<group>"; };
 		755F35F61A7E310D0065EDE0 /* Tour_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tour_5.png; sourceTree = "<group>"; };
+		75603EC21A89D27E00500943 /* CustomTactileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTactileButton.swift; sourceTree = "<group>"; };
+		756065641A8868AB00BBE792 /* No Chat Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "No Chat Image.png"; sourceTree = "<group>"; };
 		756645A71A7F7319009F8789 /* CustomBLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBLE.swift; sourceTree = "<group>"; };
 		758E501F1A85485600881BAE /* LocationPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionViewController.swift; sourceTree = "<group>"; };
 		75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "No Bonds Image.png"; sourceTree = "<group>"; };
@@ -560,9 +564,19 @@
 			name = Tour;
 			sourceTree = "<group>";
 		};
+		75603EC11A89D25A00500943 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				E98BE8F11A60979C00BEC452 /* CustomSegmentedButton.swift */,
+				75603EC21A89D27E00500943 /* CustomTactileButton.swift */,
+			);
+			name = UIButton;
+			sourceTree = "<group>";
+		};
 		75F147EA1A8616EE00C90500 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				75603EC11A89D25A00500943 /* UIButton */,
 				02192B6B1A8731A6000F8D78 /* UIColor */,
 				02657FAD1A86CFBF008029F5 /* Keychain */,
 				75F148391A861AE200C90500 /* MBProgressHUD */,
@@ -913,7 +927,6 @@
 			isa = PBXGroup;
 			children = (
 				E9CC5A741A600AA300CB7912 /* AgeGenderViewController.swift */,
-				E98BE8F11A60979C00BEC452 /* CustomSegmentedButton.swift */,
 			);
 			name = Gender/Relationship/Age;
 			sourceTree = "<group>";
@@ -922,6 +935,7 @@
 			isa = PBXGroup;
 			children = (
 				75A9A1CD1A87923D00F02EF1 /* No Bonds Image.png */,
+				756065641A8868AB00BBE792 /* No Chat Image.png */,
 				752326951A848D4F00BD3E93 /* ChatBubble.png */,
 				755F35F21A7E310D0065EDE0 /* Tour_1.png */,
 				755F35F31A7E310D0065EDE0 /* Tour_2.png */,
@@ -1134,6 +1148,7 @@
 				E93EC80D1A6934A800C03170 /* Creative (i).png in Resources */,
 				75F1480E1A86178000C90500 /* attachment.png in Resources */,
 				E934FD971A48282100E43B45 /* bg.png in Resources */,
+				756065651A8868AB00BBE792 /* No Chat Image.png in Resources */,
 				E93EC84D1A6934A800C03170 /* Studious (i).png in Resources */,
 				E9857EDD1A512AA40095EA76 /* Profile(a).png in Resources */,
 				E93EC8531A6934A800C03170 /* Traditional (i).png in Resources */,
@@ -1266,6 +1281,7 @@
 				752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */,
 				02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */,
 				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
+				75603EC31A89D27E00500943 /* CustomTactileButton.swift in Sources */,
 				75F1482B1A86179D00C90500 /* NSURLConnection+Blocks.m in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
 				E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */,

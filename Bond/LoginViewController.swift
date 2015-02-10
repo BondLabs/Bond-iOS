@@ -153,6 +153,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		}
 		textField.textColor = UIColor.bl_silverChaliceColor()
 	}
+	
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		if string.utf16count > 10 {
+			return false
+		}
+	}
 
     func showButton() {
         // If Login button is already showing, animate reshow

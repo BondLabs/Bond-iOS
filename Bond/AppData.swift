@@ -89,6 +89,16 @@ class AppData {
 				alpha: CGFloat(alphaValue)
 			)
 		}
+		
+		static func UIImageFromColor(color: UIColor) -> UIImage {
+			UIGraphicsBeginImageContext(CGSizeMake(1, 1))
+			color.setFill()
+			var context = UIGraphicsGetCurrentContext()
+			CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
+			var image = UIGraphicsGetImageFromCurrentImageContext()
+			UIGraphicsEndImageContext()
+			return image
+		}
 
 		static func scaleImage(image: UIImage, size: CGSize, scale: CGFloat) -> UIImage {
 			var smallSize = CGSizeMake(size.width * scale, size.height * scale)
