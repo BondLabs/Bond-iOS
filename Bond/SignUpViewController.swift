@@ -178,8 +178,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 	}
 	
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-		if string.utf16count > 10 {
+		if countElements(string) > 10 {
 			return false
+		} else {
+			return true
 		}
 	}
     
