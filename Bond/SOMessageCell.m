@@ -229,17 +229,6 @@ static BOOL cellIsDragging;
     
     self.containerView.autoresizingMask = self.message.fromMe ? UIViewAutoresizingFlexibleLeftMargin : UIViewAutoresizingFlexibleRightMargin;
     initialTimeLabelPosX = self.timeLabel.frame.origin.x;
-/* 
---  Not implemented ---
-    else if (self.message.type & (SOMessageTypePhoto | SOMessageTypeText)) {
-        self.textView.hidden = NO;
-        self.mediaImageView.hidden = NO;
-    } else if (self.message.type & (SOMessageTypeVideo | SOMessageTypeText)) {
-        self.textView.hidden = NO;
-        self.mediaImageView.hidden = NO;
-    }
-*/
-    
 }
 
 - (void)adjustForTextOnly
@@ -282,7 +271,6 @@ static BOOL cellIsDragging;
     frame.origin.x += self.contentInsets.left - self.contentInsets.right;
     
     self.textView.frame = CGRectOffset(frame, 0, 40);
-
     
     CGRect userRect = self.userImageView.frame;
     
@@ -299,8 +287,6 @@ static BOOL cellIsDragging;
     self.textView.editable = NO;
     self.textView.scrollEnabled = NO;
     self.textView.dataDetectorTypes = UIDataDetectorTypeLink | UIDataDetectorTypePhoneNumber;
-    
-
     
     if (self.userImageView.autoresizingMask & UIViewAutoresizingFlexibleTopMargin) {
         userRect.origin.y = balloonFrame.origin.y + balloonFrame.size.height - userRect.size.height;

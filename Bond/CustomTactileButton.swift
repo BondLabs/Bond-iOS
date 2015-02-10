@@ -33,17 +33,14 @@ class CustomTactileButton: UIButton {
 	func setNormal(background: UIColor, text: UIColor) {
 		self.normalBgColor = background
 		self.normalTxtColor = text
-		self.backgroundColor = UIColor.clearColor()
-		self.setBackgroundImage(AppData.util.UIImageFromColor(background), forState: UIControlState.Normal)
+		self.backgroundColor = background
 		self.setTitleColor(text, forState: UIControlState.Normal)
 	}
 	
 	func setTapped(background: UIColor, text: UIColor) {
 		self.tappedBgColor = background
 		self.tappedTxtColor = text
-		self.backgroundColor = UIColor.clearColor()
-		self.setBackgroundImage(AppData.util.UIImageFromColor(background), forState: UIControlState.Normal)
-		self.setTitleColor(text, forState: UIControlState.Normal)
+		self.hasTactileFeedback = true
 	}
 	
 }

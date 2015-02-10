@@ -16,7 +16,7 @@ struct bondColors {
 }
 
 func bondLog(x: AnyObject) {
-    NSLog("\(x)")
+    //NSLog("\(x)")
 }
 
 func kevinLog(x: AnyObject) {

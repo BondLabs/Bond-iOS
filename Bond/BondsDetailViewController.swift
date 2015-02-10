@@ -14,6 +14,7 @@ class BondsDetailViewController: UIViewController {
 	var userID:Int!
 	var name:String!
 	// Store view elements
+	var scrollView: UIScrollView!
 	var nameLabel: UILabel!
 	var distLabel: UILabel!
 	var profImage: CircleImageView!
@@ -42,8 +43,12 @@ class BondsDetailViewController: UIViewController {
 		ViewManager.sharedInstance.currentViewController = self
 		
 		// Set up view properties
+		self.scrollView = UIScrollView()
+		self.scrollView.frame = self.view.bounds
+		self.view.addSubview(scrollView)
+		self.scrollView.contentSize = CGSizeMake(self.view.frame.width, self.view.frame.height * 3)
 		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-		self.view.backgroundColor = UIColor.bl_backgroundColorColor()
+		self.scrollView.backgroundColor = UIColor.bl_backgroundColorColor()
 		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
 		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
 		self.navigationController?.navigationBar.translucent = false
@@ -59,7 +64,7 @@ class BondsDetailViewController: UIViewController {
 		subBG.layer.borderColor = UIColor.bl_altoColor().CGColor
 		subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
 		subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
-		self.view.addSubview(subBG)
+		self.scrollView.addSubview(subBG)
 		
 		// Set up profile view for user using id
 		self.setup(id)
@@ -79,12 +84,12 @@ class BondsDetailViewController: UIViewController {
 		// Add a name label
 		nameLabel = UILabel()
 		nameLabel.text = name
-		//nameLabel.textColor = UIColor.whiteColor()
 		nameLabel.textColor = UIColor.bl_doveGrayColor()
 		nameLabel.font = UIFont(name: "Helvetica-Bold", size: 24.0)
-		nameLabel.sizeToFit()
+		nameLabel.frame.size = CGSizeMake(self.view.frame.width, 40)
+		nameLabel.textAlignment = NSTextAlignment.Center
 		nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
-		self.view.addSubview(nameLabel)
+		self.scrollView.addSubview(nameLabel)
 		
 		// Add profile picture
 		profImage = CircleImageView()
@@ -95,7 +100,7 @@ class BondsDetailViewController: UIViewController {
 		//profImage.layer.borderColor = UIColor.blackColor().CGColor
 		profImage.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
 		profImage.layer.borderWidth = 1.0
-		self.view.addSubview(profImage)
+		self.scrollView.addSubview(profImage)
 		
 		let chatButton = UIButton()
 		chatButton.frame.size = CGSize(width: 160.0, height: 40.0)
@@ -114,7 +119,7 @@ class BondsDetailViewController: UIViewController {
 			var xfac:Float = (Float(i) + 0.5) / Float(activityCount)
 			actView.center = CGPointMake(self.view.frame.width * CGFloat(xfac), self.view.frame.height * 3 / 5)
 			actView.addGestureRecognizer(tapGestureRecognizer)
-			self.view.addSubview(actView)
+			self.scrollView.addSubview(actView)
 		}
 		
 	}

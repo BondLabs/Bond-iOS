@@ -99,14 +99,16 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     override func configureMessageCell(cell: SOMessageCell, forMessageAtIndex index: Int) {
         let message:Message = self.dataSource[index] as Message
 		
-		cell.layer.borderColor = UIColor.greenColor().CGColor
-		cell.layer.borderWidth = 1
+		println(message.text)
 		
         if message.fromMe {
 			cell.textView.textAlignment = NSTextAlignment.Right
 			if index == 0  || (index != 0 && !(self.dataSource[index - 1] as Message).fromMe) {
-				cell.userNameLabel.text = UserAccountController.sharedInstance.currentUser.name as? String
-				cell.userNameLabel.frame = CGRectMake(0, -30, 200, 100)
+				cell.userNameLabel.text = (split(UserAccountController.sharedInstance.currentUser.name as String) {$0 == " "})[0]
+				cell.userNameLabel.sizeToFit()
+				cell.userNameLabel.font = UIFont(name: "Avenir-Heavy", size: 18.0)
+				cell.userNameLabel.frame.size = CGSizeMake(self.view.frame.width - 20, cell.userNameLabel.frame.size.height)
+				cell.userNameLabel.frame.origin = CGPointMake(-60, 10)
 				cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
 				cell.userNameLabel.textAlignment = NSTextAlignment.Right
 				cell.textView.textAlignment = NSTextAlignment.Right
@@ -115,8 +117,11 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		} else {
 			cell.textView.textAlignment = NSTextAlignment.Left
 			if index == 0 || (index != 0 && (self.dataSource[index - 1] as Message).fromMe) {
-				cell.userNameLabel.text = barTitle
-				cell.userNameLabel.frame = CGRectMake(10, -30, 200, 100)
+				cell.userNameLabel.text = (split(barTitle) {$0 == " "})[0]
+				cell.userNameLabel.sizeToFit()
+				cell.userNameLabel.font = UIFont(name: "Avenir-Heavy", size: 18.0)
+				cell.userNameLabel.frame.size = CGSizeMake(self.view.frame.width - 20, cell.userNameLabel.frame.size.height)
+				cell.userNameLabel.frame.origin = CGPointMake(10, 10)
 				cell.userNameLabel.textColor = UIColor(red: 189/255, green: 16/255, blue: 244/255, alpha: 1)
 				cell.userNameLabel.textAlignment = NSTextAlignment.Left
 				cell.frame.size = CGSizeMake(cell.frame.size.width, cell.frame.size.height + 40)
