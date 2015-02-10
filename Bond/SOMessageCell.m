@@ -54,10 +54,10 @@ static BOOL cellIsDragging;
 
 + (void)setDefaultConfigs
 {
-    messageTopMargin = 9;
-    messageBottomMargin = 9;
-    messageLeftMargin = 15;
-    messageRightMargin = 15;
+    messageTopMargin = 5;
+    messageBottomMargin = 5;
+    messageLeftMargin = 10;
+    messageRightMargin = 10;
     
     contentOffsetX = 0;
     maxContentOffsetX = 50;
@@ -497,25 +497,22 @@ static BOOL cellIsDragging;
         
         if (pan.state == UIGestureRecognizerStateEnded || pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateFailed) {
             cellIsDragging = NO;
-            [UIView animateWithDuration:0.25 animations:^{
-                [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-                for (SOMessageCell *cell in visibleCells) {
-                    
-                    contentOffsetX = 0;
-                    CGRect frame = cell.contentView.frame;
-                    frame.origin.x = contentOffsetX;
-                    cell.contentView.frame = frame;
-                    
-                    if (!cell.message.fromMe) {
-                        CGRect timeframe = cell.timeLabel.frame;
-                        timeframe.origin.x = initialTimeLabelPosX;
-                        cell.timeLabel.frame = timeframe;
-                    }
-                }
-            }];
+			for (SOMessageCell *cell in visibleCells) {
+				
+				contentOffsetX = 0;
+				CGRect frame = cell.contentView.frame;
+				frame.origin.x = contentOffsetX;
+				cell.contentView.frame = frame;
+				
+				if (!cell.message.fromMe) {
+					CGRect timeframe = cell.timeLabel.frame;
+					timeframe.origin.x = initialTimeLabelPosX;
+					cell.timeLabel.frame = timeframe;
+				}
+			}
         } else {
             cellIsDragging = YES;
-            
+			
             CGPoint translation = [pan translationInView:pan.view];
             CGFloat delta = translation.x * (1 - fabs(contentOffsetX / maxContentOffsetX));
             contentOffsetX += delta;

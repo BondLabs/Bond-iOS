@@ -77,8 +77,14 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 			}
 			self.view.addSubview(noChatsView)
 		}
+		
+		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
     }
-    
+	
+	override func prefersStatusBarHidden() -> Bool {
+		return true
+	}
+	
     func tappedName(sender: UIGestureRecognizer) {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }

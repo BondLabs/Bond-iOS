@@ -79,18 +79,12 @@ void bondLog(id x) {
 
 - (void)setup
 {
-		//self.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(193/255.0) blue:(255/255.0) alpha:0.2];
-	UIBlurEffect *blurEffect;
-
-	blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-
+	UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
 	self.tintView = [[UIView alloc] initWithFrame:self.frame];
 	self.tintView.backgroundColor = [UIColor colorWithRed:(0/255.0) green:(164/255.0) blue:(255/255.0) alpha:0.5];
-
 	self.blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
 	self.blurView.frame = self.bounds;
 	[self.blurView.contentView addSubview:self.tintView];
-
 	[self addSubview:self.blurView];
     
     self.textView = [[SOPlaceholderedTextView alloc] init];
@@ -100,6 +94,7 @@ void bondLog(id x) {
     self.textView.backgroundColor = [UIColor clearColor];
     self.textView.textContainer.lineFragmentPadding = 0;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	self.textView.placeholderText = NSLocalizedString(@"Type message...", nil);
     inputAccessoryForFindingKeyboard = [[UIView alloc] initWithFrame:CGRectZero];
     self.textView.inputAccessoryView = inputAccessoryForFindingKeyboard;
     [self adjustTextViewSize];
@@ -111,6 +106,8 @@ void bondLog(id x) {
     [self.sendButton setTitleColor:[UIColor colorWithRed:0.0 green:65.0/255.0 blue:136.0/255.0 alpha:1.0]
                           forState:UIControlStateHighlighted];
     self.sendButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+	[self.sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
+	self.sendButton.frame = CGRectMake(0, 0, 70, self.textInitialHeight);
     [self.sendButton addTarget:self action:@selector(sendTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.sendButton];
 
@@ -118,10 +115,6 @@ void bondLog(id x) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillShowNote:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHideNote:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOrientationDidChandeNote:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-    
-    self.textView.placeholderText = NSLocalizedString(@"Type message...", nil);
-    [self.sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
-    self.sendButton.frame = CGRectMake(0, 0, 70, self.textInitialHeight);
     
     [self adjustInputView];
 }
@@ -293,12 +286,8 @@ void bondLog(id x) {
 		self.tintView.frame = self.bounds;
 	}];
 
-
-
 	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);
 	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
-
-
 
 }
 
@@ -555,7 +544,7 @@ void bondLog(id x) {
     
     [self.textView resignFirstResponder];
     
-    [UIView commitAnimations];
+	[UIView commitAnimations];
 }
 
 #pragma mark - 
