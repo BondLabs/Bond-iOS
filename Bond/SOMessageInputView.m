@@ -30,6 +30,8 @@ void bondLog(id x) {
 #import "SOMessageInputView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UINavigationController+Rotation.h"
+#import "SLKTextView.h"
+#import "AutoGrowingTextView/AUIAutoGrowingTextView.h"
 
 @interface SOMessageInputView() <UITextViewDelegate, UIGestureRecognizerDelegate>
 {
@@ -87,14 +89,15 @@ void bondLog(id x) {
 	[self.blurView.contentView addSubview:self.tintView];
 	[self addSubview:self.blurView];
     
-    self.textView = [[SOPlaceholderedTextView alloc] init];
+		//self.textView = [[SOPlaceholderedTextView alloc] init];
+	self.textView = [[AUIAutoGrowingTextView alloc] init];
     self.textView.textColor = [UIColor whiteColor];
     self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:16.0];
     self.textView.delegate = self;
     self.textView.backgroundColor = [UIColor clearColor];
     self.textView.textContainer.lineFragmentPadding = 0;
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	self.textView.placeholderText = NSLocalizedString(@"Type message...", nil);
+	//self.textView.placeholderText = NSLocalizedString(@"Type message...", nil);
     inputAccessoryForFindingKeyboard = [[UIView alloc] initWithFrame:CGRectZero];
     self.textView.inputAccessoryView = inputAccessoryForFindingKeyboard;
     [self adjustTextViewSize];
@@ -115,7 +118,10 @@ void bondLog(id x) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillShowNote:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHideNote:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOrientationDidChandeNote:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-    
+	
+    [self.sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
+    self.sendButton.frame = CGRectMake(0, 0, 70, self.textInitialHeight);
+	
     [self adjustInputView];
 }
 
@@ -270,7 +276,7 @@ void bondLog(id x) {
 - (void)textViewDidChange:(UITextView *)textView
 {
 		//[self adjustTextViewSize];
-	CGRect frame = textView.frame;
+	CGRect frame = self.textView.frame;
 	frame.size.height = textView.contentSize.height;
 	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
 
@@ -279,9 +285,11 @@ void bondLog(id x) {
 	[UIView animateWithDuration:0.1 animations:^ {
 		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, self.frame.size.height);
 		[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
-		self.contentMode = UIViewContentModeCenter;
-		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
-		self.textView.frame = self.bounds;
+			//self.contentMode = UIViewContentModeCenter;
+			self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+
+
+			//self.textView.frame = self.bounds;
 		self.blurView.frame = self.bounds;
 		self.tintView.frame = self.bounds;
 	}];

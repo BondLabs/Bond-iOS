@@ -34,7 +34,7 @@
 @property (weak, nonatomic) UITableView *tableView;
 
 #pragma mark - Properties
-@property (strong, nonatomic) SOPlaceholderedTextView *textView;
+@property (strong, nonatomic) UITextView *textView;
 @property (strong, nonatomic) UIButton *sendButton;
 
 @property (strong, nonatomic) UIView *separatorView;
