@@ -104,7 +104,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 	}
 	
     func tappedName(sender: UIGestureRecognizer) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func loadMessages () {
