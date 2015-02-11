@@ -91,7 +91,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 
 			if UserAccountController.sharedInstance.currentUser != nil {
 
-			bondLog(UserAccountController.sharedInstance.currentUser.authKey)
+				bondLog(UserAccountController.sharedInstance.currentUser.authKey)
 				bondLog(UserAccountController.sharedInstance.currentUser.userID)
 
 				UserAccountController.sharedInstance.sendCustomRequestWithBlocks(NSString(format: "id=%d&list=%@", UserAccountController.sharedInstance.currentUser.userID, self.beaconListToString()), header: (UserAccountController.sharedInstance.currentUser.authKey, "X-AUTH-KEY"), URL: "http://api.bond.sh/api/list", HTTProtocol: "POST",
@@ -145,7 +145,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 		if (ViewManager.sharedInstance.currentViewController is LocationPermissionViewController) {
 			(ViewManager.sharedInstance.currentViewController as LocationPermissionViewController).presentNextController()
 		}
-		
+
 		if central.state != CBCentralManagerState.PoweredOn {
 			println("Central manager scanner off")
 			central.stopScan()
