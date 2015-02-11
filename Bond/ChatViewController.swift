@@ -115,15 +115,41 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         return self.dataSource
     }
     
-    override func heightForMessageForIndex(index: Int) -> CGFloat {
-        var height = super.heightForMessageForIndex(index)
-        return height
-    }
+	override func heightForMessageForIndex(index: Int) -> CGFloat {
+		var height = super.heightForMessageForIndex(index)
+
+		let message: Message = self.messages()[index] as Message
+		let shouldBeMessageHeight = AppData.util.getHeightForText(message.text, font: self.messageFont(), size: CGSizeMake(self.messageMaxWidth(), CGFloat.max))
+		let fromMeThingLast = (message.fromMe) && (index == self.dataSource.count - 1  || (index != 0 && !(self.dataSource[index + 1] as Message).fromMe))
+		let notFromMeThingLast = (!message.fromMe) && (index == self.dataSource.count - 1 || (index != 0 && (self.dataSource[index + 1] as Message).fromMe))
+
+		if height > shouldBeMessageHeight.height {
+
+			if fromMeThingLast || notFromMeThingLast {
+				return (shouldBeMessageHeight.height + 40)
+			}
+			else {
+				return (shouldBeMessageHeight.height + 10)
+			}
+		}
+		else {
+
+			if fromMeThingLast || notFromMeThingLast {
+				return height + 40
+			}
+			else {
+				return height - 10
+			}
+		}
+	}
     
     override func configureMessageCell(cell: SOMessageCell, forMessageAtIndex index: Int) {
         let message:Message = self.dataSource[index] as Message
 		
 		println(message.text)
+
+		let nameSize = AppData.util.getWidthForText((split(UserAccountController.sharedInstance.currentUser.name as String) {$0 == " "})[0], font: UIFont(name: "Avenir-Heavy", size: 18.0)!, size: CGSizeMake(CGFloat.max, cell.frame.size.height))
+		bryceLog("\(nameSize)")
 		
         if message.fromMe {
 			cell.textView.textAlignment = NSTextAlignment.Right
@@ -132,7 +158,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 				cell.userNameLabel.sizeToFit()
 				cell.userNameLabel.font = UIFont(name: "Avenir-Heavy", size: 18.0)
 				cell.userNameLabel.frame.size = CGSizeMake(self.view.frame.width - 20, cell.userNameLabel.frame.size.height)
-				cell.userNameLabel.frame.origin = CGPointMake(-60, 10)
+				cell.userNameLabel.frame.origin = CGPointMake(-(nameSize.width + 65), 10)
 				cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
 				cell.userNameLabel.textAlignment = NSTextAlignment.Right
 				cell.textView.textAlignment = NSTextAlignment.Right

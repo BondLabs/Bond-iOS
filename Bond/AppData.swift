@@ -131,6 +131,30 @@ class AppData {
         static func convertToID(maj: Int, min: Int) -> Int {
             return maj * 65536 + min
         }
+		static func getHeightForText(text: NSString, font: UIFont, size: CGSize) -> CGSize {
+
+			var newSize = CGSizeZero
+
+			let frame = text.boundingRectWithSize(size,
+				options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+				attributes: [NSFontAttributeName: font], context: nil)
+
+			newSize = CGSizeMake(frame.size.width, frame.size.height + 1)
+
+			return newSize
+		}
+		static func getWidthForText(text: NSString, font: UIFont, size: CGSize) -> CGSize {
+
+			var newSize = CGSizeZero
+
+			let frame = text.boundingRectWithSize(size,
+				options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+				attributes: [NSFontAttributeName: font], context: nil)
+
+			newSize = CGSizeMake(frame.size.width, frame.size.height + 1)
+
+			return newSize
+		}
     }
 }
 
