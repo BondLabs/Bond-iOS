@@ -245,7 +245,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         
         self.sendMessage(msg)
 		
-		if (self.noChatsView != nil) {
+		if (self.noChatsView == nil || self.noChatsView.superview != nil) {
 			self.noChatsView.removeFromSuperview()
 		}
     }
