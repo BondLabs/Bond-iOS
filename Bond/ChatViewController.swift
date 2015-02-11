@@ -140,7 +140,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 				return height + 40
 			}
 			else {
-				return height
+				return height - 10
 			}
 		}
 	}
