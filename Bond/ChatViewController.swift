@@ -158,7 +158,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 				cell.userNameLabel.sizeToFit()
 				cell.userNameLabel.font = UIFont(name: "Avenir-Heavy", size: 18.0)
 				cell.userNameLabel.frame.size = CGSizeMake(self.view.frame.width - 20, cell.userNameLabel.frame.size.height)
-				cell.userNameLabel.frame.origin = CGPointMake(-(nameSize.width + 65), 10)
+				cell.userNameLabel.frame.origin = CGPointMake(-(nameSize.width + 70), 10)
 				cell.userNameLabel.textColor = UIColor(red: 0/255, green: 164/255, blue: 255/255, alpha: 1)
 				cell.userNameLabel.textAlignment = NSTextAlignment.Right
 				cell.textView.textAlignment = NSTextAlignment.Right
