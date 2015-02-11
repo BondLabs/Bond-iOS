@@ -19,51 +19,45 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     var dataSource: NSMutableArray!
     var tableViewHeaderView: UIView!
 	var noChatsView: UIImageView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.loadMessages()
-        
-        // Create image for background
-        let unscaledBg = UIImage(named: "bg@2x.png")!
-        UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)
-        var context = UIGraphicsGetCurrentContext()
-        unscaledBg.drawInRect(CGRect(origin: CGPointZero, size: self.view.frame.size))
-        // Darken background
-        UIColor(red: 30/256, green: 30/256, blue: 30/256, alpha: 0.75).setFill()
-        CGContextFillRect(context, self.view.frame)
-        var bgImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        self.view.backgroundColor = UIColor(patternImage: bgImage)
-        
-        // Add name label to view
-        var nameLabel = UILabel()
-        nameLabel.text = barTitle
-        nameLabel.textColor = UIColor.whiteColor()
-        nameLabel.font = UIFont(name: "Avenir-Heavy", size: 24)
-        nameLabel.sizeToFit()
-        nameLabel.center = CGPointMake(self.view.frame.width / 2, 45)
-        let gestureRecogniser = UITapGestureRecognizer(target: self, action: "tappedName:")
-        nameLabel.addGestureRecognizer(gestureRecogniser)
-        self.view.addSubview(nameLabel)
-        
-        // Set up tableview
-        self.tableView.frame = CGRectMake(0, 70, self.view.frame.width, self.view.frame.height - 70)
-        self.tableView.backgroundColor = UIColor.clearColor()
-        self.tableView.dataSource = self
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        // Set up table header
-        self.tableViewHeaderView = UIView(frame: CGRectMake(0, 0, self.tableView.frame.width, 0.01))
-        self.tableViewHeaderView.backgroundColor = UIColor.clearColor()
-        self.tableView.tableHeaderView = self.tableViewHeaderView
-        self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
-        
-        // Set up input view
-        self.inputView = SOMessageInputView()
-        self.inputView.delegate = self
-        self.inputView.tableView = self.tableView
-        self.inputView.adjustPosition()
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		self.loadMessages()
+		
+		// Create image for background
+		let unscaledBg = UIImage(named: "bg@2x.png")!
+		UIGraphicsBeginImageContextWithOptions(self.view.frame.size, false, 0.0)
+		var context = UIGraphicsGetCurrentContext()
+		unscaledBg.drawInRect(CGRect(origin: CGPointZero, size: self.view.frame.size))
+		// Darken background
+		UIColor(red: 30/256, green: 30/256, blue: 30/256, alpha: 0.75).setFill()
+		CGContextFillRect(context, self.view.frame)
+		var bgImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		self.view.backgroundColor = UIColor(patternImage: bgImage)
+		
+		// Add name label to view
+		
+		// Set up tableview
+		self.tableView.frame = CGRectMake(0, 70, self.view.frame.width, self.view.frame.height - 70)
+		self.tableView.backgroundColor = UIColor.clearColor()
+		self.tableView.dataSource = self
+		self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+		
+		// Set up table header
+		self.tableViewHeaderView = UIView(frame: CGRectMake(0, 0, self.tableView.frame.width, 0.01))
+		self.tableViewHeaderView.backgroundColor = UIColor.clearColor()
+		self.tableView.tableHeaderView = self.tableViewHeaderView
+		self.tableView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
+		
+		// Set up input view
+		self.inputView = SOMessageInputView()
+		self.inputView.delegate = self
+		self.inputView.tableView = self.tableView
+		self.inputView.adjustPosition()
+		
+		let contentOffset = CGPoint(x: 0, y: self.tableView.contentSize.height)
+		self.tableView.contentOffset = contentOffset
 		
 		// Add no chats yet if no chats
 		if self.dataSource.count == 0 {
@@ -79,7 +73,31 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		}
 		
 		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
-    }
+
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		var nameLabel = UILabel()
+		nameLabel.text = barTitle
+		nameLabel.textColor = UIColor.whiteColor()
+		nameLabel.font = UIFont(name: "Avenir-Heavy", size: 24)
+		nameLabel.sizeToFit()
+		nameLabel.center = CGPointMake(self.view.frame.width / 2, 45)
+		
+		self.view.addSubview(nameLabel)
+		
+		var closeButton = UIButton()
+		closeButton.setImage(UIImage(named: "Cancel"), forState: UIControlState.Normal)
+		var rekt = closeButton.frame
+		rekt.size = CGSizeMake(20, 20)
+		closeButton.frame = rekt
+		closeButton.center = CGPointMake(self.view.frame.width - 30, 45)
+		closeButton.addTarget(self, action: "tappedName:", forControlEvents: UIControlEvents.TouchUpInside)
+		self.view.addSubview(closeButton)
+		
+	}
 	
 	override func prefersStatusBarHidden() -> Bool {
 		return true
