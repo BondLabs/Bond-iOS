@@ -41,6 +41,7 @@ class BondsDetailViewController: UIViewController {
 		
 		bondLog("Detail View Did Load")
 		ViewManager.sharedInstance.currentViewController = self
+		UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Slide)
 		
 		// Set up view properties
 		self.scrollView = UIScrollView()
@@ -122,6 +123,9 @@ class BondsDetailViewController: UIViewController {
 			self.scrollView.addSubview(actView)
 		}
 		
+	}
+	override func prefersStatusBarHidden() -> Bool {
+		return false
 	}
 	
 	func tappedButton(sender: UITapGestureRecognizer) {

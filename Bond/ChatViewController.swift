@@ -72,12 +72,13 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 			self.view.addSubview(noChatsView)
 		}
 		
-		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
+		//UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
 
 	}
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
 		
 		var nameLabel = UILabel()
 		nameLabel.text = barTitle
