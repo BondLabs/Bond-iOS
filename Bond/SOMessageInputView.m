@@ -90,7 +90,7 @@ void bondLog(id x) {
 	[self addSubview:self.blurView];
     
 		//self.textView = [[SOPlaceholderedTextView alloc] init];
-	self.textView = [[AUIAutoGrowingTextView alloc] init];
+	self.textView = [[SOPlaceholderedTextView alloc] init];
     self.textView.textColor = [UIColor whiteColor];
     self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:16.0];
     self.textView.delegate = self;
@@ -118,7 +118,10 @@ void bondLog(id x) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillShowNote:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHideNote:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOrientationDidChandeNote:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
-	
+
+		//[self.textView addObserver:self forKeyPath:@"contentSize" options:(NSKeyValueObservingOptionNew) context:NULL];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewTextDidChange:) name:UITextViewTextDidChangeNotification object:self.textView];
+
     [self.sendButton setTitle:NSLocalizedString(@"Send", nil) forState:UIControlStateNormal];
     self.sendButton.frame = CGRectMake(0, 0, 70, self.textInitialHeight);
 	
@@ -149,6 +152,11 @@ void bondLog(id x) {
     self.textView.frame = txtFrame;
     
     [self adjustPosition];
+}
+
+- (void)textViewTextDidChange:(NSNotification *)note
+{
+	[self updateTextView:self.textView];
 }
 
 - (void)adjustPosition
@@ -231,6 +239,7 @@ void bondLog(id x) {
 #pragma mark - private Methods
 - (void)adjustTextViewSize
 {
+	/*
     CGRect usedFrame = [self.textView.layoutManager usedRectForTextContainer:self.textView.textContainer];
     
     CGRect frame = self.textView.frame;
@@ -263,7 +272,33 @@ void bondLog(id x) {
     }
     
     [self adjustTableViewWithCurve:NO scrollsToBottom:YES];
+	 */
 }
+
+-(void)updateTextView:(UITextView *)textView {
+	CGRect frame = self.textView.frame;
+	frame.size.height = textView.contentSize.height;
+	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
+
+	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
+	CGRect origRect = self.frame;
+	[UIView animateWithDuration:0.1 animations:^ {
+		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, MAX(size.height, 40));
+		[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
+			//self.contentMode = UIViewContentModeCenter;
+		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+
+
+			//self.textView.frame = self.bounds;
+		self.blurView.frame = self.bounds;
+		self.tintView.frame = self.bounds;
+	}];
+
+	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);
+	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
+
+}
+
 
 - (void)scrollToCaretInTextView:(UITextView *)textView animated:(BOOL)animated
 {
@@ -276,26 +311,7 @@ void bondLog(id x) {
 - (void)textViewDidChange:(UITextView *)textView
 {
 		//[self adjustTextViewSize];
-	CGRect frame = self.textView.frame;
-	frame.size.height = textView.contentSize.height;
-	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
-
-	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
-	CGRect origRect = self.frame;
-	[UIView animateWithDuration:0.1 animations:^ {
-		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, self.frame.size.height);
-		[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
-			//self.contentMode = UIViewContentModeCenter;
-			self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
-
-
-			//self.textView.frame = self.bounds;
-		self.blurView.frame = self.bounds;
-		self.tintView.frame = self.bounds;
-	}];
-
-	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);
-	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
+	[self updateTextView:textView];
 
 }
 

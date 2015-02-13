@@ -74,12 +74,14 @@
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	/*
     UITextView *tv = object;
     
     //Bottom vertical alignment
     CGFloat topCorrect = ([tv bounds].size.height - [tv contentSize].height);
-    topCorrect = (topCorrect <0.0 ? 0.0 : topCorrect);
+    topCorrect = (topCorrect < 0.0 ? 0.0 : topCorrect);
     tv.contentOffset = (CGPoint){.x = -5, .y = -topCorrect};
+	 */
 }
 
 - (void)setFont:(UIFont *)font
@@ -92,20 +94,31 @@
 - (void)setText:(NSString *)text
 {
     [super setText:text];
-
+/*
 	if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
 		CGRect rect = [self.textContainer.layoutManager usedRectForTextContainer:self.textContainer];
 		UIEdgeInsets inset = self.textContainerInset;
 		self.contentSize = UIEdgeInsetsInsetRect(rect, inset).size;
 	}
-
-    [self setNeedsDisplay];
+*/
+		//[self setNeedsDisplay];
 }
 
 - (void)textViewTextDidChange:(NSNotification *)note
 {
 
-    [self setNeedsDisplay];
+	CGRect rect = [self.textContainer.layoutManager usedRectForTextContainer:self.textContainer];
+	UIEdgeInsets inset = self.textContainerInset;
+	self.contentSize = UIEdgeInsetsInsetRect(rect, inset).size;
+
+	/*
+	CGRect size = self.frame;
+	size.size = self.contentSize;
+	self.frame = size;
+	 */
+
+		//[self setNeedsDisplay];
+
 }
 
 - (void)layoutSubviews
@@ -114,7 +127,7 @@
     
     [self setNeedsDisplay];
 }
-
+/*
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
@@ -134,6 +147,7 @@
         self.placeholderLabel.hidden = YES;
     }
 }
+ */
 
 - (void)dealloc
 {
