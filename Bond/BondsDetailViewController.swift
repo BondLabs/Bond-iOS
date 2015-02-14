@@ -38,7 +38,7 @@ class BondsDetailViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		bondLog("Detail View Did Load")
 		ViewManager.sharedInstance.currentViewController = self
 		UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Slide)
@@ -140,9 +140,12 @@ class BondsDetailViewController: UIViewController {
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Loading"
 		UserAccountController.sharedInstance.getChat(self.id, authKey:UserAccountController.sharedInstance.currentUser.authKey)
 
+		ViewManager.sharedInstance.chatViewController = nil
+
 		let vc = ChatViewController()
 		vc.barTitle = self.name
 		vc.chatBondID = self.id
+		vc.delegate = self
 		ViewManager.sharedInstance.chatViewController = vc
 		bondLog("tapped Chat Button")
 	}

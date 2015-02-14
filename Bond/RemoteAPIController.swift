@@ -457,8 +457,9 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				} else {
 					ChatContentManager.sharedManager.currentChat = NSMutableArray()
 				}
-				
-				ViewManager.sharedInstance.currentViewController?.navigationController?.presentViewController(ViewManager.sharedInstance.chatViewController!, animated: true, completion: nil)
+
+
+				ViewManager.sharedInstance.currentViewController?.presentViewController(ViewManager.sharedInstance.chatViewController!, animated: true, completion: nil)
 				ViewManager.sharedInstance.ProgressHUD?.hide(true)
 			}
 		} else {

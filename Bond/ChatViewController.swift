@@ -19,6 +19,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
     var dataSource: NSMutableArray!
     var tableViewHeaderView: UIView!
 	var noChatsView: UIImageView!
+	var delegate: UIViewController!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -105,7 +106,17 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 	}
 	
     func tappedName(sender: UIGestureRecognizer) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+		bondLog("tapped Close Button in Chat")
+/*
+		self.dismissViewControllerAnimated(true, completion: {() -> Void in
+			bondLog("view controller dismissed")
+			})
+*/
+		//self.delegate.navigationController?.popViewControllerAnimated(true)
+		//self.delegate.navigationController?.popToViewController(self.delegate, animated: true)
+		self.presentingViewController?.dismissViewControllerAnimated(true, completion: {() -> Void in
+			bondLog("view controller dismissed")
+		})
     }
     
     func loadMessages () {

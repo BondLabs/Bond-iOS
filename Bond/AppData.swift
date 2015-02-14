@@ -22,7 +22,7 @@ enum barButtonType {
 }
 
 func bondLog(x: AnyObject) {
-    //NSLog("\(x)")
+    NSLog("\(x)")
 }
 
 func kevinLog(x: AnyObject) {
@@ -44,6 +44,13 @@ func danielLog(x: AnyObject) {
 var screenSize: CGSize {
     return UIScreen.mainScreen().bounds.size
 }
+
+infix operator =~ {}
+
+func =~ (input: String, pattern: String) -> Bool {
+	return Regex(pattern).test(input)
+}
+
 
 extension Bool {
     var intValue: Int {
@@ -76,6 +83,14 @@ class AppData {
 		}
 		static var activityNames:[String] = ["Active", "Artist", "Badass", "Brainy", "Caring", "Chill", "Creative", "Cultured", "Curious", "Driven", "Easygoing", "Empathetic", "Experienced", "Extroverted", "Fashionable", "Fit", "Free Spirited", "Friendly", "Fun", "Funky", "Hipster", "Introverted", "LOL", "Loud", "Modern", "Motivated", "Observant", "Ol'Skool", "Open Minded", "Outgoing", "Posh", "Rebellious", "Relaxed", "Romantic", "Rustic", "Sarcastic", "Serious", "Sporty", "Studious", "Thrilling", "Tough", "Traditional", "Trustworthy", "Visual", "Weird"]
     }
+
+
+	struct errorStates {
+		static let password = "Password must be more than four characters"
+		static let phoneNumber = "Please provide a valid phone number"
+	}
+
+
 	
     struct util {
         static func UIColorFromRGB(rgbValue: UInt) -> UIColor {
@@ -157,6 +172,23 @@ class AppData {
 		}
     }
 }
+
+class Regex {
+	let internalExpression: NSRegularExpression
+	let pattern: String
+
+	init(_ pattern: String) {
+		self.pattern = pattern
+		var error: NSError?
+		self.internalExpression = NSRegularExpression(pattern: pattern, options: .CaseInsensitive, error: &error)!
+	}
+
+	func test(input: String) -> Bool {
+		let matches = self.internalExpression.matchesInString(input, options: nil, range:NSMakeRange(0, countElements(input)))
+		return matches.count > 0
+	}
+}
+
 
 extension String {
     

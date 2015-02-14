@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+
+
 class ViewManager: NSObject {
 	
 	class var sharedInstance: ViewManager {
@@ -23,9 +26,32 @@ class ViewManager: NSObject {
 		return Static.instance!
 	}
 
+	enum ViewControllerType {
+		case current
+		case chat
+		case first
+	}
+
+
 	var currentViewController: UIViewController?
 	var ProgressHUD: MBProgressHUD?
-    var chatViewController: UIViewController?
+	var chatViewController: UIViewController?
 	var firstViewController: UIViewController?
+
+	func setViewController(vc: UIViewController, type: ViewManager.ViewControllerType){
+		if type == ViewManager.ViewControllerType.chat {
+			self.chatViewController = nil
+			self.chatViewController = vc
+		}
+		else if type == ViewManager.ViewControllerType.chat {
+			self.chatViewController = nil
+			self.chatViewController = vc
+		}
+		else if type == ViewManager.ViewControllerType.first {
+			self.firstViewController = nil
+			self.firstViewController = vc
+		}
+	}
+
 	
 }

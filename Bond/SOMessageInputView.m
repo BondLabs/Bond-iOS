@@ -276,16 +276,37 @@ void bondLog(id x) {
 }
 
 -(void)updateTextView:(UITextView *)textView {
+
+	@autoreleasepool {
+
 	CGRect frame = self.textView.frame;
 	frame.size.height = textView.contentSize.height;
+
 	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
 
 	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
+
 	CGRect origRect = self.frame;
+
+		if (size.height > 40) {
+				//self.textView.contentInset = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 0.0f);
+			self.textView.textContainerInset = UIEdgeInsetsMake(10, 20, 0, 0);
+		}
+		else {
+				//
+			self.textView.textContainerInset = UIEdgeInsetsMake(10, 20, 0, 0);
+		}
+
+self.textView.contentInset = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 0.0f);
+
+
 	[UIView animateWithDuration:0.1 animations:^ {
 		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, MAX(size.height, 40));
 		[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
 			//self.contentMode = UIViewContentModeCenter;
+
+		
+
 		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
 
 
@@ -297,6 +318,7 @@ void bondLog(id x) {
 	bondLog([NSString stringWithFormat:@"The origin is %@", NSStringFromCGRect(self.frame)]);
 	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
 
+	}
 }
 
 
