@@ -375,14 +375,20 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 						dispatch_async(dispatch_get_main_queue(), {() -> Void in
 
 							if (ViewManager.sharedInstance.currentViewController?.isKindOfClass(SignUpViewController))! {
-							let textField = (ViewManager.sharedInstance.currentViewController as SignUpViewController).phoneNumber
+								let textField = (ViewManager.sharedInstance.currentViewController as SignUpViewController).phoneNumber
 
-							(ViewManager.sharedInstance.currentViewController as SignUpViewController).errorStatesLabelDictionary.setObject("Phone number is already taken. Try logging in.", forKey: "phoneNumberTaken")
-							(ViewManager.sharedInstance.currentViewController as SignUpViewController).updateErrorStateText()
-							textField.layer.borderWidth = 1.5
-							textField.layer.borderColor = UIColor.redColor().CGColor
-						}
-					})
+								(ViewManager.sharedInstance.currentViewController as SignUpViewController).errorStatesLabelDictionary.setObject("Phone number is already taken. Try logging in.", forKey: "phoneNumberTaken")
+								(ViewManager.sharedInstance.currentViewController as SignUpViewController).updateErrorStateText()
+								textField.layer.borderWidth = 1.5
+								textField.layer.borderColor = UIColor.redColor().CGColor
+								textField.textColor = UIColor.redColor()
+							}
+							if (ViewManager.sharedInstance.currentViewController?.isKindOfClass(LoginViewController))! {
+								(ViewManager.sharedInstance.currentViewController as LoginViewController).errorStatesLabelDictionary.removeObjectForKey("phoneNumberTaken")
+								(ViewManager.sharedInstance.currentViewController as LoginViewController).updateErrorStateText()
+
+							}
+						})
 						signUpPhoneNumberIsOkay = false
 						bondLog("phone number is taken")
 
@@ -392,11 +398,21 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 
 
 					else {
-						
+
 						dispatch_async(dispatch_get_main_queue(), {() -> Void in
 							if (ViewManager.sharedInstance.currentViewController?.isKindOfClass(SignUpViewController))! {
-							(ViewManager.sharedInstance.currentViewController as SignUpViewController).errorStatesLabelDictionary.removeObjectForKey("phoneNumberTaken")
+								(ViewManager.sharedInstance.currentViewController as SignUpViewController).errorStatesLabelDictionary.removeObjectForKey("phoneNumberTaken")
 								(ViewManager.sharedInstance.currentViewController as SignUpViewController).updateErrorStateText()
+							}
+							if (ViewManager.sharedInstance.currentViewController?.isKindOfClass(LoginViewController))! {
+								let textField = (ViewManager.sharedInstance.currentViewController as LoginViewController).phoneNumber
+
+								(ViewManager.sharedInstance.currentViewController as LoginViewController).errorStatesLabelDictionary.setObject("Phone number was not found", forKey: "phoneNumberTaken")
+								(ViewManager.sharedInstance.currentViewController as LoginViewController).updateErrorStateText()
+								textField.layer.borderWidth = 1.5
+								textField.layer.borderColor = UIColor.redColor().CGColor
+								textField.textColor = UIColor.redColor()
+
 							}
 						})
 

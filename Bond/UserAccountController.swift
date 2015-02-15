@@ -208,5 +208,6 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	func checkIfPhoneExists(phone: NSString) {
 		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/check/\(phone)", api_key: "", type: requestType.phoneNumberExists, delegate: nil)
 	}
+
     
 }

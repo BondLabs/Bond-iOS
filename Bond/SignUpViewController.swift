@@ -65,15 +65,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		self.nextButton.alpha = 0.0
 		self.nextButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
 		self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+		self.nextButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Highlighted)
 		self.nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
 		self.nextButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
+		self.nextButton.addTarget(self, action: "buttonTouchedDown:", forControlEvents: UIControlEvents.TouchDown)
 		// self.nextButton.buttonType = UIButtonType.DetailDisclosure
 		self.view.bringSubviewToFront(nextButton)
 		self.doneButton.alpha = 0.0
 		self.doneButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+
 		self.doneButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
 		self.doneButton.setTitle("Done 〉", forState: UIControlState.Normal)
 		self.doneButton.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 18.0)
+		self.doneButton.addTarget(self, action: "buttonTouchedDown:", forControlEvents: UIControlEvents.TouchDown)
 		self.view.bringSubviewToFront(doneButton)
 
 		// Add keyboard selectors
@@ -195,6 +199,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		if (textField.secureTextEntry) {
 			textField.font = UIFont.systemFontOfSize(textField.font.pointSize)
 		}
+		if errorStatesLabelDictionary.allValues.count == 0 && signUpPhoneNumberIsOkay {
+			self.showDoneButton()
+		}
 	}
 
 	func textFieldDidEndEditing(textField: UITextField) {
@@ -211,7 +218,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 
 
 			self.errorStatesLabelDictionary.removeObjectForKey("phoneNumberTaken")
-			if textField.text =~ regexString {
+			let length = countElements(textField.text)
+			if (textField.text =~ regexString) && (length < 11) {
 				matchesRegex = true
 				errorStatesLabelDictionary.removeObjectForKey("phoneNumber")
 				let characterSet = NSCharacterSet(charactersInString: "-/()\\. ")
@@ -226,7 +234,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 			}
 		}
 		if (textField.tag == SignUpViewController.textFieldType.password) {
-			if countElements(textField.text) < 4 || countElements(textField.text) > 256 {
+			if (countElements(textField.text) < 4 || countElements(textField.text) > 256) && textField.text != "" {
 				matchesRegex = false
 				errorStatesLabelDictionary.setObject("Password must be more than 4 characters", forKey: "password")
 			}
@@ -241,11 +249,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 
 			textField.layer.borderWidth = 1.5
 			textField.layer.borderColor = UIColor.redColor().CGColor
+			textField.textColor = UIColor.redColor()
 
 		}
 		else if textField.text != "" {
 			textField.layer.borderWidth = 1.5
 			textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+			textField.textColor = UIColor.bl_azureRadianceColor()
+
 		}
 		else {
 			textField.layer.borderWidth = 0
@@ -255,14 +266,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 			var placeholder = textField.attributedPlaceholder?.string
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+			textField.textColor = UIColor.bl_silverChaliceColor()
 		}
 		selectedField = nil
-		textField.textColor = UIColor.bl_silverChaliceColor()
+
 		if (textField.secureTextEntry) {
 			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
 		}
 
 		self.updateErrorStateText()
+		if errorStatesLabelDictionary.allValues.count == 0 && signUpPhoneNumberIsOkay {
+			self.showDoneButton()
+		}
 
 	}
 	/*
@@ -273,12 +288,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 	func updateErrorStateText() {
 		self.errorStatesLabel.attributedText = NSAttributedString(string: "")
 
-		if self.firstName.text == "" || self.lastName.text == "" || self.phoneNumber.text == "" || self.password.text == "" {
-			errorStatesLabelDictionary.setObject("Please fill out all fields", forKey: "notcomplete")
-		}
-		else {
-			errorStatesLabelDictionary.removeObjectForKey("notcomplete")
-		}
+
 
 		for value in self.errorStatesLabelDictionary.allValues {
 
@@ -295,24 +305,30 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		bondLog("the label says: \(self.errorStatesLabel.text)")
 	}
 
+	func buttonTouchedDown(sender: UIButton) {
+		sender.backgroundColor = UIColor.bl_azureNightColor()
+	}
+
 	// Capture taps on nextButton
 	@IBAction func nextButtonTapped(sender: UIButton) {
+		sender.backgroundColor = UIColor.bl_azureRadianceColor()
 		if (selectedField == self.firstName) {
-			self.showNextButton()
+			//self.showNextButton()
 			lastName.becomeFirstResponder()
 		} else if (selectedField == self.lastName) {
-			self.showNextButton()
+			//self.showNextButton()
 			phoneNumber.becomeFirstResponder()
 		} else if (selectedField == self.phoneNumber) {
 			self.showDoneButton()
 			password.becomeFirstResponder()
 		}
+
 	}
 
 	@IBAction func doneButtonTapped(sender: UIButton) {
-
+		sender.backgroundColor = UIColor.bl_azureRadianceColor()
 		let uc = UserAccountController.sharedInstance
-		if errorStatesLabelDictionary.allValues.count == 0 {
+		if errorStatesLabelDictionary.allValues.count == 0 && signUpPhoneNumberIsOkay {
 			self.performSegueWithIdentifier("nextView", sender: self)
 		}
 
@@ -374,6 +390,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		}
 	}
 
+
+
 	func keyboardWillShow(sender: NSNotification) {
 		// One time storage and setup
 		if (keyboardHeight == nil) {
@@ -414,7 +432,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 	override func preferredStatusBarStyle() -> UIStatusBarStyle {
 		return UIStatusBarStyle.LightContent
 	}
-	
+
 
 	override func viewWillDisappear(animated: Bool) {
 		var count = self.navigationController?.viewControllers.count
@@ -424,6 +442,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		}
 		super.viewWillDisappear(animated)
 	}
-
-
+	
+	
 }
