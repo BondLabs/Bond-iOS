@@ -90,7 +90,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	
     func register() {
         let name = NSString(format: "%@ %@", newFirstName, newLastName)
-        AppData.bondLog(NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus))
+        AppData.bondLog(NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@&relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus))
 		
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/users", data: NSString(format: "name=%@&phone=%@&password=%@&age=%d&gender=%@&relationship=%@", name, newPhoneNumber, newPassword, newAge, newGender, newRelationshipStatus), api_key: authKey, type: requestType.register)
     }
