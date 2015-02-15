@@ -124,7 +124,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.view.endEditing(true)
         })
     }
-    
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
     func textFieldDidBeginEditing(textField: UITextField) {
         self.showButton()
 		if (textField.text == "") {

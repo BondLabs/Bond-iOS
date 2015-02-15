@@ -8,6 +8,9 @@
 
 import UIKit
 
+var signUpPhoneNumberIsOkay = false
+
+
 class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnectionDelegate {
 
 	/* * *
@@ -22,11 +25,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		static let password = 0x70617373776f7264	//Literally hexidecimal for "password"
 	}
 
+
 	var selectedField:UITextField!
 	var keyboardHeight:CGFloat!
 	var viewHeight:CGFloat!
 	var errorStatesLabel = UILabel()
 	var errorStatesLabelDictionary = NSMutableDictionary()
+
 
 	@IBOutlet var descLabel: UILabel!
 	@IBOutlet var firstName: CustomTextField!
@@ -131,9 +136,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 
 
 		errorStatesLabel.numberOfLines = 0
-		errorStatesLabel.textAlignment = NSTextAlignment.Left
-		errorStatesLabel.frame.size = CGSizeMake(self.view.frame.width, 30)
-		errorStatesLabel.center = CGPointMake(self.view.frame.width / 2, 350)
+		errorStatesLabel.textAlignment = NSTextAlignment.Center
+		errorStatesLabel.frame.size = CGSizeMake(self.view.frame.width - 30, 100)
+		errorStatesLabel.center = CGPointMake(self.view.frame.width / 2, 375)
 		errorStatesLabel.attributedText = NSAttributedString(string: "")
 		self.view.addSubview(errorStatesLabel)
 
@@ -162,11 +167,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 	}
 
 	func textFieldDidBeginEditing(textField: UITextField) {
+
+		if (textField.tag == SignUpViewController.textFieldType.phoneNumber) {
+			signUpPhoneNumberIsOkay = false
+		}
+
 		UIView.animateWithDuration(0.25, animations: {
 			self.view.frame.origin.y = AppData.data.heights.navBarHeight + AppData.data.heights.statusBarHeight - 100
 		})
+
+		let textViewsAreEmpty = (self.firstName.text == "") || (self.lastName.text == "") || (self.phoneNumber.text == "") || (self.password.text == "")
+
 		selectedField = textField
-		if (textField != password) {
+		if (textField != password || textViewsAreEmpty) {
 			self.showNextButton()
 		} else {
 			self.showDoneButton()
@@ -197,14 +210,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 			let regexString = "\\W*([2-9][0-8][0-9])\\W*([2-9][0-9]{2})\\W*([0-9]{4})(\\se?x?t?(\\d*))?"
 
 
-
+			self.errorStatesLabelDictionary.removeObjectForKey("phoneNumberTaken")
 			if textField.text =~ regexString {
 				matchesRegex = true
 				errorStatesLabelDictionary.removeObjectForKey("phoneNumber")
+				let characterSet = NSCharacterSet(charactersInString: "-/()\\. ")
+				let phoneNumberString = phoneNumber.text.stringByTrimmingCharactersInSet(characterSet)
+				UserAccountController.sharedInstance.checkIfPhoneExists(phoneNumberString)
 
 			}
 			else {
 				matchesRegex = false
+				signUpPhoneNumberIsOkay = false
 				errorStatesLabelDictionary.setObject("Please provide a valid phone number", forKey: "phoneNumber")
 			}
 		}
@@ -220,163 +237,193 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		}
 
 
-			if matchesRegex || textField.text == "" {
+		if !matchesRegex {
 
+			textField.layer.borderWidth = 1.5
+			textField.layer.borderColor = UIColor.redColor().CGColor
+
+		}
+		else if textField.text != "" {
+			textField.layer.borderWidth = 1.5
+			textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		}
+		else {
 			textField.layer.borderWidth = 0
-			}
-			else {
-				textField.layer.borderWidth = 1.5
-				textField.layer.borderColor = UIColor.redColor().CGColor
-			}
+		}
 
-			if (textField.text == "") {
-				var placeholder = textField.attributedPlaceholder?.string
-				textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
-					attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
-			}
-			selectedField = nil
-			textField.textColor = UIColor.bl_silverChaliceColor()
-			if (textField.secureTextEntry) {
-				textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
-			}
+		if (textField.text == "") {
+			var placeholder = textField.attributedPlaceholder?.string
+			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
+				attributes:[NSForegroundColorAttributeName: AppData.util.UIColorFromRGB(0x6E6E6E)])
+		}
+		selectedField = nil
+		textField.textColor = UIColor.bl_silverChaliceColor()
+		if (textField.secureTextEntry) {
+			textField.font = UIFont(name: "Avenir-Book", size: textField.font.pointSize)
+		}
 
+		self.updateErrorStateText()
+
+	}
+	/*
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+	return range.location + range.length < 10
+	}
+	*/
+	func updateErrorStateText() {
 		self.errorStatesLabel.attributedText = NSAttributedString(string: "")
 
-		for value in errorStatesLabelDictionary.allValues {
+		if self.firstName.text == "" || self.lastName.text == "" || self.phoneNumber.text == "" || self.password.text == "" {
+			errorStatesLabelDictionary.setObject("Please fill out all fields", forKey: "notcomplete")
+		}
+		else {
+			errorStatesLabelDictionary.removeObjectForKey("notcomplete")
+		}
 
-			let attributedText = NSMutableAttributedString(string: self.errorStatesLabel.text! + "\n ● " +  (value as String))
+		for value in self.errorStatesLabelDictionary.allValues {
+
+			let attributedText = NSMutableAttributedString(string: self.errorStatesLabel.text! + "\n" +  (value as String))
 			attributedText.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: NSMakeRange(0, attributedText.length))
-			attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Book", size: 9.0)!, range: NSMakeRange(0, attributedText.length))
-			//self.errorStatesLabel.attributedText = attributedText
+			attributedText.addAttribute(NSFontAttributeName, value: UIFont(name: "Avenir-Book", size: 16.0)!, range: NSMakeRange(0, attributedText.length))
+			self.errorStatesLabel.attributedText = attributedText
+			self.errorStatesLabel.frame.size = CGSizeMake(self.errorStatesLabel.frame.size.width, AppData.util.getHeightForText(attributedText.string, font: UIFont(name: "Avenir-Book", size: 16.0)!, size: CGSizeMake(self.errorStatesLabel.frame.size.width, 200)).height)
+
 			self.errorStatesLabel.numberOfLines = errorStatesLabelDictionary.allValues.count + 1
 
 		}
 
 		bondLog("the label says: \(self.errorStatesLabel.text)")
-
 	}
-		func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-			return range.location + range.length < 10
+
+	// Capture taps on nextButton
+	@IBAction func nextButtonTapped(sender: UIButton) {
+		if (selectedField == self.firstName) {
+			self.showNextButton()
+			lastName.becomeFirstResponder()
+		} else if (selectedField == self.lastName) {
+			self.showNextButton()
+			phoneNumber.becomeFirstResponder()
+		} else if (selectedField == self.phoneNumber) {
+			self.showDoneButton()
+			password.becomeFirstResponder()
+		}
+	}
+
+	@IBAction func doneButtonTapped(sender: UIButton) {
+
+		let uc = UserAccountController.sharedInstance
+		if errorStatesLabelDictionary.allValues.count == 0 {
+			self.performSegueWithIdentifier("nextView", sender: self)
 		}
 
-		// Capture taps on nextButton
-		@IBAction func nextButtonTapped(sender: UIButton) {
-			if (selectedField == self.firstName) {
-				self.showNextButton()
-				lastName.becomeFirstResponder()
-			} else if (selectedField == self.lastName) {
-				self.showNextButton()
-				phoneNumber.becomeFirstResponder()
-			} else if (selectedField == self.phoneNumber) {
-				self.showDoneButton()
-				password.becomeFirstResponder()
-			}
-		}
+		uc.newFirstName = firstName.text
+		uc.newLastName = lastName.text
+		let characterSet = NSCharacterSet(charactersInString: "-/()\\. ")
+		let phoneNumberString = phoneNumber.text.stringByTrimmingCharactersInSet(characterSet)
+		uc.newPhoneNumber = phoneNumberString
+		uc.newPassword = password.text
+	}
 
-		@IBAction func doneButtonTapped(sender: UIButton) {
-
-			let uc = UserAccountController.sharedInstance
-
-			uc.newFirstName = firstName.text
-			uc.newLastName = lastName.text
-			uc.newPhoneNumber = phoneNumber.text
-			uc.newPassword = password.text
-		}
-
-		func showNextButton() {
-			// If next button is already showing, animate reshow
-			if (nextButton.alpha == 1.0) {
-				UIView.animateWithDuration(0.15, animations: {
-					self.nextButton.alpha = 0.5
-					}, completion: { finished in
-						UIView.animateWithDuration(0.15, animations: {
-							self.nextButton.alpha = 1.0
-						})
-				})
-			} else if (doneButton.alpha == 1.0) {
-				// If done button is showing, animate switch
-				UIView.animateWithDuration(0.3, animations: {
-					self.doneButton.alpha = 0.0
-					self.nextButton.alpha = 1.0
-				})
-			} else {
-				// If neither is showing, animate show
-				UIView.animateWithDuration(0.30, animations: {
-					self.nextButton.alpha = 1.0
-				})
-			}
-		}
-
-		func showDoneButton() {
-			// If done button is already showing, animate reshow
-			if (doneButton.alpha == 1.0) {
-				UIView.animateWithDuration(0.15, animations: {
-					self.doneButton.alpha = 0.5
-					}, completion: { finished in
-						UIView.animateWithDuration(0.15, animations: {
-							self.doneButton.alpha = 1.0
-						})
-				})
-			} else if (nextButton.alpha == 1.0) {
-				// If next button is showing, animate switch
-				UIView.animateWithDuration(0.30, animations: {
-					self.nextButton.alpha = 0.0
-					self.doneButton.alpha = 1.0
-				})
-			} else {
-				// If neither is showing, animate show
-				UIView.animateWithDuration(0.30, animations: {
-					self.doneButton.alpha = 1.0
-				})
-			}
-		}
-
-		func keyboardWillShow(sender: NSNotification) {
-			// One time storage and setup
-			if (keyboardHeight == nil) {
-				self.setButtonFrames()
-			}
-			keyboardHeight = (sender.userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().height
-
-			UIView.animateWithDuration(0.5, animations: {
-				self.nextButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight + 50)
-				self.doneButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight + 50)
+	func showNextButton() {
+		// If next button is already showing, animate reshow
+		if (nextButton.alpha == 1.0) {
+			UIView.animateWithDuration(0.15, animations: {
+				self.nextButton.alpha = 0.5
+				}, completion: { finished in
+					UIView.animateWithDuration(0.15, animations: {
+						self.nextButton.alpha = 1.0
+					})
+			})
+		} else if (doneButton.alpha == 1.0) {
+			// If done button is showing, animate switch
+			UIView.animateWithDuration(0.3, animations: {
+				self.doneButton.alpha = 0.0
+				self.nextButton.alpha = 1.0
+			})
+		} else {
+			// If neither is showing, animate show
+			UIView.animateWithDuration(0.30, animations: {
+				self.nextButton.alpha = 1.0
 			})
 		}
+	}
 
-		func keyboardWillHide(sender: NSNotification) {
+	func showDoneButton() {
 
+
+		// If done button is already showing, animate reshow
+		if (doneButton.alpha == 1.0) {
+			UIView.animateWithDuration(0.15, animations: {
+				self.doneButton.alpha = 0.5
+				}, completion: { finished in
+					UIView.animateWithDuration(0.15, animations: {
+						self.doneButton.alpha = 1.0
+					})
+			})
+		} else if (nextButton.alpha == 1.0) {
+			// If next button is showing, animate switch
+			UIView.animateWithDuration(0.30, animations: {
+				self.nextButton.alpha = 0.0
+				self.doneButton.alpha = 1.0
+			})
+		} else {
+			// If neither is showing, animate show
+			UIView.animateWithDuration(0.30, animations: {
+				self.doneButton.alpha = 1.0
+			})
 		}
+	}
 
-		func setButtonFrames() {
-			// Set up next button frame
-			self.nextButton.frame = CGRectMake(0, viewHeight, self.view.frame.width, 50)
-
-			// Set up done button frame
-			self.doneButton.frame = CGRectMake(0, viewHeight, self.view.frame.width, 50)
+	func keyboardWillShow(sender: NSNotification) {
+		// One time storage and setup
+		if (keyboardHeight == nil) {
+			self.setButtonFrames()
 		}
+		keyboardHeight = (sender.userInfo![UIKeyboardFrameEndUserInfoKey] as NSValue).CGRectValue().height
 
-		/* * *
-		* * * Capture segue events
-		* * */
+		UIView.animateWithDuration(0.5, animations: {
+			self.nextButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight + 50)
+			self.doneButton.frame.origin = CGPointMake(0, AppData.data.heights.navViewHeight - self.keyboardHeight + 50)
+		})
+	}
 
-		deinit {
-			NSNotificationCenter.defaultCenter().removeObserver(self)
+	func keyboardWillHide(sender: NSNotification) {
+
+	}
+
+	func setButtonFrames() {
+		// Set up next button frame
+		self.nextButton.frame = CGRectMake(0, viewHeight, self.view.frame.width, 50)
+
+		// Set up done button frame
+		self.doneButton.frame = CGRectMake(0, viewHeight, self.view.frame.width, 50)
+	}
+
+	/* * *
+	* * * Capture segue events
+	* * */
+
+	deinit {
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+
+	override func viewWillAppear(animated: Bool) {
+		self.navigationController?.navigationBarHidden = false
+		super.viewWillAppear(animated)
+	}
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
+	
+
+	override func viewWillDisappear(animated: Bool) {
+		var count = self.navigationController?.viewControllers.count
+		var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
+		if (nextVC is TourViewController) {
+			self.navigationController?.navigationBarHidden = true
 		}
+		super.viewWillDisappear(animated)
+	}
 
-		override func viewWillAppear(animated: Bool) {
-			self.navigationController?.navigationBarHidden = false
-			super.viewWillAppear(animated)
-		}
 
-		override func viewWillDisappear(animated: Bool) {
-			var count = self.navigationController?.viewControllers.count
-			var nextVC:AnyObject? = self.navigationController?.viewControllers[count! - 1]
-			if (nextVC is TourViewController) {
-				self.navigationController?.navigationBarHidden = true
-			}
-			super.viewWillDisappear(animated)
-		}
-		
-		
 }

@@ -235,7 +235,11 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         self.nextIndex = self.currentIndex
         pageControl.currentPage = self.currentIndex
     }
-    
+
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
+
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
         var nextTourVC = pendingViewControllers[0] as UIViewController
         self.nextIndex = find(tourVCs, nextTourVC)

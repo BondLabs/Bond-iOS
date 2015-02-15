@@ -402,18 +402,23 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		// Handle cancel
 		picker.dismissViewControllerAnimated(true, completion: nil)
 	}
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
 
 	@IBAction func hitNextButton(sender: UIButton) {
 		if (self.image == nil) {
 			return
 		}
 		
-		UserAccountController.sharedInstance.currentUser.setUserPicture(self.image)
-		
+		UserAccountController.sharedInstance.newProfileImage = self.image
+		self.performSegueWithIdentifier("nextView", sender:self)
+		/*
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Uploading Image"
+*/
 	}
 	
 	// Selected an image

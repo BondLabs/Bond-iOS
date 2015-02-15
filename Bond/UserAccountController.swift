@@ -24,6 +24,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     var newProfileImage = UIImage()
     var id: Int = 1
     let authKey = "37D74DBC-C160-455D-B4AE-A6396FEE7954"
+	var newTraits = ""
     var isUserLoggedIn = false
     var otherUserImages = NSMutableDictionary()
 
@@ -203,5 +204,9 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     func sendCustomRequestWithBlocks(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
         RemoteAPIController.sharedInstance.customAPIRequestWithBlocks(URL, data: data, header: header, HTTPMethod: HTTProtocol, success: success, failure: failure)
     }
+
+	func checkIfPhoneExists(phone: NSString) {
+		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/check/\(phone)", api_key: "", type: requestType.phoneNumberExists, delegate: nil)
+	}
     
 }

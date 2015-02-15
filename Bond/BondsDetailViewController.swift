@@ -127,6 +127,9 @@ class BondsDetailViewController: UIViewController {
 	override func prefersStatusBarHidden() -> Bool {
 		return false
 	}
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
 	
 	func tappedButton(sender: UITapGestureRecognizer) {
 		

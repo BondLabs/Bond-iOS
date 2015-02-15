@@ -26,7 +26,7 @@ class PushPermissionViewController: UIViewController {
 		ViewManager.sharedInstance.currentViewController = self
         
         nameLabel = UILabel()
-        nameLabel.text = "Hi \(UserAccountController.sharedInstance.currentUser.name as String)"
+        nameLabel.text = "Hi \(UserAccountController.sharedInstance.newFirstName as String)"
         nameLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         nameLabel.textColor = UIColor.whiteColor()
         nameLabel.sizeToFit()

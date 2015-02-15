@@ -85,7 +85,7 @@ class AgeGenderViewController: UIViewController {
 
 		agePicker.maximumDate = NSDate()
 		label = UILabel(frame: CGRectInset(self.datePickerLabelView.bounds, 8, 0))
-		label.text = "Age"
+		label.text = "Age: 0"
 		label.font = UIFont(name: "Avenir-Book", size: 16.5)
 		label.textColor = UIColor.whiteColor()
 		self.datePickerLabelView.addSubview(label)
@@ -137,13 +137,16 @@ class AgeGenderViewController: UIViewController {
 
 
 		UserAccountController.sharedInstance.newAge = dateFormatter.stringFromDate(agePicker.date)
-		UserAccountController.sharedInstance.register()
+		
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Joining Bond"
+		self.performSegueWithIdentifier("nextView", sender:self)
 	}
-	
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
 
 	@IBAction func femaleTapped(sender: AnyObject) {
 		if (female.active == false) {

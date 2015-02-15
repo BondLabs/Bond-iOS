@@ -57,7 +57,9 @@ class ProfileViewController: UIViewController {
         var id = 1 // Get id for the app user
         self.setup(id)
     }
-    
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
     /* * *
      * * * Add all elements to the profile page---------------------------------
      * * */

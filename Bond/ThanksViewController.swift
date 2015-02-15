@@ -23,6 +23,7 @@ class ThanksViewController: UIViewController {
 		super.viewDidLoad()
 		
 		self.view.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+		UserAccountController.sharedInstance.register()
 		ViewManager.sharedInstance.currentViewController = self
 		
 		ViewManager.sharedInstance.ProgressHUD = nil
@@ -31,11 +32,15 @@ class ThanksViewController: UIViewController {
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeCustomView
 		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0, 0, 40, 40))
 		gmailView.startAnimating()
+		ViewManager.sharedInstance.ProgressHUD?.customView = gmailView
+
+
+
 		ViewManager.sharedInstance.ProgressHUD!.customView = gmailView
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Loading"
 		
 		nameLabel = UILabel()
-		nameLabel.text = "Hi Daniel"//\(UserAccountController.sharedInstance.currentUser.name as String)"
+		nameLabel.text = "Hi \(UserAccountController.sharedInstance.newFirstName)"
 		nameLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
 		nameLabel.textColor = UIColor.whiteColor()
 		nameLabel.sizeToFit()

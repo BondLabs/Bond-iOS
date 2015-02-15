@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UINavigationBar.appearance().barTintColor = UIColor.whiteColor()
 		UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Light", size: 16.5)!], forState: UIControlState.Normal)
 		UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+		//UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
 
 		//let passwordText = (NSString(data: passwordData as NSData, encoding:NSUTF8StringEncoding))
 

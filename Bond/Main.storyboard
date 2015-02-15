@@ -411,7 +411,6 @@
                                 </state>
                                 <connections>
                                     <action selector="doneButtonTapped:" destination="xbs-4z-EWi" eventType="touchUpInside" id="35j-jr-lU7"/>
-                                    <segue destination="5NR-vc-Jp2" kind="push" id="2Zi-Zh-utD"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" id="erR-EB-m5N" userLabel="Last" customClass="CustomTextField" customModule="Bond" customModuleProvider="target">
@@ -450,6 +449,7 @@
                         <outlet property="nextButton" destination="J2c-Gq-ArZ" id="dfW-ve-weV"/>
                         <outlet property="password" destination="7az-Da-6dW" id="mZR-24-WNn"/>
                         <outlet property="phoneNumber" destination="ooC-eq-tLf" id="g1v-aT-dg9"/>
+                        <segue destination="5NR-vc-Jp2" kind="push" identifier="nextView" id="gQB-Xv-eeZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5E-fH-dbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -721,7 +721,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1s7-mm-8mN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3035" y="318"/>
+            <point key="canvasLocation" x="3053" y="368"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ci0-BC-A00">
@@ -784,14 +784,14 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="SBh-Oe-6x9"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="gQB-Xv-eeZ"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
-        <segue reference="2Zi-Zh-utD"/>
-        <segue reference="Gfx-JN-Ff2"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="SBh-Oe-6x9"/>
         <segue reference="zMl-4c-kIB"/>
         <segue reference="Jfy-Ox-HKQ"/>
-        <segue reference="WQw-Ge-6PW"/>
+        <segue reference="fpt-JI-uvE"/>
     </inferredMetricsTieBreakers>
 </document>

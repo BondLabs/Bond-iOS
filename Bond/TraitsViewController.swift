@@ -111,6 +111,9 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
 		self.addChildViewController(traitsPageVC)
 		self.view.addSubview(traitsPageVC.view)
 	}
+	override func preferredStatusBarStyle() -> UIStatusBarStyle {
+		return UIStatusBarStyle.LightContent
+	}
 	
 	func tappedNext(gestureRecognizer: UITapGestureRecognizer) {
 		if (self.currentIndex == traitsVCs.count - 1) {
@@ -124,7 +127,8 @@ class TraitsViewController: UIViewController, UIPageViewControllerDelegate, UIPa
 		for button: ActivityView in activityArray {
 			traits = traits.stringByAppendingString("\(button.iconView.selected.intValue)")
 		}
-		UserAccountController.sharedInstance.sendTraits(traits)
+		UserAccountController.sharedInstance.newTraits = traits
+		//UserAccountController.sharedInstance.sendTraits(traits)
 		bondLog("traits are \(traits)")
 	}
 	
