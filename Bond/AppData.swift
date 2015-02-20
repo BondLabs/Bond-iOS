@@ -21,6 +21,10 @@ enum barButtonType {
 	case button_small
 }
 
+func errorLog(x: AnyObject) {
+	println("BOND messed up. Threw this error: \(x)")
+}
+
 func bondLog(x: AnyObject) {
     NSLog("\(x)")
 }

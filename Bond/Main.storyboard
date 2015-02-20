@@ -31,7 +31,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UxE-dx-lU8" kind="push" id="dLw-JN-GVL"/>
+                                    <segue destination="UxE-dx-lU8" kind="custom" customClass="PopCustomSegue" id="dLw-JN-GVL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -265,7 +265,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="zCI-ja-LZO" kind="push" identifier="nextView" id="hIk-ao-dlB"/>
+                                    <segue destination="zCI-ja-LZO" kind="push" identifier="" id="hIk-ao-dlB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -364,6 +364,7 @@
                     <connections>
                         <segue destination="tQC-Pe-BB6" kind="relationship" relationship="viewControllers" id="AWS-nl-GFZ"/>
                         <segue destination="wNx-Bb-cAM" kind="relationship" relationship="viewControllers" id="Uv7-3K-TwH"/>
+                        <segue destination="tQC-Pe-BB6" kind="custom" identifier="nextView" customClass="LoopingSegue" id="8wk-Ch-z2m"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OsB-Up-YgU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -784,14 +785,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SBh-Oe-6x9"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="Gfx-JN-Ff2"/>
         <segue reference="gQB-Xv-eeZ"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
+        <segue reference="SCU-zk-ooq"/>
+        <segue reference="8wk-Ch-z2m"/>
+        <segue reference="Gfx-JN-Ff2"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="SBh-Oe-6x9"/>
         <segue reference="zMl-4c-kIB"/>
         <segue reference="Jfy-Ox-HKQ"/>
-        <segue reference="fpt-JI-uvE"/>
     </inferredMetricsTieBreakers>
 </document>

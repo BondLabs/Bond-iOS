@@ -41,7 +41,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         return Static.instance!
     }
 	
-	var keychainItemStore = KeychainItemWrapper(identifier: "BondLogin", accessGroup: nil)
+	
 	var userDefaults = NSUserDefaults.standardUserDefaults()
 	
 	func logout() {
@@ -49,10 +49,8 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		CustomBLE.sharedInstance.stopScanning()
 		CustomBLE.sharedInstance.timer.invalidate()
 
-		self.keychainItemStore.resetKeychainItem()
-		self.keychainItemStore.setObject("", forKey: kSecAttrAccount)
-		self.keychainItemStore.setObject("", forKey: kSecValueData)
 
+		
 		self.userDefaults.setObject("", forKey: "phoneNumber")
 		self.userDefaults.setObject("", forKey: "name")
 		self.userDefaults.setObject(1, forKey: "age")
@@ -86,6 +84,7 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		bondLog("vc is \(vc)")
 
 		ViewManager.sharedInstance.currentViewController?.navigationController?.presentViewController(navigationController, animated: true, completion: nil)
+		bryceLog("pushing VC \(navigationController) from \(self)")
 	}
 	
     func register() {
@@ -140,11 +139,16 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/users/\(id)", api_key: authKey, type: requestType.user, delegate:nil)
     }
     
-    func setUserPhoto(id: Int, authKey: NSString, image: UIImage) {
-        UserAccountController.sharedInstance.currentUser.image = image
+    func setUserPhoto(id: Int, authKey: NSString, image: UIImage?) {
+		if image != nil {
+        UserAccountController.sharedInstance.currentUser.image = image!
         var imageData = UIImageJPEGRepresentation(image, 50)
         let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/images", data: "id=\(id)&image_data=\(base64String)", api_key: authKey, type: requestType.image)
+		}
+		else {
+			
+		}
     }
     
     func getUserPhoto(id: Int, authKey: NSString)

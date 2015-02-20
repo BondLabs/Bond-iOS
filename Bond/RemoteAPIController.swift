@@ -139,12 +139,18 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 
 						dispatch_async(dispatch_get_main_queue(), {() -> Void in
 							let image = UserAccountController.sharedInstance.newProfileImage
-							UserAccountController.sharedInstance.currentUser.setUserPicture(image)
+							//UserAccountController.sharedInstance.currentUser.setUserPicture(image)
+							//UserAccountController.sharedInstance.setUserPhoto(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey, image: image)
+							UserAccountController.sharedInstance.setUserPhoto(
+								UserAccountController.sharedInstance.currentUser.userID,
+								authKey: UserAccountController.sharedInstance.currentUser.authKey,
+								image: image)
+
+							///UserAccountController.sharedInstance.currentUser.setUserPicture(image)
+
 						})
 					}
-					UserAccountController.sharedInstance.keychainItemStore.setObject(UserAccountController.sharedInstance.newPhoneNumber, forKey: kSecAttrAccount)
-					UserAccountController.sharedInstance.keychainItemStore.setObject(UserAccountController.sharedInstance.newPassword, forKey: kSecValueData)
-					let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
+										let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
 					let authKey: NSString = dataDictionary?.objectForKey("auth_key") as NSString
 
 					let currentInstallation = PFInstallation.currentInstallation()
@@ -160,7 +166,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					UserAccountController.sharedInstance.userDefaults.synchronize()
 					UserAccountController.sharedInstance.currentUser.getUserPicture()
 
-					bondLog("stuff in keychain: \(UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecAttrAccount)), and also \(UserAccountController.sharedInstance.keychainItemStore.objectForKey(kSecValueData))")
+					
 
 					AppData.bondLog("User created: \(newUser.description) with ID: \(userID)")
 				} else {
@@ -212,13 +218,14 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				UserAccountController.sharedInstance.sendTraits(UserAccountController.sharedInstance.newTraits)
 
 
+
 				var writeError: NSError?
 				var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
 
 				AppData.bondLog("\(dataDictionary)")
 
 				if (dataDictionary?.objectForKey("error") == nil) {
-					let user = UserAccountController.sharedInstance.currentUser
+					//let user = UserAccountController.sharedInstance.currentUser
 				} else {
 					let alert = UIAlertView(title: "Oops", message: dataDictionary?.objectForKey("error") as? String, delegate: nil, cancelButtonTitle: "Okay")
 					alert.show()
@@ -429,7 +436,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 			println("Requesting traits page")
 			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
 				let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
-				AppData.bondLog("We got a user response! It's \(dataString!)")
+				AppData.bondLog("We got a traits response! It's \(dataString!)")
 
 				var writeError: NSError?
 				var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
@@ -442,10 +449,16 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 
 				if (ViewManager.sharedInstance.currentViewController != nil) {
 					dispatch_async(dispatch_get_main_queue(), {() -> Void in
+
+						UserAccountController.sharedInstance.currentUser.traitsString = ((dataDictionary? as Dictionary)["traits"])
+
 						let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
 						LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
+						bryceLog("doing segue from traits with view \(LIVC)")
+
 						ViewManager.sharedInstance.ProgressHUD?.hide(true)
 						AppData.bondLog("pushing the view")
+
 					})
 				}
 			}
@@ -475,7 +488,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				UserAccountController.sharedInstance.getTraits(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
 			}
 		} else if (type == requestType.custom) {
-			UserAccountController.sharedInstance.getTraits(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+			//UserAccountController.sharedInstance.getTraits(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
 
 		} else if (type == requestType.otherUserImage) {
 			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
@@ -558,6 +571,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 
 
 				ViewManager.sharedInstance.currentViewController?.presentViewController(ViewManager.sharedInstance.chatViewController!, animated: true, completion: nil)
+				bryceLog("pushing VC \(ViewManager.sharedInstance.chatViewController) from \(self)")
 				ViewManager.sharedInstance.ProgressHUD?.hide(true)
 			}
 		} else {

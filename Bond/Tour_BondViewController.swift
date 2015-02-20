@@ -10,12 +10,16 @@ import UIKit
 
 class Tour_BondViewController: UIViewController {
 
+	let nameLabel = UILabel()
+	let icon = CircleImageView()
+	let descLabel = UILabel()
+
     func setup(frame: CGRect) {
         self.view.frame = frame
         self.view.clipsToBounds = false
 
         // Set up icon
-        var icon = CircleImageView()
+		//var icon = CircleImageView()
         icon.frame.size = CGSizeMake(125, 125)
         icon.setDefaultImage(UIImage(named: "Tour_1.png")!)
         icon.addBorder(0xFFFFFF)
@@ -25,17 +29,18 @@ class Tour_BondViewController: UIViewController {
         self.view.addSubview(icon)
         
         // Set up name label
-        var nameLabel = UILabel()
+		//var nameLabel = UILabel()
         nameLabel.text = "Bond"
         nameLabel.font = UIFont(name: "Avenir-Heavy", size: 29.0)
         nameLabel.textColor = UIColor.whiteColor()
         nameLabel.sizeToFit()
         nameLabel.numberOfLines = 0
         nameLabel.center = CGPointMake(self.view.frame.width / 2, 300)
+
         self.view.addSubview(nameLabel)
         
         // Set up label
-        var descLabel = UILabel()
+		//var descLabel = UILabel()
         descLabel.text = "Bond connects you with the \n people you should know"
         descLabel.textAlignment = NSTextAlignment.Center
         descLabel.font = UIFont(name: "Avenir-Book", size: 14.0)
@@ -45,6 +50,8 @@ class Tour_BondViewController: UIViewController {
         descLabel.center = CGPointMake(self.view.frame.width / 2, 400)
         self.view.addSubview(descLabel)
     }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

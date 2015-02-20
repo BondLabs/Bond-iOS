@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     var distLabel: UILabel!
 	var signOutButton: UIBarButtonItem!
     var profImage: CircleImageView!
+	var actbuttons: NSMutableArray!
 
     /* * *
      * * * Do basic setup-------------------------------------------------------
@@ -115,6 +116,8 @@ class ProfileViewController: UIViewController {
 		//self.view.addSubview(chatButton)
         
         // Add activity views
+
+		actbuttons = NSMutableArray()
         var activityCount = min(activities.count, 4)
         for var i = 0; i < activityCount; i++ {
             var actView = ActivityView()
@@ -123,10 +126,36 @@ class ProfileViewController: UIViewController {
             var xfac:Float = (Float(i) + 0.5) / Float(activityCount)
             actView.center = CGPointMake(self.view.frame.width * CGFloat(xfac), self.view.frame.height * 3 / 5)
             self.view.addSubview(actView)
+			actbuttons.addObject(actView)
         }
 	}
     
 	func tappedButton(sender: UITapGestureRecognizer) {
+		bondLog("tapped logout button")
 		UserAccountController.sharedInstance.logout()
+	}
+
+	override func viewWillAppear(animated: Bool) {
+
+		let nameAnim = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
+		nameAnim.fromValue = NSValue(CGSize: CGSizeMake(0.7, 0.7))
+		nameAnim.springBounciness = 15
+		nameAnim.toValue = NSValue(CGSize: CGSizeMake(1, 1))
+		nameLabel.pop_addAnimation(nameAnim, forKey: "nameLabel")
+
+		let picAnim = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
+		picAnim.fromValue = NSValue(CGSize: CGSizeMake(0.7, 0.7))
+		picAnim.springBounciness = 15
+		picAnim.toValue = NSValue(CGSize: CGSizeMake(1, 1))
+		profImage.pop_addAnimation(picAnim, forKey: "nameLabel")
+
+		for view in actbuttons {
+			let buttonAnim = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
+			buttonAnim.fromValue = NSValue(CGSize: CGSizeMake(0.7, 0.7))
+			buttonAnim.springBounciness = 15
+			buttonAnim.toValue = NSValue(CGSize: CGSizeMake(1, 1))
+			view.pop_addAnimation(picAnim, forKey: "nameLabel")
+		}
+
 	}
 }

@@ -125,6 +125,7 @@ class BondsViewController: UITableViewController {
 	func tappedCell(sender: UIGestureRecognizer) {
 		
 		let senderCell: BondTableCell = sender.view as BondTableCell
+		bondLog("tapped cell for \(senderCell.name)")
 		
 		let vc = BondsDetailViewController()
 		vc.id = senderCell.bondID.toInt()
@@ -132,7 +133,10 @@ class BondsViewController: UITableViewController {
 		vc.view.frame = self.view.frame
 		vc.nameLabel.text = senderCell.name
 		vc.name = senderCell.name
-		self.navigationController?.pushViewController(vc, animated: true)
+		//self.navigationController?.pushViewController(vc, animated: true)
+		let segue = PopCustomSegue(identifier: "gotoBond", source: self, destination: vc)
+		segue.perform()
+		bryceLog("pushing VC \(vc) from \(self)")
 	}
 	
 	override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {

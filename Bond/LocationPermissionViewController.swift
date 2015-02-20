@@ -122,6 +122,7 @@ class LocationPermissionViewController: UIViewController {
     
     func presentNextController() {
         self.performSegueWithIdentifier("segueLocationToBonds", sender: self.nextButton)
+		bryceLog("doing segue from view \(self)")
     }
     
 }

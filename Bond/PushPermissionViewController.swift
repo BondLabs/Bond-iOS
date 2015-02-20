@@ -134,6 +134,7 @@ class PushPermissionViewController: UIViewController {
     
     func presentNextController() {
         self.performSegueWithIdentifier("seguePushToLocation", sender: self)
+		bryceLog("doing segue from view \(self)")
     }
     
 }

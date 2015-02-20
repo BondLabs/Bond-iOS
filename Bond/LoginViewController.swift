@@ -48,11 +48,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
          * * */
         
         // Store size of screen
-        var barHeight = self.navigationController?.navigationBar.bounds.height
-        viewSize = CGSizeMake(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - barHeight!)
+		//var barHeight = self.navigationController?.navigationBar.bounds.height
+		var barHeight: CGFloat?
+		barHeight = 40
+		viewSize = CGSizeMake(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - barHeight!)
 
 		
-        
+
         // Set delegates
         phoneNumber.delegate = self
         password.delegate = self
@@ -157,8 +159,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 			textField.attributedPlaceholder = NSAttributedString(string:placeholder!,
 				attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
 		}
+
+
+		let anim = POPSpringAnimation(propertyNamed: kPOPLayerBorderColor)
+		anim.toValue = UIColor.bl_azureRadianceColor().CGColor
+		textField.layer.pop_addAnimation(anim, forKey: "borderColor")
+
 		textField.layer.borderWidth = 1.5
-		textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+		//textField.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
 		textField.textColor = UIColor.bl_azureRadianceColor()
 		if (textField.secureTextEntry) {
 			textField.font = UIFont.systemFontOfSize(textField.font.pointSize)

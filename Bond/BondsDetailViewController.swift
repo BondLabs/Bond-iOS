@@ -68,7 +68,12 @@ class BondsDetailViewController: UIViewController {
 		self.scrollView.addSubview(subBG)
 		
 		// Set up profile view for user using id
+		bondLog("setting up bonds detailed for user with id \(self.id)")
+		if (id != nil) {
 		self.setup(id)
+		} else {
+			let alert = UIAlertView(title: "Opps", message: "An error has occured. If it persists, please report this to bugreport@bond.sh", delegate: nil, cancelButtonTitle: "Okay")
+		}
 	}
 	
 	/* * *

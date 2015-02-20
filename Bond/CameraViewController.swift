@@ -395,6 +395,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		picker.modalPresentationStyle = UIModalPresentationStyle.Popover
 		picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
 		self.presentViewController(picker, animated: true, completion: nil)
+		bryceLog("presenting VC \(picker) from \(self)")
 	}
 
 	// Canceled image selection
@@ -413,6 +414,7 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
 		
 		UserAccountController.sharedInstance.newProfileImage = self.image
 		self.performSegueWithIdentifier("nextView", sender:self)
+		bryceLog("doing segue from view \(self)")
 		/*
 		ViewManager.sharedInstance.ProgressHUD = nil
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)

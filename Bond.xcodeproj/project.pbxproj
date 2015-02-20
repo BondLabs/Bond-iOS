@@ -26,6 +26,10 @@
 		023FF5C91A883B64008DF802 /* Load Screen i6p.png in Resources */ = {isa = PBXBuildFile; fileRef = 023FF5C81A883B64008DF802 /* Load Screen i6p.png */; };
 		023FF5CB1A883B6A008DF802 /* Load Screen i5.png in Resources */ = {isa = PBXBuildFile; fileRef = 023FF5CA1A883B6A008DF802 /* Load Screen i5.png */; };
 		023FF5CD1A883DDE008DF802 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023FF5CC1A883DDE008DF802 /* PushNoAnimationSegue.swift */; };
+		024EF6931A96EE640084245B /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024EF6891A96EE270084245B /* pop.framework */; };
+		024EF6941A96EE640084245B /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 024EF6891A96EE270084245B /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		024EF69D1A96FCD40084245B /* PopCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 024EF69C1A96FCD40084245B /* PopCustomSegue.m */; };
+		024EF6A01A9700220084245B /* LoopingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 024EF69F1A9700220084245B /* LoopingSegue.m */; };
 		02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02657F9D1A862F98008029F5 /* PushNotificationController.swift */; };
 		02657F9F1A8630BD008029F5 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201F1A594A0000C97429 /* CFNetwork.framework */; };
 		02657FA01A8630BD008029F5 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E973201D1A5949DA00C97429 /* libsqlite3.dylib */; };
@@ -232,6 +236,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		024EF6841A96EE270084245B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024EF67C1A96EE260084245B /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC191218162FB53A00E0CC76;
+			remoteInfo = pop;
+		};
+		024EF6861A96EE270084245B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024EF67C1A96EE260084245B /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC68857F18C7B60000C6194C;
+			remoteInfo = "pop-osx";
+		};
+		024EF6881A96EE270084245B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024EF67C1A96EE260084245B /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0B6BE74819FFD3B900762101;
+			remoteInfo = "pop-embedded";
+		};
+		024EF68A1A96EE270084245B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024EF67C1A96EE260084245B /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ECF01ED318C92B7F009E0AD1;
+			remoteInfo = "pop-tests";
+		};
+		024EF68C1A96EE270084245B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024EF67C1A96EE260084245B /* pop.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EC7E319918C93D6500B38170;
+			remoteInfo = "pop-tests-osx";
+		};
+		024EF6951A96EE640084245B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 024EF67C1A96EE260084245B /* pop.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B6BE74719FFD3B900762101;
+			remoteInfo = "pop-embedded";
+		};
 		E934FD7D1A4826A400E43B45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E934FD5C1A4826A400E43B45 /* Project object */;
@@ -240,6 +286,20 @@
 			remoteInfo = Bond;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		024EF6971A96EE640084245B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				024EF6941A96EE640084245B /* pop.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		020012821A721FF900322BC7 /* Bond-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bond-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -276,6 +336,11 @@
 		023FF5C81A883B64008DF802 /* Load Screen i6p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Load Screen i6p.png"; sourceTree = "<group>"; };
 		023FF5CA1A883B6A008DF802 /* Load Screen i5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Load Screen i5.png"; sourceTree = "<group>"; };
 		023FF5CC1A883DDE008DF802 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
+		024EF67C1A96EE260084245B /* pop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pop.xcodeproj; path = ../../../pop/pop.xcodeproj; sourceTree = "<group>"; };
+		024EF69B1A96FCD40084245B /* PopCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopCustomSegue.h; path = "../../../Downloads/Pop Custom Segue/Pop Custom Segue/PopCustomSegue.h"; sourceTree = "<group>"; };
+		024EF69C1A96FCD40084245B /* PopCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopCustomSegue.m; path = "../../../Downloads/Pop Custom Segue/Pop Custom Segue/PopCustomSegue.m"; sourceTree = "<group>"; };
+		024EF69E1A9700220084245B /* LoopingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopingSegue.h; sourceTree = "<group>"; };
+		024EF69F1A9700220084245B /* LoopingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopingSegue.m; sourceTree = "<group>"; };
 		02657F9D1A862F98008029F5 /* PushNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationController.swift; sourceTree = "<group>"; };
 		02657FAA1A86CFBB008029F5 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		02657FAB1A86CFBB008029F5 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
@@ -514,6 +579,7 @@
 				75F148371A86182300C90500 /* ParseUI.framework in Frameworks */,
 				75F148341A86182300C90500 /* Parse.framework in Frameworks */,
 				75F148331A86182300C90500 /* Bolts.framework in Frameworks */,
+				024EF6931A96EE640084245B /* pop.framework in Frameworks */,
 				75F148361A86182300C90500 /* ParseFacebookUtils.framework in Frameworks */,
 				75F148351A86182300C90500 /* ParseCrashReporting.framework in Frameworks */,
 				0201A8B61A7E07CF00D43347 /* MediaPlayer.framework in Frameworks */,
@@ -615,6 +681,18 @@
 			name = Chat;
 			sourceTree = "<group>";
 		};
+		024EF67D1A96EE260084245B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				024EF6851A96EE270084245B /* libpop.a */,
+				024EF6871A96EE270084245B /* pop.framework */,
+				024EF6891A96EE270084245B /* pop.framework */,
+				024EF68B1A96EE270084245B /* pop-tests.xctest */,
+				024EF68D1A96EE270084245B /* pop-tests-osx.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		02657FAD1A86CFBF008029F5 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +738,7 @@
 		75F147EA1A8616EE00C90500 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				024EF67C1A96EE260084245B /* pop.xcodeproj */,
 				75603EC11A89D25A00500943 /* UIButton */,
 				0202BB0C1A88718100925BA7 /* AutoGrowingTextView */,
 				0202BB0B1A886FB500925BA7 /* HPText */,
@@ -828,6 +907,10 @@
 			children = (
 				E96956E31A586C7F001D2308 /* AppData.swift */,
 				756645A71A7F7319009F8789 /* CustomBLE.swift */,
+				024EF69B1A96FCD40084245B /* PopCustomSegue.h */,
+				024EF69C1A96FCD40084245B /* PopCustomSegue.m */,
+				024EF69E1A9700220084245B /* LoopingSegue.h */,
+				024EF69F1A9700220084245B /* LoopingSegue.m */,
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
 				02657F9D1A862F98008029F5 /* PushNotificationController.swift */,
 				02F92FA21A7D86DF00B59C39 /* ViewManager.swift */,
@@ -1089,10 +1172,12 @@
 				E934FD601A4826A400E43B45 /* Sources */,
 				E934FD611A4826A400E43B45 /* Frameworks */,
 				E934FD621A4826A400E43B45 /* Resources */,
+				024EF6971A96EE640084245B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				024EF6961A96EE640084245B /* PBXTargetDependency */,
 			);
 			name = Bond;
 			productName = Bond;
@@ -1168,6 +1253,12 @@
 			mainGroup = E934FD5B1A4826A400E43B45;
 			productRefGroup = E934FD651A4826A400E43B45 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 024EF67D1A96EE260084245B /* Products */;
+					ProjectRef = 024EF67C1A96EE260084245B /* pop.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				E934FD631A4826A400E43B45 /* Bond */,
@@ -1175,6 +1266,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		024EF6851A96EE270084245B /* libpop.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libpop.a;
+			remoteRef = 024EF6841A96EE270084245B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		024EF6871A96EE270084245B /* pop.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = pop.framework;
+			remoteRef = 024EF6861A96EE270084245B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		024EF6891A96EE270084245B /* pop.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = pop.framework;
+			remoteRef = 024EF6881A96EE270084245B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		024EF68B1A96EE270084245B /* pop-tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "pop-tests.xctest";
+			remoteRef = 024EF68A1A96EE270084245B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		024EF68D1A96EE270084245B /* pop-tests-osx.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "pop-tests-osx.xctest";
+			remoteRef = 024EF68C1A96EE270084245B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E934FD621A4826A400E43B45 /* Resources */ = {
@@ -1381,6 +1510,7 @@
 				752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */,
 				02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */,
 				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
+				024EF69D1A96FCD40084245B /* PopCustomSegue.m in Sources */,
 				75603EC31A89D27E00500943 /* CustomTactileButton.swift in Sources */,
 				75F1482B1A86179D00C90500 /* NSURLConnection+Blocks.m in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
@@ -1389,6 +1519,7 @@
 				758E50201A85485600881BAE /* LocationPermissionViewController.swift in Sources */,
 				02657FAC1A86CFBB008029F5 /* KeychainItemWrapper.m in Sources */,
 				755F35EE1A7E30E90065EDE0 /* Tour_BondingViewController.swift in Sources */,
+				024EF6A01A9700220084245B /* LoopingSegue.m in Sources */,
 				755F35EB1A7E30E90065EDE0 /* Tour_BondViewController.swift in Sources */,
 				755F35EF1A7E30E90065EDE0 /* Tour_ChatViewController.swift in Sources */,
 				755F35ED1A7E30E90065EDE0 /* Tour_TraitsViewController.swift in Sources */,
@@ -1416,6 +1547,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		024EF6961A96EE640084245B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "pop-embedded";
+			targetProxy = 024EF6951A96EE640084245B /* PBXContainerItemProxy */;
+		};
 		E934FD7E1A4826A400E43B45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E934FD631A4826A400E43B45 /* Bond */;
@@ -1516,7 +1652,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b80a913b-a8b5-4e81-a38a-bce2573ae7e8";
+				PROVISIONING_PROFILE = "ec34260f-1dc3-4dea-8b3c-2c364c69d7ce";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1537,7 +1673,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b80a913b-a8b5-4e81-a38a-bce2573ae7e8";
+				PROVISIONING_PROFILE = "ec34260f-1dc3-4dea-8b3c-2c364c69d7ce";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

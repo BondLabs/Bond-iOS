@@ -142,6 +142,7 @@ class AgeGenderViewController: UIViewController {
 		ViewManager.sharedInstance.ProgressHUD = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
 		ViewManager.sharedInstance.ProgressHUD!.mode = MBProgressHUDModeIndeterminate
 		ViewManager.sharedInstance.ProgressHUD!.labelText = "Joining Bond"
+		bryceLog("doing segue from view \(self)")
 		self.performSegueWithIdentifier("nextView", sender:self)
 	}
 	override func preferredStatusBarStyle() -> UIStatusBarStyle {

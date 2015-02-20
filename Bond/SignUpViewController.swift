@@ -330,6 +330,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, NSURLConnecti
 		let uc = UserAccountController.sharedInstance
 		if errorStatesLabelDictionary.allValues.count == 0 && signUpPhoneNumberIsOkay {
 			self.performSegueWithIdentifier("nextView", sender: self)
+			bryceLog("doing segue from view \(self)")
 		}
 
 		uc.newFirstName = firstName.text

@@ -25,7 +25,8 @@ class AutoLogInViewController: UIViewController {
 		let userID = userDefaults.objectForKey("userID") as NSNumber
 		let authKey = userDefaults.objectForKey("authKey") as String
 
-		let newUser = BondUser.fetchUserWithID(userID.integerValue, authKey: authKey)
+		//let newUser = BondUser.fetchUserWithID(userID.integerValue, authKey: authKey)
+		let newUser = BondUser.autoLoginUserWithID(userID.integerValue, authKey: authKey)
 		newUser.name = userDefaults.objectForKey("name")! as String
 		newUser.phoneNumber = userDefaults.objectForKey("phone")! as String
 		newUser.age = userDefaults.objectForKey("age")!.integerValue
