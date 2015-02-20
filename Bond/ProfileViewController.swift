@@ -137,6 +137,8 @@ class ProfileViewController: UIViewController {
 
 	override func viewWillAppear(animated: Bool) {
 
+		
+
 		let nameAnim = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
 		nameAnim.fromValue = NSValue(CGSize: CGSizeMake(0.7, 0.7))
 		nameAnim.springBounciness = 15

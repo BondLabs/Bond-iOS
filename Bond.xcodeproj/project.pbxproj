@@ -26,7 +26,6 @@
 		023FF5C91A883B64008DF802 /* Load Screen i6p.png in Resources */ = {isa = PBXBuildFile; fileRef = 023FF5C81A883B64008DF802 /* Load Screen i6p.png */; };
 		023FF5CB1A883B6A008DF802 /* Load Screen i5.png in Resources */ = {isa = PBXBuildFile; fileRef = 023FF5CA1A883B6A008DF802 /* Load Screen i5.png */; };
 		023FF5CD1A883DDE008DF802 /* PushNoAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023FF5CC1A883DDE008DF802 /* PushNoAnimationSegue.swift */; };
-		024EF69D1A96FCD40084245B /* PopCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 024EF69C1A96FCD40084245B /* PopCustomSegue.m */; };
 		024EF6A01A9700220084245B /* LoopingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 024EF69F1A9700220084245B /* LoopingSegue.m */; };
 		024EF6B31A9709950084245B /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024EF6AE1A9709810084245B /* pop.framework */; };
 		024EF6B41A9709950084245B /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 024EF6AE1A9709810084245B /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -48,6 +47,7 @@
 		028650581A8EA5D00039700F /* SLChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028650571A8EA5D00039700F /* SLChatViewController.swift */; };
 		02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */; };
 		02E6D5331A86D9880022FD50 /* AutoLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E6D5321A86D9880022FD50 /* AutoLogInViewController.swift */; };
+		02EDFA4E1A970DF200C76709 /* PopCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EDFA4D1A970DF200C76709 /* PopCustomSegue.m */; };
 		02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA21A7D86DF00B59C39 /* ViewManager.swift */; };
 		752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752326931A847D7900BD3E93 /* PushPermissionViewController.swift */; };
 		752326961A848D4F00BD3E93 /* ChatBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 752326951A848D4F00BD3E93 /* ChatBubble.png */; };
@@ -336,8 +336,6 @@
 		023FF5C81A883B64008DF802 /* Load Screen i6p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Load Screen i6p.png"; sourceTree = "<group>"; };
 		023FF5CA1A883B6A008DF802 /* Load Screen i5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Load Screen i5.png"; sourceTree = "<group>"; };
 		023FF5CC1A883DDE008DF802 /* PushNoAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNoAnimationSegue.swift; sourceTree = "<group>"; };
-		024EF69B1A96FCD40084245B /* PopCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopCustomSegue.h; path = "../../../Downloads/Pop Custom Segue/Pop Custom Segue/PopCustomSegue.h"; sourceTree = "<group>"; };
-		024EF69C1A96FCD40084245B /* PopCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopCustomSegue.m; path = "../../../Downloads/Pop Custom Segue/Pop Custom Segue/PopCustomSegue.m"; sourceTree = "<group>"; };
 		024EF69E1A9700220084245B /* LoopingSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopingSegue.h; sourceTree = "<group>"; };
 		024EF69F1A9700220084245B /* LoopingSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopingSegue.m; sourceTree = "<group>"; };
 		024EF6A11A97097F0084245B /* pop.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = pop.xcodeproj; path = pop/pop.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -350,6 +348,8 @@
 		028650571A8EA5D00039700F /* SLChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLChatViewController.swift; sourceTree = "<group>"; };
 		02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAPIController.swift; sourceTree = "<group>"; };
 		02E6D5321A86D9880022FD50 /* AutoLogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLogInViewController.swift; sourceTree = "<group>"; };
+		02EDFA4C1A970DF200C76709 /* PopCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopCustomSegue.h; sourceTree = "<group>"; };
+		02EDFA4D1A970DF200C76709 /* PopCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopCustomSegue.m; sourceTree = "<group>"; };
 		02F92FA21A7D86DF00B59C39 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		752326931A847D7900BD3E93 /* PushPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionViewController.swift; sourceTree = "<group>"; };
 		752326951A848D4F00BD3E93 /* ChatBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChatBubble.png; sourceTree = "<group>"; };
@@ -907,11 +907,11 @@
 			children = (
 				E96956E31A586C7F001D2308 /* AppData.swift */,
 				756645A71A7F7319009F8789 /* CustomBLE.swift */,
-				024EF69B1A96FCD40084245B /* PopCustomSegue.h */,
-				024EF69C1A96FCD40084245B /* PopCustomSegue.m */,
 				024EF69E1A9700220084245B /* LoopingSegue.h */,
 				024EF69F1A9700220084245B /* LoopingSegue.m */,
 				E934FD691A4826A400E43B45 /* AppDelegate.swift */,
+				02EDFA4C1A970DF200C76709 /* PopCustomSegue.h */,
+				02EDFA4D1A970DF200C76709 /* PopCustomSegue.m */,
 				02657F9D1A862F98008029F5 /* PushNotificationController.swift */,
 				02F92FA21A7D86DF00B59C39 /* ViewManager.swift */,
 				75A9A1CF1A87A01200F02EF1 /* Main.storyboard */,
@@ -1507,10 +1507,10 @@
 				0202BB031A886AD600925BA7 /* SLKTextViewController.m in Sources */,
 				E9D4DEED1A4A79F3004E03C9 /* CustomTextField.swift in Sources */,
 				75F148181A86178000C90500 /* SOImageBrowserView.m in Sources */,
+				02EDFA4E1A970DF200C76709 /* PopCustomSegue.m in Sources */,
 				752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */,
 				02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */,
 				E99983991A53A14F00EDB8F3 /* BondTableCell.swift in Sources */,
-				024EF69D1A96FCD40084245B /* PopCustomSegue.m in Sources */,
 				75603EC31A89D27E00500943 /* CustomTactileButton.swift in Sources */,
 				75F1482B1A86179D00C90500 /* NSURLConnection+Blocks.m in Sources */,
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,

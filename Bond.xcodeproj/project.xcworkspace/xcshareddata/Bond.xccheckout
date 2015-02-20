@@ -22,7 +22,7 @@
 		<key>BB558EF30264B93298A4647E9A7F039C7EF65982</key>
 		<string>../..</string>
 		<key>F2FE0AAE95F0B87896F2BEE0B176D4FC32D691A3</key>
-		<string>../../../../pop</string>
+		<string>../../../pop</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/danielsinger/Bond.git</string>
