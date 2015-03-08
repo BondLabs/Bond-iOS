@@ -90,7 +90,7 @@ void bondLog(id x) {
 	[self addSubview:self.blurView];
     
 		//self.textView = [[SOPlaceholderedTextView alloc] init];
-	self.textView = [[SOPlaceholderedTextView alloc] init];
+	self.textView = [[PSPDFTextView alloc] init];
     self.textView.textColor = [UIColor whiteColor];
     self.textView.font = [UIFont fontWithName:@"Avenir-Book" size:16.0];
     self.textView.delegate = self;
@@ -152,10 +152,12 @@ void bondLog(id x) {
     self.textView.frame = txtFrame;
     
     [self adjustPosition];
+	[self updateTextView:self.textView];
 }
 
 - (void)textViewTextDidChange:(NSNotification *)note
 {
+
 	[self updateTextView:self.textView];
 }
 
@@ -277,37 +279,40 @@ void bondLog(id x) {
 
 -(void)updateTextView:(UITextView *)textView {
 
+	dispatch_async(dispatch_get_main_queue(), ^{
 	@autoreleasepool {
 
 	CGRect frame = self.textView.frame;
 	frame.size.height = textView.contentSize.height;
 
-	CGSize size = CGSizeMake(self.frame.size.width - 8 - 8, 100000);
+	CGSize size = CGSizeMake(self.frame.size.width, 100000);
 
-	size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height + 8 + 8;
+		size.height = [textView.text sizeWithFont:textView.font constrainedToSize:size].height;// + 8 + 8;
 
 	CGRect origRect = self.frame;
 
 		if (size.height > 40) {
 				//self.textView.contentInset = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 0.0f);
-			self.textView.textContainerInset = UIEdgeInsetsMake(10, 20, 0, 0);
+				self.textView.textContainerInset = UIEdgeInsetsMake(10, 20, 0, 0);
 		}
 		else {
 				//
-			self.textView.textContainerInset = UIEdgeInsetsMake(10, 20, 0, 0);
+				self.textView.textContainerInset = UIEdgeInsetsMake(10, 20, 0, 0);
 		}
 
-self.textView.contentInset = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 0.0f);
+			//self.textView.contentInset = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 0.0f);
+
 
 
 	[UIView animateWithDuration:0.1 animations:^ {
-		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, MAX(size.height, 40));
+		self.sendButton.frame = CGRectMake(self.sendButton.frame.origin.x, 0, self.sendButton.frame.size.width, MAX(size.height + 20, 40));
 		[self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
-			//self.contentMode = UIViewContentModeCenter;
+			self.contentMode = UIViewContentModeCenter;
+		textView.contentMode = UIViewContentModeCenter;
 
 		
 
-		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height, 40), self.frame.size.width,  MAX(size.height, 40));
+		self.frame = CGRectMake(self.frame.origin.x,(origRect.origin.y + origRect.size.height) - MAX(size.height + 20, 40), self.frame.size.width,  MAX(size.height + 20, 40));
 
 
 			//self.textView.frame = self.bounds;
@@ -319,6 +324,7 @@ self.textView.contentInset = UIEdgeInsetsMake(0.0f, 10.0f, 0.0f, 0.0f);
 	bondLog([NSString stringWithFormat:@"The new origin is %@", NSStringFromCGSize(size)]);
 
 	}
+	});
 }
 
 

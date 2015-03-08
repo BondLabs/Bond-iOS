@@ -31,7 +31,11 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		var context = UIGraphicsGetCurrentContext()
 		unscaledBg.drawInRect(CGRect(origin: CGPointZero, size: self.view.frame.size))
 		// Darken background
-		UIColor(red: 30/256, green: 30/256, blue: 30/256, alpha: 0.75).setFill()
+
+		//UIColor(red: 30/256, green: 30/256, blue: 30/256, alpha: 0.75).setFill()
+		AppData.util.UIColorFromRGBA(0x1E1E1E, alphaValue: 0.75).setFill()
+
+
 		CGContextFillRect(context, self.view.frame)
 		var bgImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext()
@@ -56,7 +60,10 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		self.inputView.delegate = self
 		self.inputView.tableView = self.tableView
 		self.inputView.adjustPosition()
-		
+
+
+
+
 		let contentOffset = CGPoint(x: 0, y: self.tableView.contentSize.height)
 		self.tableView.contentOffset = contentOffset
 		
@@ -79,7 +86,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
+		//UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Slide)
 		
 		var nameLabel = UILabel()
 		nameLabel.text = barTitle
@@ -92,6 +99,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		
 		var closeButton = UIButton()
 		closeButton.setImage(UIImage(named: "Cancel"), forState: UIControlState.Normal)
+		closeButton.setImage(UIImage(named: "Cancel")?.imageByApplyingAlpha(0.5), forState: UIControlState.Highlighted)
 		var rekt = closeButton.frame
 		rekt.size = CGSizeMake(20, 20)
 		closeButton.frame = rekt
@@ -101,9 +109,10 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
 		
 	}
 	
-	override func prefersStatusBarHidden() -> Bool {
+	/*override func prefersStatusBarHidden() -> Bool {
 		return true
 	}
+*/
 	
     func tappedName(sender: UIGestureRecognizer) {
 		bondLog("tapped Close Button in Chat")
@@ -257,7 +266,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         
         self.sendMessage(msg)
 		
-		if (self.noChatsView == nil || self.noChatsView.superview != nil) {
+		if (self.noChatsView != nil) {
 			self.noChatsView.removeFromSuperview()
 		}
     }

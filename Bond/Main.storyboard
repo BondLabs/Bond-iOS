@@ -31,7 +31,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UxE-dx-lU8" kind="custom" customClass="PopCustomSegue" id="dLw-JN-GVL"/>
+                                    <segue destination="UxE-dx-lU8" kind="push" id="dLw-JN-GVL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -343,7 +343,7 @@
                     <navigationItem key="navigationItem" id="TO1-JX-8pg"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" animates="NO" id="WQw-Ge-6PW"/>
+                        <segue destination="sTa-GV-XXK" kind="modal" identifier="nextView" modalTransitionStyle="crossDissolve" id="WQw-Ge-6PW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60z-Zf-Z4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -785,14 +785,14 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="SBh-Oe-6x9"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="Gfx-JN-Ff2"/>
         <segue reference="gQB-Xv-eeZ"/>
         <segue reference="8BU-7d-1hK"/>
         <segue reference="dLw-JN-GVL"/>
-        <segue reference="SCU-zk-ooq"/>
+        <segue reference="WQw-Ge-6PW"/>
         <segue reference="8wk-Ch-z2m"/>
-        <segue reference="Gfx-JN-Ff2"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="SBh-Oe-6x9"/>
         <segue reference="zMl-4c-kIB"/>
         <segue reference="Jfy-Ox-HKQ"/>
     </inferredMetricsTieBreakers>

@@ -25,6 +25,21 @@ class AutoLogInViewController: UIViewController {
 		let userID = userDefaults.objectForKey("userID") as NSNumber
 		let authKey = userDefaults.objectForKey("authKey") as String
 
+		let gmailView = GmailLikeLoadingView(frame: CGRectMake(0,0, 40, 40))
+		gmailView.center = CGPointMake(screenSize.width * 0.5, screenSize.height * 0.5)
+		self.view.addSubview(gmailView)
+		gmailView.startAnimating()
+
+		let label = UILabel()
+		label.text = "Logging you into Bond"
+		label.font = AppData.data.font
+		label.sizeToFit()
+		label.center = CGPointMake(screenSize.width * 0.5, (screenSize.height * 0.5) + 50)
+		self.view.addSubview(label)
+
+
+
+
 		//let newUser = BondUser.fetchUserWithID(userID.integerValue, authKey: authKey)
 		let newUser = BondUser.autoLoginUserWithID(userID.integerValue, authKey: authKey)
 		newUser.name = userDefaults.objectForKey("name")! as String
@@ -51,6 +66,7 @@ class AutoLogInViewController: UIViewController {
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+				UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
+
 }

@@ -52,6 +52,8 @@ class BondUser: NSObject {
 		return user
 	}
 
+	
+
 	func setUserPicture(image: UIImage) {
 		UserAccountController.sharedInstance.setUserPhoto(userID, authKey: authKey, image: image)
 	}
@@ -75,10 +77,11 @@ class BondUser: NSObject {
 	func getActiveTraits() -> NSArray {
 		let traitsArray = NSMutableArray()
 
-		if self.traitsString != nil {
+		if self.traitsString != nil && self.traitsString != "" {
 
-			for i in 0...countElements(self.traitsString!) {
-				if self.traitsString![i] == "1" {
+			for i in 0...(countElements(self.traitsString!) - 1) {
+
+				if Array(self.traitsString!)[i] == "1" {
 					traitsArray.addObject(AppData.data.activityNames[i])
 				}
 			}
@@ -88,6 +91,8 @@ class BondUser: NSObject {
 
 		return traitsArray
 	}
+
+
 
 	func getUserPicture() {
 

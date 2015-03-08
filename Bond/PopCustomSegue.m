@@ -13,6 +13,7 @@
 
 -(void)perform {
 
+
 	UIViewController *sourceViewController = (UIViewController*)[self sourceViewController];
 	UIViewController *destinationController = (UIViewController*)[self destinationViewController];
 
@@ -20,22 +21,24 @@
 	[layer pop_removeAllAnimations];
 
 	POPSpringAnimation *xAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPositionX];
-	POPSpringAnimation *sizeAnim = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerSize];
 
-	xAnim.fromValue = @(320);
-	xAnim.springBounciness = 16;
+
+	xAnim.fromValue = @([UIScreen mainScreen].bounds.size.width);
+	xAnim.springBounciness = 10;
 	xAnim.springSpeed = 10;
 
-	sizeAnim.fromValue = [NSValue valueWithCGSize:CGSizeMake(64, 114)];
+
+
 
 	xAnim.completionBlock = ^(POPAnimation *anim, BOOL finished) {
 		NSLog(@"Working");
 	};
 
 	[layer pop_addAnimation:xAnim forKey:@"position"];
-	[layer pop_addAnimation:sizeAnim forKey:@"size"];
+		//[layer pop_addAnimation:sizeAnim forKey:@"size"];
+	 
 
-	[sourceViewController.navigationController pushViewController:destinationController animated:NO];
+	[sourceViewController.navigationController pushViewController:destinationController animated:YES];
 }
 
 @end

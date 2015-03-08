@@ -13,6 +13,7 @@ enum requestType {
 	case register
 	case user
 	case allbonds
+	case bondsusers
 	case bond
 	case image
 	case getChat
@@ -63,6 +64,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		request.HTTPMethod = "POST"
 
 		//Put the relevant info into the header (length, auth, format, etc.)
+		request.setValue(api_key, forHTTPHeaderField: "x-auth-key")
 		request.setValue(postLength, forHTTPHeaderField: "Content-Length")
 		request.setValue("37D74DBC-C160-455D-B4AE-A6396FEE7954", forHTTPHeaderField: "x-api-key")
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -73,11 +75,25 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		//Let her rip
 		isNetworkBusy = true
 
-		let urlResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
-		let error: NSErrorPointer! = nil;
+		var response: NSURLResponse?
+		var error: NSError?
 
+
+
+
+		//bondLog("doing synchronous request with request \(request), and response \(&response), and error \(error)")
+		//let error: NSError? = nil;
+		//NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+		//returningResponse:&response
+		//error:&error];
+
+		let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+
+		//bondLog("got data from sync request \(data) with response \(&response)")
 		//let connection = NSURLConnection(request: request, delegate: connectionDelegate)
-		return NSURLConnection.sendSyncRequest(request)
+		//isNetworkBusy = true
+		//return NSURLConnection.sendSyncRequest(request)
+		return data != nil ? data! : NSData()
 
 	}
 
@@ -133,31 +149,15 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				AppData.bondLog("\(dataDictionary)")
 
 				if (dataDictionary?.objectForKey("error") == nil) {
-					if (self.justRegistered) {
-						bondLog("\(UserAccountController.sharedInstance.newProfileImage)")
 
-
-						dispatch_async(dispatch_get_main_queue(), {() -> Void in
-							let image = UserAccountController.sharedInstance.newProfileImage
-							//UserAccountController.sharedInstance.currentUser.setUserPicture(image)
-							//UserAccountController.sharedInstance.setUserPhoto(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey, image: image)
-							UserAccountController.sharedInstance.setUserPhoto(
-								UserAccountController.sharedInstance.currentUser.userID,
-								authKey: UserAccountController.sharedInstance.currentUser.authKey,
-								image: image)
-
-							///UserAccountController.sharedInstance.currentUser.setUserPicture(image)
-
-						})
-					}
-										let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
+					let userID: NSNumber = dataDictionary?.objectForKey("id") as NSNumber
 					let authKey: NSString = dataDictionary?.objectForKey("auth_key") as NSString
 
 					let currentInstallation = PFInstallation.currentInstallation()
 					currentInstallation.addUniqueObject("u\(userID)", forKey: "channels")
 					currentInstallation.save()
 
-					UserAccountController.sharedInstance.getAndSaveBonds(userID.integerValue, authKey: authKey)
+
 
 					let newUser = BondUser.fetchUserWithID(userID.integerValue, authKey: authKey)
 
@@ -169,6 +169,28 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 					
 
 					AppData.bondLog("User created: \(newUser.description) with ID: \(userID)")
+
+					if (self.justRegistered) {
+						bondLog("\(UserAccountController.sharedInstance.newProfileImage)")
+
+
+						dispatch_async(dispatch_get_main_queue(), {() -> Void in
+							let image = UserAccountController.sharedInstance.newProfileImage
+							let auth = UserAccountController.sharedInstance.currentUser.authKey
+							let id = UserAccountController.sharedInstance.currentUser.userID
+
+								//UserAccountController.sharedInstance.currentUser.setUserPicture(image)
+								UserAccountController.sharedInstance.setUserPhoto(id, authKey: auth, image: image)
+
+
+								//UserAccountController.sharedInstance.currentUser.setUserPicture(image)
+
+						})
+					}
+					else {
+						UserAccountController.sharedInstance.getAndSaveBonds(userID.integerValue, authKey: authKey)
+						//UserAccountController.sharedInstance.getT
+					}
 				} else {
 					dispatch_async(dispatch_get_main_queue(), {() -> Void in
 						ViewManager.sharedInstance.ProgressHUD?.hide(true)
@@ -232,6 +254,28 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				}
 			}
 		}
+		else if (type == requestType.traits) {
+			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
+				let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+				AppData.bondLog("We got a traits response! It's \(dataString!)")
+
+
+				var writeError: NSError?
+				var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+
+
+				UserAccountController.sharedInstance.getAndSaveBonds(UserAccountController.sharedInstance.currentUser.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+				if (dataDictionary?.objectForKey("error") == nil) {
+
+				}
+				else {
+
+				}
+			}
+		}
+
+		
+		
 		//MARK: Testing shit
 		NSURLConnection.asyncRequest(request, success:successBlock ,
 			failure:failureBlock)
@@ -240,6 +284,8 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 	//MARK: - GET
 	//MARK: Return (not working)
 	func returnGetAPIRequestFromURL(URL: NSString, api_key: NSString, type: requestType) -> NSData {
+
+
 
 		let request = NSMutableURLRequest()
 
@@ -260,12 +306,25 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		var connectionDelegate: AnyObject = self
 
 		//Let her rip
-		let urlResponse: AutoreleasingUnsafeMutablePointer<NSURLResponse?> = nil
-		let error: NSErrorPointer! = nil
+		var response: NSURLResponse?
+		var error: NSError?
 
+
+
+
+		//bondLog("doing synchronous request with request \(request), and response \(&response), and error \(error)")
+		//let error: NSError? = nil;
+		//NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+		//returningResponse:&response
+		//error:&error];
+
+		let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+
+		//bondLog("got data from sync request \(data) with response \(&response)")
 		//let connection = NSURLConnection(request: request, delegate: connectionDelegate)
-		isNetworkBusy = true
-		return NSURLConnection.sendSyncRequest(request)
+		//isNetworkBusy = true
+		//return NSURLConnection.sendSyncRequest(request)
+		return data != nil ? data! : NSData()
 	}
 
 	//MARK: Regular
@@ -444,17 +503,30 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 				AppData.bondLog("\(dataDictionary)")
 
 				if (dataDictionary?.objectForKey("error") == nil) {
+					let shit = (dataDictionary!).objectForKey("traits") as String
+
+					bondLog("traits string recieved is \(shit)")
+
+					UserAccountController.sharedInstance.currentUser.traitsString = shit
+
+
 					// Handle dictionary error
 				}
 
 				if (ViewManager.sharedInstance.currentViewController != nil) {
 					dispatch_async(dispatch_get_main_queue(), {() -> Void in
 
-						UserAccountController.sharedInstance.currentUser.traitsString = ((dataDictionary? as Dictionary)["traits"])
 
-						let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController!
-						LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
+
+
+						if let LIVC: UIViewController = ViewManager.sharedInstance.currentViewController {
 						bryceLog("doing segue from traits with view \(LIVC)")
+						if !LIVC.isKindOfClass(ThanksViewController) && !LIVC.isKindOfClass(PushPermissionViewController) && !LIVC.isKindOfClass(LocationPermissionViewController) {
+						LIVC.performSegueWithIdentifier("nextView", sender:LIVC)
+						} else if LIVC.isKindOfClass(ThanksViewController) {
+							LIVC.performSegueWithIdentifier("segueThanksToPush", sender:LIVC)
+							}
+						}
 
 						ViewManager.sharedInstance.ProgressHUD?.hide(true)
 						AppData.bondLog("pushing the view")
@@ -467,7 +539,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		if (type == requestType.userImage) {
 			successBlock = {(data: NSData!, response: NSURLResponse!) -> Void in
 				let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
-				AppData.bondLog("We got a user response! It's \(dataString!)")
+				AppData.bondLog("We got an image response! It's \(dataString!)")
 
 				var writeError: NSError?
 				var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary

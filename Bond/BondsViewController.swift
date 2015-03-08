@@ -16,6 +16,7 @@ class BondsViewController: UITableViewController {
 	var bonds:[String]!
 	var bondArray:[String]!
 	var bondIDArray:[String]!
+	var bondTraitsDict = NSMutableDictionary()
 	
 	/* * *
 	* * * Do basic setup
@@ -26,7 +27,7 @@ class BondsViewController: UITableViewController {
 		
 		ViewManager.sharedInstance.currentViewController = self
 		let UAC = UserAccountController.sharedInstance
-		
+
 		// Get bonds from online
 		AppData.bondLog("items in array \(UAC.currentUser.bonds)")
 		bondArray = UAC.currentUser.bonds.allValues as [String]
@@ -61,6 +62,7 @@ class BondsViewController: UITableViewController {
 		}
         
         getBondImages()
+		getBondTraits()
 	}
     
     override func viewDidAppear(animated: Bool) {
@@ -79,7 +81,30 @@ class BondsViewController: UITableViewController {
         
     }
 
-	
+	func getBondTraits() {
+		for (bid, name) in UserAccountController.sharedInstance.currentUser.bonds {
+			AppData.bondLog("getBondTraits(): \(bid)")
+			let userID = UserAccountController.sharedInstance.userIDForBondID(bid.integerValue, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+
+			let traitsDict = UserAccountController.sharedInstance.getAndReturnTraits(userID, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+
+			bondLog("got a traits dict response - It's \(traitsDict)")
+
+			if traitsDict.objectForKey("error") == nil {
+				bondTraitsDict.setObject((traitsDict.objectForKey("traits") as NSString).safeUnwrap(), forKey: "\(userID)")
+			}
+			else {
+				bondTraitsDict.setObject("000000000000000000000000000000000000000000000", forKey: "\(userID)")
+			}
+
+			bondLog("Traits: \(UserAccountController.sharedInstance.getAndReturnTraits(bid.integerValue, authKey: UserAccountController.sharedInstance.currentUser.authKey))")
+		}
+		bondLog("Bond traits are \(bondTraitsDict)")
+	}
+
+
+
+
 	/* * *
 	 * * * Function necessary for tableview
 	 * * */
@@ -104,6 +129,8 @@ class BondsViewController: UITableViewController {
         
 
 		cell.bondID = bondIDArray[indexPath.row]
+		cell.userID = UserAccountController.sharedInstance.userIDForBondID(cell.bondID.toInt()!, authKey: UserAccountController.sharedInstance.currentUser.authKey)
+		cell.traits = bondTraitsDict.objectForKey("\(cell.userID)") as String
 		AppData.bondLog("all items in bond array \(bondArray[indexPath.row])")
 		let name: String = UserAccountController.sharedInstance.currentUser.bonds.objectForKey(bondIDArray[indexPath.row]) as String
 		cell.setup(name)
@@ -128,11 +155,16 @@ class BondsViewController: UITableViewController {
 		bondLog("tapped cell for \(senderCell.name)")
 		
 		let vc = BondsDetailViewController()
-		vc.id = senderCell.bondID.toInt()
+		bondLog("bond traits dict is \(bondTraitsDict)")
+		vc.traits = bondTraitsDict.objectForKey("\(senderCell.userID)") as String
+		vc.id = senderCell.userID
 		bondLog("View controller ID is \(vc.id)")
 		vc.view.frame = self.view.frame
 		vc.nameLabel.text = senderCell.name
 		vc.name = senderCell.name
+		bondLog("setting traits to \(bondTraitsDict.objectForKey(senderCell.bondID))")
+
+		bondLog("traits were set to \(vc.traits)")
 		//self.navigationController?.pushViewController(vc, animated: true)
 		let segue = PopCustomSegue(identifier: "gotoBond", source: self, destination: vc)
 		segue.perform()

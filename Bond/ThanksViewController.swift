@@ -113,7 +113,7 @@ class ThanksViewController: UIViewController {
 	}
 	
 	func presentNextController() {
-		self.performSegueWithIdentifier("segueThanksToPush", sender: self)
+		//self.performSegueWithIdentifier("segueThanksToPush", sender: self)
 	}
 	
 }

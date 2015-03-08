@@ -114,6 +114,7 @@ class LocationPermissionViewController: UIViewController {
     func nextTapped() {
 		bondLog("Captured tap on next button for location VC")
 		// Prompt user for bluetooth permissions
+		self.presentNextController()
 		if (CustomBLE.sharedInstance.centralManager == nil) {
 			CustomBLE.sharedInstance.setup()
 			CustomBLE.sharedInstance.scan()

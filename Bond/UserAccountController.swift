@@ -50,7 +50,8 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 		CustomBLE.sharedInstance.timer.invalidate()
 
 
-		
+		PFInstallation.currentInstallation().removeObjectForKey("channels")
+		PFInstallation.currentInstallation().save()
 		self.userDefaults.setObject("", forKey: "phoneNumber")
 		self.userDefaults.setObject("", forKey: "name")
 		self.userDefaults.setObject(1, forKey: "age")
@@ -141,9 +142,12 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     
     func setUserPhoto(id: Int, authKey: NSString, image: UIImage?) {
 		if image != nil {
+
         UserAccountController.sharedInstance.currentUser.image = image!
+
         var imageData = UIImageJPEGRepresentation(image, 50)
-        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
+			//let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
+		let base64String = imageData.base64EncodedString()
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/images", data: "id=\(id)&image_data=\(base64String)", api_key: authKey, type: requestType.image)
 		}
 		else {
@@ -191,10 +195,46 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
     func getTraits(id: Int, authKey: String) {
         RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/traits/\(id)", api_key: authKey, type: requestType.traits, delegate: nil)
     }
-    
+	func getAndReturnTraits(id: Int, authKey: String) -> NSDictionary {
+
+
+		let dictData = RemoteAPIController.sharedInstance.returnGetAPIRequestFromURL("http://api.bond.sh/api/traits/\(id)", api_key: authKey, type: requestType.traits)
+
+		var writeError: NSError?
+		let dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(dictData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+
+		var returningDictionary = NSDictionary(object: "empty", forKey: "error")
+		if (dataDictionary?.objectForKey("error") == nil) {
+			returningDictionary = NSDictionary(dictionary: dataDictionary!)
+		}
+
+		return returningDictionary
+	}
     func getChat(bondID: Int, authKey: String) {
         RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/chats/\(bondID)", api_key: authKey, type: requestType.getChat, delegate:nil)
     }
+
+	func userIDForBondID(bondID: Int, authKey: String) -> Int {
+		//let dictData = RemoteAPIController.sharedInstance.returnSendAPIRequestToURL("http://api.bond.sh/api/bondsusers", api_key: authKey, type: requestType.bond)
+		let dictData = RemoteAPIController.sharedInstance.returnSendAPIRequestToURL("http://api.bond.sh/api/bondsusers", data: "bond_id=\(bondID)", api_key: authKey, type: requestType.bondsusers)
+
+		var writeError: NSError?
+		let dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(dictData, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+
+		var returningDictionary = NSDictionary(object: "empty", forKey: "error")
+		if (dataDictionary?.objectForKey("error") == nil) {
+			returningDictionary = NSDictionary(dictionary: dataDictionary!)
+		}
+
+		bondLog("user Id for bond ID \(returningDictionary)")
+		let id1 = returningDictionary.objectForKey("id1") as Int
+		let id2 = returningDictionary.objectForKey("id2") as Int
+		let finalid = (id1 == UserAccountController.sharedInstance.currentUser.userID ? id2 : id1)
+		bondLog("the other user in bond \(bondID) is \(finalid)")
+		return finalid
+		//return 0
+
+	}
     
     func newChat(bondID: Int, userID: Int, message: String, authKey: String) {
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/chats", data: "bond_id=\(bondID)&user_id=\(userID)&message=\(message)", api_key: authKey, type: requestType.sendMessage)

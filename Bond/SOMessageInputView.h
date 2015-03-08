@@ -26,6 +26,7 @@
 #import "SOPlaceholderedTextView.h"
 #import "SOMessagingDelegate.h"
 #import "SOMessageTextView.h"
+#import "PSPDFTextView/PSPDFTextView.h"
 
 #define kAutoResizingMaskAll UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth
 
@@ -34,7 +35,7 @@
 @property (weak, nonatomic) UITableView *tableView;
 
 #pragma mark - Properties
-@property (strong, nonatomic) UITextView *textView;
+@property (strong, nonatomic) PSPDFTextView *textView;
 @property (strong, nonatomic) UIButton *sendButton;
 
 @property (strong, nonatomic) UIView *separatorView;

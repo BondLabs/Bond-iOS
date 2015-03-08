@@ -52,6 +52,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 		var barHeight: CGFloat?
 		barHeight = 40
 		viewSize = CGSizeMake(UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - barHeight!)
+		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
 
 		
 

@@ -1,3 +1,21 @@
 [submodule "pop"]
 	path = pop
 	url = https://github.com/facebook/pop.git
+[submodule "JTSTextView"]
+	path = JTSTextView
+	url = https://github.com/jaredsinclair/JTSTextView.git
+[submodule "PSPDFTextView"]
+	path = PSPDFTextView
+	url = https://github.com/steipete/PSPDFTextView.git
+[submodule "AFDropdownNotification"]
+	path = AFDropdownNotification
+	url = https://github.com/AlvaroFranco/AFDropdownNotification.git
+[submodule "JFMinimalNotifications"]
+	path = JFMinimalNotifications
+	url = https://github.com/atljeremy/JFMinimalNotifications.git
+[submodule "AQGridView"]
+	path = AQGridView
+	url = https://github.com/AlanQuatermain/AQGridView.git
+[submodule "KKGridView"]
+	path = KKGridView
+	url = https://github.com/kolinkrewinkel/KKGridView.git

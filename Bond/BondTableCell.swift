@@ -13,6 +13,8 @@ class BondTableCell: UITableViewCell {
     // Store name of the user
     var name:String!
 	var bondID:String!
+	var userID:Int!
+	var traits:String!
     
     /* * *
      * * * Do setup
@@ -70,6 +72,7 @@ class BondTableCell: UITableViewCell {
 		timeLabel.center = CGPointMake(self.frame.width - 15, 30)
 		self.addSubview(timeLabel)
     }
+
     
     func getProfPic() -> UIImage {
         // Use this to get the profile picture for the bond

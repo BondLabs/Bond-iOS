@@ -26,33 +26,92 @@ func errorLog(x: AnyObject) {
 }
 
 func bondLog(x: AnyObject) {
-    NSLog("\(x)")
+	println("\(x)")
 }
 
 func kevinLog(x: AnyObject) {
-	NSLog("Kevin: \(x)")
+	bondLog("Kevin: \(x)")
 }
 
 func bryceLog(x: AnyObject) {
-	NSLog("Bryce: \(x)")
+	bondLog("Bryce: \(x)")
 }
 
 func misbahLog(x: AnyObject) {
-	NSLog("Misbah: \(x)")
+	bondLog("Misbah: \(x)")
 }
 
 func danielLog(x: AnyObject) {
-	NSLog("Daniel: \(x)")
+	bondLog("Daniel: \(x)")
 }
 
 var screenSize: CGSize {
     return UIScreen.mainScreen().bounds.size
 }
 
+
+
+func try(try:()->())->TryCatchFinally {
+	return TryCatchFinally(try)
+}
+
 infix operator =~ {}
 
 func =~ (input: String, pattern: String) -> Bool {
 	return Regex(pattern).test(input)
+}
+/*
+func * (input: Int, pattern: CGFloat) -> CGFloat {
+	return CGFloat(input) * pattern
+}
+
+func * (input: CGFloat, pattern: Int) -> CGFloat {
+	return input * CGFloat(pattern)
+}
+
+func / (input: Int, pattern: CGFloat) -> CGFloat {
+	return CGFloat(input) / pattern
+}
+
+func / (input: CGFloat, pattern: Int) -> CGFloat {
+	return input / CGFloat(pattern)
+}
+*/
+
+
+infix operator & {}
+
+
+
+func & (input: String, pattern: String) -> String {
+
+	let error = NSError(domain: "com.bondlabs.bond.error", code: 404, userInfo: [NSLocalizedDescriptionKey : "lol"])
+
+	var finalString = ""
+	if countElements(input) == countElements(pattern) {
+	for i in 0...(countElements(input) - 1) {
+
+		let arrayChar = Array(input)[i]
+		let patternChar = Array(pattern)[i]
+
+		if arrayChar == patternChar {
+			finalString.append(arrayChar)
+		}
+		else {
+			finalString = finalString + "0"
+		}
+	}
+	}
+	else {
+		error
+		return ""
+	}
+
+	bondLog("combined \(input) and \(pattern)")
+
+	return finalString
+
+
 }
 
 
@@ -86,6 +145,8 @@ class AppData {
 			static var tabBarViewHeight:CGFloat! = navViewHeight - tabBarHeight
 		}
 		static var activityNames:[String] = ["Active", "Artist", "Badass", "Brainy", "Caring", "Chill", "Creative", "Cultured", "Curious", "Driven", "Easygoing", "Empathetic", "Experienced", "Extroverted", "Fashionable", "Fit", "Free Spirited", "Friendly", "Fun", "Funky", "Hipster", "Introverted", "LOL", "Loud", "Modern", "Motivated", "Observant", "Ol'Skool", "Open Minded", "Outgoing", "Posh", "Rebellious", "Relaxed", "Romantic", "Rustic", "Sarcastic", "Serious", "Sporty", "Studious", "Thrilling", "Tough", "Traditional", "Trustworthy", "Visual", "Weird"]
+
+		static let font = UIFont(name: "Avenir-Medium", size: 16.0)
     }
 
 
@@ -133,6 +194,8 @@ class AppData {
 			UIGraphicsEndImageContext()
 			return scaled
 		}
+
+
 
 		static func cropImage(image:UIImage, fromSize:CGSize, toSize:CGSize) -> UIImage {
 			var cropCenter:CGPoint = CGPointMake(fromSize.width / 2, fromSize.height / 2)
@@ -194,8 +257,33 @@ class Regex {
 }
 
 
+class TryCatchFinally {
+	let tryFunc : ()->()
+	var catchFunc = { (e:NSException!)->() in return }
+	var finallyFunc : ()->() = {}
+
+	init(_ try:()->()) {
+		tryFunc = try
+	}
+
+	func catch(catch:(NSException)->())->TryCatchFinally {
+		// objc bridging needs NSException!, not NSException as we'd like to expose to clients.
+		catchFunc = { (e:NSException!) in catch(e) }
+		return self
+	}
+
+	func finally(finally:()->()) {
+		finallyFunc = finally
+	}
+
+	deinit {
+		tryCatchFinally(tryFunc, catchFunc, finallyFunc)
+	}
+}
+
+
 extension String {
-    
+
     // MARK: - sub String
     func substringToIndex(index:Int) -> String {
         return self.substringToIndex(advance(self.startIndex, index))
@@ -225,3 +313,54 @@ extension String {
         return result
     }
 }
+
+extension UIImage {
+	func imageByApplyingAlpha(alpha: CGFloat) -> UIImage {
+		UIGraphicsBeginImageContextWithOptions(self.size, false, 0)
+		let ctx = UIGraphicsGetCurrentContext()
+		let area = CGRectMake(0, 0, self.size.width, self.size.height)
+		CGContextScaleCTM(ctx, 1, -1);
+		CGContextTranslateCTM(ctx, 0, -area.size.height);
+
+		CGContextSetBlendMode(ctx, kCGBlendModeMultiply);
+
+		CGContextSetAlpha(ctx, alpha);
+
+		CGContextDrawImage(ctx, area, self.CGImage);
+
+		let newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+		UIGraphicsEndImageContext();
+
+		return newImage;
+
+	}
+}
+
+extension NSObject {
+	func safeUnwrap() -> NSObject {
+
+		var object: NSObject?
+		object = self
+
+		if object != nil {
+			return object!
+		}
+		else {
+			NSLog("returned nil object, wtf dude")
+			return NSObject()
+		}
+
+
+	}
+}
+
+extension Int {
+	var FloatValue: Float {
+		return Float(self)
+	}
+	var CGFloatValue: CGFloat {
+		return CGFloat(self)
+	}
+}
+

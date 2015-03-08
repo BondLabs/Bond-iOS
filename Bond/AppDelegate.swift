@@ -81,8 +81,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 	func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+
+		let thing = ((userInfo as NSDictionary).objectForKey("aps") as NSDictionary)
 		println("didReceiveRemoteNotification")
-		PFPush.handlePush(userInfo)
+		bondLog("userInfo is \(userInfo)")
+
+		let text = thing.objectForKey("alert") as String
+
+
+		dispatch_async(dispatch_get_main_queue(), {() in
+
+		let view = UIView(frame: CGRectMake(0, 0, 20, 20))
+		view.backgroundColor = UIColor.bl_azureRadianceColor()
+		ViewManager.sharedInstance.currentViewController?.view.addSubview(view)
+
+			let alert = UIAlertView(title: "Message", message: text, delegate: nil, cancelButtonTitle: "Okay", otherButtonTitles: "Cancel")
+			alert.show()
+
+			let notification = JFMinimalNotification(style: JFMinimalNotificationStytle.StyleDefault, title: "Message", subTitle: text, dismissalDelay: 50, touchHandler: {() in
+				bondLog("tapped notification")
+			})
+			ViewManager.sharedInstance.currentViewController?.view.addSubview(notification)
+			if (notification.superview != nil) {
+			notification.show()
+			}
+
+
+		})
+		//PFPush.handlePush(userInfo)
+	}
+
+	func dropdownNotificationBottomButtonTapped() {
+		bondLog("bottom button tapped")
+	}
+
+	func dropdownNotificationTopButtonTapped() {
+		bondLog("top button tapped")
 	}
 	
 	func applicationWillEnterForeground(application: UIApplication) {

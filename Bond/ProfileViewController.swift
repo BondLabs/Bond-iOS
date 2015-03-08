@@ -44,16 +44,7 @@ class ProfileViewController: UIViewController {
 		self.tabBarItem.selectedImage = UIImage(named: "Profile.png")!
         
         // Darker sub background
-        var subBG = UIView()
-		//subBG.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-		subBG.backgroundColor = UIColor.whiteColor()
-        subBG.layer.borderWidth = 0.5
-		//subBG.layer.borderColor = UIColor.blackColor().CGColor
-		subBG.layer.borderColor = UIColor.bl_altoColor().CGColor
-        subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
-        subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
-        self.view.addSubview(subBG)
-        
+
         // Set up profile view for user
         var id = 1 // Get id for the app user
         self.setup(id)
@@ -67,11 +58,31 @@ class ProfileViewController: UIViewController {
     
     func setup(id: Int) {
         // Get user details from id
+		let scrollView = UIScrollView(frame: self.view.frame)
+		scrollView.scrollEnabled = true
+		scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)
+		self.view.addSubview(scrollView)
+
 		let user = UserAccountController.sharedInstance.currentUser
 		var name: NSString = user.name as NSString
         var dist:Int! = 8
         var profPic:UIImage!
-        var activities:[String]! = ["Brainy", "Curious"]
+		//var activities:[String]! = ["Brainy", "Curious"]
+		var activities = UserAccountController.sharedInstance.currentUser.getActiveTraits() as [String]
+
+
+		var subBG = UIView()
+		//subBG.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
+		subBG.backgroundColor = UIColor.whiteColor()
+		subBG.layer.borderWidth = 0.5
+		//subBG.layer.borderColor = UIColor.blackColor().CGColor
+		subBG.layer.borderColor = UIColor.bl_altoColor().CGColor
+		subBG.frame.size = CGSizeMake(self.view.frame.width, scrollView.contentSize.height - self.view.frame.height / 2)
+		subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
+		scrollView.addSubview(subBG)
+
+
+
 
         // Add a name label
         nameLabel = UILabel()
@@ -81,7 +92,7 @@ class ProfileViewController: UIViewController {
         nameLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         nameLabel.sizeToFit()
         nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
-        self.view.addSubview(nameLabel)
+        scrollView.addSubview(nameLabel)
         
         // Add a distance label if distance is not nil
         distLabel = UILabel()
@@ -103,7 +114,7 @@ class ProfileViewController: UIViewController {
 		//profImage.layer.borderColor = UIColor.blackColor().CGColor
 		profImage.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
         profImage.layer.borderWidth = 1.0
-        self.view.addSubview(profImage)
+        scrollView.addSubview(profImage)
 		
 		let chatButton = UIButton()
 		chatButton.frame.size = CGSize(width: 160.0, height: 40.0)
@@ -118,16 +129,61 @@ class ProfileViewController: UIViewController {
         // Add activity views
 
 		actbuttons = NSMutableArray()
-        var activityCount = min(activities.count, 4)
+		//var activityCount = min(activities.count, 4)
+		var activityCount = activities.count
         for var i = 0; i < activityCount; i++ {
             var actView = ActivityView()
             actView.frame.size = CGSizeMake(70, 110)
+
+			let index = i + 1
+
             actView.setup(activities[i])
-            var xfac:Float = (Float(i) + 0.5) / Float(activityCount)
-            actView.center = CGPointMake(self.view.frame.width * CGFloat(xfac), self.view.frame.height * 3 / 5)
-            self.view.addSubview(actView)
+			let perRow = 3
+			let rawNumberOfRows = CGFloat((activities.count / perRow))
+			let numberOfRows = ceil(rawNumberOfRows)
+			let rawRow = ((CGFloat(index) / CGFloat(activityCount)) * numberOfRows)
+			let row = ceil(rawRow)
+			let amountUpToRow = CGFloat(CGFloat(perRow) * row)
+			let positionInRow = (Float(CGFloat(index) - amountUpToRow) + Float(perRow - 1)) //(CGFloat(perRow) - (CGFloat(amountUpToRow) - CGFloat(i + 1)))
+
+
+			bondLog("\(index) row is \(row)")
+			bondLog("\(index) raw row is \(rawRow)")
+			bondLog("\(index) numberOfRows is \(numberOfRows)")
+			bondLog("\(index) raw numberOfRows is \(rawNumberOfRows)")
+			bondLog("\(index) amountUpToRow is \(amountUpToRow)")
+
+			bondLog("\(index) per row is\(perRow)")
+			bondLog("\(index) position in row is \(positionInRow)")
+
+
+
+
+
+
+            var xfac:CGFloat = (CGFloat(positionInRow) + 0.5) / CGFloat(min(activityCount, perRow))
+
+
+			let yOffset = CGFloat(120 * (row - 1))
+
+			let viewWidth = CGFloat(self.view.frame.width)
+
+			let center = (Float(self.view.frame.height * CGFloat(perRow)) / 5)
+			let theRealYOffset = CGFloat(CGFloat(yOffset) + CGFloat(center))
+			let centerX = ((CGFloat(viewWidth) * CGFloat(xfac)))
+			let centerY = CGFloat(center) + yOffset
+            actView.center = CGPointMake(centerX, centerY)
+
+			bondLog("actView \(i) center is \(actView.center)")
+            scrollView.addSubview(actView)
 			actbuttons.addObject(actView)
+			scrollView.contentSize.height = self.view.frame.size.height + yOffset
         }
+
+		let string1 = "0000011100000"
+		let string2 = "0000110110000"
+		let string3 = string1 & string2
+		bondLog("\(string3)")
 	}
     
 	func tappedButton(sender: UITapGestureRecognizer) {
@@ -143,20 +199,20 @@ class ProfileViewController: UIViewController {
 		nameAnim.fromValue = NSValue(CGSize: CGSizeMake(0.7, 0.7))
 		nameAnim.springBounciness = 15
 		nameAnim.toValue = NSValue(CGSize: CGSizeMake(1, 1))
-		nameLabel.pop_addAnimation(nameAnim, forKey: "nameLabel")
+		nameLabel.pop_addAnimation(nameAnim, forKey: "intro")
 
 		let picAnim = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
 		picAnim.fromValue = NSValue(CGSize: CGSizeMake(0.7, 0.7))
 		picAnim.springBounciness = 15
 		picAnim.toValue = NSValue(CGSize: CGSizeMake(1, 1))
-		profImage.pop_addAnimation(picAnim, forKey: "nameLabel")
+		profImage.pop_addAnimation(picAnim, forKey: "intro")
 
 		for view in actbuttons {
 			let buttonAnim = POPSpringAnimation(propertyNamed: kPOPViewScaleXY)
 			buttonAnim.fromValue = NSValue(CGSize: CGSizeMake(0.7, 0.7))
 			buttonAnim.springBounciness = 15
 			buttonAnim.toValue = NSValue(CGSize: CGSizeMake(1, 1))
-			view.pop_addAnimation(picAnim, forKey: "nameLabel")
+			view.pop_addAnimation(buttonAnim, forKey: "intro")
 		}
 
 	}
