@@ -58,8 +58,9 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 
 
 		self.colorView = UIView()
-		colorView.frame.size = CGSizeMake(screenSize.width, 100)
-		colorView.center = CGPointMake(screenSize.width / 2, 100)
+		colorView.frame.size = CGSizeMake(screenSize.width, 370)
+		//colorView.center = CGPointMake(screenSize.width / 2, colorView.center.y)
+		colorView.center.x = screenSize.width / 2
 		//headerView.backgroundColor = UIColor.clearColor()
 
 		//self.headerView = OverlayWindow(frame: frame)
@@ -85,7 +86,7 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		self.view.addSubview(scrollView)
 		self.scrollView.contentSize = CGSizeMake(self.view.frame.width, self.view.frame.height)
 		//self.view.backgroundColor = AppData.util.UIColorFromRGB(0x4A4A4A)
-		self.scrollView.backgroundColor = UIColor.bl_backgroundColorColor()
+		self.scrollView.backgroundColor = UIColor.whiteColor()
 		//self.navigationController?.navigationBar.barTintColor = AppData.util.UIColorFromRGB(0x2D2D2D)
 		self.navigationController?.navigationBar.barTintColor = UIColor.bl_azureRadianceColor()
 		self.navigationController?.navigationBar.translucent = false
@@ -99,9 +100,9 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		subBG.layer.borderWidth = 0.5
 		//subBG.layer.borderColor = UIColor.blackColor().CGColor
 		subBG.layer.borderColor = UIColor.bl_altoColor().CGColor
-		subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height / 2)
-		subBG.frame.origin = CGPointMake(0, self.view.frame.height / 5)
-		//self.scrollView.addSubview(subBG)
+		subBG.frame.size = CGSizeMake(self.view.frame.width, self.view.frame.height)
+		subBG.frame.origin = CGPointMake(0, self.view.frame.height)
+		self.scrollView.addSubview(subBG)
 
 		// Set up profile view for user using id
 		bondLog("setting up bonds detailed for user with id \(self.id)")
@@ -173,9 +174,10 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		chatButton.layer.masksToBounds = true
 
 		chatButton.setTitle("Messages", forState: UIControlState.Normal)
+		chatButton.addTarget(self, action: "tappedButton:", forControlEvents: UIControlEvents.TouchUpInside)
 		self.headerView.addSubview(chatButton)
-		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedButton:")
-		chatButton.addGestureRecognizer(tapGestureRecognizer)
+		//let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "tappedButton:")
+		//chatButton.addGestureRecognizer(tapGestureRecognizer)
 
 		// Add activity views
 
@@ -240,8 +242,8 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		self.view.addSubview(gridView)
 		self.view.insertSubview(self.headerView, aboveSubview: gridView)
 		self.colorView.backgroundColor = UIColor.bl_backgroundColorColor()
-		colorView.layer.borderColor = UIColor.bl_doveGrayColor().CGColor
-		colorView.layer.borderWidth = 1
+		self.colorView.layer.borderWidth = 1
+		self.colorView.layer.borderColor = UIColor.bl_altoColor().CGColor
 		//self.colorView.alpha = 0.0
 		self.view.insertSubview(self.colorView, aboveSubview: gridView)
 		//headerView.addSubview(colorView)
@@ -391,6 +393,7 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 			UIView.animateWithDuration(0.05, animations: {() -> Void in
 			self.nameLabel.alpha = 1
 			self.chatButton.alpha = 1
+			self.colorView.frame.size.height = 370
 			})
 
 		} else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
@@ -401,8 +404,8 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 			UIView.animateWithDuration(0.1, animations: {() -> Void in
 			self.nameLabel.alpha = 0
 			self.chatButton.alpha = 0
-
-			headerFrame.origin.y = 6
+			self.colorView.frame.size.height = 150
+				//headerFrame.origin.y = 6
 			})
 		} else {
 			//frame.origin.y = min(20, max(-size, frame.origin.y - scrollDiff));
@@ -415,10 +418,9 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 			//UIView.animateWithDuration(0.05, animations: {() -> Void in
 				self.nameLabel.alpha = (max(percentScrolled - 0.5,0) * 2)
 				self.chatButton.alpha = (max(percentScrolled - 0.5,0) * 2)
-
+				self.colorView.frame.size.height = max(370 - scrollOffset, 150)
 				//self.colorView.alpha = 1 - percentScrolled
 			//})
-			self.colorView.frame.size.height = max(300 - scrollOffset, 100)
 
 			/*if percentScrolled <= 0.5 {
 			UIView.animateWithDuration(0.1, animations: {()-> Void in
