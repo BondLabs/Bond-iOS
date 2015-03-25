@@ -19,3 +19,6 @@
 [submodule "KKGridView"]
 	path = KKGridView
 	url = https://github.com/kolinkrewinkel/KKGridView.git
+[submodule "JSONDownloader"]
+	path = JSONDownloader
+	url = https://github.com/NQuinn27/JSONDownloader.git

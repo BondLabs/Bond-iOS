@@ -37,6 +37,8 @@ class CameraViewController: UIViewController, UINavigationControllerDelegate, UI
         super.viewDidLoad()
 		self.edgesForExtendedLayout = UIRectEdge.None
 
+
+
 		ViewManager.sharedInstance.currentViewController = self
 		
 		// Set up view controller properties

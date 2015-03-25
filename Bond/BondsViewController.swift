@@ -11,8 +11,8 @@ import UIKit
 class BondsViewController: UITableViewController {
 	
 	// Store bonds as a property of the controller
-	let YES = true
-	let NO = false
+	//let YES = true
+	//let NO = false
 	var bonds:[String]!
 	var bondArray:[String]!
 	var bondIDArray:[String]!
@@ -74,11 +74,12 @@ class BondsViewController: UITableViewController {
     * * */
     
     func getBondImages() {
+		/*
         for (bid, name) in UserAccountController.sharedInstance.currentUser.bonds {
             AppData.bondLog("getBondImages(): \(bid)")
             UserAccountController.sharedInstance.getOtherUserPhoto(bid.integerValue, authKey: UserAccountController.sharedInstance.currentUser.authKey)
         }
-        
+        */
     }
 
 	func getBondTraits() {

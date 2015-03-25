@@ -636,6 +636,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 
 					if (ViewManager.sharedInstance.currentViewController != nil) {
 						ViewManager.sharedInstance.ProgressHUD?.hide(true)
+						ViewManager.sharedInstance.currentViewController!.presentViewController(ViewManager.sharedInstance.chatViewController!, animated: true, completion: nil)
 					}
 				} else {
 					ChatContentManager.sharedManager.currentChat = NSMutableArray()
@@ -698,7 +699,7 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		let connection = NSURLConnection(request: request, delegate: delegate)
 	}
 
-	func customAPIRequestWithBlocks(URL: NSString, data: NSString, header: (value: NSString, field: NSString)?, HTTPMethod: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
+	func customAPIRequestWithBlocks(URL: NSString, data: NSString, header: [NSString : NSString]?, HTTPMethod: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
 
 		let hasData: Bool = !(data.isEqualToString(""))
 		let get = NSString(format: data)
@@ -725,7 +726,11 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 			request.setValue(getLength, forHTTPHeaderField: "Content-Length")
 		}
 		if header != nil {
-			request.setValue(header!.value, forHTTPHeaderField: header!.field)
+			//request.setValue(header!.value, forHTTPHeaderField: header!.field)
+
+			for (value, field) in header! {
+				request.setValue(value, forHTTPHeaderField: field)
+			}
 		}
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
@@ -739,6 +744,21 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		NSURLConnection.asyncRequest(request, success:success ,
 			failure:failure)
 	}
+
+	
+
+
+
+
+	func JSONDownloaderRequest(URL: NSString, callback: (([NSObject: AnyObject]!) -> Void)!) {
+
+
+		let downloader = JSONDownloader()
+		let urlFromString = NSURL(string: URL)
+		bryceLog("JSON downloader request url is \(urlFromString)")
+		downloader.getJSONDataFromURL(urlFromString, callback: callback)
+	}
+
 
 	//MARK: - Default Delegate Stuff
 	func connection(connection: NSURLConnection, didFailWithError error: NSError) {
@@ -759,6 +779,9 @@ class RemoteAPIController: NSObject, NSURLConnectionDataDelegate, NSURLConnectio
 		AppData.bondLog("We got a response! It's \(dataString!)")
 		isNetworkBusy = false
 	}
+
+
+
 }
 
 //MARK: - Delegates

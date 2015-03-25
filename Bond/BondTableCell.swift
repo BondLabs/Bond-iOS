@@ -15,6 +15,8 @@ class BondTableCell: UITableViewCell {
 	var bondID:String!
 	var userID:Int!
 	var traits:String!
+	var cachedImage: UIImage!
+	var profImageView:CircleImageView = CircleImageView()
     
     /* * *
      * * * Do setup
@@ -26,13 +28,14 @@ class BondTableCell: UITableViewCell {
         self.backgroundColor = UIColor.whiteColor()
         // Get profile pic
         self.name = id
-        var profPic:UIImage = self.getProfPic()
-        
+		//var profPic:UIImage = self.getProfPic()
+        let image = UIImage(named: "Profile(i).png")!
+		getProfPic()
         // Create a circle image view
-        var profImageView:CircleImageView = CircleImageView()
+		//var profImageView:CircleImageView = CircleImageView()
         profImageView.frame.size = CGSizeMake(45, 45)
         profImageView.center = CGPointMake(30, 30)
-        profImageView.setDefaultImage(profPic)
+        profImageView.setDefaultImage(image)
         profImageView.performSetup(0.5)
 		profImageView.addBorder(0x00A4FF)
         self.addSubview(profImageView)
@@ -74,9 +77,20 @@ class BondTableCell: UITableViewCell {
     }
 
     
-    func getProfPic() -> UIImage {
+	func getProfPic() { //-> UIImage {
+
+
+		//UserAccountController.sharedInstance.getOtherUserImageAsync(self.userID, passthroughImageView: profImageView)
+		if self.cachedImage == nil {
+			UserAccountController.sharedInstance.getOtherUserPhoto(self.userID, authKey: UserAccountController.sharedInstance.currentUser.authKey, passthroughImageView: profImageView, cell:self)
+		}
+		else {
+			self.profImageView.image = self.cachedImage
+		}
+
+
         // Use this to get the profile picture for the bond
-        var image = UIImage(named: "Profile(i).png")!
+        /*var image = UIImage(named: "Profile(i).png")!
         
         if (UserAccountController.sharedInstance.otherUserImages.allKeys.count > 0){
             bondLog(_stdlib_getTypeName(UserAccountController.sharedInstance.otherUserImages.allKeys[0]))   
@@ -91,6 +105,7 @@ class BondTableCell: UITableViewCell {
         
         }
         return image
+*/
     }
 
 }

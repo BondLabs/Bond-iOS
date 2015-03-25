@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ClonedView : UIView
-@property(nonatomic, weak) UIView *srcView;
-- (id)initWithView:(UIView *)src;
-+ (UIImage *)captureView:(UIView *)view withArea:(CGRect)screenRect;
+@property (nonatomic, weak) UIView* srcView;
+- (id)initWithView:(UIView*)src;
++ (UIImage*)captureView:(UIView*)view withArea:(CGRect)screenRect;
 @end

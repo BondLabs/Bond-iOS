@@ -10,8 +10,8 @@ import UIKit
 
 class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMessagingDelegate {
     
-    let NO = false
-    let YES = true
+    //let NO = false
+	//let YES = true
     var myImage: UIImage!
     var barTitle: String!
     var chatBondID: Int!
@@ -216,7 +216,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
             cell.userImage = self.partnerImage
         }
         
-        cell.panGesture.enabled = NO
+        cell.panGesture.enabled = false
         generateLabelForCell(cell)
     }
     
@@ -262,7 +262,7 @@ class ChatViewController: SOMessagingViewController, SOMessagingDataSource, SOMe
         UserAccountController.sharedInstance.newChat(chatBondID, userID: UserAccountController.sharedInstance.currentUser.userID, message: message, authKey: UserAccountController.sharedInstance.currentUser.authKey)
         let msg = Message()
         msg.text = message
-        msg.fromMe = YES
+        msg.fromMe = true
         
         self.sendMessage(msg)
 		

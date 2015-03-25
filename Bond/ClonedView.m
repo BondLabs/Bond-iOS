@@ -12,35 +12,35 @@
 
 @synthesize srcView;
 
-- (id)initWithView:(UIView *)src {
-	self = [super initWithFrame:src.frame];
-	if (self) {
-		srcView = src;
-	}
-	return self;
+- (id)initWithView:(UIView*)src
+{
+    self = [super initWithFrame:src.frame];
+    if (self) {
+        srcView = src;
+    }
+    return self;
 }
 
-+ (UIImage *)captureView:(UIView *)view withArea:(CGRect)screenRect {
++ (UIImage*)captureView:(UIView*)view withArea:(CGRect)screenRect
+{
+    UIGraphicsBeginImageContext(screenRect.size);
 
-	UIGraphicsBeginImageContext(screenRect.size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    [[UIColor blackColor] set];
+    CGContextFillRect(ctx, screenRect);
 
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
-	[[UIColor blackColor] set];
-	CGContextFillRect(ctx, screenRect);
+    [view.layer renderInContext:ctx];
 
-	[view.layer renderInContext:ctx];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
 
-	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
 
-	UIGraphicsEndImageContext();
-
-	return newImage;
+    return newImage;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-	[srcView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    [srcView.layer renderInContext:UIGraphicsGetCurrentContext()];
 }
-
 
 @end

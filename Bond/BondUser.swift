@@ -14,7 +14,7 @@ class BondUser: NSObject {
 	var phoneNumber: AnyObject = ""
 	var age = 0
 	var userID = 0
-	var authKey = ""
+	@objc var authKey = ""
 	var gender = ""
 	var relationship = ""
 	var bonds = NSMutableDictionary()

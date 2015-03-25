@@ -11,7 +11,7 @@ import UIKit
 
 class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionDataDelegate {
     
-    var currentUser: BondUser!
+    @objc var currentUser: BondUser!
 	
     var newFirstName: NSString = "First"
     var newLastName: NSString = "Last"
@@ -27,6 +27,11 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 	var newTraits = ""
     var isUserLoggedIn = false
     var otherUserImages = NSMutableDictionary()
+
+
+	@objc class func objcSharedInstance() -> UserAccountController {
+		return UserAccountController.sharedInstance
+	}
 
     class var sharedInstance: UserAccountController {
         struct Static {
@@ -145,9 +150,16 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 
         UserAccountController.sharedInstance.currentUser.image = image!
 
-        var imageData = UIImageJPEGRepresentation(image, 50)
+        var imageData = UIImageJPEGRepresentation(image, 0.5)
+
 			//let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
-		let base64String = imageData.base64EncodedString()
+			//let base64String = imageData.base64EncodedString()
+		let base64String = imageData.base64EncodedStringWithOptions(nil)
+
+		let decodedImageData = NSData(base64EncodedString: base64String, options: nil)
+		let decodedImage = UIImage(data: decodedImageData!)
+			println("image base64 is \(base64String)")
+
         RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/images", data: "id=\(id)&image_data=\(base64String)", api_key: authKey, type: requestType.image)
 		}
 		else {
@@ -160,11 +172,43 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/images/\(id)", api_key: authKey, type: requestType.userImage, delegate:nil)
     }
     
-    func getOtherUserPhoto(id: Int, authKey: NSString)
+	func getOtherUserPhoto(id: Int, authKey: NSString, passthroughImageView: UIImageView, cell: BondTableCell?)
     {
+		cell!.cachedImage = UIImage()
         bondLog("getting other user photo")
-        RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/images/\(id)", api_key: authKey, type: requestType.otherUserImage, delegate:nil)
-    }
+		//RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/images/\(id)", api_key: authKey, type: requestType.otherUserImage, delegate:nil)
+		RemoteAPIController.sharedInstance.customAPIRequestWithBlocks("http://api.bond.sh/api/images/\(id)", data: "", header: [currentUser.authKey : "x-auth-key"], HTTPMethod: "GET", success: { (data: NSData!, response: NSURLResponse!) -> Void in
+
+			let dict = self.JSONDataToNSDictionary(data)
+
+			if (dict.objectForKey("error") == nil) {
+				if let dataString = dict["file"] as? NSString {
+					//let dataString = dict["file"] as NSString
+					let imageData = NSData(fromBase64String: dataString)
+					let decodedImage = UIImage(data: imageData)
+					dispatch_async(dispatch_get_main_queue(), {() -> Void in
+						if decodedImage == nil && imageData != nil{
+							bryceLog("something went wrong decoding the image")
+						}
+						passthroughImageView.image = decodedImage
+						if cell != nil && decodedImage != nil {
+							cell!.cachedImage = decodedImage
+						}
+					})
+
+					//bryceLog("image is \(decodedImage), data \(imageData)")
+				}
+				else {
+					bryceLog("There is no image for this user")
+				}
+
+
+			}
+
+		}) { (data, response) -> Void in
+			println()
+		}
+	}
     
     func getAndSaveBonds(id: Int, authKey: NSString)
     {
@@ -245,13 +289,56 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
         RemoteAPIController.sharedInstance.customAPIRequest(URL, data: data, header: header, HTTPMethod: HTTProtocol, delegate: delegate)
     }
     
-    func sendCustomRequestWithBlocks(data: NSString, header: (value: NSString, field: NSString)?, URL: NSString, HTTProtocol: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
+	func sendCustomRequestWithBlocks(data: NSString, header: [NSString : NSString]?, URL: NSString, HTTProtocol: NSString, success:((data: NSData!, response: NSURLResponse!) -> Void), failure:((data: NSData!, response: NSError!) -> Void)) {
         RemoteAPIController.sharedInstance.customAPIRequestWithBlocks(URL, data: data, header: header, HTTPMethod: HTTProtocol, success: success, failure: failure)
     }
 
 	func checkIfPhoneExists(phone: NSString) {
 		RemoteAPIController.sharedInstance.getAPIRequestFromURL("http://api.bond.sh/api/check/\(phone)", api_key: "", type: requestType.phoneNumberExists, delegate: nil)
 	}
+
+	func getOtherUserImageAsync(userID: Int, passthroughImageView: UIImageView) {
+		let url = "http://api.bond.sh/api/images/\(userID)"
+
+		self.asyncSetNetImage(url, passthroughImageView: passthroughImageView)
+	}
+
+	
+
+	func asyncSetNetImage(url: NSString, passthroughImageView: UIImageView) {
+
+		bryceLog("Other user image URL is \(url)")
+		let callback = { (dict: [NSObject : AnyObject]!) -> Void in
+			bryceLog("got a response for the image")
+			//bryceLog("dict is \(dict)")
+
+			if let dataString = dict["file"] as? NSString {
+				//let dataString = dict["file"] as NSString
+				let imageData = NSData(fromBase64String: dataString)
+				let decodedImage = UIImage(data: imageData)
+				dispatch_async(dispatch_get_main_queue(), {() -> Void in
+					passthroughImageView.image = decodedImage
+				})
+
+				bryceLog("image is \(decodedImage)")
+			}
+			else {
+				bryceLog("There is no image for this user")
+			}
+
+		}
+
+
+		RemoteAPIController.sharedInstance.JSONDownloaderRequest(url, callback: callback)
+	}
+
+	func JSONDataToNSDictionary(data: NSData) -> NSDictionary {
+		let dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+		var writeError: NSError?
+		var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary
+		return dataDictionary!
+	}
+
 
     
 }

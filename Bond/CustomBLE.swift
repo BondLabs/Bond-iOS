@@ -94,7 +94,7 @@ class CustomBLE: NSObject, CBCentralManagerDelegate, CBPeripheralManagerDelegate
 			bondLog(UserAccountController.sharedInstance.currentUser.authKey)
 				bondLog(UserAccountController.sharedInstance.currentUser.userID)
 
-				UserAccountController.sharedInstance.sendCustomRequestWithBlocks(NSString(format: "id=%d&list=%@", UserAccountController.sharedInstance.currentUser.userID, self.beaconListToString()), header: (UserAccountController.sharedInstance.currentUser.authKey, "X-AUTH-KEY"), URL: "http://api.bond.sh/api/list", HTTProtocol: "POST",
+				UserAccountController.sharedInstance.sendCustomRequestWithBlocks(NSString(format: "id=%d&list=%@", UserAccountController.sharedInstance.currentUser.userID, self.beaconListToString()), header: [UserAccountController.sharedInstance.currentUser.authKey : "X-AUTH-KEY"], URL: "http://api.bond.sh/api/list", HTTProtocol: "POST",
 					success: { (data, response) -> Void in
 						var writeError: NSError?
 						var dataDictionary: NSMutableDictionary? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &writeError) as? NSMutableDictionary

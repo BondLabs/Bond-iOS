@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrollViewDelegate, KKGridViewDelegate  {
+class BondsDetailViewController: UIViewController, UIScrollViewDelegate  {
 
 	// Store id of relevant user
 	var id:Int!
@@ -25,7 +25,7 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 	var actbuttons: NSMutableArray!
 	var chatButton: UIButton!
 	var barImageView: CircleImageView!
-	var gridView: KKGridView!
+	//var gridView: KKGridView!
 	var previousScrollViewYOffset: CGFloat = 0.0
 
 	/* * *
@@ -140,13 +140,13 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		nameLabel.font = UIFont(name: "Helvetica-Bold", size: 24.0)
 		nameLabel.frame.size = CGSizeMake(self.view.frame.width, 40)
 		nameLabel.textAlignment = NSTextAlignment.Center
-		nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 2)
+		nameLabel.center = CGPointMake(self.view.frame.width / 2, 280)
 		self.headerView.addSubview(nameLabel)
 
 		// Add profile picture
 		profImage = CircleImageView()
 		profImage.frame.size = CGSizeMake(160, 160)
-		profImage.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 4 + 10)
+		profImage.center = CGPointMake(self.view.frame.width / 2, 150)
 		profImage.setDefaultImage(UIImage(named: "Profile(i).png")!)
 		profImage.performSetup(1)
 		//profImage.layer.borderColor = UIColor.blackColor().CGColor
@@ -168,10 +168,11 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 
 		chatButton = UIButton()
 		chatButton.frame.size = CGSize(width: 160.0, height: 40.0)
-		chatButton.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 2 + 50)
+		chatButton.center = CGPointMake(self.view.frame.width / 2, 330)
 		chatButton.backgroundColor = UIColor.bl_azureRadianceColor()
 		chatButton.layer.cornerRadius = 20.0
 		chatButton.layer.masksToBounds = true
+		chatButton.userInteractionEnabled = true
 
 		chatButton.setTitle("Messages", forState: UIControlState.Normal)
 		chatButton.addTarget(self, action: "tappedButton:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -217,9 +218,9 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		gridHeaderView.backgroundColor = UIColor.clearColor()
 
 
+		//MARK: Also Grid View implementation
 
-
-		gridView = KKGridView(frame: CGRectMake(0,150, self.view.frame.size.width, self.view.frame.size.height - 190))
+		/*gridView = KKGridView(frame: CGRectMake(0,150, self.view.frame.size.width, self.view.frame.size.height - 190))
 		gridView.center = CGPointMake(screenSize.width / 2 , gridView.center.y)
 		gridView.cellSize = CGSizeMake(screenSize.width / 3 - 10, 110.0);
 
@@ -241,13 +242,17 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 
 		self.view.addSubview(gridView)
 		self.view.insertSubview(self.headerView, aboveSubview: gridView)
+		*/
+
 		self.colorView.backgroundColor = UIColor.bl_backgroundColorColor()
 		self.colorView.layer.borderWidth = 1
 		self.colorView.layer.borderColor = UIColor.bl_altoColor().CGColor
 		//self.colorView.alpha = 0.0
-		self.view.insertSubview(self.colorView, aboveSubview: gridView)
+		//self.view.insertSubview(self.colorView, aboveSubview: gridView)
 		//headerView.addSubview(colorView)
 
+
+		//MARK: Grid View Implementation
 
 		/*
 		for var i = 0; i < activityCount; i++ {
@@ -336,8 +341,10 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		bondLog("tapped Chat Button")
 	}
 
+	//MARK: Grid View Delegate Functions
 
-	func gridView(gridView: KKGridView!, numberOfItemsInSection section: UInt) -> UInt {
+
+	/*func gridView(gridView: KKGridView!, numberOfItemsInSection section: UInt) -> UInt {
 
 		let newTraits: String? = self.traits
 		let myTraits = UserAccountController.sharedInstance.currentUser.traitsString
@@ -362,6 +369,9 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 
 	}
 
+*/
+
+
 	func scrollViewDidScroll(scrollView: UIScrollView) {
 		//var frame = self.navigationController!.navigationBar.frame;
 		var headerFrame = self.headerView.frame
@@ -369,10 +379,6 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 		headerFrame.origin.y = 0
 		//let size = frame.size.height - 21;
 		let headerSize = CGFloat(40)
-
-		//let framePercentageHidden = ((20 - frame.origin.y) / (frame.size.height - 1));
-		//let headerFramePercentageHidden = ((20 - frame.origin.y) / (frame.size.height - 1));
-
 
 
 		let scrollOffset = scrollView.contentOffset.y;
@@ -386,8 +392,6 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 
 
 		if (scrollOffset <= -scrollView.contentInset.top) {
-			//frame.origin.y = 20;
-			//headerFrame.size.height = 200
 
 			headerTransform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1)
 			UIView.animateWithDuration(0.05, animations: {() -> Void in
@@ -397,8 +401,6 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 			})
 
 		} else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
-			//frame.origin.y = -size;
-			//headerFrame.size.height = -headerSize
 
 			headerTransform = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5)
 			UIView.animateWithDuration(0.1, animations: {() -> Void in
@@ -408,40 +410,20 @@ class BondsDetailViewController: UIViewController, KKGridViewDataSource, UIScrol
 				//headerFrame.origin.y = 6
 			})
 		} else {
-			//frame.origin.y = min(20, max(-size, frame.origin.y - scrollDiff));
-
-
-			//headerFrame.origin.y = min(0, max(headerSize, headerFrame.size.height - scrollDiff));
 
 			headerTransform = CGAffineTransformScale(CGAffineTransformIdentity, max(percentScrolled, 0.5), max(percentScrolled, 0.5))
 			headerFrame.origin.y = max(percentScrolled, 0.5) * -50 + 56
-			//UIView.animateWithDuration(0.05, animations: {() -> Void in
+
 				self.nameLabel.alpha = (max(percentScrolled - 0.5,0) * 2)
 				self.chatButton.alpha = (max(percentScrolled - 0.5,0) * 2)
 				self.colorView.frame.size.height = max(370 - scrollOffset, 150)
-				//self.colorView.alpha = 1 - percentScrolled
-			//})
 
-			/*if percentScrolled <= 0.5 {
-			UIView.animateWithDuration(0.1, animations: {()-> Void in
-			self.colorView.alpha = 1.0
-			})
-			}
-			else {
-			UIView.animateWithDuration(1, animations: {()-> Void in
-			self.colorView.alpha = 0.0
-			})
 
-			}
-			*/
 			let offset = ((400 - min(scrollOffset,400)) - 200) * 2
 
-
-
-			//headerFrame.origin.y = min(40, max(-size, frame.origin.y - scrollDiff));
 		}
 
-		//self.navigationController!.navigationBar.frame = frame
+
 		UIView.animateWithDuration(0.1, animations: {() -> Void in
 			self.headerView.frame = headerFrame
 			self.headerView.transform = headerTransform

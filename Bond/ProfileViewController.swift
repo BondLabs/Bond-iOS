@@ -11,14 +11,18 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     // Save controller elements
-	let YES = true
-	let NO = false
+	//let YES = true
+	//let NO = false
 	
     var nameLabel: UILabel!
     var distLabel: UILabel!
+	var headerView: UIView!
 	var signOutButton: UIBarButtonItem!
     var profImage: CircleImageView!
 	var actbuttons: NSMutableArray!
+	var colorView: UIView!
+	//var gridView: KKGridView!
+	var previousScrollViewYOffset: CGFloat = 0.0
 
     /* * *
      * * * Do basic setup-------------------------------------------------------
@@ -91,7 +95,8 @@ class ProfileViewController: UIViewController {
 		nameLabel.textColor = UIColor.bl_doveGrayColor()
         nameLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         nameLabel.sizeToFit()
-        nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
+		// nameLabel.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 3 + 40)
+		nameLabel.center = CGPointMake(self.view.frame.width / 2, 280)
         scrollView.addSubview(nameLabel)
         
         // Add a distance label if distance is not nil
@@ -106,7 +111,8 @@ class ProfileViewController: UIViewController {
         // Add profile picture
         profImage = CircleImageView()
         profImage.frame.size = CGSizeMake(160, 160)
-        profImage.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 5)
+		//profImage.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 5)
+		profImage.center = CGPointMake(self.view.frame.width / 2, 150)
 		//profImage.setDefaultImage(UIImage(named: "Profile(i).png")!)
 		//profImage.setDefaultImage(UserAccountController.sharedInstance.currentUser.image)
 		profImage.image = UserAccountController.sharedInstance.currentUser.image

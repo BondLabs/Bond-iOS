@@ -17,8 +17,9 @@
 #import "PSPDFTextView.h"
 #import "TryCatchSwift.h"
 #import "JFMinimalNotification.h"
-#import "KKGridView.h"
+	//#import "KKGridView.h"
 #import "ClonedView.h"
+#import "JSONDownloader.h"
 
 
 @import pop;

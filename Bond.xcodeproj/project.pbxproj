@@ -31,7 +31,6 @@
 		024EF6A01A9700220084245B /* LoopingSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 024EF69F1A9700220084245B /* LoopingSegue.m */; };
 		024EF6B31A9709950084245B /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 024EF6AE1A9709810084245B /* pop.framework */; };
 		024EF6B41A9709950084245B /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 024EF6AE1A9709810084245B /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		025D5F691AABD04D00EC6A7E /* libKKGridView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 025D5F681AABD03A00EC6A7E /* libKKGridView.a */; };
 		025D5F6B1AABF99300EC6A7E /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025D5F6A1AABF99300EC6A7E /* OverlayWindow.swift */; };
 		025D5F6E1AAC050800EC6A7E /* ClonedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 025D5F6D1AAC050800EC6A7E /* ClonedView.m */; };
 		02657F9E1A862F98008029F5 /* PushNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02657F9D1A862F98008029F5 /* PushNotificationController.swift */; };
@@ -48,6 +47,8 @@
 		02657FA91A8630BD008029F5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9731FEF1A5945FB00C97429 /* AudioToolbox.framework */; };
 		02657FAC1A86CFBB008029F5 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 02657FAB1A86CFBB008029F5 /* KeychainItemWrapper.m */; };
 		0277FA7F1A74C3EE000FC661 /* BondUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0277FA7E1A74C3EE000FC661 /* BondUser.swift */; };
+		028142D81ABF3FE800FD78B7 /* JSONDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 028142D61ABF3FE800FD78B7 /* JSONDownloader.m */; };
+		028142D91ABF3FE800FD78B7 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 028142D71ABF3FE800FD78B7 /* README.md */; };
 		028650561A8E98B10039700F /* SOSlackInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 028650551A8E98B10039700F /* SOSlackInputView.m */; };
 		028650581A8EA5D00039700F /* SLChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 028650571A8EA5D00039700F /* SLChatViewController.swift */; };
 		02935C751A74B7C400C3CE67 /* RemoteAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02935C741A74B7C400C3CE67 /* RemoteAPIController.swift */; };
@@ -363,6 +364,9 @@
 		02657FAA1A86CFBB008029F5 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		02657FAB1A86CFBB008029F5 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		0277FA7E1A74C3EE000FC661 /* BondUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondUser.swift; sourceTree = "<group>"; };
+		028142D51ABF3FE800FD78B7 /* JSONDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONDownloader.h; sourceTree = "<group>"; };
+		028142D61ABF3FE800FD78B7 /* JSONDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONDownloader.m; sourceTree = "<group>"; };
+		028142D71ABF3FE800FD78B7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		028650541A8E98B10039700F /* SOSlackInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SOSlackInputView.h; sourceTree = "<group>"; };
 		028650551A8E98B10039700F /* SOSlackInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SOSlackInputView.m; sourceTree = "<group>"; };
 		028650571A8EA5D00039700F /* SLChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLChatViewController.swift; sourceTree = "<group>"; };
@@ -609,7 +613,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025D5F691AABD04D00EC6A7E /* libKKGridView.a in Frameworks */,
 				02657FA21A8630BD008029F5 /* Security.framework in Frameworks */,
 				75F148371A86182300C90500 /* ParseUI.framework in Frameworks */,
 				75F148341A86182300C90500 /* Parse.framework in Frameworks */,
@@ -748,6 +751,16 @@
 			name = Keychain;
 			sourceTree = "<group>";
 		};
+		028142D41ABF3FE800FD78B7 /* JSONDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				028142D51ABF3FE800FD78B7 /* JSONDownloader.h */,
+				028142D61ABF3FE800FD78B7 /* JSONDownloader.m */,
+				028142D71ABF3FE800FD78B7 /* README.md */,
+			);
+			path = JSONDownloader;
+			sourceTree = SOURCE_ROOT;
+		};
 		02D93A5B1A9AF1BC007E04FE /* JFMinimalNotification */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,6 +830,7 @@
 		75F147EA1A8616EE00C90500 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				028142D41ABF3FE800FD78B7 /* JSONDownloader */,
 				025D5F631AABD03A00EC6A7E /* KKGridView.xcodeproj */,
 				02F9EFAD1AABC35A00276497 /* AQGridView */,
 				024EF6A11A97097F0084245B /* pop.xcodeproj */,
@@ -1598,6 +1612,7 @@
 				E934FD6A1A4826A400E43B45 /* AppDelegate.swift in Sources */,
 				E9F482DF1A52B34B006DB53C /* CircleImageView.swift in Sources */,
 				E934FDA11A4847C000E43B45 /* SignUpViewController.swift in Sources */,
+				028142D91ABF3FE800FD78B7 /* README.md in Sources */,
 				758E50201A85485600881BAE /* LocationPermissionViewController.swift in Sources */,
 				02657FAC1A86CFBB008029F5 /* KeychainItemWrapper.m in Sources */,
 				755F35EE1A7E30E90065EDE0 /* Tour_BondingViewController.swift in Sources */,
@@ -1610,6 +1625,7 @@
 				75F1481B1A86178000C90500 /* SOMessageTextView.m in Sources */,
 				023FF5CD1A883DDE008DF802 /* PushNoAnimationSegue.swift in Sources */,
 				755F35EA1A7E30E90065EDE0 /* TourViewController.swift in Sources */,
+				028142D81ABF3FE800FD78B7 /* JSONDownloader.m in Sources */,
 				0202BAF21A886AC400925BA7 /* SLKTextView+SLKAdditions.m in Sources */,
 				0202BB021A886AD600925BA7 /* SLKTextView.m in Sources */,
 				E93C44451A4D038F00E95265 /* TraitsViewController.swift in Sources */,
@@ -1649,6 +1665,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1691,6 +1708,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1715,6 +1733,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1742,6 +1761,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
