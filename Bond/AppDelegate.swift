@@ -101,7 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			let notification = JFMinimalNotification(style: JFMinimalNotificationStytle.StyleDefault, title: "Message", subTitle: text, dismissalDelay: 50, touchHandler: {() in
 				bondLog("tapped notification")
 			})
-			ViewManager.sharedInstance.currentViewController?.view.addSubview(notification)
+			//ViewManager.sharedInstance.currentViewController?.view.addSubview(notification)
+			self.window!.addSubview(notification)
 			if (notification.superview != nil) {
 			notification.show()
 			}

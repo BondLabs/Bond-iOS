@@ -11,6 +11,7 @@
 #import "Message.h"
 #import "GmailLikeLoadingView.h"
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 #import "KeychainItemWrapper.h"
 #import "UIColor+BLColors.h"
 #import "POPCustomSegue.h"

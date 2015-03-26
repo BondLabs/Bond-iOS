@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     var distLabel: UILabel!
 	var headerView: UIView!
 	var signOutButton: UIBarButtonItem!
-    var profImage: CircleImageView!
+    var profImage: ParseCircleImageView!
 	var actbuttons: NSMutableArray!
 	var colorView: UIView!
 	//var gridView: KKGridView!
@@ -109,17 +109,39 @@ class ProfileViewController: UIViewController {
 		//self.view.addSubview(distLabel)
         
         // Add profile picture
-        profImage = CircleImageView()
+        profImage = ParseCircleImageView()
         profImage.frame.size = CGSizeMake(160, 160)
 		//profImage.center = CGPointMake(self.view.frame.width / 2, self.view.frame.height / 5)
 		profImage.center = CGPointMake(self.view.frame.width / 2, 150)
 		//profImage.setDefaultImage(UIImage(named: "Profile(i).png")!)
 		//profImage.setDefaultImage(UserAccountController.sharedInstance.currentUser.image)
-		profImage.image = UserAccountController.sharedInstance.currentUser.image
+		//profImage.image = UserAccountController.sharedInstance.currentUser.image
+		profImage.backgroundColor = UIColor.bl_azureRadianceColor()
+
+		let query = PFQuery(className: "photos")
+		let userIDString = NSString(format: "%d", UserAccountController.sharedInstance.currentUser.userID)
+		query.whereKey("User", equalTo: userIDString)
+		query.orderByDescending("createdAt")
+		query.getFirstObjectInBackgroundWithBlock { (object: PFObject!, error: NSError!) -> Void in
+			if error == nil {
+				let file = object?.objectForKey("photo") as PFFile
+				self.profImage.file = file
+				self.profImage.loadInBackground({ (image: UIImage!, error: NSError!) -> Void in
+
+					self.setImage(image)
+				})
+			}
+			else {
+				bondLog("error getting image file")
+			}
+		}
+
+
+
         profImage.performSetup(1)
 		//profImage.layer.borderColor = UIColor.blackColor().CGColor
 		profImage.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
-        profImage.layer.borderWidth = 1.0
+        profImage.layer.borderWidth = 4.0
         scrollView.addSubview(profImage)
 		
 		let chatButton = UIButton()
@@ -195,6 +217,27 @@ class ProfileViewController: UIViewController {
 	func tappedButton(sender: UITapGestureRecognizer) {
 		bondLog("tapped logout button")
 		UserAccountController.sharedInstance.logout()
+	}
+
+	func setImage(image: UIImage?) {
+		var imageSize = CGSizeMake(160,160)
+		var const = CGFloat(1)
+		if image?.size.height < image?.size.width {
+			const = CGFloat(160) / image!.size.height
+		}
+		else if image?.size.height > image?.size.width {
+			const = CGFloat(160) / image!.size.width
+		}
+		imageSize.height = max(image!.size.height * const, 160)
+		imageSize.width = max(image!.size.width * const, 160)
+
+
+		let newImage = image != nil ? image! : UIImage(named: "Profile(i).png")!
+
+
+
+		self.profImage.image = AppData.util.scaleImage(newImage, size: imageSize, scale: 1)
+		self.profImage.layer.masksToBounds = true
 	}
 
 	override func viewWillAppear(animated: Bool) {

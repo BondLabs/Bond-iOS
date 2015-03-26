@@ -154,13 +154,43 @@ class UserAccountController: NSObject, NSURLConnectionDelegate, NSURLConnectionD
 
 			//let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
 			//let base64String = imageData.base64EncodedString()
-		let base64String = imageData.base64EncodedStringWithOptions(nil)
 
-		let decodedImageData = NSData(base64EncodedString: base64String, options: nil)
-		let decodedImage = UIImage(data: decodedImageData!)
+			let image = PFFile(data: imageData)
+
+			image.saveInBackgroundWithBlock({ (done: Bool, error: NSError!) -> Void in
+				if (error == nil) {
+					let object = PFObject(className: "photos")
+					let acl = PFACL()
+					acl.setPublicWriteAccess(false)
+					acl.setPublicReadAccess(true)
+					object.ACL = acl
+
+					let id = NSString(format: "%d", UserAccountController.sharedInstance.currentUser.userID)
+
+					object.setObject(image, forKey: "photo")
+					object.setObject(id, forKey: "User")
+
+					object.saveInBackgroundWithBlock({ (done: Bool, error: NSError!) -> Void in
+						if error == nil {
+							bondLog("image uploaded")
+						}
+						else {
+							bondLog("image upload error")
+						}
+					})
+				}
+				else {
+					bondLog("there was an error uploading the file: \(error.userInfo)")
+				}
+			})
+
+			let base64String = imageData.base64EncodedStringWithOptions(nil)
+
+			let decodedImageData = NSData(base64EncodedString: base64String, options: nil)
+			let decodedImage = UIImage(data: decodedImageData!)
 			println("image base64 is \(base64String)")
 
-        RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/images", data: "id=\(id)&image_data=\(base64String)", api_key: authKey, type: requestType.image)
+			RemoteAPIController.sharedInstance.sendAPIRequestToURL("http://api.bond.sh/api/images", data: "id=\(id)&image_data=\(base64String)", api_key: authKey, type: requestType.image)
 		}
 		else {
 			

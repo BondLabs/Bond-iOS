@@ -126,9 +126,10 @@ class BondsDetailViewController: UIViewController, UIScrollViewDelegate  {
 		bondLog("traits are really \(self.traits)")
 		//var combinedString = String()
 		//let myTraits =
-		let newTraits: String? = self.traits
+		let newTraits: String = self.traits != nil ? self.traits! : "000000000000000000000000000000000000000000000"
 		let myTraits = UserAccountController.sharedInstance.currentUser.traitsString
-		let	combinedString = myTraits! & newTraits!
+		let myTraitsFixed: String = myTraits != nil ? myTraits! : "000000000000000000000000000000000000000000000"
+		let	combinedString = myTraitsFixed & newTraits
 
 		var activities = BondBond.getTraitsFromString(combinedString) as [String]
 

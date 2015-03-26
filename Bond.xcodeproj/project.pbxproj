@@ -62,6 +62,7 @@
 		02E6D5331A86D9880022FD50 /* AutoLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E6D5321A86D9880022FD50 /* AutoLogInViewController.swift */; };
 		02EDFA4E1A970DF200C76709 /* PopCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EDFA4D1A970DF200C76709 /* PopCustomSegue.m */; };
 		02F92FA31A7D86DF00B59C39 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F92FA21A7D86DF00B59C39 /* ViewManager.swift */; };
+		02F9BAA71AC3C0B5004D12FE /* ParseCircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F9BAA61AC3C0B5004D12FE /* ParseCircleImageView.swift */; };
 		02F9EFA71AABC22B00276497 /* BondCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F9EFA61AABC22B00276497 /* BondCollectionViewCell.m */; };
 		752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752326931A847D7900BD3E93 /* PushPermissionViewController.swift */; };
 		752326961A848D4F00BD3E93 /* ChatBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 752326951A848D4F00BD3E93 /* ChatBubble.png */; };
@@ -388,6 +389,7 @@
 		02EDFA4C1A970DF200C76709 /* PopCustomSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopCustomSegue.h; sourceTree = "<group>"; };
 		02EDFA4D1A970DF200C76709 /* PopCustomSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopCustomSegue.m; sourceTree = "<group>"; };
 		02F92FA21A7D86DF00B59C39 /* ViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
+		02F9BAA61AC3C0B5004D12FE /* ParseCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseCircleImageView.swift; sourceTree = "<group>"; };
 		02F9EFA51AABC22B00276497 /* BondCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BondCollectionViewCell.h; sourceTree = "<group>"; };
 		02F9EFA61AABC22B00276497 /* BondCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BondCollectionViewCell.m; sourceTree = "<group>"; };
 		752326931A847D7900BD3E93 /* PushPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionViewController.swift; sourceTree = "<group>"; };
@@ -1250,6 +1252,7 @@
 				E9E5C5481A6B463A00BE9B2B /* TraitArrayViewController.swift */,
 				E93C44461A4D102100E95265 /* ActivityView.swift */,
 				E9F482DE1A52B34B006DB53C /* CircleImageView.swift */,
+				02F9BAA61AC3C0B5004D12FE /* ParseCircleImageView.swift */,
 			);
 			name = "Traits Selection";
 			sourceTree = "<group>";
@@ -1583,6 +1586,7 @@
 				E934FD6D1A4826A400E43B45 /* Bond.xcdatamodeld in Sources */,
 				02D93A681A9AF1BC007E04FE /* NSInvocation+Constructors.m in Sources */,
 				E9CC5A751A600AA300CB7912 /* AgeGenderViewController.swift in Sources */,
+				02F9BAA71AC3C0B5004D12FE /* ParseCircleImageView.swift in Sources */,
 				028650581A8EA5D00039700F /* SLChatViewController.swift in Sources */,
 				75F1482A1A86179D00C90500 /* NSURLConnection+AsyncBlocks.m in Sources */,
 				75F1482D1A86179D00C90500 /* UILabel+WhiteUIDatePickerLabels.m in Sources */,
