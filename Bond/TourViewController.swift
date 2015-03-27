@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIScrollViewDelegate {
     
     /* * *
     * * * View properties------------------------------------------------------
@@ -22,7 +22,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     var tourViewFrame:CGRect!
     var tourVCs:[UIViewController]!
     var currentIndex:Int! = 0
-    var nextIndex:Int!
+    var nextIndex:Int? = 1
     var viewBounds:CGSize!
     var nextButton:UIButton!
     var bgImage:UIImageView!
@@ -66,7 +66,15 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         tourViewFrame = CGRect(origin: CGPointZero, size: CGSizeMake(tourPageVC.view.frame.width, tourPageVC.view.frame.height - AppData.data.heights.pageControlHeight))
         tourPageVC.delegate = self
         tourPageVC.dataSource = self
-        
+
+		for view in tourPageVC.view.subviews {
+			if view.isKindOfClass(UIScrollView) {
+				(view as UIScrollView).delegate = self
+			}
+		}
+
+
+
         // Set up page control
         pageControl = UIPageControl()
         pageControl.numberOfPages = 6
@@ -100,6 +108,7 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         nextButton = UIButton()
         nextButton.setTitle("Next 〉", forState: UIControlState.Normal)
         nextButton.backgroundColor = UIColor.whiteColor()
+		nextButton.setBackgroundImage(AppData.util.imageWithColor(AppData.util.UIColorFromRGB(0xdcf3ff)), forState: UIControlState.Highlighted)
         nextButton.titleLabel!.font = UIFont(name: "Avenir-Medium", size: 18.0)!
         nextButton.setTitleColor(AppData.util.UIColorFromRGB(0x00A4FF), forState: UIControlState.Normal)
         nextButton.frame.size = CGSizeMake(self.view.frame.width, 50)
@@ -108,15 +117,17 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         nextButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "nextTapped"))
         
         // Initialize signup button
-        signupButton.backgroundColor = AppData.util.UIColorFromRGB(0x00A4FF)
+        signupButton.backgroundColor = AppData.util.UIColorFromRGB(0x008bd9)
         signupButton.setTitle("Sign Up", forState: UIControlState.Normal)
         signupButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+		signupButton.setBackgroundImage(AppData.util.imageWithColor(AppData.util.UIColorFromRGB(0xdcf3ff)), forState: UIControlState.Highlighted)
         signupButton.frame = CGRectMake(0, self.view.frame.height - 50, self.view.frame.width / 2, 50)
         signupButton.alpha = 0
         signupButton.userInteractionEnabled = false
         
         // Initialize login button
         loginButton.backgroundColor = AppData.util.UIColorFromRGB(0xFFFFFF)
+		loginButton.setBackgroundImage(AppData.util.imageWithColor(AppData.util.UIColorFromRGB(0xdcf3ff)), forState: UIControlState.Highlighted)
         loginButton.setTitle("Log In", forState: UIControlState.Normal)
         loginButton.setTitleColor(AppData.util.UIColorFromRGB(0x00A4FF), forState: UIControlState.Normal)
         loginButton.frame = CGRectMake(self.view.frame.width / 2, self.view.frame.height - 50, self.view.frame.width / 2, 50)
@@ -235,6 +246,38 @@ class TourViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         self.nextIndex = self.currentIndex
         pageControl.currentPage = self.currentIndex
     }
+
+	func scrollViewDidScroll(scrollView: UIScrollView) {
+		/*
+		if self.nextIndex == 5 && scrollView.contentOffset.x > 320 {
+			let rawOffset = scrollView.contentOffset.x - 320
+			let opacity = (320 - rawOffset) / 320
+			self.nextButton.alpha = opacity
+			self.signupButton.alpha = 1 - opacity
+			self.loginButton.alpha = 1 - opacity
+			self.bgImage.alpha = 1 - opacity
+
+		}
+*/
+		let currentvc = tourPageVC.viewControllers[0] as UIViewController
+
+		let index = find(tourVCs, currentvc)
+
+
+		
+		if index == 4 && self.nextIndex == 5 && scrollView.contentOffset.x > 320 {
+			let rawOffset = scrollView.contentOffset.x - 320
+			let opacity = (320 - rawOffset) / 320
+			self.nextButton.alpha = opacity
+			self.signupButton.alpha = 1 - opacity
+			self.loginButton.alpha = 1 - opacity
+			self.bgImage.alpha = 1 - opacity
+
+		}
+
+		println(scrollView.contentOffset)
+		println(self.nextIndex)
+	}
 
 	override func preferredStatusBarStyle() -> UIStatusBarStyle {
 		return UIStatusBarStyle.LightContent

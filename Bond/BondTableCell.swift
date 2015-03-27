@@ -28,7 +28,7 @@ class BondTableCell: UITableViewCell {
 
 
 		let backgroundView = UIView(frame: self.frame)
-		backgroundView.backgroundColor = AppData.util.UIColorFromRGB(0xF1F1F1)
+		backgroundView.backgroundColor = AppData.util.UIColorFromRGB(0xF7F7F7)
 		self.selectedBackgroundView = backgroundView
 		self.contentView.backgroundColor = UIColor.whiteColor()
 		// Set up basic properties
@@ -108,7 +108,7 @@ class BondTableCell: UITableViewCell {
 		timeLabel.textColor = UIColor.whiteColor()
 		timeLabel.sizeToFit()
 		timeLabel.center = CGPointMake(self.frame.width - 15, 30)
-		self.addSubview(timeLabel)
+		//self.addSubview(timeLabel)
 
 		self.hasBeenSetUp = true
 	}

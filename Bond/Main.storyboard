@@ -108,7 +108,7 @@
             <objects>
                 <viewController id="WOG-iO-aje" customClass="TraitsViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A2f-Wk-daK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick those that best suit you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hfs-EC-nkC">
@@ -321,7 +321,7 @@
             <objects>
                 <viewController id="f4V-NC-ZBI" customClass="ChatViewController" customModule="Bond" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BK0-Fm-p6Y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -637,7 +637,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tQC-Pe-BB6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="x4B-Vz-8P2"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zod-cd-vGP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="zod-cd-vGP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -693,7 +693,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wNx-Bb-cAM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="Kq7-sb-66J"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tlo-r8-hfy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tlo-r8-hfy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -785,15 +785,15 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="SBh-Oe-6x9"/>
-        <segue reference="R23-YL-h3N"/>
-        <segue reference="Gfx-JN-Ff2"/>
-        <segue reference="gQB-Xv-eeZ"/>
-        <segue reference="8BU-7d-1hK"/>
-        <segue reference="dLw-JN-GVL"/>
-        <segue reference="WQw-Ge-6PW"/>
-        <segue reference="8wk-Ch-z2m"/>
-        <segue reference="zMl-4c-kIB"/>
+        <segue reference="qLT-Gt-xqm"/>
         <segue reference="Jfy-Ox-HKQ"/>
+        <segue reference="8wk-Ch-z2m"/>
+        <segue reference="SCU-zk-ooq"/>
+        <segue reference="dLw-JN-GVL"/>
+        <segue reference="8BU-7d-1hK"/>
+        <segue reference="gQB-Xv-eeZ"/>
+        <segue reference="Dt3-wl-Kcu"/>
+        <segue reference="R23-YL-h3N"/>
+        <segue reference="SBh-Oe-6x9"/>
     </inferredMetricsTieBreakers>
 </document>

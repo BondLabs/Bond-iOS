@@ -12,11 +12,11 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
+	var window: UIWindow?
 	var pushNotificationController:PushNotificationController?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		
+	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
 		self.pushNotificationController = PushNotificationController()
 
 		// Set default font for all controls in app
@@ -58,14 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-        return true
-    }
+		return true
+	}
 
 	func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
 		println("didRegisterForRemoteNotificationsWithDeviceToken")
 
 		(ViewManager.sharedInstance.currentViewController as PushPermissionViewController).presentNextController()
-		
+
 		let currentInstallation = PFInstallation.currentInstallation()
 
 		currentInstallation.setDeviceTokenFromData(deviceToken)
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
 		bondLog(error)
-		
+
 		(ViewManager.sharedInstance.currentViewController as PushPermissionViewController).presentNextController()
 	}
 
@@ -91,23 +91,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 		dispatch_async(dispatch_get_main_queue(), {() in
 
-		let view = UIView(frame: CGRectMake(0, 0, 20, 20))
-		view.backgroundColor = UIColor.bl_azureRadianceColor()
-		ViewManager.sharedInstance.currentViewController?.view.addSubview(view)
 
-			let alert = UIAlertView(title: "Message", message: text, delegate: nil, cancelButtonTitle: "Okay", otherButtonTitles: "Cancel")
-			alert.show()
 
-			let notification = JFMinimalNotification(style: JFMinimalNotificationStytle.StyleDefault, title: "Message", subTitle: text, dismissalDelay: 50, touchHandler: {() in
-				bondLog("tapped notification")
-			})
-			//ViewManager.sharedInstance.currentViewController?.view.addSubview(notification)
-			self.window!.addSubview(notification)
-			if (notification.superview != nil) {
-			notification.show()
+			/*
+			{
+			"aps": {
+			"alert": "Test notification."
+			},
+			"Title": "Test",
+			"Message": "LOL",
+			"id": 224
 			}
 
+			*/
 
+
+
+			let title = userInfo["Title"] as String
+			let message = userInfo["Message"] as String
+			let userID = userInfo["id"] as Int
+			let userIDString = NSString(format: "%d", userID)
+			var notification = JFMinimalNotification(style: JFMinimalNotificationStytle.StyleDefault, title: title, subTitle: message, dismissalDelay: 5, touchHandler: {() in
+				bondLog("tapped notification")
+			})
+
+			//ViewManager.sharedInstance.currentViewController?.view.addSubview(notification)
+			self.window!.addSubview(notification)
+
+			if (notification.superview != nil) {
+
+				notification.presentFromTop = true
+
+				notification.show()
+
+			}
+
+			let query = PFQuery(className: "photos")
+
+			query.whereKey("User", equalTo: userIDString)
+			query.orderByDescending("createdAt")
+			query.getFirstObjectInBackgroundWithBlock { (object: PFObject!, error: NSError!) -> Void in
+				if error == nil {
+					let file = object?.objectForKey("photo") as PFFile
+
+					//let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "Okay", otherButtonTitles: "Cancel")
+
+					//alert.show()
+
+
+					let iv = PFImageView(frame: notification.leftAccessoryView.frame)
+					iv.file = file
+					iv.loadInBackground({ (image: UIImage!, error: NSError!) -> Void in
+						notification.setLeftAccessoryView(iv, animated: true)
+					})
+
+				}
+				else {
+					bondLog("error getting image file")
+				}
+			}
 		})
 		//PFPush.handlePush(userInfo)
 	}
@@ -119,7 +161,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func dropdownNotificationTopButtonTapped() {
 		bondLog("top button tapped")
 	}
-	
+
 	func applicationWillEnterForeground(application: UIApplication) {
 		if (ViewManager.sharedInstance.currentViewController is SignUpViewController) {
 			(ViewManager.sharedInstance.currentViewController as SignUpViewController).hideKeyboard()
@@ -130,66 +172,66 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		}
 	}
 
-    // Core Data functions
+	// Core Data functions
 
-    lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "kevinzhang.Bond" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
-    }()
+	lazy var applicationDocumentsDirectory: NSURL = {
+		// The directory the application uses to store the Core Data store file. This code uses a directory named "kevinzhang.Bond" in the application's documents Application Support directory.
+		let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+		return urls[urls.count-1] as NSURL
+		}()
 
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("Bond", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
-    }()
+	lazy var managedObjectModel: NSManagedObjectModel = {
+		// The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
+		let modelURL = NSBundle.mainBundle().URLForResource("Bond", withExtension: "momd")!
+		return NSManagedObjectModel(contentsOfURL: modelURL)!
+		}()
 
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-        // Create the coordinator and store
-        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Bond.sqlite")
-        var error: NSError? = nil
-        var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
-            coordinator = nil
-            // Report any error we got.
-            let dict = NSMutableDictionary()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-            // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
-        }
-        
-        return coordinator
-    }()
+	lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
+		// The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+		// Create the coordinator and store
+		var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+		let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Bond.sqlite")
+		var error: NSError? = nil
+		var failureReason = "There was an error creating or loading the application's saved data."
+		if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+			coordinator = nil
+			// Report any error we got.
+			let dict = NSMutableDictionary()
+			dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
+			dict[NSLocalizedFailureReasonErrorKey] = failureReason
+			dict[NSUnderlyingErrorKey] = error
+			error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+			// Replace this with code to handle the error appropriately.
+			// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+			NSLog("Unresolved error \(error), \(error!.userInfo)")
+			abort()
+		}
 
-    lazy var managedObjectContext: NSManagedObjectContext? = {
-        // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
-        let coordinator = self.persistentStoreCoordinator
-        if coordinator == nil {
-            return nil
-        }
-        var managedObjectContext = NSManagedObjectContext()
-        managedObjectContext.persistentStoreCoordinator = coordinator
-        return managedObjectContext
-    }()
+		return coordinator
+		}()
 
-    // MARK: - Core Data Saving support
+	lazy var managedObjectContext: NSManagedObjectContext? = {
+		// Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
+		let coordinator = self.persistentStoreCoordinator
+		if coordinator == nil {
+			return nil
+		}
+		var managedObjectContext = NSManagedObjectContext()
+		managedObjectContext.persistentStoreCoordinator = coordinator
+		return managedObjectContext
+		}()
 
-    func saveContext () {
-        if let moc = self.managedObjectContext {
-            var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
-            }
-        }
-    }
+	// MARK: - Core Data Saving support
+
+	func saveContext () {
+		if let moc = self.managedObjectContext {
+			var error: NSError? = nil
+			if moc.hasChanges && !moc.save(&error) {
+				// Replace this implementation with code to handle the error appropriately.
+				// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+				NSLog("Unresolved error \(error), \(error!.userInfo)")
+				abort()
+			}
+		}
+	}
 }

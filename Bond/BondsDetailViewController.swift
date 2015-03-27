@@ -57,6 +57,7 @@ class BondsDetailViewController: UIViewController, UIScrollViewDelegate  {
 
 
 
+
 		self.colorView = UIView()
 		colorView.frame.size = CGSizeMake(screenSize.width, 370)
 		//colorView.center = CGPointMake(screenSize.width / 2, colorView.center.y)
