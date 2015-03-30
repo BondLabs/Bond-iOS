@@ -167,7 +167,7 @@ class BondsViewController: UITableViewController {
 		let senderCell: BondTableCell = sender.view as BondTableCell
 		bondLog("tapped cell for \(senderCell.name)")
 
-		let vc = BondsDetailViewController()
+		let vc = BetterBondDetailViewController()
 		bondLog("bond traits dict is \(bondTraitsDict)")
 		vc.traits = bondTraitsDict.objectForKey("\(senderCell.userID)") as String
 		vc.id = senderCell.userID
@@ -196,8 +196,8 @@ class BondsViewController: UITableViewController {
 
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if (segue.identifier == "ShowBondDetail") {
-			(segue.destinationViewController as BondsDetailViewController).id = 1
-			(segue.destinationViewController as BondsDetailViewController).name = (sender as BondTableCell).name // Set id of bond here
+			(segue.destinationViewController as BetterBondDetailViewController).id = 1
+			(segue.destinationViewController as BetterBondDetailViewController).name = (sender as BondTableCell).name // Set id of bond here
 		}
 	}
 

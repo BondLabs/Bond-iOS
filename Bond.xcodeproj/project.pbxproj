@@ -64,7 +64,7 @@
 		02F9EFA71AABC22B00276497 /* BondCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F9EFA61AABC22B00276497 /* BondCollectionViewCell.m */; };
 		46909EEE1AC5119200CBAD54 /* JSONDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 46909EEC1AC5119200CBAD54 /* JSONDownloader.m */; };
 		46909EEF1AC5119200CBAD54 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 46909EED1AC5119200CBAD54 /* README.md */; };
-		46909EFA1AC5222A00CBAD54 /* BondDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46909EF91AC5222A00CBAD54 /* BondDetailViewController.xib */; };
+		46909EFC1AC523A200CBAD54 /* BetterBondDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46909EFB1AC523A200CBAD54 /* BetterBondDetailViewController.swift */; };
 		752326941A847D7900BD3E93 /* PushPermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752326931A847D7900BD3E93 /* PushPermissionViewController.swift */; };
 		752326961A848D4F00BD3E93 /* ChatBubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 752326951A848D4F00BD3E93 /* ChatBubble.png */; };
 		7542E5181A8770F900A245BB /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7542E5171A8770F900A245BB /* ThanksViewController.swift */; };
@@ -393,7 +393,7 @@
 		46909EEB1AC5119200CBAD54 /* JSONDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONDownloader.h; sourceTree = "<group>"; };
 		46909EEC1AC5119200CBAD54 /* JSONDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONDownloader.m; sourceTree = "<group>"; };
 		46909EED1AC5119200CBAD54 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		46909EF91AC5222A00CBAD54 /* BondDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BondDetailViewController.xib; sourceTree = "<group>"; };
+		46909EFB1AC523A200CBAD54 /* BetterBondDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetterBondDetailViewController.swift; sourceTree = "<group>"; };
 		752326931A847D7900BD3E93 /* PushPermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushPermissionViewController.swift; sourceTree = "<group>"; };
 		752326951A848D4F00BD3E93 /* ChatBubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChatBubble.png; sourceTree = "<group>"; };
 		7542E5171A8770F900A245BB /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
@@ -979,7 +979,7 @@
 				E999839A1A53A20000EDB8F3 /* BondsViewController.swift */,
 				E99983981A53A14F00EDB8F3 /* BondTableCell.swift */,
 				E9227F551A52CC30004DDE48 /* BondsDetailViewController.swift */,
-				46909EF91AC5222A00CBAD54 /* BondDetailViewController.xib */,
+				46909EFB1AC523A200CBAD54 /* BetterBondDetailViewController.swift */,
 				E96956E11A5675A3001D2308 /* ProfileViewController.swift */,
 			);
 			name = Bonds;
@@ -1305,7 +1305,7 @@
 				TargetAttributes = {
 					E934FD631A4826A400E43B45 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 2X8H64ZMTL;
+						DevelopmentTeam = 2Z475Y2H59;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1466,7 +1466,6 @@
 				E934FD971A48282100E43B45 /* bg.png in Resources */,
 				756065651A8868AB00BBE792 /* No Chat Image.png in Resources */,
 				E93EC84D1A6934A800C03170 /* Studious (i).png in Resources */,
-				46909EFA1AC5222A00CBAD54 /* BondDetailViewController.xib in Resources */,
 				E9857EDD1A512AA40095EA76 /* Profile(a).png in Resources */,
 				E93EC8531A6934A800C03170 /* Traditional (i).png in Resources */,
 				E93EC83D1A6934A800C03170 /* Posh (i).png in Resources */,
@@ -1603,6 +1602,7 @@
 				755F35EC1A7E30E90065EDE0 /* Tour_PeopleViewController.swift in Sources */,
 				756645A81A7F7319009F8789 /* CustomBLE.swift in Sources */,
 				028650561A8E98B10039700F /* SOSlackInputView.m in Sources */,
+				46909EFC1AC523A200CBAD54 /* BetterBondDetailViewController.swift in Sources */,
 				02D93A671A9AF1BC007E04FE /* JFMinimalNotificationArt.m in Sources */,
 				02D93A691A9AF1BC007E04FE /* UIColor+JFMinimalNotificationColors.m in Sources */,
 				E96956E21A5675A3001D2308 /* ProfileViewController.swift in Sources */,
@@ -1755,7 +1755,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec34260f-1dc3-4dea-8b3c-2c364c69d7ce";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1783,7 +1783,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ec34260f-1dc3-4dea-8b3c-2c364c69d7ce";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Bond/Bond-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
