@@ -14,7 +14,9 @@ class BetterBondDetailViewController: UIViewController, UICollectionViewDelegate
     var name: String?
     var traits: String?
     
-    @IBOutlet weak var profileImageView: UIImageView!
+    var actButtons = [ActivityView]()
+    
+    @IBOutlet weak var profileImageView: CircleImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var traitCollectionView: UICollectionView!
 
@@ -24,20 +26,38 @@ class BetterBondDetailViewController: UIViewController, UICollectionViewDelegate
 
         traitCollectionView.delegate = self
         traitCollectionView.dataSource = self
+        
+        self.navigationItem.title = self.name
+        
+        bryceSetup(id!)
     }
 
     
-    func kevinSetup(id: Int) {
+    func bryceSetup(id: Int) {
         let newTraits: String = self.traits != nil ? self.traits! : "000000000000000000000000000000000000000000000"
         let myTraits = UserAccountController.sharedInstance.currentUser.traitsString
         let myTraitsFixed: String = myTraits != nil ? myTraits! : "000000000000000000000000000000000000000000000"
         let	combinedString = myTraitsFixed & newTraits
         
         var activities = BondBond.getTraitsFromString(combinedString) as [String]
+     
+        profileImageView.performSetup(1)
+        profileImageView.layer.borderColor = UIColor.bl_azureRadianceColor().CGColor
+        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        
+        for a in activities {
+            var actView = ActivityView()
+            actView.frame.size = CGSizeMake(70, 110)
+            
+            actView.setup(a)
+            self.actButtons.append(actView)
+        }
+        
+        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return actButtons.count
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -47,7 +67,8 @@ class BetterBondDetailViewController: UIViewController, UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cellID", forIndexPath: indexPath) as UICollectionViewCell
         
-        cell.backgroundColor = UIColor.greenColor()
+        cell.addSubview(actButtons[indexPath.row])
+        
         
         return cell
     }

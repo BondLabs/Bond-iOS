@@ -302,11 +302,16 @@
                                     <constraint firstAttribute="height" constant="370" id="FdE-iA-4Xb"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3rf-hf-we8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3rf-hf-we8" customClass="CircleImageView" customModule="Bond" customModuleProvider="target">
                                 <rect key="frame" x="82" y="98" width="156" height="156"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3rf-hf-we8" secondAttribute="height" multiplier="1:1" id="5hz-9E-DhX"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zmx-ff-BmL">
                                 <rect key="frame" x="38" y="265" width="244" height="21"/>
@@ -316,7 +321,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ubv-RL-HZ1">
                                 <rect key="frame" x="0.0" y="308" width="320" height="260"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pwy-o2-q9a">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -336,7 +341,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.84305655956268311" green="0.84319561719894409" blue="0.84302705526351929" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3rf-hf-we8" firstAttribute="top" secondItem="sVS-ri-r4W" secondAttribute="bottom" constant="34" id="DUv-3J-HoT"/>
                             <constraint firstItem="7AH-dt-KgC" firstAttribute="top" secondItem="ubv-RL-HZ1" secondAttribute="bottom" id="HB1-Ca-esg"/>
