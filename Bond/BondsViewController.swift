@@ -166,22 +166,10 @@ class BondsViewController: UITableViewController {
 
 		let senderCell: BondTableCell = sender.view as BondTableCell
 		bondLog("tapped cell for \(senderCell.name)")
-
-		let vc = BetterBondDetailViewController()
-		bondLog("bond traits dict is \(bondTraitsDict)")
-		vc.traits = bondTraitsDict.objectForKey("\(senderCell.userID)") as String
-		vc.id = senderCell.userID
-		bondLog("View controller ID is \(vc.id)")
-		vc.view.frame = self.view.frame
-		vc.nameLabel.text = senderCell.name
-		vc.name = senderCell.name
-		bondLog("setting traits to \(bondTraitsDict.objectForKey(senderCell.bondID))")
-
-		bondLog("traits were set to \(vc.traits)")
+        
 		//self.navigationController?.pushViewController(vc, animated: true)
-		let segue = PopCustomSegue(identifier: "gotoBond", source: self, destination: vc)
-		segue.perform()
-		bryceLog("pushing VC \(vc) from \(self)")
+        performSegueWithIdentifier("segueToDetail", sender: senderCell)
+		bryceLog("pushing VC (betterbondvc) from \(self)")
 	}
 
 	override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
@@ -199,6 +187,22 @@ class BondsViewController: UITableViewController {
 			(segue.destinationViewController as BetterBondDetailViewController).id = 1
 			(segue.destinationViewController as BetterBondDetailViewController).name = (sender as BondTableCell).name // Set id of bond here
 		}
+        
+        if let des = segue.destinationViewController as? BetterBondDetailViewController {
+            let senderCell = sender as BondTableCell
+            
+            bondLog("bond traits dict is \(bondTraitsDict)")
+            des.traits = bondTraitsDict.objectForKey("\(senderCell.userID)") as String
+            des.id = senderCell.userID
+            bondLog("View controller ID is \(des.id)")
+            des.view.frame = self.view.frame
+            des.nameLabel.text = senderCell.name
+            des.name = senderCell.name
+            bondLog("setting traits to \(bondTraitsDict.objectForKey(senderCell.bondID))")
+            
+            bondLog("traits were set to \(des.traits)")
+            
+        }
 	}
 
 	/* * *
@@ -215,5 +219,7 @@ class BondsViewController: UITableViewController {
 		// Explictly set your cell's layout margins
 		cell.layoutMargins = UIEdgeInsetsZero
 	}
+    
+
 	
 }

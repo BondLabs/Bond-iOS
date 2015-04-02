@@ -18,12 +18,14 @@ class BetterBondDetailViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var traitCollectionView: UICollectionView!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         traitCollectionView.delegate = self
         traitCollectionView.dataSource = self
     }
+
     
     func kevinSetup(id: Int) {
         let newTraits: String = self.traits != nil ? self.traits! : "000000000000000000000000000000000000000000000"
